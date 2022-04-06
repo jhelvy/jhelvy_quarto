@@ -1,0 +1,43 @@
+Type: Website
+Package: jhelvy.com
+Title: John Paul Helveston
+Authors@R: c(
+    person(given   = "John",
+           family  = "Helveston",
+           role    = c("aut", "cre", "cph"),
+           email   = "john.helveston@gmail.com",
+           comment = c(ORCID = "0000-0002-2657-9191")))
+Depends: R (>= 4.0.2)
+License: CC-BY-SA
+Encoding: UTF-8
+Imports:
+    bs4cards,
+    cowplot,
+    distill,
+    distilltools,
+    emo,
+    fontawesome,
+    gsheet,
+    here,
+    htmltools,
+    janitor,
+    kableExtra,
+    knitr,
+    markdown,
+    metathis,
+    postcards,
+    remotes,
+    rmarkdown,
+    roxygen2,
+    tidyverse,
+    viridis,
+    xaringanExtra,
+    yaml
+Remotes:
+    djnavarro/bs4cards,
+    EllaKaye/distilltools,
+    hadley/emo,
+    rstudio/fontawesome,
+    haozhu233/kableExtra,
+    rstudio/rmarkdown,
+    gadenbuie/xaringanExtra
