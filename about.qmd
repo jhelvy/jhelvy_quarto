@@ -1,6 +1,8 @@
 ---
 title: "About"
-page-layout: article
+format: 
+  html:
+    page-layout: full
 ---
 
 ```{r setup, include=FALSE}
