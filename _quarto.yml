@@ -22,7 +22,6 @@ website:
     location: navbar
     type: overlay
     copy-button: true
-  theme: css/custom.scss
   navbar:
     right:
       - about.qmd
@@ -30,3 +29,9 @@ website:
         href: https://github.com/
       - icon: twitter
         href: https://twitter.com
+
+format:
+  html:
+    theme: cosmo
+    css: "css/jhelvy.css"
+    include-in-header: "_includes/header.html"
