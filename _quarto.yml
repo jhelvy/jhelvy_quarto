@@ -45,6 +45,6 @@ website:
 
 format:
   html:
-    theme: default
+    theme: [default, "css/jhelvy.scss"]
     css: "css/jhelvy.css"
     include-in-header: "_includes/header.html"

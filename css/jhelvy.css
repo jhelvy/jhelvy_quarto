@@ -25,32 +25,25 @@ html h1,h2,h3,h4 {
     font-family: var(--font-header);
 }
 
-a {
-    color: var(--color-primary);
-    border-bottom: 0px;
-    text-decoration: none;
+a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: 500;
+    border-color: var(--color-secondary);
 }
 
 /* Navbar */
 
-.navbar {
-    background-color: var(--color-background);
-}
-
 .navbar-dark .navbar-nav .nav-link {
-    color: var(--color-primary);
     font-family: var(--font-header);
     font-weight: 500;
     font-size: 18px;
 }
 
 .navbar-dark .navbar-brand {
-    color: var(--color-primary);
     font-family: var(--font-header);
     font-weight: 500;
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
-    color: var(--color-primary);
     font-weight: 500;
 }
