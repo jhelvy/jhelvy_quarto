@@ -24,7 +24,20 @@ website:
     copy-button: true
   navbar:
     right:
-      - about.qmd
+      - text: About
+        href: about.qmd
+      - text: Lab
+        href: lab.qmd
+      - text: Research
+        href: research.qmd
+      - text: Teaching
+        href: teaching.qmd
+      - text: Talks
+        href: talks.qmd
+      - text: Projects
+        href: project.qmd
+      - text: Blog
+        href: blog.qmd
       - icon: github
         href: https://github.com/
       - icon: twitter
@@ -32,6 +45,6 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: "css/jhelvy.css"
     include-in-header: "_includes/header.html"
