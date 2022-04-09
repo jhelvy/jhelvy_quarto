@@ -23,27 +23,49 @@ html body {
 
 html h1,h2,h3,h4 {
     font-family: var(--font-header);
+    font-weight: bold;
 }
 
 a:hover, a:focus {
     color: var(--color-secondary);
-    font-weight: 500;
-    border-color: var(--color-secondary);
+    font-weight: bold;
+}
+
+/* page title */
+
+#title-block-header.quarto-title-block.default .quarto-title .title {
+    font-size: 50px;
+}
+
+/* toc */
+
+.sidebar nav[role=doc-toc]>ul li a {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.sidebar nav[role=doc-toc]>ul li a:hover, a:focus {
+    color: var(--color-secondary);
+    font-weight: bold;
 }
 
 /* Navbar */
 
 .navbar-dark .navbar-nav .nav-link {
     font-family: var(--font-header);
-    font-weight: 500;
+    font-weight: bold;
     font-size: 18px;
 }
 
 .navbar-dark .navbar-brand {
     font-family: var(--font-header);
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
-    font-weight: 500;
+    font-weight: bold;
+}
+
+.panel-caption, .figure-caption {
+    color: #828282;
 }

@@ -4,10 +4,13 @@
 $body-bg: #EAE9EA;
 $body-color: #172a3a;
 $link-color: #74a08a;
-$link-hl: #8a74a0;
 
+// Fonts
 $font-family-sans-serif: "Roboto",-apple-system,BlinkMacSystemFont,roboto,segoe ui,Helvetica,Arial,sans-serif;
 $font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+$font-size-root: 1.06rem;
+$h1-font-size: 33px;
+$h1-font-weight: 500;
 
 // Code blocks
 $code-block-bg-alpha: -.8;
