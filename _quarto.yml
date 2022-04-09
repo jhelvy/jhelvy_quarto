@@ -38,10 +38,18 @@ website:
         href: project.qmd
       - text: Blog
         href: blog.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - icon: fas fa-bars
+        menu:
+        - text: "CV"
+          href: content/docs/Helveston_CV.pdf
+        - icon: github
+          href: https://github.com/jhelvy
+        - icon: twitter
+          href: https://twitter.com/JohnHelveston
+        - icon: linkedin
+          href: https://www.linkedin.com/in/jhelvy
+        - icon: rss
+          href: blog.xml
 
 format:
   html:

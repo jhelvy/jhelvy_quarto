@@ -4,6 +4,8 @@ image: "images/people/helveston.png"
 about:
   template: trestles
   links:
+    - text: "CV"
+      href: content/docs/Helveston_CV.pdf
     - icon: twitter
       href: https://twitter.com/JohnHelveston
     - icon: github
@@ -12,6 +14,8 @@ about:
       href: https://www.linkedin.com/in/jhelvy/
     - icon: linkedin
       href: https://www.linkedin.com/in/jhelvy/
+    - icon: rss
+      href: blog.xml
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
