@@ -1,5 +1,3 @@
 built in {postcards}-like about pages: https://quarto.org/docs/websites/website-about.html
 
 so many yaml options: https://quarto.org/docs/websites/website-tools.html
-
-Can't get font awesome icons to embed with either the {distilltools} or {fontawesome} package

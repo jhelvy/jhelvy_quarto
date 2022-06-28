@@ -1,11 +1,15 @@
 ---
 title: "About me"
-format: 
+twitter:
+  creator: "@JohnHelveston"
+base_url: https://www.jhelvy.com
+image: images/john_dancing.jpg
+format:
   html:
     page-layout: article
     toc: true
     toc-location: left
-    toc-title: "Contents"
+    toc-title: "Table of contents"
 ---
 
 ```{r setup, include=FALSE}
@@ -16,19 +20,21 @@ library(distilltools)
 
 Welcome to my personal website! I am a researcher, engineer, choice modeler, [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) enthusiast, musician, swing dancer, and an Assistant Professor at George Washington University in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/).
 
-I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. My research centers around how consumer preferences, market dynamics, and policy affect the emergence of critical technologies, such as electric vehicles and solar energy. I also study the critical relationship between the US and China in developing and mass producing low-carbon energy technologies. I apply a variety of methods, including discrete choice modeling, conjoint analysis, exploratory analysis, and interview-based case studies. I speak fluent Mandarin Chinese and have conducted extensive fieldwork in China, collaborating with colleagues at Tsinghua University, Beijing Normal University, and the State Information Center on past projects. Below is a short description of some of my other passions and hobbies.
+I study technological change, with a focus on accelerating the transition to environmentally sustainable and energy-saving technologies. My research centers around how consumer preferences, market dynamics, and policy affect the emergence of critical technologies, such as electric vehicles and solar energy. I also study the critical relationship between the US and China in developing and mass producing low-carbon energy technologies. I apply a variety of methods, including discrete choice modeling, conjoint analysis, exploratory analysis, and interview-based case studies. I speak fluent Mandarin Chinese and have conducted extensive fieldwork in China, collaborating with colleagues at Tsinghua University, Beijing Normal University, and the State Information Center on past projects. Below is a brief description of some of my passions and hobbies. 
 
-# `r make_icon("fab fa-r-project")`
+You can also see more about my background on my [**CV**](https://www.jhelvy.com/content/helveston-cv.pdf) and [**Resume**](https://www.jhelvy.com/content/helveston-resume.pdf).
+
+# `r make_icon("fab fa-r-project")`, Data Science, & Choice Modeling
 
 I use [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) for most of my quantitative research projects. One specific category of research is choice modeling. I use [choice-based conjoint](https://sawtoothsoftware.com/help/lighthouse-studio/manual/hid_web_whatcbc.html) surveys to measure people's preferences for a variety of technologies and policies. I have developed several packages for implementing conjoint in `r make_icon("fab fa-r-project")`, including [`{logitr}`](https://jhelvy.github.io/logitr/) for estimating multinomial and mixed logit models with preference space and "willingness-to-pay" space utility parameterizations, and [`{cbcTools}`](https://jhelvy.github.io/cbcTools/) for  designing and conducting power analyses for choice-based conjoint surveys.
 
-In addition to choice modeling, I [teach](teaching.html) multiple programming and data analytics courses in `r make_icon("fab fa-r-project")`, and all of my course materials are built using `r make_icon("fab fa-r-project")`, including course websites and slides. I also co-authored the [`{xaringanBuilder}`](https://jhelvy.github.io/xaringanBuilder/) package with [Garrick Aden-Buie](https://www.garrickadenbuie.com/) for building [`xaringan`](https://github.com/yihui/xaringan) slides to multiple formats.
+In addition to choice modeling, I [teach](teaching.html) multiple programming and data science courses in `r make_icon("fab fa-r-project")`, and all of my course materials are built using `r make_icon("fab fa-r-project")`, including course websites and slides. I also co-authored the [`{renderthis}`](https://jhelvy.github.io/renderthis/) package with [Garrick Aden-Buie](https://www.garrickadenbuie.com/) for rendering [`xaringan`](https://github.com/yihui/xaringan) slides into multiple different formats.
 
-You can see more of my `r make_icon("fab fa-r-project")` projects and source code on my GitHub page: https://github.com/jhelvy/
+You can see more of my `r make_icon("fab fa-r-project")` projects and source code on my GitHub page: [https://github.com/jhelvy/](https://github.com/jhelvy/)
 
 # China & 中文
 
-![John standing next to a Beijing roast duck mascot in Beijing in 2014.](images/people/john_china_duck.jpg){width=80%}
+![John standing next to a Beijing roast duck mascot in Beijing in 2014](images/people/john_china_duck.jpg){width=80%}
 
 I began studying Chinese during my second year as an undergraduate engineering student at Virginia Tech in the fall of 2006. The next spring, I received the Horton Scholarship, which provided a unique opportunity to travel to China and complete an educational project of my own design. I traveled to Dalian in the summer of 2008 to study language and culture at Liaoning Normal University, then I moved to Shanghai in the fall to gain international engineering experience as an intern in General Electric's Advanced Wind Turbine Operations division. The project opened my eyes to the many forces that shape the adoption of emerging technologies, in particular the importance of policy and economics. After returning to the U.S., I was awarded a [Critical Language Scholarship](http://clscholarship.org/) by the U.S. Department of State to study Chinese in Harbin, China during the summer of 2009, and I have since returned to China numerous times for work or research, including an internship at the [Innovation Center for Energy and Transportation (iCET)](http://icet.org.cn/english/index.asp) and as a 2014 [East Asia Pacific Summer Institutes (EAPSI)](http://www.nsf.gov/eapsi) Fellow supported by the U.S. National Science Foundation. Today, I continue to use my language skills and experience in China while conducting interdisciplinary research in China.
 
