@@ -108,3 +108,30 @@ a:hover, a:focus {
     background-color: var(--color-secondary);
     color: var(--color-white);
 }
+
+/* Code chunks */
+
+/* Chunk output */
+
+d-article pre {
+  overflow: auto !important;
+  border-radius: 5px; /* Rounded edges */
+  font-size: 12px;
+  color: #fff;
+  background-color: #696969;
+  padding: 5px 5px 5px 18px;
+}
+
+/* Chunk code */
+
+d-article div.sourceCode pre {
+  overflow: auto !important;
+  border-radius: 5px; /* Rounded edges */
+  background-color: #fff;
+  color: black;
+  padding: 5px 5px 5px 18px;
+}
+
+d-article div.sourceCode {
+  background-color: transparent;
+}

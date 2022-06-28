@@ -22,11 +22,11 @@ execute:
 
 # Default author
 author:
-  - name: John Paul Helveston
-    url: https://jhelvy.com
-    affiliation: George Washington University
-    affiliation-url: https://www.emse.seas.gwu.edu/
-    orcid: 0000-0002-2657-9191
+  name: John Paul Helveston
+  url: https://jhelvy.com
+  affiliation: George Washington University
+  affiliation-url: https://www.emse.seas.gwu.edu/
+  orcid: 0000-0002-2657-9191
 
 # Default fields for citation
 citation: true
