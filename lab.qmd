@@ -1,21 +1,17 @@
 ---
 title: "Technology Change Lab"
-subtitle: I study relationships between technological change and consumers, firms, markets, and policy, with a goal of accelerating  transitions to environmentally sustainable and energy-saving technologies.
-format:
-  html:
-    page-layout: article
-    toc: true
-    toc-location: left
-    toc-title: "Table of contents"
-execute:
+description: I study relationships between technological change and consumers, firms, markets, and policy, with a goal of accelerating  transitions to environmentally sustainable and energy-saving technologies.
+preview: images/lab/john_helveston_circle.png
+toc: true
+toc-location: left
+execute: 
   echo: false
+  message: false
   warning: false
 ---
 
-```{r setup, echo=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-source(file.path("R", "functions.R"))
-library(distilltools)
+```{r setup}
+source("_common.R")
 ```
 
 # Topics
@@ -44,9 +40,9 @@ library(distilltools)
 
 ## Faculty
 
-:::{.float-left}
+:::float-left
 
-<img src="images/people/helveston_small.png" width="150px">
+<img src="images/lab/john_helveston_square.png" width="150px">
 
 ### John Paul Helveston, Ph.D.
 
@@ -56,9 +52,9 @@ John Paul Helveston is an Assistant Professor in the [Department of Engineering 
 
 ## Ph.D. Students
 
-:::{.float-left}
+:::float-left
 
-<img src="images/people/laura_roberson.jpg" width="150px">
+<img src="images/lab/laura_roberson.jpg" width="150px">
 
 ### Laura Roberson
 
@@ -66,7 +62,7 @@ Laura is a PhD student focusing on consumer acceptance and interaction with inno
 
 <br>
 
-<img src="images/people/leah_kaplan.jpg" width="150px">
+<img src="images/lab/leah_kaplan.jpg" width="150px">
 
 ### Leah Kaplan
 
@@ -74,7 +70,7 @@ Leah is a Ph.D. student in the Systems Engineering Program at the George Washing
 
 <br>
 
-<img src="images/people/lujin_zhao.jpg" width="150px">
+<img src="images/lab/lujin_zhao.jpg" width="150px">
 
 ### Lujin Zhao (赵鲁晋)
 
@@ -82,55 +78,67 @@ Lujin is a Ph.D. student in the Systems Engineering Program at the George Washin
 
 :::
 
+## Masters Students
+
+:::float-left
+
+<img src="images/lab/saurav_pantha.jpg" width="150px">
+
+### Saurav Pantha
+
+Saurav is a graduate student from Kathmandu, Nepal and is currently earning his MS in Systems Engineering at The George Washington University (GW). Before GW, he worked at a business consulting firm based out of Bangalore, India, helping multiple automotive & banking clients to solve business problems through data analytics solutions. Within Dr. Helveston's lab, he has been supporting multiple research projects by setting up a pipeline for a MySQL database, writing R scripts to clean & wrangle data, and conducting literature surveys. When not in school, he loves to go on treks and watch Manchester United's soccer games live.
+
+:::
+
 ## Undergraduate Students
 
-:::{.float-left}
+:::float-left
 
-<img src="images/people/eliese_ottinger.png" width="150px">
+<img src="images/lab/amelia_jacquat.jpg" width="150px">
+
+### Amelia Jacquat
+
+Amelia is a sophomore at The George Washington University. Originally from New Orleans, LA, she is pursuing a Bachelors degree in Systems Engineering at the School of Engineering and Applied Sciences. She is also pursuing minors in Computer Science and Theatre. After graduation, she plans on pursuing her Masters degree in Systems Engineering. Amelia is excited to continue learning and growing as a researcher and young professional. She plans on using this valuable research experience in her future endeavors, whatever they may be.
+
+<br>
+
+<img src="images/lab/helena_row.jpg" width="150px">
+
+### Helena Rowe
+
+Helena is an undergraduate student from Marblehead, Massachusetts majoring in Systems Engineering and minoring in Sustainability at The George Washington University. In previous roles, she has worked for a small consulting firm, analyzed market research for a building materials start-up, and researched with a professor about climate change risks in the investment industry. Within Dr. Helveston's lab, she is researching electric vehicle (EV) sales forecasts over time from different organizations. She is seeking to better understand the uncertainty in these forecasts and trends over time, in relation to actual sales, and across different industries.
+
+<br>
+
+<img src="images/lab/eliese_ottinger.png" width="150px">
 
 ### Eliese Ottinger
 
 Eliese is a junior undergraduate student studying Engineering Management and Systems Engineering at the George Washington University with minors in Sustainability and Mathematics. In Dr. Helveston's lab, she is analyzing differences in how much people drive gas vehicles and electric vehicles. This research is important to understand the uses of electric vehicles in order to modify them to suit all uses.
 
-:::
-
-## Alumni
-
-:::{.float-left}
-
-<img src="images/people/saurav_pantha.jpg" width="150px">
-
-### Saurav Pantha (EMSE Masters student, graduated 2020)
-
-Saurav earned his MS in Systems Engineering at The George Washington University (GW) in 2020. Before GW, he worked at a business consulting firm based out of Bangalore, India, helping multiple automotive & banking clients to solve business problems through data analytics solutions. Within Dr. Helveston's lab, he supported multiple research projects by setting up a pipeline for a MySQL database, writing R scripts to clean & wrangle data, and conducting literature surveys. When not in school, he loves to go on treks and watch Manchester United's soccer games live.
-
 <br>
 
-<img src="images/people/helena_row.jpg" width="150px">
+<img src="images/lab/kazi_asifa_ashrafi.png" width="150px">
 
-### Helena Rowe (EMSE undergraduate, graduated 2022)
+### Kazi Asifa Ashrafi
 
-Helena was an undergraduate student from Marblehead, Massachusetts majoring in Systems Engineering and minoring in Sustainability at The George Washington University. In previous roles, she worked for a small consulting firm, analyzed market research for a building materials start-up, and researched with a professor about climate change risks in the investment industry. Within Dr. Helveston's lab, she researched electric vehicle (EV) sales forecasts over time from different organizations. She is now an Analyst at Deloitte.
-
-<br>
-
-<img src="images/people/kazi_asifa_ashrafi.png" width="150px">
-
-### Kazi Asifa Ashrafi (EMSE undergraduate)
-
-Kazi is an undergraduate student from Bangladesh pursuing a major in Systems Engineering with a minor in Statistics at The George Washington University. She has always been enthusiastic about advocating for social causes and was previously involved in research projects at Penn State that aimed to enhance skills of preschoolers in the area of social-emotional development. She recently interned at a non-profit focusing on issues surrounding diaspora communities in regards to climate change. In Dr. Helveston's lab, she explored the geo-spatial distribution of electric vehicles (EVs) across the U.S. She is interested in understanding how the EV market is developing in terms of policies, geography, etc. and is interested in conducting analyses to help accelerate the adoption of EVs.
+Kazi is an undergraduate student from Bangladesh pursuing a major in Systems Engineering with a minor in Statistics at The George Washington University. She has always been enthusiastic about advocating for social causes and was previously involved in research projects at Penn State that aimed to enhance skills of preschoolers in the area of social-emotional development. She recently interned at a non-profit focusing on issues surrounding diaspora communities in regards to climate change. In Dr. Helveston's lab, she will be exploring the geo-spatial distribution of electric vehicles (EVs) across the U.S. She is interested in understanding how the EV market is developing in terms of policies, geography, etc. and is interested in conducting analyses to help accelerate the adoption of EVs.
 
 :::
 
 ## Opportunities
 
+### Current Opportunities
+
+I am currently seeking a Ph.D. student to join my lab starting in the Fall 2023 semester. Learn more [here](https://github.com/jhelvy/jhelvy_distill/raw/master/opportunities/phd.pdf). 
+
 ### Ph.D. Students
 
-I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me, please send me an email with the following information:
+I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me as your advisor, please send me an email with the following attachments:
 
 - Your CV.
-- A brief statement describing specific research topics you are interested in and why.
-- A brief summary of your prior research experience and skills.
+- A written statement describing specific research topics you are interested in and why (at least one page).
+- A summary of your prior research experience and skills.
 
 ### Graduate Research Assistants
 

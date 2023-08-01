@@ -1,0 +1,12 @@
+---
+title: "Good Eats"
+twitter:
+  creator: "@JohnHelveston"
+preview: images/john_china_duck.jpg
+---
+
+```{r setup}
+source("_common.R")
+```
+
+This is my good eats page

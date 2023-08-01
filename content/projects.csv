@@ -1,16 +1,14 @@
-title,src,url,description,tags,All,R,Software,Teaching,Keyboards,Community
-logitr,images/hex/logitr-square.png,https://jhelvy.github.io/logitr/,"An R package for estimating multinomial (MNL) and mixed logit (MXL) models in R with ""Preference"" space or ""Willingness-to-pay"" (WTP) space utility parameterizations.",R; Software,1,1,1,0,0,0
-cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,An R package with tools for designing choice based conjoint (cbc) survey experiments and conduction power analyses.,R; Software,1,1,1,0,0,0
-Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,A build log and gallery of how I built my wireless Corne keyboard.,Keyboards,1,0,0,0,1,0
-The Distillery,images/distillery.png,https://distillery.rbind.io/,A distill website showcasing other distill websites and blogs.,R; Community,1,1,0,0,0,1
-xaringanBuilder,images/hex/xaringanBuilder-square.png,https://jhelvy.github.io/xaringanBuilder/,"An R package for building xaringan slides into multiple outputs, including html, pdf, png, gif, pptx, and mp4.",R; Software,1,1,1,0,0,0
-charts,images/nasa_global_preview.png,https://www.jhelvy.com/charts,A bunch of reproducible charts. All data and source code are available at https://github.com/jhelvy/charts,R,,,,,,
-GW Coders,images/gwcoders.png,https://gwcoders.github.io/,A study group that brings together students and faculty to apply computational and data analytics skills in research.,Community,1,0,0,0,0,1
-splitKbCompare,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,An interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.,R; Software; Keyboards,1,1,1,0,1,0
-λέξις (lexis),images/lexis.png,https://jhelvy.github.io/lexis/,"A theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, ""Inter"" for body text, and ""SFMono-Regular"" for mono text.",R; Software,1,1,1,0,0,0
-EMSE 4571: Intro to Programming for Analytics,images/hex/p4a.png,https://p4a.seas.gwu.edu/,A course on the fundamentals of programming and computational thinking in R.,R; Teaching,1,1,0,1,0,0
-EMSE 4572: Exploratory Data Analysis,images/hex/eda.png,http://eda.seas.gwu.edu/,A course on the foundations in exploring and visualizing data in R.,R; Teaching,1,1,0,1,0,0
-EMSE 6035: Marketing Analytics for Design Decisions,images/hex/madd.png,https://madd.seas.gwu.edu/,"A course on analyzing consumer choice data in R to inform design decisions in an uncertain, competitive, market.",R; Teaching,1,1,0,1,0,0
-formr4conjoint,images/formr4conjoint.png,https://github.com/jhelvy/formr4conjoint/,A template for how to create a choice-based conjoint survey using the formr survey platform.,R; Teaching,1,1,0,1,0,0
-R for Analytics Primer,images/r4a.png,https://jhelvy.github.io/r4aPrimer/,"A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the Tidyverse.",R; Teaching,1,1,0,1,0,0
-Iris Rev 2,images/iris_rev2.jpg,https://github.com/jhelvy/iris-rev2/,A build log and gallery of how I built my Iris Rev 2 keyboard.,Keyboards,1,0,0,0,1,0
+title,src,url,description,tags
+logitr,images/hex/logitr.png,https://jhelvy.github.io/logitr/,R package for fast estimation of multinomial and mixed logit models with preference space and willingness to pay space utility parameterizations.,R; Software
+cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,R package with tools for designing choice based conjoint (cbc) survey experiments and conducting power analyses.,R; Software
+Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,Build log and gallery of how I built my wireless Corne keyboard.,Keyboards
+The Distillery,images/hex/distillery.png,https://distillery.rbind.io/,Distill website showcasing other distill websites and blogs.,R; Community
+oica,images/hex/oica.png,https://jhelvy.github.io/oica/,R data package with tidy formatted data on vehicle production and sales from the International Organization of Motor Vehicle Manufacturers.,R; Software
+renderthis,images/hex/renderthis.png,https://jhelvy.github.io/renderthis/,"R package for rendering slides and other media into different formats, including html, pdf, png, gif, pptx, and mp4.",R; Software
+charts,images/nasa_global_preview.png,https://www.jhelvy.com/charts,Bunch of reproducible charts. All data and source code are available at https://github.com/jhelvy/charts,R
+GW Coders,images/gwcoders.png,https://gwcoders.github.io/,Study group that brings together students and faculty to apply computational and data analytics skills in research.,Community
+splitKbCompare,images/splitKbCompare.png,https://jhelvy.shinyapps.io/splitKbCompare/,Interactive R Shiny app for comparing layouts of different split mechanical keyboards. Built for the ergonomic keyboard community r/ErgoMechKeyboards.,R; Software; Keyboards
+λέξις (lexis),images/lexis.png,https://jhelvy.github.io/lexis/,"Theme for xaringan slides with a light gray background, ""Fira Sans Condensed"" for headers, “Roboto” for body text.",R; Software
+Programming for Analytics in R,images/hex/p4a.png,https://p4a.jhelvy.com,Open source text book on the fundamentals of programming and working with data in R.,R; Education
+formr4conjoint,images/formr4conjoint.png,https://github.com/jhelvy/formr4conjoint/,Template for how to create a choice-based conjoint survey using the formr survey platform.,R; Education
+Iris Rev 2,images/iris_rev2.jpg,https://github.com/jhelvy/iris-rev2/,Build log and gallery of how I built my Iris Rev 2 keyboard.,Keyboards

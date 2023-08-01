@@ -1,0 +1,43 @@
+---
+title: \includegraphics[width=0.15\textwidth, right]{logo.png}
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    colorlinks: true
+    documentclass: scrartcl
+    papersize: letter
+    fontsize: 12pt
+    geometry:
+      - margin=1in
+      - heightrounded
+    fontfamily: libertinus
+    include-in-header:
+      - preamble.tex
+---
+
+\vspace{-120pt}
+
+\begin{center}
+\Large{\textbf{Ph.D Student Position}}
+\end{center}
+
+### Summary
+
+[Dr. John Paul Helveston](https://jhelvy.com/) is seeking a motivated Ph.D. student to join his research lab starting in the Fall 2023 semester in the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at the [George Washington University](https://www.gwu.edu/). Dr. Helveston's research focuses on understanding how consumer preferences, market dynamics, and policy affect the emergence and adoption of low-carbon technologies, such as electric vehicles and renewable energy technologies. He is currently pursuing new research projects focused on the equitable adoption of electric vehicles. Specific research topics for an incoming Ph.D. student could include the following:
+
+- Using surveys to quantify consumer vehicle preferences for both new and used vehicle markets in disadvantaged communities.
+- Qualitative interview work focused on understanding the transportation needs and preferences of residents in disadvantaged communities.
+- Using a large database to map the supply and diffusion of electric vehicles across North America.
+
+### Qualifications
+
+Dr. Helveston takes an interdisciplinary approach to research, including both quantitative (e.g. data analytics) and qualitative (e.g. interviews) research techniques. Students with interests in mobility, transportation, electric vehicles, business model formation, technological change, or innovation and entrepreneurship are strongly encouraged to apply. Students should be either currently accepted or applying to the Engineering Management & Systems Engineering Department at GWU.
+
+### Application Process
+
+Interested students should email Dr. Helveston at jph@gwu.edu. Include in your email the following attachments:
+
+- A 1-2 page statement describing specific research topics you are interested in and why.
+- A 1-2 page statement describing your prior research experience and skills and how you see yourself contributing to Dr. Helveston's lab.
+- Your CV.

@@ -1,7 +1,8 @@
 ---
-title: "Blog posts"
+title: Selected Talks
+description: Some of my talks and workshops I've given
 listing:
-  contents: posts
+  contents: talks
   sort: "date desc"
   type: default
   categories: true

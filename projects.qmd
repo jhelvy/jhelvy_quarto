@@ -1,0 +1,30 @@
+---
+title: Projects
+description: A collection of some projects that may or may not be related to my research.
+preview: images/lab/john_helveston_circle.png
+execute: 
+  echo: false
+  message: false
+  warning: false
+format:
+  html: 
+    css: css/strapless.css
+---
+
+```{r projects}
+source("_common.R")
+
+projects <- readr::read_csv(here::here("content", "projects.csv"))
+
+projects %>% 
+  bs4cards::cards(
+    title = title,
+    text = description,
+    link = url,
+    image = src,
+    label_colour = "#ffffff",
+    tags = paste("All;", tags),
+    footer = tags,
+    border_radius = 5
+  )
+```

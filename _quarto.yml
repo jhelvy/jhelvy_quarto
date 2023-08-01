@@ -1,59 +1,96 @@
 project:
   type: website
+  output-dir: _site
+  preview:
+    port: 5896
+    browser: true
+  render:
+    - "*.qmd"
+    - "!opportunities/"
+  resources:
+    - "content/"
 
 website:
   title: "jhelvy.com"
-  subtitle: Personal website of John Paul Helveston
-  listing:
-    feed: true
-    contents: posts
-  favicon: favicon.ico
-  site-url: https://www.jhelvy.com/
+  description: "The personal website of John Paul Helveston"
+  image: images/lab/john_helveston_circle.png
+  site-url: https://www.jhelvy.com
+  favicon: images/favicon.ico
+  repo-url: https://github.com/jhelvy/jhelvy_quarto
+  search:
+    location: navbar
+    type: overlay
   google-analytics: "G-HQNG5WQE3X"
+  open-graph:
+    locale: es_ES
+    site-name: https://jhelvy.com
   twitter-card:
     creator: "@johnhelveston"
     site: "@johnhelveston"
-    image: "images/people/helveston.png"
-    card-style: summary
-  open-graph:
-    locale: es_ES
-    site-name: jhelvy.com
-  search: 
-    location: navbar
-    type: overlay
-    copy-button: true
+    image: images/lab/john_helveston_circle.png
+    card-style: summary  
   navbar:
     right:
-      - text: About
+      - text: "About"
         href: about.qmd
-      - text: Lab
+      - text: "Lab"
         href: lab.qmd
-      - text: Research
+      - text: "Research"
         href: research.qmd
-      - text: Teaching
+      - text: "Teaching"
         href: teaching.qmd
-      - text: Talks
+      - text: "Talks"
         href: talks.qmd
-      - text: Projects
-        href: project.qmd
-      - text: Blog
+      - text: "Projects"
+        href: projects.qmd
+      - text: "Blog"
         href: blog.qmd
-      - icon: fas fa-bars
+      - icon: bars
         menu:
-        - text: "CV"
-          href: content/docs/Helveston_CV.pdf
-        - icon: github
-          href: https://github.com/jhelvy
-        - icon: twitter
-          href: https://twitter.com/JohnHelveston
-        - icon: linkedin
-          href: https://www.linkedin.com/in/jhelvy
-        - icon: rss
-          href: blog.xml
+          - text: "CV"
+            href: content/helveston-cv.pdf
+            target: blank
+          - text: "Resume"
+            href: content/helveston-resume.pdf
+            target: blank
+          - icon: github
+            href: https://github.com/jhelvy
+            aria-label: GitHub
+            target: blank
+          - icon: twitter
+            href: https://twitter.com/JohnHelveston
+            target: blank
+          - icon: linkedin
+            href: https://www.linkedin.com/in/jhelvy
+            target: blank
+          - icon: mastodon
+            href: https://fediscience.org/\\@jhelvy
+            target: blank
+          - text: '<i class="ai ai-google-scholar fa-lg"></i>'
+            href: https://scholar.google.com/citations?user=DY2D56IAAAAJ
+            target: blank
+          - text: '<i class="ai ai-researchgate fa-lg"></i>'
+            href: https://www.researchgate.net/profile/John_Helveston
+            target: blank
+          - text: '<i class="ai ai-orcid fa-lg"></i>'
+            href: https://orcid.org/0000-0002-2657-9191
+            target: blank
+          - icon: rss-fill
+            href: blog.xml
+            target: blank
+  page-footer:
+    background: '#EAE9EA'
+    center:
+      - text: '© 2023 John Paul Helveston<br><a href="https://scholar.google.com/citations?user=DY2D56IAAAAJ"><i class="ai ai-google-scholar fa-lg"></i></a>'
 
 format:
   html:
     theme: "css/jhelvy.scss"
     css: "css/jhelvy.css"
+    anchor-sections: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    link-external-icon: false
     # This is to include fontawesome and academic icons in the headers:
     include-in-header: "_includes/header.html"
+    
