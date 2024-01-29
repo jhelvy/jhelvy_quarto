@@ -34,7 +34,7 @@ pubs <- get_pubs()
 
 <aside>*indicates student advised by Helveston</aside>
 
-`r make_pub_list(pubs, "featured")`
+`r make_pub_list(pubs, "peer_reviewed", featured = TRUE)`
 
 ## Other Peer-Reviewed Publications
 
