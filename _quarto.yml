@@ -5,8 +5,16 @@ project:
     port: 5896
     browser: true
   render:
-    - "*.qmd"
-    - "!opportunities/"
+    - "index.qmd"
+    - "about.qmd"
+    - "lab.qmd"
+    - "research.qmd"
+    - "projects.qmd"
+    - "talks/index.qmd"
+    - "talks/**/*.qmd"
+    - "blog/index.qmd"
+    - "blog/**/*.qmd"
+    - "404.qmd"
   resources:
     - "content/"
 
@@ -39,12 +47,12 @@ website:
         href: research.qmd
       - text: "Teaching"
         href: teaching.qmd
-      - text: "Talks"
-        href: talks.qmd
       - text: "Projects"
         href: projects.qmd
+      - text: "Talks"
+        href: talks/index.qmd
       - text: "Blog"
-        href: blog.qmd
+        href: blog/index.qmd
       - icon: bars
         menu:
           - text: "CV"

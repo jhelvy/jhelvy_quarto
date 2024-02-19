@@ -2,17 +2,14 @@
 title: "Customizing distill with {htmltools} and CSS"
 description: |
   How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.
-author: John Paul Helveston
 date: '2021-03-25'
 preview: "images/css_html.png"
 categories:
   - tutorial
   - distill
   - R
-output:
-  distill::distill_article:
-    self_contained: false
-    toc: true
+format: html
+toc: true
 ---
 
 ```{r setup, include=FALSE}

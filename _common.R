@@ -93,33 +93,39 @@ make_media_list <- function() {
     return(paste(temp$post, collapse = "\n"))
 }
 
-make_pub_list <- function(pubs, category, featured = FALSE) {
+# make_pub_list <- function(pubs, category, featured = FALSE) {
+#   x <- pubs[which(pubs$category == category),]
+#   if (featured) {
+#     x <- x[which(x$featured),]
+#   } else {
+#     x <- x[which(!x$featured),]
+#   }
+#   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
+#   return(paste(unlist(pub_list), collapse = ""))
+# }
+
+make_pub_list <- function(pubs, category) {
     x <- pubs[which(pubs$category == category),]
-    if (featured) {
-        x <- x[which(x$featured),]
-    } else {
-        x <- x[which(!x$featured),]
-    }
     pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
     return(paste(unlist(pub_list), collapse = ""))
 }
 
 make_pub <- function(pub) {
-  index <- parent.frame()$i[] # index number from the lapply
-  header <- FALSE
-  if (index == 1) { header <- TRUE }
-  altmetric <- NULL
-  if (pub$category %in% c('peer_reviewed', 'featured')) {
-      altmetric <- make_altmetric(pub)
-  }
-  return(paste0(
-      '<div class="pub">',
-      as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-      make_icons(pub, details = pub$details),
-      altmetric,
-      '</div>',
-      make_haiku(pub, header)
-  ))
+    index <- parent.frame()$i[] # index number from the lapply
+    header <- FALSE
+    if (index == 1) { header <- TRUE }
+    altmetric <- NULL
+    if (pub$category %in% c('peer_reviewed', 'featured')) {
+        altmetric <- make_altmetric(pub)
+    }
+    return(paste0(
+        '<div class="pub">',
+        as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
+        make_icons(pub, details = pub$details),
+        altmetric,
+        '</div>',
+        make_haiku(pub, header)
+    ))
 }
 
 make_icons <- function(pub, details = TRUE) {

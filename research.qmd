@@ -30,13 +30,9 @@ pubs <- get_pubs()
 
 <br>
 
-## Featured Peer-Reviewed Publications
+## Peer-Reviewed Publications
 
 <aside>*indicates student advised by Helveston</aside>
-
-`r make_pub_list(pubs, "peer_reviewed", featured = TRUE)`
-
-## Other Peer-Reviewed Publications
 
 `r make_pub_list(pubs, "peer_reviewed")`
 
@@ -60,7 +56,11 @@ pubs <- get_pubs()
 
 `r make_pub_list(pubs, "theses")`
 
-## Reports, Articles for Non-Academic Audiences, and Other Publications
+## Opinion Editorials
+
+`r make_pub_list(pubs, "oped")`
+
+## Other Publications
 
 `r make_pub_list(pubs, "other")`
 

@@ -4,5 +4,14 @@
 # (see https://quarto.org/docs/projects/code-execution.html#freeze)
 freeze: true
 
-# Enable banner style title blocks
-title-block-banner: true
+# Date format
+date-format: "YYYY-MM-DD"
+
+# Default for table of contents
+toc: true
+toc-title: Contents
+toc-location: left
+
+# Default author
+author:
+  - name: John Paul Helveston
