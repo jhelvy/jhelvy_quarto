@@ -10,6 +10,7 @@ project:
     - "lab.qmd"
     - "research.qmd"
     - "projects.qmd"
+    - "teaching.qmd"
     - "talks/index.qmd"
     - "talks/**/*.qmd"
     - "blog/index.qmd"
@@ -56,7 +57,7 @@ website:
       - icon: bars
         menu:
           - text: "CV"
-            href: content/helveston-cv.pdf
+            href: https://github.com/jhelvy/cv/blob/main/cv-jph.pdf
             target: blank
           - text: "Resume"
             href: content/helveston-resume.pdf
@@ -93,8 +94,7 @@ website:
 
 format:
   html:
-    theme: "css/jhelvy.scss"
-    css: "css/jhelvy.css"
+    theme: [default, theme.scss]
     anchor-sections: true
     smooth-scroll: true
     link-external-newwindow: true

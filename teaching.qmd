@@ -2,6 +2,7 @@
 title: "Teaching"
 description: I teach undergraduate and graduate courses on data analysis in R in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University.
 preview: images/lab/john_helveston.png
+format: html 
 execute: 
   echo: false
   message: false

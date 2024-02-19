@@ -8,8 +8,6 @@ execute:
 about:
   template: trestles
   links:
-    - text: 'CV'
-      href: "content/helveston-cv.pdf"
     - icon: twitter
       href: https://twitter.com/JohnHelveston
     - icon: linkedin
@@ -24,8 +22,6 @@ about:
       href: https://www.researchgate.net/profile/John_Helveston
     - text: '<i class="ai ai-orcid fa-lg"></i>'
       href: https://orcid.org/0000-0002-2657-9191
-    - icon: rss-fill
-      href: blog.xml
 ---
 
 ```{r setup}

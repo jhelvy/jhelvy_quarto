@@ -6,9 +6,9 @@ execute:
   echo: false
   message: false
   warning: false
-format:
-  html:
-    css: css/small-spacing.css
+format: html 
+toc: true
+toc-location: left
 ---
 
 ```{r setup}
