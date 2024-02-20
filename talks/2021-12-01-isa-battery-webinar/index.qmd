@@ -12,7 +12,6 @@ toc: true
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(metathis)
 library(distilltools)
 
 knitr::opts_chunk$set(
@@ -22,23 +21,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-meta() %>%
-  meta_description(
-    'I moderated the ISA Webinar on "Batteries for Electric Vehicles and the Transformation of the Automotive Supply Chain"'
-  ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
-  meta_viewport() %>%
-  meta_social(
-    title = "ISA Industrial Policy Webinar Series: Taking Charge",
-    url = "https://www.jhelvy.com/talks/2021-12-01-isa-battery-webinar",
-    image = "https://www.jhelvy.com/talks/2021-12-01-isa-battery-webinar/isa.png",
-    image_alt = "Title slide for ISA Webinar",
-    og_type = "website",
-    og_author = c("John Paul Helveston"),
-    twitter_card_type = "summary",
-    twitter_creator = "@JohnHelveston"
-  )
 ```
 
 On December 1, 2021, I had the honor of moderating the Industry Studies Association (ISA) webinar on the future of batteries for electric vehicles, as part of its ongoing [webinar series](https://www.industrystudies.org/isa-webinar-series) on industrial policy. You can watch the recording below.

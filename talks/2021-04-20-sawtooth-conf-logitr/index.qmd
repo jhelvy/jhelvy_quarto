@@ -13,7 +13,6 @@ toc: true
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(metathis)
 library(distilltools)
 
 knitr::opts_chunk$set(
@@ -23,23 +22,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-meta() %>%
-  meta_description(
-    'My talk for the 2021 Sawtooth Conference Turbo Choice Modeling Panel'
-  ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
-  meta_viewport() %>%
-  meta_social(
-    title = "Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models",
-    url = "https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/",
-    image = "https://www.jhelvy.com/talks/2021-04-20-sawtooth-conf-logitr/sawtooth-conf-logitr.png",
-    image_alt = "Title slide for my talk",
-    og_type = "website",
-    og_author = c("John Paul Helveston"),
-    twitter_card_type = "summary",
-    twitter_creator = "@JohnHelveston"
-  )
 ```
 
 I gave a talk at the Sawtooth Software Conference [Turbo Choice Modeling Seminar](https://events.sawtoothsoftware.com/turboseminar) in San Antonio, Texas, April 19-23, 2021 (I pre-recorded my talk as I did not attend in-person). The talk is titled, "The [{logitr}](https://jhelvy.github.io/logitr/) R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models".

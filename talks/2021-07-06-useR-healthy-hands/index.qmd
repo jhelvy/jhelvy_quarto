@@ -13,7 +13,6 @@ toc: true
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(metathis)
 library(distilltools)
 
 knitr::opts_chunk$set(
@@ -23,23 +22,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-meta() %>%
-  meta_description(
-    'My elevator pitch for the 2021 useR! Conference'
-  ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
-  meta_viewport() %>%
-  meta_social(
-    title = "Healthier & Happier Hands: Software and Hardware Solutions for More Ergonomic Typing",
-    url = "https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands/",
-    image = "https://www.jhelvy.com/talks/2021-07-06-useR-healthy-hands/title-slide.png",
-    image_alt = "Title slide for my talk",
-    og_type = "website",
-    og_author = c("John Paul Helveston"),
-    twitter_card_type = "summary",
-    twitter_creator = "@JohnHelveston"
-  )
 ```
 
 I prepared an "Elevator Pitch" (aka lightning talk) for the [2021 useR! Conference](https://user2021.r-project.org/) where I discussed a quick overview of software and hardware solutions for more ergonomic typing. The recording and slides are below. 

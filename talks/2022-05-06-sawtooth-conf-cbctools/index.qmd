@@ -13,7 +13,6 @@ toc: true
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(metathis)
 library(distilltools)
 
 knitr::opts_chunk$set(
@@ -23,23 +22,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-meta() %>%
-  meta_description(
-    'My talk for the 2022 Sawtooth Software Conference'
-  ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
-  meta_viewport() %>%
-  meta_social(
-    title = "The cbcTools Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R",
-    url = "https://www.jhelvy.com/talks/2022-05-06-sawtooth-conf-cbctools/",
-    image = "https://www.jhelvy.com/talks/2022-05-06-sawtooth-conf-cbctools/title.png",
-    image_alt = "Title slide for my talk",
-    og_type = "website",
-    og_author = c("John Paul Helveston"),
-    twitter_card_type = "summary",
-    twitter_creator = "@JohnHelveston"
-  )
 ```
 
 I gave a talk at the [Sawtooth Software](https://sawtoothsoftware.com/) Conference in Orlando, FL, on May 06, 2022. The talk is titled, "The {cbcTools} Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R".

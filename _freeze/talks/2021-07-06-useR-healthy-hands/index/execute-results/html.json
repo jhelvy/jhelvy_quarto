@@ -1,0 +1,19 @@
+{
+  "hash": "e577afcbf1166ae9be5e4522fd3b1730",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Healthier ❤️ & Happier 😄 Hands 🙌\"\ndescription: |\n  My talk on Software and Hardware Solutions for More Ergonomic Typing for the 2021 useR! Conference\ndate: \"2021-07-06\"\npreview: \"title-slide.png\"\ncategories:\n  - productivity\n  - keyboards\n  - R\nformat: html\ntoc: true\n---\n\n\n\n\nI prepared an \"Elevator Pitch\" (aka lightning talk) for the [2021 useR! Conference](https://user2021.r-project.org/) where I discussed a quick overview of software and hardware solutions for more ergonomic typing. The recording and slides are below. \n\nSee also my related [blog post](https://www.jhelvy.com/posts/2021-07-03-in-search-of-keyboard-nirvana/) for more details on the topics covered in the talk.\n\n# Talk \n\n<iframe width=\"560\" height=\"420\" src=\"https://www.youtube.com/embed/WPLEdpSaBAI\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>\n\n# Slides\n\nMy slides were built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can see the source code for the slides [here](https://github.com/jhelvy/2021-useR-healthy-hands).\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://jhelvy.github.io/2021-useR-healthy-hands/\" class=\"icon-link\" target=\"_blank\" rel=\"noopener\"><i class=\"fas fa-external-link-alt\"></i> Full screen slides</a>\n```\n\n:::\n\n::: {.cell-output-display}\n\n```{=html}\n<a href=\"https://github.com/jhelvy/2021-useR-health-hands/raw/main/2021-useR-healthy-hands.pdf\" class=\"icon-link\" target=\"_blank\" rel=\"noopener\"><i class=\"fa fa-file-pdf\"></i> Slides as PDF</a>\n```\n\n:::\n:::\n\n\nKeyboard Shortcuts for Slides:\n\n- Use <kbd>←</kbd> and <kbd>→</kbd> to navigate through the slides.\n- Use <kbd>f</kbd> to toggle full screen.\n- Use <kbd>o</kbd> to view an overview of all slides.\n- Use <kbd>h</kbd> to see a list of other shortcuts.\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"shareagain\" style=\"min-width:300px;margin:1em auto;\" data-exeternal=\"1\">\n<iframe src=\"https://jhelvy.github.io/2021-useR-healthy-hands/index.html\" width=\"1600\" height=\"900\" style=\"border:2px solid currentColor;\" loading=\"lazy\" allowfullscreen></iframe>\n<script>fitvids('.shareagain', {players: 'iframe'});</script>\n</div>\n```\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<script src=\"../../site_libs/fitvids-2.1.1/fitvids.min.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

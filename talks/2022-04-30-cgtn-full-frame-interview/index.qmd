@@ -12,7 +12,6 @@ toc: true
 ---
 
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(metathis)
 library(distilltools)
 
 knitr::opts_chunk$set(
@@ -22,23 +21,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-meta() %>%
-  meta_description(
-    "I was featured in a long-form interview with CGTN discussing the challenges and opportunities China faces in the race to decarbonize it's energy systems."
-  ) %>%
-  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
-  meta_viewport() %>%
-  meta_social(
-    title = "Interview with CGTN Full Frame: Going Green",
-    url = "https://www.jhelvy.com/talks/2022-04-30-cgtn-full-frame-interview",
-    image = "https://www.jhelvy.com/talks/2022-04-30-cgtn-full-frame-interview/helveston-cgtn-interview.png",
-    image_alt = 'Screenshot of me ("Professor Helveston")',
-    og_type = "website",
-    og_author = c("John Paul Helveston"),
-    twitter_card_type = "summary",
-    twitter_creator = "@JohnHelveston"
-  )
 ```
 
 <center>
