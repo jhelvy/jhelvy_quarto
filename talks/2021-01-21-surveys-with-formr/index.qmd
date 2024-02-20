@@ -1,0 +1,109 @@
+---
+title: "Using formr to create R-powered surveys with individualized feedback"
+description: |
+  My rstudio::conf 2021 lightning talk on creating R-powered surveys using {formr}"
+date: 01-21-2021
+preview: "surveys-with-formr.png"
+categories:
+  - R
+  - surveys
+  - formr
+format: html
+toc: true
+---
+
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
+library(fontawesome)
+library(metathis)
+library(distilltools)
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.retina = 3,
+  comment = "#>"
+)
+
+meta() %>%
+  meta_description(
+    'My rstudio::conf 2021 lightning talk on creating R-powered surveys using {formr}'
+  ) %>%
+  meta_name("github-repo" = "jhelvy/jhelvy.com") %>%
+  meta_viewport() %>%
+  meta_social(
+    title = "Using formr to create R-powered surveys with individualized feedback",
+    url = "https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/",
+    image = "https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/surveys-with-formr.png",
+    image_alt = "Title slide for my talk",
+    og_type = "website",
+    og_author = c("John Paul Helveston"),
+    twitter_card_type = "summary",
+    twitter_creator = "@JohnHelveston"
+  )
+```
+
+# Watch the talk
+
+I gave a lightning talk at the [2021 rstudio conference](https://www.rstudio.com/resources/rstudioglobal-2021/) on using [{formr}](https://formr.org/) to create R-powered surveys. 
+
+```{r, echo=FALSE}
+icon_link(
+    icon = "fa fa-video",
+    text = "Watch the lightning talk",
+    url  = "https://rstudio.com/resources/rstudioglobal-2021/using-formr-to-create-r-powered-surveys-with-individualized-feedback/"
+)
+```
+
+I also gave an extended version of the talk at the [GW Coders](http://gwcoders.github.io/) Meetup on Feb. 19, 2021. You can see that below (the first 5 minutes is the same as my rstudio::conf lightning talk): 
+
+<iframe width="640" height="480" src="https://www.youtube.com/embed/Hjosc_NQ3t0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Slides
+
+Here are my slides for my rstudio::conf lightning talk built using the [{xaringan}](https://github.com/yihui/xaringan) R package. You can also see the source code for the slides [here](https://github.com/jhelvy/surveys-with-formr).
+
+```{r, echo=FALSE}
+icon_link(
+    icon = "fas fa-external-link-alt",
+    text = "Full screen slides",
+    url  = "https://jhelvy.github.io/surveys-with-formr"
+)
+icon_link(
+    icon = "fa fa-file-pdf",
+    text = "Slides as PDF",
+    url  = "https://github.com/jhelvy/surveys-with-formr/raw/main/surveys-with-formr.pdf"
+)
+```
+
+Keyboard Shortcuts for Slides:
+
+- Use <kbd>←</kbd> and <kbd>→</kbd> to navigate through the slides.
+- Use <kbd>f</kbd> to toggle full screen.
+- Use <kbd>o</kbd> to view an overview of all slides.
+- Use <kbd>h</kbd> to see a list of other shortcuts.
+
+```{r slides, echo=FALSE}
+xaringanExtra::embed_xaringan(
+  url = "https://jhelvy.github.io/surveys-with-formr/index.html",
+  ratio = "16:9")
+```
+
+# Surveys with {formr}
+
+In my presentation, I showed several examples of how to use the {formr} package to create different types of surveys. The surveys are all generated from Google sheets, which can be found here:
+
+1. [Random images](https://docs.google.com/spreadsheets/d/1hs551J6PYJNxc4sftmJyUqj6XYGYFVnN_5faQBWY7cs/edit?usp=sharing) demonstrates how to randomly display different images.
+2. [Conjoint surveys](https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/) demonstrates how to create a conjoint survey with formr (go to the [formr4conjoint](https://github.com/jhelvy/formr4conjoint) repo for a more detailed description)
+3. [Timed quizzes](https://docs.google.com/spreadsheets/d/1PAHG15ijvVpCO3Ny9biAnzJTonLLfzPDDBKg1vA0ZEs/edit?usp=sharing) demonstrates how to create a timed quiz with randomly generated questions.
+
+To use any of these surveys yourself, go to [formr.org](https://formr.org/), create an account. Once you log in, go to the [admin](https://formr.org/admin) page and create a new survey. You can then paste in the link to the Google sheet there. If you want to edit it, just create copy of the Google sheet into your own Google Drive account and use the shared link to that Google sheet.
+
+Once you have a survey uploaded, you can make it live by creating a "Run" and inserting the survey you created by clicking on the `r fa("pen-square-solid")` icon as well as a "Stop" point to end the survey by clicking on the `r fa("stop-solid")` icon. The link to the survey will be `https://your_run_name.formr.org`.
+
+You can control the "publicness" of the survey by modifying the "volume" icons:
+
+- `r fa("eject-solid")` means only you can access the survey
+- `r fa("volume-off-solid")` means you and people who have an access code can access (no new users can enroll).
+- `r fa("volume-down-solid")` means people who have the link can access.
+- `r fa("volume-up-solid")` means the link is public, everyone can access.
