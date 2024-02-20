@@ -1,0 +1,313 @@
+---
+title: "{surveydown}: An open source, markdown-based survey framework (that doesn't exist yet)"
+description: |
+  Let's build this, who's with me?
+date: '2023-04-06'
+preview: "logo.png"
+categories:
+  - R
+  - markdown
+  - productivity
+  - package
+format: html
+toc: true
+toc-depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 7.252,
+  fig.height = 4,
+  comment = "#>",
+  fig.retina = 3
+)
+library(fontawesome)
+library(dplyr)
+```
+
+<center>
+<img src="logo.png" width=350>
+</center>
+
+I do a lot of research using surveys. My current platform of choice is [formr](https://formr.org/), a flexible platform for making surveys using `r fa("r-project")` (see my [blog post](https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/) on how to use it to implement a choice-based conjoint survey). While formr is powerful in terms of it's flexibility, it has a bit of a learning curve and isn't the easiest tool for novices. And alternative platforms like Qualtrics, Google forms, etc. have their own issues, one of which is simply that they use a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) interface, which makes it difficult to collaborate, version control, reproduce, etc.   
+
+I want a markdown-based survey framework. Users should be able to draft plain text / markdown / RMarkdown files that can be compiled into a web-based survey. My inspiration is packages like [{xaringan}](https://github.com/yihui/xaringan), which compiles RMarkdown files into HTML presentation slides using [remark.js](https://remarkjs.com/).
+
+This framework doesn't yet exist (or at least I am not award of one that does), but I am confident we could relatively quickly build a working prototype. I've even got a name for it: **{surveydown}**
+
+So this post is a call for help. I am laying out my goals for such a framework and asking if anyone out there wants to help take a crack at building it.
+
+# User interface
+
+My prototype for a markdown-based survey framework would have the following features:
+
+### 1. All survey content is defined in plain text files (e.g. Rmd, yml, etc.)
+
+### 2. All survey questions are defined in a `_questions.yml` file
+
+Here's an example:
+
+```{yaml}
+age:
+  type: numeric
+  required: true
+  text: "What's your age?"
+  option: 25
+
+gender:
+  type: mc
+  required: true
+  text: "Which best describes your gender?"
+  option:
+    - female: "Female"
+    - male: "Male"
+    - opt_out: "Prefer not to say"
+```
+
+Some fields in this file might be:
+
+- `type`: Defines the type of question (e.g. `numeric` = a numeric entry box, `mc` = multiple choice, etc.).
+- `required`: Respondent must answer the question to continue in the survey (defaults to `false`).
+- `text`: The question text.
+- `option`: The set of choices for the question.
+
+The names used for each question would be used as the column names in the resulting data file once respondents have completed the survey. For example, since I have two questions called `age` and `gender`, the resulting data might look something like this:
+
+```{r}
+#| echo: false 
+
+tibble(
+    respondent = 1:3,
+    age = c(25, 30, 32),
+    gender = c("female", "male", "opt_out")
+)
+```
+
+Here I am storing the option _values_ (e.g. `"opt_out"`) instead of the option _labels_ (e.g. `"Prefer not to say"`) in each cell, though this could be optional.
+
+### 3. All content displayed in the survey is defined in plain text / Rmd files
+
+For example, a basic survey might have the following files: 
+
+- `welcome.Rmd`: Basic welcome page.
+- `screener.Rmd`: Contains screen questions to filter out only elligible respondents. 
+- `other.Rmd`: Other questions for those who got through the screener.
+- `end.Rmd`: Final survey page.
+
+The `welcome.Rmd` file might have the following content:
+
+```{md}
+# Welcome!
+
+---
+
+This is a survey!
+```
+
+Here the `---` symbol would indicate a page break in the survey, similar to how slide breaks work in {xaringan}.
+
+### 4. Survey questions are inserted with a simple interface, e.g. {{ }}
+
+For example, a double curly bracket could be used to insert the `age` and `gender` questions, like this:
+
+```{md}
+{{ question age }}
+
+{{ question gender }}
+```
+
+This allows the survey designer the ability to separately handle the survey _questions_ from all other content. That way they don't have to dig through their Rmd files to edit the question labels or response options - they can just edit the `_questions.yml` file and everything else in the survey remains unchanged.
+
+### 5. Survey control logic is defined in a `_survey.yml` file
+
+In this file, the user should be able to control the sequencing of the survey content, such as skipping questions depending on a specific response in a screener question. An example might be:
+
+```{yaml}
+survey:
+  welcome.Rmd
+  screener.Rmd
+  skip:
+    condition: age > 40
+    distination: end_screen.Rmd
+  other.Rmd
+  end.Rmd
+  stop
+  end_sreen.Rmd
+  stop
+```
+
+The logic in this example would show the respondent the content in `welcome.Rmd` and `screener.Rmd`, and then it would evaluate the response to the `age` question (assuming it was shown in `screener.Rmd`). In this survey, the respondent is sent to the `end_screen.Rmd` page if their age is greater than 40, otherwise they would continue on to the `other.Rmd` and `end.Rmd` pages. A word like `stop` would be a special word that stops the survey at that point.
+
+### 6. Ability to run code in the survey
+
+The ability to run code during a survey is perhaps the most promising aspect this framework. The [formr](https://formr.org/) platform can do exactly this, and it is the inspiration for why I feel this feature must be built into {surveydown} one way or another.
+
+How to implement this is an open challenge. There are a number of ways to do it, and the exact implementation will probably depend on other aspects of how the package is built, but one idea is to leverage an idea related to [child documents](https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html). I can imagine that users could make child Rmd files that contain code chunks that define aspects of questions, and then reference them in the `_questions.yml` file, something like this:
+
+```{yaml}
+apples:
+  type: mc
+  text: "What's your favorite apple?"
+  child: /child/apples.Rmd
+```
+
+What exactly would go in the `/child/apples.Rmd` file is yet to be defined, but it might require code chunks that contain {surveydown} functions for defining aspects of the question, such as the text, options, etc. This obviously has not yet been well thought out, but I mention it here as it is an important concept to keep in mind as other aspects of the framework are constructed.
+
+# A quick prototype
+
+Rather than start completely from scratch, I decided to build on the [{shinysurveys} package](https://shinysurveys.jdtrat.com/) (by [Jonathan Trattner](https://www.jdtrat.com/) and [Lucy D'Agostino McGowan](https://www.lucymcgowan.com/)) for a very quick prototype of this framework. My prototype is not at all complete - most of the features I have listed are not implemented. All it really does is allow the user to define questions in a `_questions.yml` file, and then runs a shiny app with those questions in series (so no Rmd files, page breaks, etc.). The code for this prototype can be found in the repo I set up for this project: [github.com/jhelvy/surveydown](https://github.com/jhelvy/surveydown)
+
+The [`_questions.yml`](https://github.com/jhelvy/surveydown/blob/main/shiny-example/survey/_questions.yml) file contains this:
+
+```{yaml}
+age:
+  type: numeric
+  required: true
+  text: "What's your age?"
+  option: 25
+
+gender:
+  type: mc
+  required: true
+  text: "Which best describes your gender?"
+  option:
+    - female: "Female"
+    - male: "Male"
+    - opt_out: "Prefer not to say"
+    - self_desc: "Prefer to self describe"
+
+gender_self_describe:
+  type: text
+  text: "Which best describes your gender?"
+  dependence: gender
+  dependence_value: "Prefer to self describe"
+
+education:
+  type: select
+  text: "What is the highest level of education you have attained?"
+  option:
+    - hs_no: "Did not attend high school"
+    - hs_some:  "Some high school"
+    - hs_grad: "High school graduate"
+    - college_some: "Some college"
+    - college_grad: "College"
+    - grad: "Graduate Work"
+    - no_response: "Prefer not to say"
+
+rexper:
+  type: mc
+  text: "Have you ever learned to program in R?"
+  option:
+    - yes: "Yes"
+    - no: "No"
+```
+
+When run, the basic example makes a shiny survey that looks like this:
+
+<center>
+<img src="simple-survey.png" width=600>
+</center>
+
+<center>
+<img src="success.gif" width=400>
+</center>
+
+<aside>
+Gif from https://vsgif.com/gif/2859497
+</aside>
+
+# Platforms
+
+Okay, I've got a _very_ basic survey working in Shiny, but it's far from complete. It doesn't even have a database backend or anything - just a UI built from a `_questions.yml` file. And Shiny may not be the best platform to build this framework in - it's just the first thing I found that I could quickly implement without having to learn too much. There are other options, and that's where I would really like to hear from others about the best direction to go next.
+
+At the highest level, I believe the goal should be to develop the framework as an R or python package. Since I prefer R and am more familiar with similar packages like {xaringan}, my starting point would be to develop an R package that uses R code to convert the text files defined by a user into the code for an online survey.
+
+This framework could use a number of different underlying platforms though to implement the final survey. So in some ways we have to work backwards - find a platform we like that makes good surveys and supports an easy database backend for storing responses, then build the R (or python) package that converts the markdown text files into the code for that survey.
+
+### Shiny?
+
+Shiny is a convenient package for building this framework as it already comes with all of the widgets needed for most types of survey questions. It's also something that many R users (and a lot of academics who might make these surveys) already know. It has some simple and relatively streamlined approaches to hosting too, such as [shinyapps.io](https://www.shinyapps.io/). Finally, the ability to run code in the survey should also be relatively straightforward in Shiny.
+
+The downside to working with shiny is that is isn't really designed for _collecting_ data as much as it is for _displaying_ data. That said, one approach I have used in the past to store and manage data for a Shiny app is to hook it into a Google sheet. While it's a little hacky, it might actually work okay for this context because surveys usually don't require enormous sizes - the databases are often a few thousand rows at most and maybe tens to hundreds of columns (quite easily something a Google sheet could handle). I mean, Google uses sheets for Google forms, so why not? [Airtable](https://www.airtable.com/) is another similar option here.
+
+So Shiny is an option, and we could build upon / modify the {shinysurveys} package as a starting point. But a key question would be about the best way to integrate a database backend for managing responses.
+
+### SurveyJS?
+
+I haven't used it, but [SurveyJS](https://surveyjs.io/) looks really nice. I imagine it wouldn't be too difficult to write some R functions that convert markdown inputs into a SurveyJS survey. It looks like it may be more flexible than Shiny, and it seems to have lovely database backend integrations, but there would be a much larger learning curve to build it (at least for me...maybe a JS expert out there wants to take the lead?). It's certainly doable. After all, {xaringan} uses reactjs, and Quarto surveys use revealjs...maybe {surveydown} should use SurveyJS?
+
+One challenge it poses though is the ability to run code in the background. I don't yet see a clear way to do something like run code chunks, so this feature may need to be cut to make it work.
+
+### Qualtrics? SurveyMonkey?
+
+The survey gorillas like [Qualtrics](https://www.qualtrics.com/) and [SurveyMonkey](https://www.surveymonkey.com/) are solid survey providers with loads of other features. Why reinvent the wheel? So another option is to build a package that does the translation of converting markdown files into something that is uploadable to one of these sites. I am not a big user of them, so I don't even know if this is possible, but if it is then it would solve a lot of issues.
+
+So in this case a {surveydown} package would really be a markdown-based framework to design and preview the survey UI. Once the user is happy with it, they would upload it to Qualtrics, SurveyMonkey, etc. and field their survey.
+
+An obvious downside is that it's not open source (though I don't think the entire toolchain needs to be for this to still be useful). Also, again the ability to run code in the survey may be lost, so that too is a considerable downside to this approach.
+
+# Please help!🙏
+
+If you like this idea and want to contribute, I started a repo here: https://github.com/jhelvy/surveydown
+
+I include my basic Shiny example in the [`shiny-example`](https://github.com/jhelvy/surveydown/tree/main/shiny-example) folder. I'm not committed to using Shiny as the underlying platform, though I can at least envision how it might work. 
+
+If you have any thoughts on this, please do leave comments here or open an [issue](https://github.com/jhelvy/surveydown/issues). I would love to see this framework built, and I think it could really improve and simplify the survey design process for many researchers.
+
+Thanks for reading, and hopefully we'll get this built one day!
+
+# Update 1 (2023-06-15)
+
+After playing around with different versions of a UI, I've converged on a rather different approach to defining survey content. When using the UI originally described in this post, everything just felt too disaggregated. It lacked the cohesiveness that I love when, for example, making a presenting using {xaringan}. I missed having everything in a single RMarkdown file where the UI was much closer to literate programming. 
+
+So I've come up with a simpler UI. In this UI, you have a single `survey.Rmd` file (might also consider a .qmd Quarto file) where the survey theme and control logic is defined in a YAML at the top and all of the survey content is defined in the body. An example YAML might look like this:
+
+```
+---
+name: "surveydown demo"
+author: "John Paul Helveston"
+output:
+  surveydown::survey:
+    css:
+      - default
+    lib_dir: libs
+    control:
+      skip:
+        condition: color == "Blue"
+        destination: end_screenout
+      stop: end
+      stop: end_screenout
+---
+```
+
+Here the `surveydown::survey:` section is where we could define all global options to the survey. I've added a `control` section to define flow logic. I could also imagine including a link to a database, etc.
+
+Then the body of the survey would feel just like a normal RMarkdown file. You could add any general markdown you want and insert questions using a code chunk with a `question()` function, something like this:
+
+    `r ''````{r}
+    question(
+      name     = 'color',
+      type     = 'mc',
+      required = TRUE,
+      label    = "Do you want to take the red pill or the blue pill?",
+      option   = c('Red', 'Blue')
+    )
+    ```
+
+The survey could be rendered into a view only mode with a simple function, like `surveydown::render_survey(file = 'survey.Rmd')`. Then to make the survey go live, it could be hosted on shinyapps.io (or a different server) with another function, maybe:
+
+```{r}
+#| eval: false
+
+surveydown::host_survey(
+  folder = 'survey',
+  data_url = 'path_to_googlesheet',
+  api_key = 'api_key'
+)
+```
+
+This UI overall is much more simplified and allows for more complexity in how questions are defined. For example, you can write R code to define the options in a question, or you could read in a set of options from an external file. 
+
+Obviously a lot of work needs to be done to make something like this a reality, but it at least provides a goal.
