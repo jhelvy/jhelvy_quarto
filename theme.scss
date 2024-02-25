@@ -2,19 +2,22 @@
 
 /*-- scss:defaults --*/
 
-$primary-color: #74a08a;
-$primary-color-dark: #2F4238;
-$secondary-color: #8a74a0;
-$tertiary-color: #a08a74;
+$primary-color: #5480a7;
+$primary-color-dark: #131D26;
+$secondary-color: #56A754;
+$tertiary-color: #A77B54;
 $link-color: $primary-color;
-$body-bg: #EAE9EA;
-$body-color: #172a3a;
-$navbar-bg: #EAE9EA;
+$body-bg: #e1eef7;
+$body-color: $primary-color-dark;
+$footer-bg: $primary-color;
+$footer-fg: white;
+$navbar-bg: $body-bg;
 $navbar-fg: $primary-color;
 $navbar-hl: $secondary-color;
+$dropdown-link-color: $primary-color;
 $navbar-font-family: "Raleway";
 $headings-font-family: "Raleway";
-$headings-color: rgba(0, 0, 0, 0.8);
+$headings-color: $primary-color-dark;
 $font-family-base: "Raleway";
 $code-block-bg: white;
 $code-block-border: false;
@@ -25,6 +28,10 @@ $code-bg: $code-block-bg;
 $code-border-radius: 25px; 
 $tabset-border-color: $navbar-bg;
 $border-color: $navbar-bg;
+$link-color: $primary-color;
+$link-hover-color: $secondary-color;
+$pagination-active-bg: $primary-color;
+$pagination-active-border-color: $primary-color;
 
 /*-- scss:rules --*/
 
@@ -216,4 +223,20 @@ div.callout-note.callout-style-default>.callout-header {
 aside, .column-margin {
     color: $tertiary-color;
     font-size: .825rem;
+}
+
+/* Buttons on projects page */
+
+.btn-primary {
+    background-color: $primary-color;
+    color: #FFFFFF;
+    padding: 3px 5px 3px 5px;
+    margin: 0 2px 0 2px;
+    border-radius: 5px; /* Rounded edges */
+    border: 0px;
+}
+
+.btn-primary:hover {
+    background-color: $secondary-color;
+    color: #FFFFFF;
 }
