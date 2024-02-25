@@ -3,6 +3,7 @@
 /*-- scss:defaults --*/
 
 $primary-color: #5480a7;
+$blue: #5480a7;
 $primary-color-dark: #131D26;
 $secondary-color: #56A754;
 $tertiary-color: #A77B54;
@@ -35,7 +36,6 @@ $pagination-active-border-color: $primary-color;
 
 /*-- scss:rules --*/
 
-
 h1, .h1, h2, .h2, h3, .h3 {
   font-weight: 800;
 }
@@ -64,26 +64,7 @@ div.quarto-about-trestles .about-entity .about-link:hover {
 
 /* navbar */
 
-.navbar-title {
-  font-family: $headings-font-family;
-}
-
-.navbar-dark .navbar-brand {
-  color: $primary-color;
-  text-align: center !important;
-}
-
-.navbar-brand {
-  color: $primary-color;
-  text-align: center !important;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  color: $primary-color;
-}
-
 .nav-link {
-  color: $primary-color;
   font-weight: 700;
 }
 
@@ -97,29 +78,9 @@ div.quarto-about-trestles .about-entity .about-link:hover {
     text-underline-offset: 4px;
 }
 
-.navbar-dark .navbar-nav .nav-link.active {
-    color: $secondary-color;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-.navbar #quarto-search.type-overlay .aa-Autocomplete svg.aa-SubmitIcon {
-  color: $primary-color;
-}
-
 hr {
   margin: 0rem 0;
 }
-
- /*.fixed-top {
-  top: 10px;
-  right: 10px;
-  left: 10px;
-}
-
-*, *::before, *::after {
-  border-radius: 15px;
-}*/
 
 /* Link buttons */
 
