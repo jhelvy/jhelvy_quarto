@@ -90,7 +90,7 @@ website:
   page-footer:
     background: '#EAE9EA'
     center:
-      - text: '© 2023 John Paul Helveston<br><a href="https://scholar.google.com/citations?user=DY2D56IAAAAJ"><i class="ai ai-google-scholar fa-lg"></i></a>'
+      - text: "© 2024 John Paul Helveston"
 
 format:
   html:
