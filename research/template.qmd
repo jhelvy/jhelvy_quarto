@@ -1,0 +1,62 @@
+---
+params: 
+    pub: pub
+title: "`r params$pub$title`"
+description: |
+  `r params$pub$author`<br>
+  _`r params$pub$journal`_, `r params$pub$year`<br>
+  `r make_doi(pub$doi)`
+  
+  `r make_icons(pub, details = FALSE)`
+format: html
+toc: false
+base_url: https://www.jhelvy.com
+---
+
+```{r setup, echo=FALSE}
+pub <- params$pub
+pub$citation <- str_replace(pub$citation, "\\\\\\*", "")
+
+# For clipboard in bibtex
+
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"></i>",
+    success_text = "<i class=\"fa fa-check fa-3x\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle  fa-3x\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+<center>
+
+`r make_altmetric(pub)`
+
+### Haiku Summary
+
+_`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
+
+</center>
+
+<br>
+
+```{r, echo=FALSE, fig.align='center', out.width="100%"}
+if (pub$image) {
+    knitr::include_graphics(file.path("images", paste0(pub$stub, ".png")))
+}
+```
+
+**Abstract**:
+
+`r pub$abstract`
+
+**Recommended Citation**:
+
+`r pub$citation`
+
+**Bibtex**:
+
+```{r, echo=FALSE}
+cat(pub$bibtex)
+```

@@ -14,6 +14,9 @@ toc-location: left
 ```{r setup}
 source("_common.R")
 pubs <- get_pubs()
+
+# Build pages for "research" folder
+# make_research_pages()
 ```
 
 <center>

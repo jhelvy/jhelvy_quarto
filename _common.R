@@ -287,9 +287,9 @@ make_dir <- function(path) {
 }
 
 render_research_page <- function(pub) {
-    make_dir(here::here('_research', pub$stub))
-    rmarkdown::render(
-        input = file.path('_research', 'template.Rmd'),
+    make_dir(here::here('research', pub$stub))
+    jph::quarto_render_move(
+        input = file.path('research', 'template.qmd'),
         output_file = file.path(pub$stub, 'index.html'),
         params = list(pub = pub)
     )
