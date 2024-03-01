@@ -108,65 +108,79 @@ l_points <- data.frame(
   )
 )
  
-# Plot
+# Logo (with no labels)
+
 logo <- ggplot() + 
-  # Make outer hexagon
-  geom_polygon(
-    data = hexagon_points, 
-    aes(x = x, y = y), 
-    fill = 'white', color = "black", 
-    size = 2
-  ) +
-  # Make inner lines
-  geom_segment(
-    data = segments_data, 
-    aes(x = x, y = y, xend = xend, yend = yend), 
-    color = "black", 
-    size = 2
-  ) +
-  # Make parallelograms
-  geom_polygon(
-    data = rbind(hexagon_points[c(4, 5, 6),], data.frame(x = 0, y = 0)),
-    aes(x = x, y = y),
-    color = "black", fill = "#103b5b",
-    size = 2
-  ) +
-  geom_polygon(
-    data = rbind(hexagon_points[c(6, 1, 2),], data.frame(x = 0, y = 0)),
-    aes(x = x, y = y),
-    color = "black", fill = "#b5d562",
-    size = 2
-  ) +
-  geom_polygon(
-    data = rbind(hexagon_points[c(2, 3, 4),], data.frame(x = 0, y = 0)),
-    aes(x = x, y = y),
-    color = "black", fill = "#c6d6e0",
-    size = 2
-  ) +
-  # Make T
-  geom_polygon(
-    data = t_points,
-    aes(x = x, y = y),
-    color = "black", fill = "white",
-    size = 2
-  ) +
-  # geom_point(data = t_points, aes(x = x, y = y), size = 5, color = 'white') +
-  # Make C
-  geom_polygon(
-    data = c_points,
-    aes(x = x, y = y),
-    color = "black", fill = "white",
-    size = 2
-  ) +
-  # geom_point(data = c_points, aes(x = x, y = y), size = 5, color = 'white') +
-  # Make L
-  geom_polygon(
-    data = l_points,
-    aes(x = x, y = y),
-    color = "black", fill = "white",
-    size = 2
-  ) +
-  # geom_point(data = l_points, aes(x = x, y = y), size = 5, color = 'white') +
+    # Make outer hexagon
+    geom_polygon(
+        data = hexagon_points, 
+        aes(x = x, y = y), 
+        fill = 'white', color = "black", 
+        size = 2
+    ) +
+    # Make inner lines
+    geom_segment(
+        data = segments_data, 
+        aes(x = x, y = y, xend = xend, yend = yend), 
+        color = "black", 
+        size = 2
+    ) +
+    # Make parallelograms
+    geom_polygon(
+        data = rbind(hexagon_points[c(4, 5, 6),], data.frame(x = 0, y = 0)),
+        aes(x = x, y = y),
+        color = "black", fill = "#103b5b",
+        size = 2
+    ) +
+    geom_polygon(
+        data = rbind(hexagon_points[c(6, 1, 2),], data.frame(x = 0, y = 0)),
+        aes(x = x, y = y),
+        color = "black", fill = "#b5d562",
+        size = 2
+    ) +
+    geom_polygon(
+        data = rbind(hexagon_points[c(2, 3, 4),], data.frame(x = 0, y = 0)),
+        aes(x = x, y = y),
+        color = "black", fill = "#c6d6e0",
+        size = 2
+    ) +
+    # Make T
+    geom_polygon(
+        data = t_points,
+        aes(x = x, y = y),
+        color = "black", fill = "white",
+        size = 2
+    ) +
+    # geom_point(data = t_points, aes(x = x, y = y), size = 5, color = 'white') +
+    # Make C
+    geom_polygon(
+        data = c_points,
+        aes(x = x, y = y),
+        color = "black", fill = "white",
+        size = 2
+    ) +
+    # geom_point(data = c_points, aes(x = x, y = y), size = 5, color = 'white') +
+    # Make L
+    geom_polygon(
+        data = l_points,
+        aes(x = x, y = y),
+        color = "black", fill = "white",
+        size = 2
+    ) +
+    # geom_point(data = l_points, aes(x = x, y = y), size = 5, color = 'white') +
+    coord_fixed() +
+    theme_void() +
+    theme(
+        plot.background = element_rect(fill = "transparent", colour = NA),
+        panel.background = element_rect(fill = "transparent", colour = NA)
+    )
+
+ggsave('logo.pdf', logo, height = 6, width = 6, bg = "transparent", device = cairo_pdf)
+renderthis::to_png('logo.pdf', 'logo.png', density = 300)
+
+# Add labels 
+
+logo_labeled <- logo +
   # Add Labels
   geom_text(
     aes(x = hexagon_points$x[6], y = hexagon_points$y[6], label = 'TECHNOLOGY'), 
@@ -226,5 +240,5 @@ logo <- ggplot() +
     panel.background = element_rect(fill = "transparent", colour = NA)
   )
 
-ggsave('logo.pdf', logo, height = 6, width = 6, bg = "transparent", device = cairo_pdf)
-renderthis::to_png('logo.pdf', 'logo.png', density = 300)
+ggsave('logo-labeled.pdf', logo_labeled, height = 6, width = 6, bg = "transparent", device = cairo_pdf)
+renderthis::to_png('logo-labeled.pdf', 'logo-labeled.png', density = 300)
