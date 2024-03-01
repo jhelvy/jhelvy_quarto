@@ -84,11 +84,11 @@ hr {
   margin: 0rem 0;
 }
 
-/* Link buttons */
+/* Link buttons - see Research page */
 
 .icon-link {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: $primary-color;
+    color: white;
     padding: 3px 5px 3px 5px;
     margin: 0 2px 0 2px;
     border-radius: 5px; /* Rounded edges */
@@ -100,8 +100,8 @@ hr {
 }
 
 .icon-link-details {
-    background-color: var(--color-primary-dark);
-    color: var(--color-white);
+    background-color: $primary-color-dark;
+    color: white;
     padding: 3px 5px 3px 5px;
     margin: 0 2px 0 2px;
     border-radius: 5px; /* Rounded edges */
