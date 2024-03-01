@@ -2,7 +2,7 @@
 title: "Using formr to create R-powered surveys with individualized feedback"
 description: |
   My rstudio::conf 2021 lightning talk on creating R-powered surveys using {formr}"
-date: 01-21-2021
+date: "2021-01-21"
 preview: "surveys-with-formr.png"
 categories:
   - R

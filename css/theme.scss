@@ -4,7 +4,7 @@
 
 $primary-color: #5480a7;
 $blue: #5480a7;
-$primary-color-dark: #131D26;
+$primary-color-dark: #2c3f51;
 $secondary-color: #56A754;
 $tertiary-color: #A77B54;
 $link-color: $primary-color;
@@ -32,9 +32,8 @@ $border-color: $navbar-bg;
 $link-color: $primary-color;
 $link-hover-color: $secondary-color;
 $pagination-active-bg: $primary-color;
+$pagination-active-color: white;
 $pagination-active-border-color: $primary-color;
-
-
 
 /*-- scss:rules --*/
 
@@ -209,7 +208,7 @@ blockquote p {
 pre {
     border-radius: 5px;
     color: #fff;
-    background-color: #2c3f51;
+    background-color: $primary-color-dark;
     padding: 5px 5px 5px 18px;
 }
 
@@ -223,4 +222,11 @@ pre {
 .float-right img {
     float:right;
     padding: 5px 0px 5px 10px;
+}
+
+/* Search items */
+
+.aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item.search-result-more, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-section, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-text, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-title-container, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-text-container, #quarto-search-results li.aa-Item[aria-selected=true] .search-item.search-result-more, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-section, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-text, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-title-container, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-text-container {
+    color: white;
+    background-color: #5480a7;
 }
