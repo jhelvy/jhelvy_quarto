@@ -37,6 +37,10 @@ $pagination-active-border-color: $primary-color;
 
 /*-- scss:rules --*/
 
+#title-block-header {
+  margin-block-end: 2rem;
+}
+
 h1, .h1, h2, .h2, h3, .h3 {
   font-weight: 800;
 }
@@ -228,5 +232,4 @@ pre {
 
 .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item.search-result-more, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-section, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-text, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-title-container, .aa-DetachedOverlay li.aa-Item[aria-selected=true] .search-item .search-result-text-container, #quarto-search-results li.aa-Item[aria-selected=true] .search-item.search-result-more, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-section, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-text, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-title-container, #quarto-search-results li.aa-Item[aria-selected=true] .search-item .search-result-text-container {
     color: white;
-    background-color: #5480a7;
 }
