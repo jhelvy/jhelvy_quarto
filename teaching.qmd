@@ -15,6 +15,11 @@ source("_common.R")
 
 Content for workshops I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
 
+
+::: {.grid}
+
+::: {.g-col-9}
+
 :::float-left
 
 <img src="images/hex/p4a.png" width="200px">
@@ -25,18 +30,29 @@ This course provides a foundation in programming for analytics using the [R prog
 
 :::
 
-<aside>
+:::
+
+::: {.g-col-3}
 
 **Semesters Taught**:
 
+- [Spring 2024](https://p4a.seas.gwu.edu/2024-Spring/)
 - [Spring 2023](https://p4a.seas.gwu.edu/2023-Spring/)
 - [Spring 2022](https://p4a.seas.gwu.edu/2022-Spring/)
 - [Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)
 - [Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)
 
-</aside>
+:::
+
+:::
+
+
 
 <br>
+
+::: {.grid}
+
+::: {.g-col-9}
 
 :::float-left
 
@@ -48,17 +64,38 @@ This course provides students with a foundation in exploring data using the [R p
 
 :::
 
-<aside>
+:::
+
+::: {.g-col-3}
 
 **Semesters Taught**:
 
+- [Fall 2023](https://eda.seas.gwu.edu/2023-Fall/)
 - [Fall 2022](https://eda.seas.gwu.edu/2022-Fall/)
 - [Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)
 - [Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)
 
-</aside>
+**Project Showcases**:
+
+- [Fall 2023](https://eda.seas.gwu.edu/2023-Fall/)
+- [Fall 2022](https://eda.seas.gwu.edu/2022-Fall/)
+- [Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)
+- [Spring 2020](https://eda.seas.gwu.edu/2020-Spring/)
+
+:::
+
+:::
+
+
+
+
+
 
 <br>
+
+::: {.grid}
+
+::: {.g-col-9}
 
 :::float-left
 
@@ -70,15 +107,34 @@ This course provides students with data analysis techniques to inform design dec
 
 :::
 
-<aside>
+:::
+
+::: {.g-col-3}
 
 **Semesters Taught**:
 
+- [Fall 2023](https://madd.seas.gwu.edu/2023-Fall/)
 - [Fall 2022](https://madd.seas.gwu.edu/2022-Fall/)
 - [Fall 2021](https://madd.seas.gwu.edu/2021-Fall/)
 - Spring 2019
 
-</aside>
+**Project Showcases**:
+
+- [Fall 2023](https://madd.seas.gwu.edu/2023-Fall/)
+- [Fall 2022](https://madd.seas.gwu.edu/2022-Fall/)
+- [Fall 2021](https://madd.seas.gwu.edu/2021-Fall/)
+
+:::
+
+:::
+
+
+
+
+
+
+
+
 
 <br>
 

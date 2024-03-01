@@ -48,7 +48,7 @@ website:
         href: research.qmd
       - text: "Teaching"
         href: teaching.qmd
-      - text: "Projects"
+      - text: "Misc. Projects"
         href: projects.qmd
       - text: "Talks"
         href: talks/index.qmd
@@ -88,7 +88,6 @@ website:
             href: blog.xml
             target: blank
   page-footer:
-    background: '#EAE9EA'
     center:
       - text: "© 2024 John Paul Helveston"
 

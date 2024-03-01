@@ -1,6 +1,6 @@
 ---
-title: Projects
-description: A collection of some projects that may or may not be related to my research.
+title: Miscellaneous Projects
+description: A collection of some projects (that may or may not be related to my research).
 preview: images/lab/john_helveston_circle.png
 execute: 
   echo: false
@@ -14,9 +14,7 @@ format:
 ```{r projects}
 source("_common.R")
 
-projects <- readr::read_csv(here::here("content", "projects.csv"))
-
-projects %>% 
+readr::read_csv(here::here("content", "projects.csv")) %>% 
   bs4cards::cards(
     title = title,
     text = description,

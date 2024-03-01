@@ -1,13 +1,12 @@
 ---
-title: Blog
+title: ""
 author: ""
-comments: false
 listing:
   contents: "index.qmd"
   sort: "date desc"
   type: "default"
   date-format: "iso"
   fields: [image, date, title, subtitle, author, summary, description, extsite, repo]
-  page-size: 6
+  page-size: 8
 page-layout: full
 ---

@@ -1,5 +1,6 @@
 ---
 title: Talks
+description: Select talks I've given. Slides for most of my talks are available at [slides.jhelvy.com](https://slides.jhelvy.com/)<br>
 author: ""
 comments: false
 listing:

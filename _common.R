@@ -255,36 +255,6 @@ make_icon <- function(icon) {
   return(tag("i", list(class = icon)))
 }
 
-create_footer <- function() {
-
-  fill <- '#ededeb'
-  height <- '14px'
-
-  footer <- HTML(paste0(
-  '© 2021 John Paul Helveston [',
-  fontawesome::fa('creative-commons', fill = fill, height = height),
-  fontawesome::fa('creative-commons-by', fill = fill, height = height),
-  fontawesome::fa('creative-commons-sa', fill = fill, height = height),
-  '](https://creativecommons.org/licenses/by-sa/4.0/)\n',
-  br(),
-  fontawesome::fa('wrench', fill = fill, height = height), ' Made with ',
-  fontawesome::fa('heart', fill = fill, height = height), ', [',
-  fontawesome::fa('code-branch', fill = fill, height = height),
-  '](https://github.com/jhelvy), and the [',
-  fontawesome::fa('r-project', fill = fill, height = height),
-  '](https://cran.r-project.org/) ',
-  '[distill](https://github.com/rstudio/distill) package\n',
-  br(),
-  last_updated(), "\n\n",
-
-  '<!-- Add function to open links to external links in new tab, from: -->',
-  '<!-- https://yihui.name/en/2018/09/target-blank/ -->\n\n',
-  '<script src="js/external-link.js"></script>'
-  ))
-
-  save_raw(footer, "_footer.html")
-}
-
 last_updated <- function() {
   return(span(
     paste0(
