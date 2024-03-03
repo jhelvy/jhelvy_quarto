@@ -2,6 +2,7 @@ library(htmltools)
 library(distilltools)
 library(stringr)
 library(dplyr)
+library(readr)
 
 knitr::opts_chunk$set(
   collapse = TRUE,

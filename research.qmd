@@ -11,16 +11,35 @@ toc: true
 toc-location: left
 ---
 
+<!-- Remove margin under list items -->
+
+<style>
+d-article ol {
+    margin-bottom: 5px;
+}
+d-article p {
+  margin: 5px 0 0 0;
+}
+</style>
+
 ```{r setup}
 source("_common.R")
-pubs <- get_pubs()
+
+# Update local copy of "pubs" Google sheet
+# write_csv(get_pubs(), here::here('content', 'pubs.csv'))
+
+# Get local copy of pubs
+pubs <- read_csv(here::here('content', 'pubs.csv'))
+
+# Get pubs from Google sheet
+# pubs <- get_pubs()
 
 # Build pages for "research" folder
 # make_research_pages()
 ```
 
 <center>
-`r gscholar_stats("https://scholar.google.com/citations?user=DY2D56IAAAAJ")`
+<!-- `r gscholar_stats("https://scholar.google.com/citations?user=DY2D56IAAAAJ")` -->
 </center>
 
 `r aside_center("Source: Google Scholar")`
