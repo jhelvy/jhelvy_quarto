@@ -92,8 +92,8 @@ hr {
 .icon-link {
     background-color: $primary-color;
     color: white;
-    padding: 3px 4px 3px 4px;
-    margin: 0 2px 0 2px;
+    padding: 1px 4px 1px 4px;
+    margin: 1px 1px 1px 1px;
     border-radius: 5px; /* Rounded edges */
 }
 
@@ -102,17 +102,16 @@ hr {
     color: white;
 }
 
-.icon-link-details {
+.icon-link-summary {
     background-color: $primary-color-dark;
     color: white;
-    padding: 3px 4px 3px 4px;
-    margin: 0 2px 0 2px;
+    padding: 3px 5px 3px 5px;
+    margin: 1px 1px 1px 1px;
     border-radius: 5px; /* Rounded edges */
 }
 
-.icon-link-details:hover {
+.icon-link-summary:hover {
     background-color: $secondary-color;
-    color: white;
 }
 
 .panel-tabset [role="tablist"] {

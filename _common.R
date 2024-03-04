@@ -34,9 +34,9 @@ get_pubs <- function() {
     pubs <- gsheet::gsheet2tbl(
         url = 'https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU')
     pubs <- make_citations(pubs)
-    pubs$details <- ifelse(is.na(pubs$details), FALSE, pubs$details)
+    pubs$summary <- ifelse(is.na(pubs$summary), FALSE, pubs$summary)
     pubs$stub <- make_stubs(pubs)
-    pubs$url_details <- file.path('research', pubs$stub, "index.html")
+    pubs$url_summary <- file.path('research', pubs$stub, "index.html")
     return(pubs)
 }
 
@@ -122,21 +122,21 @@ make_pub <- function(pub) {
     return(paste0(
         '<div class="pub">',
         as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-        make_icons(pub, details = pub$details),
+        make_icons(pub, summary = pub$summary),
         altmetric,
         '</div>',
         make_haiku(pub, header)
     ))
 }
 
-make_icons <- function(pub, details = TRUE) {
+make_icons <- function(pub, summary = TRUE) {
   html <- c()
-  if (details) {
+  if (summary) {
     html <- c(html, as.character(icon_link_custom(
       icon = "fas fa-external-link-alt",
-      text = "Details",
-      url  = pub$url_details, 
-      class = "icon-link-details"
+      text = "Summary",
+      url  = pub$url_summary, 
+      class = "icon-link-summary"
     )))      
   }
   if (!is.na(pub$url_pub)) {
@@ -277,7 +277,7 @@ make_research_pages <- function() {
     pubs <- get_pubs()
     for (i in seq_len(nrow(pubs))) {
         pub <- pubs[i,]
-        if (pub$details) {
+        if (pub$summary) {
             render_research_page(pub)
         }
     }
