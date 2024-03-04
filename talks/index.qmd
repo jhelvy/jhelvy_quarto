@@ -5,9 +5,10 @@ author: ""
 comments: false
 listing:
   contents: "index.qmd"
-  sort: "date desc"
-  type: "default"
+  categories: true
+  type: default
   date-format: "iso"
+  sort: "date desc"
   fields: [image, date, title, subtitle, author, summary, description, extsite, repo]
   page-size: 6
 page-layout: full
