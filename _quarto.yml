@@ -54,13 +54,10 @@ website:
         href: talks/index.qmd
       - text: "Blog"
         href: blog/index.qmd
-      - icon: bars
+      - icon: list
         menu:
           - text: "CV"
             href: https://github.com/jhelvy/cv/blob/main/cv-jph.pdf
-            target: blank
-          - text: "Resume"
-            href: content/helveston-resume.pdf
             target: blank
           - icon: github
             href: https://github.com/jhelvy
@@ -75,13 +72,13 @@ website:
           - icon: mastodon
             href: https://fediscience.org/\\@jhelvy
             target: blank
-          - text: '<i class="ai ai-google-scholar fa-lg"></i>'
+          - text: "<i class='ai ai-google-scholar fa-lg'></i>"
             href: https://scholar.google.com/citations?user=DY2D56IAAAAJ
             target: blank
-          - text: '<i class="ai ai-researchgate fa-lg"></i>'
+          - text: "<i class='ai ai-researchgate fa-lg'></i>"
             href: https://www.researchgate.net/profile/John_Helveston
             target: blank
-          - text: '<i class="ai ai-orcid fa-lg"></i>'
+          - text: "<i class='ai ai-orcid fa-lg'></i>"
             href: https://orcid.org/0000-0002-2657-9191
             target: blank
           - icon: rss-fill
