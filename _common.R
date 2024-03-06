@@ -1,5 +1,4 @@
 library(htmltools)
-library(distilltools)
 library(stringr)
 library(dplyr)
 library(readr)
@@ -169,7 +168,7 @@ markdown_to_html <- function(text) {
 make_icons <- function(pub) {
   html <- c()
   if (pub$summary) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "fas fa-external-link-alt",
       text = "Summary",
       url  = pub$url_summary, 
@@ -178,35 +177,35 @@ make_icons <- function(pub) {
     )))      
   }
   if (!is.na(pub$url_pub)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "fas fa-external-link-alt",
       text = "View",
       url  = pub$url_pub
     )))
   }
   if (!is.na(pub$url_pdf)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "fa fa-file-pdf",
       text = "PDF",
       url  = pub$url_pdf
     )))
   }
   if (!is.na(pub$url_repo)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "fab fa-github",
       text = "Code & Data",
       url  = pub$url_repo
     )))
   }
   if (!is.na(pub$url_other)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "fas fa-external-link-alt",
       text = pub$other_label,
       url  = pub$url_other
     )))
   }
   if (!is.na(pub$url_rg)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "ai ai-researchgate",
       # text = "&nbsp;",
       text = "RG",
@@ -214,7 +213,7 @@ make_icons <- function(pub) {
     )))
   }
   if (!is.na(pub$url_scholar)) {
-    html <- c(html, as.character(icon_link_custom(
+    html <- c(html, as.character(icon_link(
       icon = "ai ai-google-scholar",
       # text = "&nbsp;",
       text = "Scholar",
@@ -224,11 +223,11 @@ make_icons <- function(pub) {
   return(paste(html, collapse = ""))
 }
 
-# These are now in {distilltools}, but I've modified this one to include 
-# a custom class to be able to have more control over the CSS and an
-# optional target argument
+# The icon_link() function is in {distilltools}, but I've modified this
+# one to include  a custom class to be able to have more control over the
+# CSS and an optional target argument
 
-icon_link_custom <- function(
+icon_link <- function(
   icon = NULL,
   text = NULL,
   url = NULL,

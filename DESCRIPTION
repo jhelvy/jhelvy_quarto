@@ -13,7 +13,6 @@ Encoding: UTF-8
 Imports:
     bs4cards,
     cowplot,
-    distilltools,
     fontawesome,
     glue,
     gsheet,
@@ -31,5 +30,4 @@ Imports:
     xaringanExtra,
     yaml
 Remotes:
-    EllaKaye/distilltools,
     gadenbuie/xaringanExtra
