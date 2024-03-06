@@ -3,7 +3,7 @@ title: "U. Albany Confucius Institute Fall 2020 Seminar on US-China Relations in
 description: |
   My discussion with Barry Naughton (UCSD) about industrial policy and low-carbon energy technologies in China
 date: 10-09-2020
-preview: "images/title_slide.png"
+preview: "title_slide.png"
 categories:
   - China
   - Technology
@@ -17,6 +17,8 @@ toc: false
 #| warning: false
 #| include: false
 
+source(here::here("_common.R"))
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE,
@@ -24,8 +26,6 @@ knitr::opts_chunk$set(
   fig.retina = 3,
   comment = "#>"
 )
-
-library(distilltools)
 ```
 
 [Barry Naughton](https://gps.ucsd.edu/faculty-directory/barry-naughton.html) (Sokwanlok Chair of Chinese International Affairs at the School of Global Policy and Strategy, UCSD) and I kicked off the U. of Albany [Confucius Institute Fall 2020 Seminar Series](https://www.albany.edu/confucius/US-china-relations-fall2020.html) on "_US-China Relations in the 21st Century_" with a discussion about industrial policy and low-carbon energy technologies in China. In his presentation titled, "_China's Industrial Policy: New Technological Revolution or Old-fashioned Protectionism?_", Professor Naughton highlighted some of the recent major technology and industrial policy changes under President Xi and the implications for the U.S. In my talk titled, "_China's key role in scaling low carbon energy technologies_," I discussed the critical role China has played in scaling up the mass production of low-carbon energy technologies, such as solar photovoltaic cells and lithium-ion batteries, highlighting key points from my related [paper in _Science_](https://iopscience.iop.org/article/10.1088/1748-9326/aba715/pdf) with Jonas Nahm.

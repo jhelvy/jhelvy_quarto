@@ -12,8 +12,13 @@ format: html
 toc: true
 ---
 
-```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(distilltools)
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
+
+source(here::here("_common.R"))
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -56,8 +61,6 @@ Keyboard Shortcuts for Slides:
 - Use <kbd>o</kbd> to view an overview of all slides.
 - Use <kbd>h</kbd> to see a list of other shortcuts.
 
-```{r slides, echo=FALSE}
-xaringanExtra::embed_xaringan(
-  url = "https://jhelvy.github.io/2021-useR-healthy-hands/index.html",
-  ratio = "16:9")
-```
+::: golden-ratio-wrapper
+<iframe class="golden-ratio-iframe" src="https://jhelvy.github.io/2021-useR-healthy-hands/index.html"></iframe>
+:::

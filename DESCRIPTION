@@ -26,5 +26,4 @@ Imports:
     rmarkdown,
     roxygen2,
     tidyverse,
-    viridis,
-    xaringanExtra
+    viridis

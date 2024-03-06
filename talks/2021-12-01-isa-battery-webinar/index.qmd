@@ -11,8 +11,11 @@ format: html
 toc: true
 ---
 
-```{r setup, message=FALSE, warning=FALSE, include=FALSE}
-library(distilltools)
+```{r}
+#| label: setup
+#| message: false
+#| warning: false
+#| include: false
 
 knitr::opts_chunk$set(
   collapse = TRUE,
