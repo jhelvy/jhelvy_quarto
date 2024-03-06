@@ -1,0 +1,16 @@
+---
+format: html
+lightbox: true
+execute: 
+  echo: false
+---
+
+```{r setup, include=FALSE}
+source(here::here("_common.R"))
+pub <- get_pubs() %>% 
+    filter(id_scholar == '4DMP91E08xMC')
+pub$summary <- FALSE
+```
+
+```{r child = here::here("research", "template.qmd")}
+```
