@@ -1,3 +1,32 @@
+---
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r setup}
+source("_common.R")
+```
+
+:::float-left
+
+<br>
+<center>
+<img src="images/404-hippo.png" width=350>
+</center>
+
 # Whoops!
 
-The page you are looking for doesn't exist 😔
+### The requested page does not exist 😔
+
+<br>
+
+```{r}
+icon_link(
+    text = "Return to home",
+    url  = "https://www.jhelvy.com"
+)
+```
+
+:::
