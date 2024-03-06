@@ -27,7 +27,4 @@ Imports:
     roxygen2,
     tidyverse,
     viridis,
-    xaringanExtra,
-    yaml
-Remotes:
-    gadenbuie/xaringanExtra
+    xaringanExtra
