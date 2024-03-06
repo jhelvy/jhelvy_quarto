@@ -31,6 +31,5 @@ Imports:
     xaringanExtra,
     yaml
 Remotes:
-    djnavarro/bs4cards,
     EllaKaye/distilltools,
     gadenbuie/xaringanExtra
