@@ -7,8 +7,9 @@ execute:
 
 ```{r setup, include=FALSE}
 source(here::here("_common.R"))
-pubs <- get_pubs()
-pub <- pubs[1,]
+pub <- get_pubs() %>% 
+    filter(id_scholar == 'ZeXyd9-uunAC')
+pub$summary <- FALSE
 ```
 
 ```{r child = here::here("research", "template.qmd")}

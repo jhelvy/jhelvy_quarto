@@ -17,11 +17,12 @@ knitr::opts_chunk$set(comment = "")
 
 # `r pub$title`
 
-`r aside_center("Haiku Summary")`
+```{r}
+aside_center_b("Haiku Summary")
+make_pub(pub)
+```
 
-`r aside_center(make_haiku(pub))`
-
-`r aside_center("Key Figure")`
+`r aside_center_b("Key Figure")`
 
 ```{r}
 #| fig-column: margin
@@ -30,30 +31,12 @@ knitr::opts_chunk$set(comment = "")
 knitr::include_graphics(paste0(pub$stub, ".png"))
 ```
 
-::: {.grid}
+**Abstract**:
 
-::: {.g-col-11}
-
-`r pub$citation`
-
-:::
-
-::: {.g-col-1}
-
-`r make_altmetric(pub)`
-
-:::
-
-:::
-
-`r make_icons(pub, summary = FALSE)`
+`r pub$abstract`
 
 **Bibtex**:
 
 ```{r, echo=FALSE}
 cat(pub$bibtex)
 ```
-
-**Abstract**:
-
-`r pub$abstract`
