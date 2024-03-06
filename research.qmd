@@ -36,12 +36,6 @@ pubs <- get_pubs()
 ```
 
 <center>
-`r gscholar_stats("https://scholar.google.com/citations?user=DY2D56IAAAAJ")`
-</center>
-
-`r aside_center("Source: Google Scholar")`
-
-<center>
 
 `r htmltools::HTML(paste0(icon_link(icon = "ai ai-google-scholar", text = "Google Scholar", url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ"), icon_link(icon = "ai ai-orcid", text = "ORCID", url  = "https://orcid.org/0000-0002-2657-9191"), icon_link(icon = "ai ai-researchgate", text = "Research Gate", url = "https://www.researchgate.net/profile/John_Helveston")))`
 

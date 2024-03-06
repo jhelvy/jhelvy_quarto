@@ -14,10 +14,8 @@ knitr::opts_chunk$set(
 
 gscholar_stats <- function(url) {
   cites <- get_cites(url)
-  return(paste(
-    'Citations:', cites$citations, '|',
-    'h-index:',   cites$hindex, '|',
-    'i10-index:', cites$i10index
+  return(glue::glue(
+    'Citations: {cites$citations} | h-index: {cites$hindex} | i10-index: {cites$i10index}'
   ))
 }
 
@@ -47,24 +45,25 @@ make_citations <- function(pubs) {
 
 make_citation <- function(pub) {
   if (!is.na(pub$journal)) {
-    pub$journal <- paste0('_', pub$journal, '_.')
+    pub$journal <- glue::glue('_{pub$journal}_.')
   }
   if (!is.na(pub$number)) {
-    pub$number <- paste0(pub$number, '.')
+    pub$number <- glue::glue('{pub$number}.')
   }
   if (!is.na(pub$doi)) {
     pub$doi <- make_doi(pub$doi)
   }
-  pub$year <- paste0("(", pub$year, ")")
-  pub$title <- paste0('"', pub$title, '"')
+  pub$year <- glue::glue("({pub$year})")
+  pub$title <- glue::glue('"{pub$title}"')
   pub[,which(is.na(pub))] <- ''
-  paste(
+  return(paste(
     pub$author, pub$year, pub$title, pub$journal, 
-    pub$number, pub$doi)
+    pub$number, pub$doi
+  ))
 }
 
 make_doi <- function(doi) {
-  return(paste0('DOI: [', doi, '](', 'https://doi.org/', doi, ')'))
+  return(glue::glue('DOI: [{doi}](https://doi.org/{doi})'))
 }
 
 make_stubs <- function(pubs) {
@@ -82,54 +81,61 @@ make_stubs <- function(pubs) {
 
 make_pub_list <- function(pubs, category) {
     x <- pubs[which(pubs$category == category),]
-    pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
+    pub_list <- list()
+    for (i in 1:nrow(x)) {
+      pub_list[[i]] <- make_pub(x[i,], index = i)
+    }
     return(paste(unlist(pub_list), collapse = ""))
 }
 
-make_pub <- function(pub) {
-    index <- parent.frame()$i[] # index number from the lapply
-    header <- FALSE
+make_pub <- function(pub, index = NULL) {
+  header <- FALSE
+  altmetric <- make_altmetric(pub)
+  if (is.null(index)) {
+    cite <- pub$citation
+    icons <- make_icons(pub)
+  } else {
+    cite <- glue::glue('{index}) {pub$citation}')
+    icons <- glue::glue('<ul style="list-style: none;"><li>{make_icons(pub)}</li></ul>')
     if (index == 1) { header <- TRUE }
-    altmetric <- NULL
-    if (pub$category %in% c('peer_reviewed', 'featured')) {
-        altmetric <- make_altmetric(pub)
-    }
-    return(paste0(
-        '<div class="pub">',
-        as.character(markdown_to_html(paste0(index, ') ', pub$citation))), 
-        make_icons(pub, summary = pub$summary),
-        altmetric,
-        '</div>',
-        make_haiku(pub, header)
-    ))
+  }
+  return(htmltools::HTML(glue::glue(
+    '<div class="pub">
+    <div class="grid">
+    <div class="g-col-11"> {markdown_to_html(cite)}
+    </div>
+    <div class="g-col-1">
+    {altmetric}
+    </div>
+    </div>
+    {icons}
+    </div>
+    {make_haiku(pub, header)}'
+  )))
 }
 
 make_altmetric <- function(pub) {
-    return(paste0(
-        '<div data-badge-type="donut" data-doi="', 
-        pub$doi,
-        '" data-hide-no-mentions="true" class="altmetric-embed"></div>'
-    ))
+  altmetric <- ""
+  if (pub$category == 'peer_reviewed') {
+    altmetric <- glue::glue('<div data-badge-type="donut" data-doi="{pub$doi}" data-hide-no-mentions="true" class="altmetric-embed"></div>')
+  }
+  return(altmetric)
 }
 
 make_haiku <- function(pub, header = FALSE) {
   html <- ""
+  haiku <- em(
+    pub$haiku1, HTML("&#8226;"), 
+    pub$haiku2, HTML("&#8226;"), 
+    pub$haiku3
+  )
   if (!is.na(pub$haiku1)) {
     if (header) {
       html <- as.character(aside_center(list(
-        HTML("<b>Haiku Summaries</b>"), 
-        br(), 
-        em(
-          pub$haiku1, HTML("&#8226;"), 
-          pub$haiku2, HTML("&#8226;"), 
-          pub$haiku3)
-      )))
+        HTML("<b>Haiku Summary</b>"), br(), haiku))
+      )
     } else {
-      html <- as.character(aside_center(list(em(
-        pub$haiku1, HTML("&#8226;"), 
-        pub$haiku2, HTML("&#8226;"), 
-        pub$haiku3)
-      )))
+      html <- as.character(aside_center(list(haiku)))
     }
   }
   return(html)
@@ -156,9 +162,9 @@ markdown_to_html <- function(text) {
   return(HTML(markdown::renderMarkdown(text = text)))
 }
 
-make_icons <- function(pub, summary = TRUE) {
+make_icons <- function(pub) {
   html <- c()
-  if (summary) {
+  if (pub$summary) {
     html <- c(html, as.character(icon_link_custom(
       icon = "fas fa-external-link-alt",
       text = "Summary",

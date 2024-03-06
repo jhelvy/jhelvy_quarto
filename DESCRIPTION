@@ -13,10 +13,9 @@ Encoding: UTF-8
 Imports:
     bs4cards,
     cowplot,
-    distill,
     distilltools,
-    emo,
     fontawesome,
+    glue,
     gsheet,
     here,
     htmltools,
@@ -24,8 +23,6 @@ Imports:
     kableExtra,
     knitr,
     markdown,
-    metathis,
-    postcards,
     remotes,
     rmarkdown,
     roxygen2,
@@ -36,8 +33,4 @@ Imports:
 Remotes:
     djnavarro/bs4cards,
     EllaKaye/distilltools,
-    hadley/emo,
-    rstudio/fontawesome,
-    haozhu233/kableExtra,
-    rstudio/rmarkdown,
     gadenbuie/xaringanExtra
