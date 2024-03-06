@@ -17,6 +17,7 @@ source("_common.R")
 
 Content for workshops I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
 
+<hr>
 
 :::float-left
 <img src="images/hex/p4a.png" width="200px">
@@ -34,11 +35,11 @@ This course provides a foundation in programming for analytics using the [R prog
 - [Fall 2020](https://p4a.seas.gwu.edu/2020-Fall/)
 - [Fall 2019](https://p4a.seas.gwu.edu/2019-Fall/)
 
+<br><hr>
+
 :::float-left
 <img src="images/hex/eda.png" width="200px">
 :::
-
-<br>
 
 ### [EMSE 4572: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
 
@@ -70,7 +71,7 @@ This course provides students with a foundation in exploring data using the [R p
 
 :::
 
-<br>
+<br><hr>
 
 :::float-left
 <img src="images/hex/madd.png" width="200px">
@@ -105,10 +106,10 @@ This course provides students with data analysis techniques to inform design dec
 
 :::
 
+<br><hr>
+
 :::float-left
-
 <img src="images/r4a.png" width="200px">
-
 :::
 
 ### [R for Analytics Primer](https://jhelvy.github.io/r4aPrimer/)

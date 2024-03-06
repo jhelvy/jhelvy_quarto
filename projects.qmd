@@ -15,14 +15,13 @@ format:
 source("_common.R")
 
 readr::read_csv(here::here("content", "projects.csv")) %>% 
+  select(-tags) %>% 
   bs4cards::cards(
     title = title,
     text = description,
     link = url,
     image = src,
     label_colour = "#ffffff",
-    tags = paste("All;", tags),
-    footer = tags,
     border_radius = 5
   )
 ```
