@@ -35,6 +35,10 @@ get_pubs <- function() {
     pubs$summary <- ifelse(is.na(pubs$summary), FALSE, pubs$summary)
     pubs$stub <- make_stubs(pubs)
     pubs$url_summary <- file.path('research', pubs$stub, "index.html")
+    pubs$url_scholar <- ifelse(
+      is.na(pubs$id_scholar), NA, 
+      glue::glue('https://scholar.google.com/citations?view_op=view_citation&hl=en&user=DY2D56IAAAAJ&citation_for_view=DY2D56IAAAAJ:{pubs$id_scholar}')
+    )
     return(pubs)
 }
 
@@ -194,18 +198,27 @@ make_icons <- function(pub) {
       url  = pub$url_repo
     )))
   }
-  if (!is.na(pub$url_rg)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "ai ai-researchgate",
-      text = "Research Gate",
-      url  = pub$url_rg
-    )))
-  }
   if (!is.na(pub$url_other)) {
     html <- c(html, as.character(icon_link_custom(
       icon = "fas fa-external-link-alt",
       text = pub$other_label,
       url  = pub$url_other
+    )))
+  }
+  if (!is.na(pub$url_rg)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "ai ai-researchgate",
+      # text = "&nbsp;",
+      text = "RG",
+      url  = pub$url_rg
+    )))
+  }
+  if (!is.na(pub$url_scholar)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "ai ai-google-scholar",
+      # text = "&nbsp;",
+      text = "Scholar",
+      url  = pub$url_scholar
     )))
   }
   return(paste(html, collapse = ""))
