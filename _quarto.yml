@@ -28,7 +28,7 @@ website:
   description: "The personal website of John Paul Helveston"
   image: images/lab/john_helveston_circle.png
   site-url: https://www.jhelvy.com
-  favicon: images/favicon.ico
+  favicon: images/favicon/favicon.ico
   repo-url: https://github.com/jhelvy/jhelvy_quarto
   search:
     location: navbar
