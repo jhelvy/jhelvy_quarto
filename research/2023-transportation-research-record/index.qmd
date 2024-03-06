@@ -1,0 +1,15 @@
+---
+format: html
+lightbox: true
+execute: 
+  echo: false
+---
+
+```{r setup, include=FALSE}
+source(here::here("_common.R"))
+pubs <- get_pubs()
+pub <- pubs[1,]
+```
+
+```{r child = here::here("research", "template.qmd")}
+```

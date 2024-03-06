@@ -80,31 +80,6 @@ make_stubs <- function(pubs) {
     return(paste0(pubs$year, '-', journal))
 }
 
-# Functions for research page: https://jhelvy.com/research
-
-make_media_list <- function() {
-    media <- gsheet::gsheet2tbl(
-        url = 'https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU/edit#gid=2088158801')
-    temp <- media %>% 
-        mutate(
-            date = format(date, format = "%b %d, %Y"), 
-            outlet = paste0("**", outlet, "**"),
-            post = paste0("- ", date, " - ", outlet, ": ", post)
-        )
-    return(paste(temp$post, collapse = "\n"))
-}
-
-# make_pub_list <- function(pubs, category, featured = FALSE) {
-#   x <- pubs[which(pubs$category == category),]
-#   if (featured) {
-#     x <- x[which(x$featured),]
-#   } else {
-#     x <- x[which(!x$featured),]
-#   }
-#   pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
-#   return(paste(unlist(pub_list), collapse = ""))
-# }
-
 make_pub_list <- function(pubs, category) {
     x <- pubs[which(pubs$category == category),]
     pub_list <- lapply(split(x, 1:nrow(x)), make_pub)
@@ -127,54 +102,6 @@ make_pub <- function(pub) {
         '</div>',
         make_haiku(pub, header)
     ))
-}
-
-make_icons <- function(pub, summary = TRUE) {
-  html <- c()
-  if (summary) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "fas fa-external-link-alt",
-      text = "Summary",
-      url  = pub$url_summary, 
-      class = "icon-link-summary"
-    )))      
-  }
-  if (!is.na(pub$url_pub)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "fas fa-external-link-alt",
-      text = "View",
-      url  = pub$url_pub
-    )))
-  }
-  if (!is.na(pub$url_pdf)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "fa fa-file-pdf",
-      text = "PDF",
-      url  = pub$url_pdf
-    )))
-  }
-  if (!is.na(pub$url_repo)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "fab fa-github",
-      text = "Code & Data",
-      url  = pub$url_repo
-    )))
-  }
-  if (!is.na(pub$url_rg)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "ai ai-researchgate",
-      text = "Research Gate",
-      url  = pub$url_rg
-    )))
-  }
-  if (!is.na(pub$url_other)) {
-    html <- c(html, as.character(icon_link_custom(
-      icon = "fas fa-external-link-alt",
-      text = pub$other_label,
-      url  = pub$url_other
-    )))
-  }
-  return(paste(html, collapse = ""))
 }
 
 make_altmetric <- function(pub) {
@@ -229,6 +156,55 @@ markdown_to_html <- function(text) {
   return(HTML(markdown::renderMarkdown(text = text)))
 }
 
+make_icons <- function(pub, summary = TRUE) {
+  html <- c()
+  if (summary) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fas fa-external-link-alt",
+      text = "Summary",
+      url  = pub$url_summary, 
+      class = "icon-link-summary", 
+      target = "_self"
+    )))      
+  }
+  if (!is.na(pub$url_pub)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fas fa-external-link-alt",
+      text = "View",
+      url  = pub$url_pub
+    )))
+  }
+  if (!is.na(pub$url_pdf)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fa fa-file-pdf",
+      text = "PDF",
+      url  = pub$url_pdf
+    )))
+  }
+  if (!is.na(pub$url_repo)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fab fa-github",
+      text = "Code & Data",
+      url  = pub$url_repo
+    )))
+  }
+  if (!is.na(pub$url_rg)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "ai ai-researchgate",
+      text = "Research Gate",
+      url  = pub$url_rg
+    )))
+  }
+  if (!is.na(pub$url_other)) {
+    html <- c(html, as.character(icon_link_custom(
+      icon = "fas fa-external-link-alt",
+      text = pub$other_label,
+      url  = pub$url_other
+    )))
+  }
+  return(paste(html, collapse = ""))
+}
+
 # These are now in {distilltools}, but I've modified this one to include 
 # a custom class to be able to have more control over the CSS and an
 # optional target argument
@@ -266,32 +242,14 @@ last_updated <- function() {
   )
 }
 
-save_raw <- function(text, path) {
-    fileConn <- file(path)
-    writeLines(text, fileConn)
-    close(fileConn)
-}
-
-# For creating individual pages in the "_research" folder
-make_research_pages <- function() {
-    pubs <- get_pubs()
-    for (i in seq_len(nrow(pubs))) {
-        pub <- pubs[i,]
-        if (pub$summary) {
-            render_research_page(pub)
-        }
-    }
-}
-
-make_dir <- function(path) {
-  if (!dir.exists(path)) { dir.create(path) }
-}
-
-render_research_page <- function(pub) {
-    make_dir(here::here('research', pub$stub))
-    jph::quarto_render_move(
-        input = file.path('research', 'template.qmd'),
-        output_file = file.path(pub$stub, 'index.html'),
-        params = list(pub = pub)
+make_media_list <- function() {
+  media <- gsheet::gsheet2tbl(
+    url = 'https://docs.google.com/spreadsheets/d/1xyzgW5h1rVkmtO1rduLsoNRF9vszwfFZPd72zrNmhmU/edit#gid=2088158801')
+  temp <- media %>% 
+    mutate(
+      date = format(date, format = "%b %d, %Y"), 
+      outlet = paste0("**", outlet, "**"),
+      post = paste0("- ", date, " - ", outlet, ": ", post)
     )
-}    
+  return(paste(temp$post, collapse = "\n"))
+}

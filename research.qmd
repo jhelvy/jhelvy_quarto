@@ -33,9 +33,6 @@ source("_common.R")
 
 # Get pubs from Google sheet
 pubs <- get_pubs()
-
-# Build pages for "research" folder
-# make_research_pages()
 ```
 
 <center>

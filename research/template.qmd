@@ -1,20 +1,4 @@
----
-params: 
-    pub: pub
-title: "`r params$pub$title`"
-description: |
-  `r params$pub$author`<br>
-  _`r params$pub$journal`_, `r params$pub$year`<br>
-  `r make_doi(pub$doi)`
-  
-  `r make_icons(pub, details = FALSE)`
-format: html
-toc: false
-base_url: https://www.jhelvy.com
----
-
-```{r setup, echo=FALSE}
-pub <- params$pub
+```{r, include=FALSE}
 pub$citation <- str_replace(pub$citation, "\\\\\\*", "")
 
 # For clipboard in bibtex
@@ -27,36 +11,49 @@ htmltools::tagList(
   ),
   rmarkdown::html_dependency_font_awesome()
 )
+
+knitr::opts_chunk$set(comment = "")
 ```
 
-<center>
+# `r pub$title`
+
+`r aside_center("Haiku Summary")`
+
+`r aside_center(make_haiku(pub))`
+
+`r aside_center("Key Figure")`
+
+```{r}
+#| fig-column: margin
+#| fig.align: center
+
+knitr::include_graphics(paste0(pub$stub, ".png"))
+```
+
+::: {.grid}
+
+::: {.g-col-11}
+
+`r pub$citation`
+
+:::
+
+::: {.g-col-1}
 
 `r make_altmetric(pub)`
 
-### Haiku Summary
+:::
 
-_`r paste(pub$haiku1, pub$haiku2, pub$haiku3, sep = " ~ ")`_
+:::
 
-</center>
-
-<br>
-
-```{r, echo=FALSE, fig.align='center', out.width="100%"}
-if (pub$image) {
-    knitr::include_graphics(file.path("images", paste0(pub$stub, ".png")))
-}
-```
-
-**Abstract**:
-
-`r pub$abstract`
-
-**Recommended Citation**:
-
-`r pub$citation`
+`r make_icons(pub, summary = FALSE)`
 
 **Bibtex**:
 
 ```{r, echo=FALSE}
 cat(pub$bibtex)
 ```
+
+**Abstract**:
+
+`r pub$abstract`
