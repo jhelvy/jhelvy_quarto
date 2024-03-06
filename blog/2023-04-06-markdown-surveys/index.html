@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Paul Helveston">
+<meta name="dcterms.date" content="2023-04-06">
+<meta name="description" content="Let’s build this, who’s with me?">
+
+<title>jhelvy.com - {surveydown}: An open source, markdown-based survey framework (that doesn’t exist yet)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HQNG5WQE3X"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- academic icons -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<!-- altmetric icons -->
+<script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+<!-- fontawesome icons -->
+
+<script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
+
+
+<meta property="og:title" content="jhelvy.com - {surveydown}: An open source, markdown-based survey framework (that doesn’t exist yet)">
+<meta property="og:description" content="Let’s build this, who’s with me?">
+<meta property="og:image" content="https://www.jhelvy.com/blog/2023-04-06-markdown-surveys/images/lab/john_helveston_circle.png">
+<meta property="og:site_name" content="https://jhelvy.com">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:title" content="jhelvy.com - {surveydown}: An open source, markdown-based survey framework (that doesn’t exist yet)">
+<meta name="twitter:description" content="Let’s build this, who’s with me?">
+<meta name="twitter:image" content="https://www.jhelvy.com/blog/2023-04-06-markdown-surveys/images/lab/john_helveston_circle.png">
+<meta name="twitter:creator" content="@johnhelveston">
+<meta name="twitter:site" content="@johnhelveston">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">jhelvy.com</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lab.html"> 
+<span class="menu-text">Lab</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Misc. Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../talks/index.html"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bi-list" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-list" role="img">
+</i> 
+ <span class="menu-text"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-bi-list">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/jhelvy/cv/blob/main/cv-jph.pdf" target="blank">
+ <span class="dropdown-text">CV</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://github.com/jhelvy" target="blank"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://twitter.com/JohnHelveston" target="blank"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.linkedin.com/in/jhelvy" target="blank"><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://fediscience.org/\\@jhelvy" target="blank"><i class="bi bi-mastodon" role="img">
+</i> 
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://scholar.google.com/citations?user=DY2D56IAAAAJ" target="blank">
+ <span class="dropdown-text"><i class="ai ai-google-scholar fa-lg"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.researchgate.net/profile/John_Helveston" target="blank">
+ <span class="dropdown-text"><i class="ai ai-researchgate fa-lg"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://orcid.org/0000-0002-2657-9191" target="blank">
+ <span class="dropdown-text"><i class="ai ai-orcid fa-lg"></i></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog.xml" target="blank"><i class="bi bi-rss-fill" role="img">
+</i> 
+ <span class="dropdown-text"></span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#user-interface" id="toc-user-interface" class="nav-link active" data-scroll-target="#user-interface">User interface</a></li>
+  <li><a href="#a-quick-prototype" id="toc-a-quick-prototype" class="nav-link" data-scroll-target="#a-quick-prototype">A quick prototype</a></li>
+  <li><a href="#platforms" id="toc-platforms" class="nav-link" data-scroll-target="#platforms">Platforms</a></li>
+  <li><a href="#please-help" id="toc-please-help" class="nav-link" data-scroll-target="#please-help">Please help!🙏</a></li>
+  <li><a href="#update-1-2023-06-15" id="toc-update-1-2023-06-15" class="nav-link" data-scroll-target="#update-1-2023-06-15">Update 1 (2023-06-15)</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">{surveydown}: An open source, markdown-based survey framework (that doesn’t exist yet)</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">markdown</div>
+    <div class="quarto-category">productivity</div>
+    <div class="quarto-category">package</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>Let’s build this, who’s with me?</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Paul Helveston </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2023-04-06</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<img src="logo.png" width="350">
+</center>
+<p>I do a lot of research using surveys. My current platform of choice is <a href="https://formr.org/">formr</a>, a flexible platform for making surveys using <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> (see my <a href="https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/">blog post</a> on how to use it to implement a choice-based conjoint survey). While formr is powerful in terms of it’s flexibility, it has a bit of a learning curve and isn’t the easiest tool for novices. And alternative platforms like Qualtrics, Google forms, etc. have their own issues, one of which is simply that they use a <a href="https://en.wikipedia.org/wiki/WYSIWYG">WYSIWYG</a> interface, which makes it difficult to collaborate, version control, reproduce, etc.</p>
+<p>I want a markdown-based survey framework. Users should be able to draft plain text / markdown / RMarkdown files that can be compiled into a web-based survey. My inspiration is packages like <a href="https://github.com/yihui/xaringan">{xaringan}</a>, which compiles RMarkdown files into HTML presentation slides using <a href="https://remarkjs.com/">remark.js</a>.</p>
+<p>This framework doesn’t yet exist (or at least I am not award of one that does), but I am confident we could relatively quickly build a working prototype. I’ve even got a name for it: <strong>{surveydown}</strong></p>
+<p>So this post is a call for help. I am laying out my goals for such a framework and asking if anyone out there wants to help take a crack at building it.</p>
+<section id="user-interface" class="level1">
+<h1>User interface</h1>
+<p>My prototype for a markdown-based survey framework would have the following features:</p>
+<section id="all-survey-content-is-defined-in-plain-text-files-e.g.-rmd-yml-etc." class="level3">
+<h3 class="anchored" data-anchor-id="all-survey-content-is-defined-in-plain-text-files-e.g.-rmd-yml-etc.">1. All survey content is defined in plain text files (e.g.&nbsp;Rmd, yml, etc.)</h3>
+</section>
+<section id="all-survey-questions-are-defined-in-a-_questions.yml-file" class="level3">
+<h3 class="anchored" data-anchor-id="all-survey-questions-are-defined-in-a-_questions.yml-file">2. All survey questions are defined in a <code>_questions.yml</code> file</h3>
+<p>Here’s an example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> numeric</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"What's your age?"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span><span class="at"> </span><span class="dv">25</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gender</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> mc</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Which best describes your gender?"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">female</span><span class="kw">:</span><span class="at"> </span><span class="st">"Female"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">male</span><span class="kw">:</span><span class="at"> </span><span class="st">"Male"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">opt_out</span><span class="kw">:</span><span class="at"> </span><span class="st">"Prefer not to say"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Some fields in this file might be:</p>
+<ul>
+<li><code>type</code>: Defines the type of question (e.g.&nbsp;<code>numeric</code> = a numeric entry box, <code>mc</code> = multiple choice, etc.).</li>
+<li><code>required</code>: Respondent must answer the question to continue in the survey (defaults to <code>false</code>).</li>
+<li><code>text</code>: The question text.</li>
+<li><code>option</code>: The set of choices for the question.</li>
+</ul>
+<p>The names used for each question would be used as the column names in the resulting data file once respondents have completed the survey. For example, since I have two questions called <code>age</code> and <code>gender</code>, the resulting data might look something like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; # A tibble: 3 × 3
+#&gt;   respondent   age gender 
+#&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1          1    25 female 
+#&gt; 2          2    30 male   
+#&gt; 3          3    32 opt_out</code></pre>
+</div>
+</div>
+<p>Here I am storing the option <em>values</em> (e.g.&nbsp;<code>"opt_out"</code>) instead of the option <em>labels</em> (e.g.&nbsp;<code>"Prefer not to say"</code>) in each cell, though this could be optional.</p>
+</section>
+<section id="all-content-displayed-in-the-survey-is-defined-in-plain-text-rmd-files" class="level3">
+<h3 class="anchored" data-anchor-id="all-content-displayed-in-the-survey-is-defined-in-plain-text-rmd-files">3. All content displayed in the survey is defined in plain text / Rmd files</h3>
+<p>For example, a basic survey might have the following files:</p>
+<ul>
+<li><code>welcome.Rmd</code>: Basic welcome page.</li>
+<li><code>screener.Rmd</code>: Contains screen questions to filter out only elligible respondents.</li>
+<li><code>other.Rmd</code>: Other questions for those who got through the screener.</li>
+<li><code>end.Rmd</code>: Final survey page.</li>
+</ul>
+<p>The <code>welcome.Rmd</code> file might have the following content:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Welcome!</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>This is a survey!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here the <code>---</code> symbol would indicate a page break in the survey, similar to how slide breaks work in {xaringan}.</p>
+</section>
+<section id="survey-questions-are-inserted-with-a-simple-interface-e.g." class="level3">
+<h3 class="anchored" data-anchor-id="survey-questions-are-inserted-with-a-simple-interface-e.g.">4. Survey questions are inserted with a simple interface, e.g.&nbsp;{{ }}</h3>
+<p>For example, a double curly bracket could be used to insert the <code>age</code> and <code>gender</code> questions, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>{{ question age }}</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>{{ question gender }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This allows the survey designer the ability to separately handle the survey <em>questions</em> from all other content. That way they don’t have to dig through their Rmd files to edit the question labels or response options - they can just edit the <code>_questions.yml</code> file and everything else in the survey remains unchanged.</p>
+</section>
+<section id="survey-control-logic-is-defined-in-a-_survey.yml-file" class="level3">
+<h3 class="anchored" data-anchor-id="survey-control-logic-is-defined-in-a-_survey.yml-file">5. Survey control logic is defined in a <code>_survey.yml</code> file</h3>
+<p>In this file, the user should be able to control the sequencing of the survey content, such as skipping questions depending on a specific response in a screener question. An example might be:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">survey</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  welcome.Rmd</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">  screener.Rmd</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">skip</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> age &gt; 40</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">distination</span><span class="kw">:</span><span class="at"> end_screen.Rmd</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">  other.Rmd</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  end.Rmd</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">  stop</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">  end_sreen.Rmd</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">  stop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The logic in this example would show the respondent the content in <code>welcome.Rmd</code> and <code>screener.Rmd</code>, and then it would evaluate the response to the <code>age</code> question (assuming it was shown in <code>screener.Rmd</code>). In this survey, the respondent is sent to the <code>end_screen.Rmd</code> page if their age is greater than 40, otherwise they would continue on to the <code>other.Rmd</code> and <code>end.Rmd</code> pages. A word like <code>stop</code> would be a special word that stops the survey at that point.</p>
+</section>
+<section id="ability-to-run-code-in-the-survey" class="level3">
+<h3 class="anchored" data-anchor-id="ability-to-run-code-in-the-survey">6. Ability to run code in the survey</h3>
+<p>The ability to run code during a survey is perhaps the most promising aspect this framework. The <a href="https://formr.org/">formr</a> platform can do exactly this, and it is the inspiration for why I feel this feature must be built into {surveydown} one way or another.</p>
+<p>How to implement this is an open challenge. There are a number of ways to do it, and the exact implementation will probably depend on other aspects of how the package is built, but one idea is to leverage an idea related to <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html">child documents</a>. I can imagine that users could make child Rmd files that contain code chunks that define aspects of questions, and then reference them in the <code>_questions.yml</code> file, something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apples</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> mc</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"What's your favorite apple?"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">child</span><span class="kw">:</span><span class="at"> /child/apples.Rmd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What exactly would go in the <code>/child/apples.Rmd</code> file is yet to be defined, but it might require code chunks that contain {surveydown} functions for defining aspects of the question, such as the text, options, etc. This obviously has not yet been well thought out, but I mention it here as it is an important concept to keep in mind as other aspects of the framework are constructed.</p>
+</section>
+</section>
+<section id="a-quick-prototype" class="level1 page-columns page-full">
+<h1>A quick prototype</h1>
+<p>Rather than start completely from scratch, I decided to build on the <a href="https://shinysurveys.jdtrat.com/">{shinysurveys} package</a> (by <a href="https://www.jdtrat.com/">Jonathan Trattner</a> and <a href="https://www.lucymcgowan.com/">Lucy D’Agostino McGowan</a>) for a very quick prototype of this framework. My prototype is not at all complete - most of the features I have listed are not implemented. All it really does is allow the user to define questions in a <code>_questions.yml</code> file, and then runs a shiny app with those questions in series (so no Rmd files, page breaks, etc.). The code for this prototype can be found in the repo I set up for this project: <a href="https://github.com/jhelvy/surveydown">github.com/jhelvy/surveydown</a></p>
+<p>The <a href="https://github.com/jhelvy/surveydown/blob/main/shiny-example/survey/_questions.yml"><code>_questions.yml</code></a> file contains this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">age</span><span class="kw">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> numeric</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"What's your age?"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span><span class="at"> </span><span class="dv">25</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gender</span><span class="kw">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> mc</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Which best describes your gender?"</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">female</span><span class="kw">:</span><span class="at"> </span><span class="st">"Female"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">male</span><span class="kw">:</span><span class="at"> </span><span class="st">"Male"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">opt_out</span><span class="kw">:</span><span class="at"> </span><span class="st">"Prefer not to say"</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">self_desc</span><span class="kw">:</span><span class="at"> </span><span class="st">"Prefer to self describe"</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">gender_self_describe</span><span class="kw">:</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> text</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Which best describes your gender?"</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dependence</span><span class="kw">:</span><span class="at"> gender</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dependence_value</span><span class="kw">:</span><span class="at"> </span><span class="st">"Prefer to self describe"</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="fu">education</span><span class="kw">:</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> select</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"What is the highest level of education you have attained?"</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">hs_no</span><span class="kw">:</span><span class="at"> </span><span class="st">"Did not attend high school"</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">hs_some</span><span class="kw">:</span><span class="at">  </span><span class="st">"Some high school"</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">hs_grad</span><span class="kw">:</span><span class="at"> </span><span class="st">"High school graduate"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">college_some</span><span class="kw">:</span><span class="at"> </span><span class="st">"Some college"</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">college_grad</span><span class="kw">:</span><span class="at"> </span><span class="st">"College"</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">grad</span><span class="kw">:</span><span class="at"> </span><span class="st">"Graduate Work"</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">no_response</span><span class="kw">:</span><span class="at"> </span><span class="st">"Prefer not to say"</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="fu">rexper</span><span class="kw">:</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> mc</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Have you ever learned to program in R?"</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">option</span><span class="kw">:</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">yes</span><span class="kw">:</span><span class="at"> </span><span class="st">"Yes"</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">no</span><span class="kw">:</span><span class="at"> </span><span class="st">"No"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When run, the basic example makes a shiny survey that looks like this:</p>
+<center>
+<img src="simple-survey.png" width="600">
+</center>
+<center>
+<img src="success.gif" width="400">
+</center>
+<aside>
+Gif from https://vsgif.com/gif/2859497
+</aside>
+</section>
+<section id="platforms" class="level1">
+<h1>Platforms</h1>
+<p>Okay, I’ve got a <em>very</em> basic survey working in Shiny, but it’s far from complete. It doesn’t even have a database backend or anything - just a UI built from a <code>_questions.yml</code> file. And Shiny may not be the best platform to build this framework in - it’s just the first thing I found that I could quickly implement without having to learn too much. There are other options, and that’s where I would really like to hear from others about the best direction to go next.</p>
+<p>At the highest level, I believe the goal should be to develop the framework as an R or python package. Since I prefer R and am more familiar with similar packages like {xaringan}, my starting point would be to develop an R package that uses R code to convert the text files defined by a user into the code for an online survey.</p>
+<p>This framework could use a number of different underlying platforms though to implement the final survey. So in some ways we have to work backwards - find a platform we like that makes good surveys and supports an easy database backend for storing responses, then build the R (or python) package that converts the markdown text files into the code for that survey.</p>
+<section id="shiny" class="level3">
+<h3 class="anchored" data-anchor-id="shiny">Shiny?</h3>
+<p>Shiny is a convenient package for building this framework as it already comes with all of the widgets needed for most types of survey questions. It’s also something that many R users (and a lot of academics who might make these surveys) already know. It has some simple and relatively streamlined approaches to hosting too, such as <a href="https://www.shinyapps.io/">shinyapps.io</a>. Finally, the ability to run code in the survey should also be relatively straightforward in Shiny.</p>
+<p>The downside to working with shiny is that is isn’t really designed for <em>collecting</em> data as much as it is for <em>displaying</em> data. That said, one approach I have used in the past to store and manage data for a Shiny app is to hook it into a Google sheet. While it’s a little hacky, it might actually work okay for this context because surveys usually don’t require enormous sizes - the databases are often a few thousand rows at most and maybe tens to hundreds of columns (quite easily something a Google sheet could handle). I mean, Google uses sheets for Google forms, so why not? <a href="https://www.airtable.com/">Airtable</a> is another similar option here.</p>
+<p>So Shiny is an option, and we could build upon / modify the {shinysurveys} package as a starting point. But a key question would be about the best way to integrate a database backend for managing responses.</p>
+</section>
+<section id="surveyjs" class="level3">
+<h3 class="anchored" data-anchor-id="surveyjs">SurveyJS?</h3>
+<p>I haven’t used it, but <a href="https://surveyjs.io/">SurveyJS</a> looks really nice. I imagine it wouldn’t be too difficult to write some R functions that convert markdown inputs into a SurveyJS survey. It looks like it may be more flexible than Shiny, and it seems to have lovely database backend integrations, but there would be a much larger learning curve to build it (at least for me…maybe a JS expert out there wants to take the lead?). It’s certainly doable. After all, {xaringan} uses reactjs, and Quarto surveys use revealjs…maybe {surveydown} should use SurveyJS?</p>
+<p>One challenge it poses though is the ability to run code in the background. I don’t yet see a clear way to do something like run code chunks, so this feature may need to be cut to make it work.</p>
+</section>
+<section id="qualtrics-surveymonkey" class="level3">
+<h3 class="anchored" data-anchor-id="qualtrics-surveymonkey">Qualtrics? SurveyMonkey?</h3>
+<p>The survey gorillas like <a href="https://www.qualtrics.com/">Qualtrics</a> and <a href="https://www.surveymonkey.com/">SurveyMonkey</a> are solid survey providers with loads of other features. Why reinvent the wheel? So another option is to build a package that does the translation of converting markdown files into something that is uploadable to one of these sites. I am not a big user of them, so I don’t even know if this is possible, but if it is then it would solve a lot of issues.</p>
+<p>So in this case a {surveydown} package would really be a markdown-based framework to design and preview the survey UI. Once the user is happy with it, they would upload it to Qualtrics, SurveyMonkey, etc. and field their survey.</p>
+<p>An obvious downside is that it’s not open source (though I don’t think the entire toolchain needs to be for this to still be useful). Also, again the ability to run code in the survey may be lost, so that too is a considerable downside to this approach.</p>
+</section>
+</section>
+<section id="please-help" class="level1">
+<h1>Please help!🙏</h1>
+<p>If you like this idea and want to contribute, I started a repo here: https://github.com/jhelvy/surveydown</p>
+<p>I include my basic Shiny example in the <a href="https://github.com/jhelvy/surveydown/tree/main/shiny-example"><code>shiny-example</code></a> folder. I’m not committed to using Shiny as the underlying platform, though I can at least envision how it might work.</p>
+<p>If you have any thoughts on this, please do leave comments here or open an <a href="https://github.com/jhelvy/surveydown/issues">issue</a>. I would love to see this framework built, and I think it could really improve and simplify the survey design process for many researchers.</p>
+<p>Thanks for reading, and hopefully we’ll get this built one day!</p>
+</section>
+<section id="update-1-2023-06-15" class="level1">
+<h1>Update 1 (2023-06-15)</h1>
+<p>After playing around with different versions of a UI, I’ve converged on a rather different approach to defining survey content. When using the UI originally described in this post, everything just felt too disaggregated. It lacked the cohesiveness that I love when, for example, making a presenting using {xaringan}. I missed having everything in a single RMarkdown file where the UI was much closer to literate programming.</p>
+<p>So I’ve come up with a simpler UI. In this UI, you have a single <code>survey.Rmd</code> file (might also consider a .qmd Quarto file) where the survey theme and control logic is defined in a YAML at the top and all of the survey content is defined in the body. An example YAML might look like this:</p>
+<pre><code>---
+name: "surveydown demo"
+author: "John Paul Helveston"
+output:
+  surveydown::survey:
+    css:
+      - default
+    lib_dir: libs
+    control:
+      skip:
+        condition: color == "Blue"
+        destination: end_screenout
+      stop: end
+      stop: end_screenout
+---</code></pre>
+<p>Here the <code>surveydown::survey:</code> section is where we could define all global options to the survey. I’ve added a <code>control</code> section to define flow logic. I could also imagine including a link to a database, etc.</p>
+<p>Then the body of the survey would feel just like a normal RMarkdown file. You could add any general markdown you want and insert questions using a code chunk with a <code>question()</code> function, something like this:</p>
+<pre><code>```{r}
+question(
+  name     = 'color',
+  type     = 'mc',
+  required = TRUE,
+  label    = "Do you want to take the red pill or the blue pill?",
+  option   = c('Red', 'Blue')
+)
+```</code></pre>
+<p>The survey could be rendered into a view only mode with a simple function, like <code>surveydown::render_survey(file = 'survey.Rmd')</code>. Then to make the survey go live, it could be hosted on shinyapps.io (or a different server) with another function, maybe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>surveydown<span class="sc">::</span><span class="fu">host_survey</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">folder =</span> <span class="st">'survey'</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_url =</span> <span class="st">'path_to_googlesheet'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="st">'api_key'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This UI overall is much more simplified and allows for more complexity in how questions are defined. For example, you can write R code to define the options in a question, or you could read in a set of options from an external file.</p>
+<p>Obviously a lot of work needs to be done to make something like this a reality, but it at least provides a goal.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/www\.jhelvy\.com");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ © 2024 John Paul Helveston
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
