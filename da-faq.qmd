@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-This page contains information for students in the [Master of Science in Data Analytics program](http://bulletin.gwu.edu/engineering-applied-science/engineering-management-systems-engineering/data-analytics-ms/#requirementstext) at George Washington University. Last Updated: `r Sys.Date()`
+This page contains information for students in the [Master of Science in Data Analytics program](http://bulletin.gwu.edu/engineering-applied-science/engineering-management-systems-engineering/data-analytics-ms/#requirementstext) at George Washington University.
 
 - If you have questions about the EMSE track, contact [Prof. John Paul Helveston](mailto:jph@gwu.edu)
 - If you have questions about the CS track, contact [Prof. Tim Wood](mailto:timwood@gwu.edu)
