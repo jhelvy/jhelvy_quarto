@@ -1,14 +1,21 @@
 [
   {
-    "listing": "/talks/index.html",
+    "listing": "/research/index.html",
     "items": [
-      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
-      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
-      "/talks/2021-12-01-isa-battery-webinar/index.html",
-      "/talks/2021-07-06-useR-healthy-hands/index.html",
-      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
-      "/talks/2021-01-21-surveys-with-formr/index.html",
-      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
+      "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
+      "/research/2018-transportation-research-part-b-methodological/index.html",
+      "/research/2019-environmental-research-letters/index.html",
+      "/research/2019-research-policy/index.html",
+      "/research/2019-science/index.html",
+      "/research/2020-environmental-research-letters/index.html",
+      "/research/2020-marketing-letters/index.html",
+      "/research/2021-systems-engineering/index.html",
+      "/research/2022-environmental-research-letters/index.html",
+      "/research/2022-nature/index.html",
+      "/research/2023-joule/index.html",
+      "/research/2023-journal-of-statistical-software/index.html",
+      "/research/2023-systems-engineering/index.html",
+      "/research/2023-transportation-research-record/index.html"
     ]
   },
   {
@@ -26,22 +33,15 @@
     ]
   },
   {
-    "listing": "/research/index.html",
+    "listing": "/talks/index.html",
     "items": [
-      "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
-      "/research/2018-transportation-research-part-b-methodological/index.html",
-      "/research/2019-environmental-research-letters/index.html",
-      "/research/2019-research-policy/index.html",
-      "/research/2019-science/index.html",
-      "/research/2020-environmental-research-letters/index.html",
-      "/research/2020-marketing-letters/index.html",
-      "/research/2021-systems-engineering/index.html",
-      "/research/2022-environmental-research-letters/index.html",
-      "/research/2022-nature/index.html",
-      "/research/2023-joule/index.html",
-      "/research/2023-journal-of-statistical-software/index.html",
-      "/research/2023-systems-engineering/index.html",
-      "/research/2023-transportation-research-record/index.html"
+      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
+      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
+      "/talks/2021-12-01-isa-battery-webinar/index.html",
+      "/talks/2021-07-06-useR-healthy-hands/index.html",
+      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
+      "/talks/2021-01-21-surveys-with-formr/index.html",
+      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
     ]
   }
 ]
