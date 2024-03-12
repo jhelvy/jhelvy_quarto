@@ -16,6 +16,7 @@ project:
     - "blog/index.qmd"
     - "blog/**/*.qmd"
     - "research/**/*.qmd"
+    - "charts.qmd"
     - "404.qmd"
     - "da-faq.qmd"
     - "!research/template.qmd"
