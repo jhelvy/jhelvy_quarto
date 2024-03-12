@@ -8,6 +8,7 @@ project:
     - "index.qmd"
     - "about.qmd"
     - "lab.qmd"
+    - "cv.qmd"
     - "research.qmd"
     - "projects.qmd"
     - "teaching.qmd"
@@ -64,7 +65,7 @@ website:
       - icon: list
         menu:
           - text: "CV"
-            href: https://github.com/jhelvy/cv/blob/main/cv-jph.pdf
+            href: cv.qmd
             target: blank
           - icon: github
             href: https://github.com/jhelvy
