@@ -25,7 +25,8 @@ icon_link(
 )
 icon_link(
     text = "CV",
-    url  = "https://github.com/jhelvy/cv/blob/main/cv-jph.pdf"
+    url  = "cv.html", 
+    target = "_self"
 )
 ```
 
