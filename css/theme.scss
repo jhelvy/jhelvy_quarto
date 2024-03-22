@@ -6,6 +6,7 @@ $primary-color: #5480a7;
 $blue: #5480a7;
 $primary-color-dark: #2c3f51;
 $secondary-color: #56A754;
+$secondary-color-trans: rgba(86, 167, 84, 0.2);
 $tertiary-color: #A77B54;
 $link-color: $primary-color;
 $body-bg: #f2f6f9;
@@ -95,11 +96,20 @@ hr {
     padding: 1px 4px 1px 4px;
     margin: 1px 1px 1px 1px;
     border-radius: 5px; /* Rounded edges */
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
 }
 
 .icon-link:hover {
     background-color: $secondary-color;
     color: white;
+    box-shadow: 0px 10px 15px $secondary-color-trans;
+    transform: translateY(-2px);
 }
 
 .icon-link-summary {
@@ -108,10 +118,20 @@ hr {
     padding: 4px 5px 4px 5px;
     margin: 1px 1px 1px 1px;
     border-radius: 5px; /* Rounded edges */
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
 }
 
 .icon-link-summary:hover {
     background-color: $secondary-color;
+    color: white;
+    box-shadow: 0px 10px 15px $secondary-color-trans;
+    transform: translateY(-2px);
 }
 
 .panel-tabset [role="tablist"] {
@@ -177,22 +197,6 @@ div.callout-note.callout-style-default>.callout-header {
 aside, .column-margin {
     color: $tertiary-color;
     font-size: .825rem;
-}
-
-/* Buttons on projects page */
-
-.btn-primary {
-    background-color: $primary-color;
-    color: #FFFFFF;
-    padding: 3px 5px 3px 5px;
-    margin: 0 2px 0 2px;
-    border-radius: 5px; /* Rounded edges */
-    border: 0px;
-}
-
-.btn-primary:hover {
-    background-color: $secondary-color;
-    color: #FFFFFF;
 }
 
 blockquote {
