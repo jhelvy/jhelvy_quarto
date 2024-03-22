@@ -25,6 +25,7 @@ project:
     - "content/"
     - "css"
     - "splitkbcompare.html"
+    - "static/"
 
 website:
   title: "jhelvy.com"
