@@ -1,0 +1,11 @@
+/blog/2021-03-25-customizing-distill-with-htmltools-and-css /posts/2021-03-25-customizing-distill-with-htmltools-and-css
+/blog/2021-05-04-expand-your-productivity-with-espanso /posts/2021-05-04-expand-your-productivity-with-espanso
+/blog/2021-07-03-in-search-of-keyboard-nirvana /posts/2021-07-03-in-search-of-keyboard-nirvana
+/blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr /posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr
+/blog/2021-10-19-monte-carlo-bridge-game /posts/2021-10-19-monte-carlo-bridge-game
+/blog/2022-06-28-introducing-renderthis /posts/2022-06-28-introducing-renderthis
+/blog/2022-12-26-why-chess-is-better-than-golf /posts/2022-12-26-why-chess-is-better-than-golf
+/blog/2023-02-28-parameterized-pdfs-with-quarto /posts/2023-02-28-parameterized-pdfs-with-quarto
+/blog/2023-04-06-markdown-surveys /posts/2023-04-06-markdown-surveys
+
+
