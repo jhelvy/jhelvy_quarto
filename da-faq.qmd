@@ -73,6 +73,13 @@ The [full requirements in the Bulletin](http://bulletin.gwu.edu/engineering-appl
 
 No. This is not required as long as you have a statistics/probability course at the undergraduate level. Taking **EMSE 6765 Data Analysis for Engineers and Scientists will also meet this need.**
 
+### Can you help me choose electives?
+
+In general, any 6000 level course should generally be able to be counted for one of your two unrestricted electives. To find courses you may be interested in, check these resources:
+
+- View the [schedule of classes](https://my.gwu.edu/mod/pws/index.cfm) to see what will actually be offered in the semester you are interested in. Not all courses are offered every semester, and this is the best way to know what will actually be offered.
+- View [this Google sheet](https://docs.google.com/spreadsheets/d/1PA4o0bH3TPpPpGG5OHWRKvkUoDgmQ1gmBw3dlJPDjh0/edit?usp=sharing) of common electives. While this list is not a comprehensive list of all electives, it does represent courses that DA students have taken in the past. It is a good list to start with when searching for electives, and it is continuously updated.
+
 ### How many courses do I need in my focus area (CS or EMSE)?
 
 You must take at least **3** courses in the track you have selected – two are required and the third is any of your choice from that department.
