@@ -96,11 +96,11 @@ The course is typically only offered in the spring, though some years we also of
 
 ### I want to register for a 6000 level course, but I'm restricted, how do I register?
 
-Some courses have restrictions on who can register for a variety of reasons. Often times the restriction is due to missing prerequisite courses or the course is only offered to majors in that field (e.g. most courses in DATS are restricted to DATS majors). In these cases, you typically need to fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) form. Here are some details:
+Some courses have restrictions on who can register for a variety of reasons. Often times the restriction is due to missing prerequisite courses or the course is only offered to majors in that field (e.g. most courses in DATS are restricted to DATS majors). In these cases, you typically need to fill out an [RTF]({{< var rtf_url >}}){target="_blank"} form. Here are some details:
 
-- For EMSE courses: Fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) and send it to [Professor Helveston](mailto:jph@gwu.edu) for approval.
-- For CSCI courses: Go to the [CS Department’s Registration help form](go.gwu.edu/csregs) and fill out the request form. Dr. Tim Wood will take care of processing the request.
-- For any other course: Fill out an [RTF](https://registrar.gwu.edu/sites/g/files/zaxdzs2171/f/downloads/RegistrationTransactionForm_March2022.pdf) and send it to the course instructor for approval. In these cases (especially if it's a course outside of SEAS), also include a message as to why you want to enroll in the course. 
+- For EMSE courses: Fill out an [RTF]({{< var rtf_url >}}){target="_blank"} and send it to [Professor Helveston](mailto:jph@gwu.edu) for approval.
+- For CSCI courses: Go to the [CS Department’s Registration help form](https://go.gwu.edu/csregs) and fill out the request form. Dr. Tim Wood will take care of processing the request.
+- For any other course: Fill out an [RTF]({{< var rtf_url >}}){target="_blank"} and send it to the course instructor for approval. In these cases (especially if it's a course outside of SEAS), also include a message as to why you want to enroll in the course.
 
 In general, if there are prerequisite issues preventing you from registering, also explain in your email why you should be exempt from the prerequisite (e.g. you have prior experience or have taken a similar course, etc.).
 
