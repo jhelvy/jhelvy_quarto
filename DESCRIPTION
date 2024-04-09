@@ -23,7 +23,6 @@ Imports:
     knitr,
     markdown,
     remotes,
-    rmarkdown,
     roxygen2,
     tidyverse,
     viridis
