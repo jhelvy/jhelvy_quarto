@@ -1,17 +1,5 @@
 [
   {
-    "listing": "/talks/index.html",
-    "items": [
-      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
-      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
-      "/talks/2021-12-01-isa-battery-webinar/index.html",
-      "/talks/2021-07-06-useR-healthy-hands/index.html",
-      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
-      "/talks/2021-01-21-surveys-with-formr/index.html",
-      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
-    ]
-  },
-  {
     "listing": "/blog/index.html",
     "items": [
       "/blog/2023-04-06-markdown-surveys/index.html",
@@ -23,6 +11,18 @@
       "/blog/2021-07-03-in-search-of-keyboard-nirvana/index.html",
       "/blog/2021-05-04-expand-your-productivity-with-espanso/index.html",
       "/blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html"
+    ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": [
+      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
+      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
+      "/talks/2021-12-01-isa-battery-webinar/index.html",
+      "/talks/2021-07-06-useR-healthy-hands/index.html",
+      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
+      "/talks/2021-01-21-surveys-with-formr/index.html",
+      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
     ]
   },
   {
@@ -41,7 +41,8 @@
       "/research/2023-joule/index.html",
       "/research/2023-journal-of-statistical-software/index.html",
       "/research/2023-systems-engineering/index.html",
-      "/research/2023-transportation-research-record/index.html"
+      "/research/2023-transportation-research-record/index.html",
+      "/research/2024-environmental-research-letters/index.html"
     ]
   }
 ]
