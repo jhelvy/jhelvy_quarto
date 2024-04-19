@@ -43,39 +43,53 @@ pubs <- get_pubs()
 
 <br>
 
-## Peer-Reviewed Publications
+## Refereed (Peer-Reviewed) Journal Articles
 
 <aside>*indicates student advised by Helveston</aside>
 
 `r make_pub_list(pubs, "peer_reviewed")`
 
+## Refereed Articles in Conference Proceedings
+
+`r make_pub_list(pubs, "conference")`
+
 ## Working Papers & Papers Under Review
 
 `r make_pub_list(pubs, "working")`
-
-## Conference Publications
-
-`r make_pub_list(pubs, "conference")`
 
 ## Magazine Publications
 
 `r make_pub_list(pubs, "magazine")`
 
-## Books / Book Chapters
+## Books
 
 `r make_pub_list(pubs, "book")`
 
-## Theses
+## Book Chapters
 
-`r make_pub_list(pubs, "theses")`
+`r make_pub_list(pubs, "book_chapter")`
+
+## Magazine Publications
+
+`r make_pub_list(pubs, "magazine")`
 
 ## Opinion Editorials
 
 `r make_pub_list(pubs, "oped")`
 
-## Other Publications
+## Other
 
 `r make_pub_list(pubs, "other")`
+
+## Theses
+
+`r make_pub_list(pubs, "theses")`
+
+## Student Theses
+
+<aside>Theses by students advised by Helveston</aside>
+
+`r make_pub_list(pubs, "theses_student")`
 
 ## Software
 
