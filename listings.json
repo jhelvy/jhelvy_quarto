@@ -1,5 +1,25 @@
 [
   {
+    "listing": "/research/index.html",
+    "items": [
+      "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
+      "/research/2018-transportation-research-part-b-methodological/index.html",
+      "/research/2019-environmental-research-letters/index.html",
+      "/research/2019-research-policy/index.html",
+      "/research/2019-science/index.html",
+      "/research/2020-environmental-research-letters/index.html",
+      "/research/2020-marketing-letters/index.html",
+      "/research/2021-systems-engineering/index.html",
+      "/research/2022-environmental-research-letters/index.html",
+      "/research/2022-nature/index.html",
+      "/research/2023-joule/index.html",
+      "/research/2023-journal-of-statistical-software/index.html",
+      "/research/2023-systems-engineering/index.html",
+      "/research/2023-transportation-research-record/index.html",
+      "/research/2024-environmental-research-letters/index.html"
+    ]
+  },
+  {
     "listing": "/blog/index.html",
     "items": [
       "/blog/2023-04-06-markdown-surveys/index.html",
@@ -23,26 +43,6 @@
       "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
       "/talks/2021-01-21-surveys-with-formr/index.html",
       "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
-    ]
-  },
-  {
-    "listing": "/research/index.html",
-    "items": [
-      "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
-      "/research/2018-transportation-research-part-b-methodological/index.html",
-      "/research/2019-environmental-research-letters/index.html",
-      "/research/2019-research-policy/index.html",
-      "/research/2019-science/index.html",
-      "/research/2020-environmental-research-letters/index.html",
-      "/research/2020-marketing-letters/index.html",
-      "/research/2021-systems-engineering/index.html",
-      "/research/2022-environmental-research-letters/index.html",
-      "/research/2022-nature/index.html",
-      "/research/2023-joule/index.html",
-      "/research/2023-journal-of-statistical-software/index.html",
-      "/research/2023-systems-engineering/index.html",
-      "/research/2023-transportation-research-record/index.html",
-      "/research/2024-environmental-research-letters/index.html"
     ]
   }
 ]
