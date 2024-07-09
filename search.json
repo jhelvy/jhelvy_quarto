@@ -224,18 +224,18 @@
     "text": "Magazine Publications\n\n\n\n\n\n*Kaplan, Leah, Szajnfarber, Z., & Helveston, John P. (2023) “Driverless – but not humanless – vehicle systems” IISE Magazine. November.\n\n\n\n\n\n\n\n\n\n PDF\n\n\n\n\n\nHaiku Summary   AV taxis will • transform labor, not remove • it altogether \n\n\n\n\n\n\n\nHelveston, John P. (2021) “Why the US Trails the World in Electric Vehicles” Issues in Science and Technology. 37, no. 2 (Winter 2021).\n\n\n\n\n\n\n\n\n\n View PDF Scholar\n\n\n\n\n\n US policies • must be more aggressive to • increase EV sales \n\n\n\n\n\n\n\nHelveston, John P. (2017) “Perspective: Navigating an Uncertain Future for US Roads” Issues in Science and Technology. 34, no. 1 (Fall 2017).\n\n\n\n\n\n\n\n\n\n View PDF Scholar\n\n\n\n\n\n We should tax miles • driven (not fuel consumed), or • our roads will crumble"
   },
   {
-    "objectID": "research.html#books",
-    "href": "research.html#books",
-    "title": "Research",
-    "section": "Books",
-    "text": "Books\n\n\n\n\n\nHelveston, John P. and **Lola Nurullaeva (2024) “Yet Another R Dataviz (YARD) Book”\n\n\n\n\n\n\n\n\n\n View Code & Data\n\n\n\n\n\nHaiku Summary   An open source book • on good dataviz concepts • in the R language \n\n\n\n\n\n\n\nHelveston, John P. (2022) “Programming for Analytics in R.”\n\n\n\n\n\n\n\n\n\n View Code & Data\n\n\n\n\n\n An open source book • on programming in R and • working with data"
-  },
-  {
     "objectID": "research.html#book-chapters",
     "href": "research.html#book-chapters",
     "title": "Research",
     "section": "Book Chapters",
     "text": "Book Chapters\n\n\n\n\n\nRen, Justin Z. & Helveston, John P. (2019) “Measuring Electric Vehicle Infrastructure Among Cities: A Multi-Dimensional Approach” Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O.. Harvard University Press.\n\n\n\n\n\n\n\n\n\n View PDF\n\n\n\n\n\n\n\n\nHatch, Jennifer & Helveston, J.P. (2019) “Brookline, MA: A Small Town seeking to lead in a Broader EV Charging Network” Melting the ICE: Lessons from China and the West in the Transition from the Internal Combustion Engine to Electric Vehicles. Ed. Fox-Penner, P., Ren, Z.J., & Jermain, D.O.. Harvard University Press.\n\n\n\n\n\n\n\n\n\n View PDF"
+  },
+  {
+    "objectID": "research.html#textbooks",
+    "href": "research.html#textbooks",
+    "title": "Research",
+    "section": "Textbooks",
+    "text": "Textbooks\n\n\n\n\n\nHelveston, John P. and **Lola Nurullaeva (2024) “Yet Another R Dataviz (YARD) Book”\n\n\n\n\n\n\n\n\n\n View Code & Data\n\n\n\n\n\nHaiku Summary   An open source book • on good dataviz concepts • in the R language \n\n\n\n\n\n\n\nHelveston, John P. (2022) “Programming for Analytics in R.”\n\n\n\n\n\n\n\n\n\n View Code & Data\n\n\n\n\n\n An open source book • on programming in R and • working with data"
   },
   {
     "objectID": "research.html#magazine-publications-1",
@@ -277,7 +277,7 @@
     "href": "research.html#software",
     "title": "Research",
     "section": "Software",
-    "text": "Software\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) (2021) “logitr: Fast Estimation of Multinomial and Mixed Logit Models with Preference Space and Willingness to Pay Space Utility Parameterizations” R package version 0.8.0.\n\n\n\n\n\n\n\n\n\n PDF Documentation\n\n\n\n\n\nHaiku Summary   Fast estimation • of mixed logit models and • WTP in R \n\n\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) & Aden-Buie, Garrick (aut) (2021) “renderthis: Render Slides To Different Formats” R package version 0.2.0.\n\n\n\n\n\n\n\n\n\n Documentation\n\n\n\n\n\n Render your slides to • formats like PDF and • PNG and more! \n\n\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) (2021) “cbcTools: Tools For Designing Choice-Based Conjoint Survey Experiments” R package version 0.0.3.\n\n\n\n\n\n\n\n\n\n Documentation\n\n\n\n\n\n Make designs for choice • experiments in R and • test them thoroughly"
+    "text": "Software\n\n\n\n\n\nHelveston, John P. (aut, cre, cph), *Pingfan Hu (aut, cre), **Bogdan Bunea (aut, cre) (2024) “surveydown: Markdown-Based Surveys Using Quarto Shiny Documents” R package version 0.0.1.\n\n\n\n\n\n\n\n\n\n Documentation\n\n\n\n\n\nHaiku Summary   Generate surveys • with Quarto, shiny, and plain • markdown text and code \n\n\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) (2021) “logitr: Fast Estimation of Multinomial and Mixed Logit Models with Preference Space and Willingness to Pay Space Utility Parameterizations” R package version 0.8.0.\n\n\n\n\n\n\n\n\n\n PDF Documentation\n\n\n\n\n\n Fast estimation • of mixed logit models and • WTP in R \n\n\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) & Aden-Buie, Garrick (aut) (2021) “renderthis: Render Slides To Different Formats” R package version 0.2.0.\n\n\n\n\n\n\n\n\n\n Documentation\n\n\n\n\n\n Render your slides to • formats like PDF and • PNG and more! \n\n\n\n\n\n\n\nHelveston, John P. (aut, cre, cph) (2022) “cbcTools: Tools For Designing Choice-Based Conjoint Survey Experiments” R package version 0.0.3.\n\n\n\n\n\n\n\n\n\n Documentation\n\n\n\n\n\n Make designs for choice • experiments in R and • test them thoroughly"
   },
   {
     "objectID": "research.html#media-coverage",
