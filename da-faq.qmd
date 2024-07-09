@@ -88,7 +88,7 @@ You must take at least **3** courses in the track you have selected – two are 
 
 If it is a 6000 level course, then generally yes it can be one of your two unrestricted electives. You should contact your advisor for approval first.
 
-Yes, but you will need to fill out the [CS Department’s Registration help form](go.gwu.edu/csregs). Contact your advisor or cs@gwu.edu for more information.
+Yes, but you will need to fill out the [CS Department’s Registration help form](https://go.gwu.edu/csregs). Contact your advisor or cs@gwu.edu for more information.
 
 ### Can the SEAS 6402 DA Capstone course only be taken in Spring semesters?
 
