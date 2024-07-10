@@ -65,7 +65,7 @@ pubs <- get_pubs()
 
 `r make_pub_list(pubs, "book_chapter")`
 
-## Textbooks
+## Open-Source Books
 
 `r make_pub_list(pubs, "textbook")`
 
