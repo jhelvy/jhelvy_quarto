@@ -27,7 +27,7 @@ source("_common.R")
 
 # Technology Change Lab
 
-I study relationships between technological change and consumers, firms, markets, and policy, with a goal of accelerating transitions to environmentally sustainable and energy-saving technologies.
+I study relationships between consumers, firms, markets, policy, and technological change to inform policy aimed at accelerating transitions to environmentally sustainable low-carbon technologies, such as electric vehicles and renewable energy technologies.
 
 :::
 
@@ -35,10 +35,10 @@ I study relationships between technological change and consumers, firms, markets
 
 # Topics
 
-- **Technology Change**: Study how consumers, firms, markets, and policy affect the nature & pace of transitioning to new technologies.
-- **Market Analytics for Decision Making**: Measure and model consumer preferences to assess policy and product design and simulate consumer choice behavior.
-- **Electric Vehicles & Sustainable Transportation Technologies**: Assess barriers and opportunities to accelerate the development & adoption of sustainable transportation technologies.
-- **U.S.-China Climate Relationship**: Study the critical relationship between the U.S. and China in developing and mass producing low carbon energy technologies.
+- **Clean Technology Development & Adoption**: Quantify how consumers, firms, markets, and policy affect the nature & pace of transitioning to sustainable energy and transportation technologies.
+- **Consumer Preferences for Emerging Technology**: Measure and model consumer preferences to assess policy and product design and simulate consumer choice behavior.
+- **Electric Vehicles & Sustainable Transportation Technologies**: Assess barriers and opportunities to accelerating the development & adoption of sustainable transportation technologies.
+- **U.S.-China Climate Relationship**: Study the critical relationship between the US and China in developing, scaling, and mass deploying low carbon energy technologies.
 
 # Affiliations
 

@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: I study how consumers, firms, markets, and policy affect technological change, with a focus on accelerating the transition to low-carbon technologies like electric vehicles and renewable energy technologies. I have expertise in choice modeling, programming in R, and the global electric vehicle industry.
+description: I study relationships between consumers, firms, markets, policy, and technological change to inform policy aimed at accelerating transitions to environmentally sustainable low-carbon technologies, such as electric vehicles and renewable energy technologies. I have expertise in choice modeling, programming in R, and the global electric vehicle industry.
 preview: images/lab/john_helveston.png
 execute: 
   echo: false
