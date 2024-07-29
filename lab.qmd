@@ -27,7 +27,7 @@ source("_common.R")
 
 # Technology Change Lab
 
-I study relationships between consumers, firms, markets, policy, and technological change to inform policy aimed at accelerating transitions to environmentally sustainable low-carbon technologies, such as electric vehicles and renewable energy technologies.
+The Technology Change Lab conducts interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. We apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies.
 
 :::
 
