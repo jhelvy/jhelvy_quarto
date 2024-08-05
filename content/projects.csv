@@ -1,6 +1,7 @@
 title,src,url,description,tags
 logitr,images/hex/logitr.png,https://jhelvy.github.io/logitr/,R package for fast estimation of multinomial and mixed logit models with preference space and willingness to pay space utility parameterizations.,R; Software
 cbcTools,images/hex/cbcTools.png,https://jhelvy.github.io/cbcTools/,R package with tools for designing choice based conjoint (cbc) survey experiments and conducting power analyses.,R; Software
+surveydown,images/hex/surveydown.png,https://jhelvy.github.io/surveydown/,R package for generating markdown-based surveys using Quarto shiny documents.,R; Software
 Wireless Corne,images/wireless_corne.jpeg,https://github.com/jhelvy/wireless-corne/,Build log and gallery of how I built my wireless Corne keyboard.,Keyboards
 The Distillery,images/hex/distillery.png,https://distillery.rbind.io/,Distill website showcasing other distill websites and blogs.,R; Community
 oica,images/hex/oica.png,https://jhelvy.github.io/oica/,R data package with tidy formatted data on vehicle production and sales from the International Organization of Motor Vehicle Manufacturers.,R; Software
