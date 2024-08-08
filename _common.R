@@ -89,7 +89,7 @@ make_pub_list <- function(pubs, category) {
     for (i in 1:nrow(x)) {
       pub_list[[i]] <- make_pub(x[i,], index = i)
     }
-    return(paste(unlist(pub_list), collapse = ""))
+    return(htmltools::HTML(paste(unlist(pub_list), collapse = "")))
 }
 
 make_pub <- function(pub, index = NULL) {
@@ -103,18 +103,15 @@ make_pub <- function(pub, index = NULL) {
     icons <- glue::glue('<ul style="list-style: none;"><li>{make_icons(pub)}</li></ul>')
     if (index == 1) { header <- TRUE }
   }
+  # return(markdown_to_html(cite))
   return(htmltools::HTML(glue::glue(
     '<div class="pub">
     <div class="grid">
-    <div class="g-col-11"> {markdown_to_html(cite)}
-    </div>
-    <div class="g-col-1">
-    {altmetric}
-    </div>
+    <div class="g-col-11"> {markdown_to_html(cite)} </div>
+    <div class="g-col-1"> {altmetric} </div>
     </div>
     {icons}
-    </div>
-    {make_haiku(pub, header)}'
+    </div>{make_haiku(pub, header)}'
   )))
 }
 
@@ -163,6 +160,20 @@ aside_center_b <- function(text) {
 
 markdown_to_html <- function(text) {
   if (is.null(text)) { return(text) }
+  
+  # Replace the author names with underlined last names
+  text <- gsub(
+    pattern = "\\\\\\*([^,]+), ([^,]+)", 
+    replacement = "<u>\\\\*\\1</u>, \\2", 
+    text
+  )
+  text <- gsub(
+    pattern = "\\\\\\*\\\\\\*([^,]+), ([^,]+)", 
+    replacement = "<u>\\\\*\\\\*\\1</u>, \\2", 
+    text
+  )
+  
+  # Render the text as HTML
   return(HTML(markdown::renderMarkdown(text = text)))
 }
 

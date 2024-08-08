@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: I lead interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. We apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies. I have expertise in choice modeling, programming in R, China, and the global electric vehicle industry.
+description: I lead interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. I apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies. I have expertise in choice modeling, programming in R, China, and the global electric vehicle industry.
 preview: images/lab/john_helveston.png
 execute: 
   echo: false
@@ -38,6 +38,10 @@ pubs <- get_pubs()
 <center>
 
 `r htmltools::HTML(paste0(icon_link(icon = "ai ai-google-scholar", text = "Google Scholar", url  = "https://scholar.google.com/citations?user=DY2D56IAAAAJ"), icon_link(icon = "ai ai-orcid", text = "ORCID", url  = "https://orcid.org/0000-0002-2657-9191"), icon_link(icon = "ai ai-researchgate", text = "Research Gate", url = "https://www.researchgate.net/profile/John_Helveston")))`
+
+<br>
+
+<u>Underline</u> indicates advisee; * graduate student, **undergraduate student
 
 </center>
 
