@@ -78,6 +78,7 @@ div.quarto-about-trestles .about-entity .about-link:hover {
 
 a {
   text-decoration: none;
+  text-decoration: underline;
 }
 
 /* navbar */
@@ -137,6 +138,7 @@ hr {
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    text-decoration: none;
 }
 
 .icon-link-summary:hover {
