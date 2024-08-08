@@ -1,32 +1,5 @@
 [
   {
-    "listing": "/talks/index.html",
-    "items": [
-      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
-      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
-      "/talks/2021-12-01-isa-battery-webinar/index.html",
-      "/talks/2021-07-06-useR-healthy-hands/index.html",
-      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
-      "/talks/2021-01-21-surveys-with-formr/index.html",
-      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
-    ]
-  },
-  {
-    "listing": "/blog/index.html",
-    "items": [
-      "/blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html",
-      "/blog/2023-04-06-markdown-surveys/index.html",
-      "/blog/2023-02-28-parameterized-pdfs-with-quarto/index.html",
-      "/blog/2022-12-26-why-chess-is-better-than-golf/index.html",
-      "/blog/2022-06-28-introducing-renderthis/index.html",
-      "/blog/2021-10-19-monte-carlo-bridge-game/index.html",
-      "/blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html",
-      "/blog/2021-07-03-in-search-of-keyboard-nirvana/index.html",
-      "/blog/2021-05-04-expand-your-productivity-with-espanso/index.html",
-      "/blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html"
-    ]
-  },
-  {
     "listing": "/research/index.html",
     "items": [
       "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
@@ -44,6 +17,32 @@
       "/research/2023-systems-engineering/index.html",
       "/research/2023-transportation-research-record/index.html",
       "/research/2024-environmental-research-letters/index.html"
+    ]
+  },
+  {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/2023-04-06-markdown-surveys/index.html",
+      "/blog/2023-02-28-parameterized-pdfs-with-quarto/index.html",
+      "/blog/2022-12-26-why-chess-is-better-than-golf/index.html",
+      "/blog/2022-06-28-introducing-renderthis/index.html",
+      "/blog/2021-10-19-monte-carlo-bridge-game/index.html",
+      "/blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html",
+      "/blog/2021-07-03-in-search-of-keyboard-nirvana/index.html",
+      "/blog/2021-05-04-expand-your-productivity-with-espanso/index.html",
+      "/blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html"
+    ]
+  },
+  {
+    "listing": "/talks/index.html",
+    "items": [
+      "/talks/2022-05-06-sawtooth-conf-cbctools/index.html",
+      "/talks/2022-04-30-cgtn-full-frame-interview/index.html",
+      "/talks/2021-12-01-isa-battery-webinar/index.html",
+      "/talks/2021-07-06-useR-healthy-hands/index.html",
+      "/talks/2021-04-20-sawtooth-conf-logitr/index.html",
+      "/talks/2021-01-21-surveys-with-formr/index.html",
+      "/talks/2020-10-09-confucius-institute-fall-seminar/index.html"
     ]
   }
 ]
