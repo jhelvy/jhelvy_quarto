@@ -11,6 +11,7 @@ categories:
 format: html
 toc: true
 lightbox: true
+draft: true
 ---
 
 ```{r setup, include=FALSE}

@@ -1,0 +1,20 @@
+---
+title: "Introducing {surveydown}: An open-source, markdown-based framework for generating surveys with Quarto shiny documents"
+description: |
+  A how-to guide for using R to design and implement choice-based conjoint surveys using the surveydown R package
+date: '2024-08-08'
+preview: "images/example.png"
+categories:
+  - R
+  - tutorial
+  - conjoint
+format: html
+toc: true
+lightbox: true
+draft: true
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(fontawesome)
+```
