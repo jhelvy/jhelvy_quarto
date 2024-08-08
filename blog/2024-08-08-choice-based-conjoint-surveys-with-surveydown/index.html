@@ -248,8 +248,13 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#creating-the-surveys" id="toc-creating-the-surveys" class="nav-link" data-scroll-target="#creating-the-surveys">Creating the surveys</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#adding-content-to-your-survey" id="toc-adding-content-to-your-survey" class="nav-link" data-scroll-target="#adding-content-to-your-survey">Adding content to your survey</a>
+  <ul class="collapse">
+  <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link" data-scroll-target="#adding-pages">Adding pages</a></li>
+  <li><a href="#adding-questions" id="toc-adding-questions" class="nav-link" data-scroll-target="#adding-questions">Adding questions</a></li>
+  </ul></li>
   <li><a href="#defining-the-choice-questions" id="toc-defining-the-choice-questions" class="nav-link" data-scroll-target="#defining-the-choice-questions">Defining the choice questions</a></li>
   <li><a href="#implementing-the-choice-questions" id="toc-implementing-the-choice-questions" class="nav-link" data-scroll-target="#implementing-the-choice-questions">Implementing the choice questions</a></li>
   <li><a href="#buttons-versus-tables" id="toc-buttons-versus-tables" class="nav-link" data-scroll-target="#buttons-versus-tables">Buttons versus tables</a></li>
@@ -308,53 +313,68 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </header>
 
 
-<p><a href="https://formr.org/">formr.org</a> is a flexible platform for making surveys using <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>. In this post, I’m going to show you one approach for using formr to create a choice-based conjoint survey (I’m going to assume that you know what conjoint surveys are, but if not take a look at this <a href="https://sawtoothsoftware.com/conjoint-analysis/cbc">quick introduction</a>).</p>
+<center>
+<img src="https://jhelvy.github.io/surveydown/reference/figures/logo.png" width="200">
+</center>
+<p><a href="https://jhelvy.github.io/surveydown/">surveydown</a> is a flexible platform for making surveys using <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> and <a href="https://quarto.org/">quarto</a>. In this post, I’m going to show you one approach for using surveydown to create a choice-based conjoint survey (I’m going to assume that you know what conjoint surveys are, but if not take a look at this <a href="https://sawtoothsoftware.com/conjoint-analysis/cbc">quick introduction</a>).</p>
 <p>Throughout this post, I will use a demo survey about people’s preferences for apples with three attributes: <code>type</code>, <code>price</code>, and <code>freshness</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>You can view the live demo survey <a href="https://appleconjoint.formr.org/">here</a>, and all files used to create the survey are on <a href="https://github.com/jhelvy/formr4conjoint">this GitHub repo</a>.</p>
-<section id="overview" class="level1">
-<h1>Overview</h1>
-<p>If you’ve never used formr.org before, the video on <a href="https://www.jhelvy.com/talks/2021-01-21-surveys-with-formr/">this page</a> offers a 5 minute conceptual overview followed by ~40 minute demo covering the basics.</p>
-<p>Every formr survey is implemented in a spreadsheet. I highly recommend using Google Sheets for this because</p>
+<p>You can view the live demo survey <a href="">here</a>, and all files used to create the survey are on <a href="https://github.com/pingfan-hu/sdAppleConjoint">this GitHub repo</a>.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>If you’ve never used surveydown before, the video on <a href="">this page</a> offers a 5 minute conceptual overview. Surveydown brings together three open source technologies (<a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>) to create dynamic, markdown-based surveys.</p>
+<center>
+<img src="https://jhelvy.github.io/surveydown/reference/figures/technologies.png" width="500">
+</center>
+<p><br></p>
+<p>The basic concept is:</p>
 <ol type="1">
-<li>formr has a button on the admin page to quickly re-load your Google Sheet (otherwise you have to upload a new .xlsx file any time you make changes), and</li>
-<li>It’s easier for collaborating and managing different versions.</li>
+<li>Design your survey as a <a href="https://quarto.org/docs/dashboards/interactivity/shiny-r.html">Quarto shiny document</a> using markdown and R code.</li>
+<li>Render your doc into a <a href="https://shiny.posit.co/">shiny</a> app that can be hosted online and sent to respondents.</li>
+<li>Store your survey responses in a <a href="https://supabase.com/">supabase</a> database.</li>
 </ol>
-<p>Each “survey” (each Google Sheet) must be loaded into a “Run” to make the survey live. Most runs include multiple surveys chained together to control complex logic, like filtering out a respondent based on their response to a question.</p>
-<p>For this demo, I have designed the run as a combination of three surveys (links below go to each respective Google Sheet):</p>
-<ul>
-<li><a href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">Part 1</a>: Intro and target population screen out</li>
-<li><a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">Part 2</a>: Conjoint choice questions</li>
-<li><a href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">Part 3</a>: Demographic and other questions</li>
-</ul>
-<p>Don’t worry about what’s in each sheet just yet - we’ll get to that.</p>
 </section>
-<section id="creating-the-surveys" class="level1">
-<h1>Creating the surveys</h1>
-<p>I find it much easier to design my surveys using .Rmd files (one .Rmd file per survey). I can knit each .Rmd file to a html page to preview the look and feel of my survey without having to use formr at all. This also provides a way to easily print out the whole survey content as a PDF (e.g.&nbsp;open the survey in your browser, then print the page to a PDF). When I’m happy with how things look, I then carefully copy-paste the content over into separate rows in a Google Sheet.</p>
-<p>For this demo, I designed the questions in each part using the following three .Rmd files in the “survey” folder of the <a href="https://github.com/jhelvy/formr4conjoint">GitHub repo</a>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>.Rmd file</th>
-<th>Google Sheet</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p1-intro.Rmd">p1-intro.Rmd</a></td>
-<td><a href="https://docs.google.com/spreadsheets/d/1tnt7IBSmOOe0wOZ8F6qN152yHYZMCBCo7_KQ3N1e-t8/edit#gid=1611481919">appleConjoint_p1</a></td>
-</tr>
-<tr class="even">
-<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p2-choice-questions.Rmd">p2-choice-questions.Rmd</a></td>
-<td><a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a></td>
-</tr>
-<tr class="odd">
-<td><a href="https://github.com/jhelvy/formr4conjoint/blob/master/survey/p3-demos.Rmd">p3-demos.Rmd</a></td>
-<td><a href="https://docs.google.com/spreadsheets/d/1t6DYMZsf6ZX6r5GVTBemZZhX1RlFTV6weM8w0LzwMK4/edit#gid=1611481919">appleConjoint_p3</a></td>
-</tr>
-</tbody>
-</table>
-<p>The links in this table let you compare the .Rmd file with the corresponding Google Sheet. Most general content that I want to display to the respondent goes in the <code>label</code> column of the Google Sheet, and response options to questions go in the <code>choice</code> columns (for part 3, I put the choice options on a separate <code>choices</code> tab). Pay careful attention to the <code>type</code> column - this determines the nature of the row (e.g.&nbsp;<code>note</code> just shows the <code>label</code> column content, <code>mc</code> is a multiple choice question, etc.). The <code>calculate</code> type rows allow me to run <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> code to generate and store objects that can be used across different pages in the survey (these values will also be available in the resulting survey data).</p>
+<section id="getting-started" class="level1">
+<h1>Getting started</h1>
+<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, it is recommended that you start with a template survey project. You can create one with the following R command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>surveydown<span class="sc">::</span><span class="fu">sd_create_survey</span>(<span class="st">"path/to/folder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The <code>"path/to/folder"</code> is the path to wherever you want the template to be created. Once created, you’ll see the following files / folders:</p>
+<pre><code>example.qmd
+_extensions
+example.Rproj</code></pre>
+<p>The only file you will need to edit is the <code>example.qmd</code> file. This is the main survey file that you will edit and customize for your survey. The <code>example.Rproj</code> is just a project file, which I recommend opening to edit your <code>example.qmd</code> file in RStudio (if you’re using it). Finally, the <code>_extensions</code> folder contains the Quarto extension needed to make everything work. If you have the example open, you can click the “Run document” button (in RStudio) or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live just yet - for now, we’re going to focus on designing the survey and running it locally to preview it.</p>
+</section>
+<section id="adding-content-to-your-survey" class="level1">
+<h1>Adding content to your survey</h1>
+<p>To edit your survey, you can add plain text with markdown formatting as well as questions defined in R code chunks. Once all of the main survey content (text, images, questions, etc.) are all defined, you can modify the control logic in the server code chunk, found at the bottom of the main survey .qmd file. We’ll get to all of this step-by-step.</p>
+<p>For this demo, we have a more detailed example already created that walks you through how to implement a choice-based conjoint survey in a .qmd file with surveydown. You can download this example from <a href="https://github.com/pingfan-hu/sdAppleConjoint">this GitHub repo</a>. I recommend starting with this example when designing your own conjoint survey.</p>
+<section id="adding-pages" class="level2">
+<h2 class="anchored" data-anchor-id="adding-pages">Adding pages</h2>
+<p>In surveydown, pages are delineated using “fences”, like this:</p>
+<pre><code>::: {#welcome .sd-page}
+
+Page 1 content here
+
+:::
+
+::: {#page2 .sd-page}
+
+Page 2 content here
+
+:::
+</code></pre>
+<p>As you can see, we use three colon symbols <code>:::</code>, called a “fence”, to mark the start and end of pages. In the starting fence, you need to define a page name (e.g.&nbsp;<code>welcome</code> and <code>page2</code> in the example above) and you need to define the class as <code>.sd-page</code>. Then anything you put between the page fences will appear on that page.</p>
+<p>To navigate to the next page, you need to insert a <code>sd_next()</code> function call, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_next</span>(<span class="at">next_page =</span> <span class="st">'page2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this case, the above function would need to be placed in a code chunk in between the <code>:::</code> fences for the <code>welcome</code> page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages.</p>
+</section>
+<section id="adding-questions" class="level2">
+<h2 class="anchored" data-anchor-id="adding-questions">Adding questions</h2>
+<p>Every survey question is created using the <code>sd_question()</code> function.</p>
+</section>
 </section>
 <section id="defining-the-choice-questions" class="level1">
 <h1>Defining the choice questions</h1>
@@ -372,22 +392,22 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>That last step is a bit of a hack, but the reason this is necessary is because each new page on formr is essentially a new <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> session, so every time you start a new page all your previous objects are no longer there and all your libraries need to be re-loaded. The only objects you have access to on separate pages are items that are stored in the resulting survey data (using the names assigned in the <code>name</code> column), so we have to serialize the <code>df</code> object into one long JSON object so that we can access it later in other pages.</p>
 <p>Once we have everything set up, we can then start defining choice questions. In each choice question row, the first thing I do is define the questions label and then write a code chunk to create multiple data frames to store the values to display for each alternative. For example, on row 10 of the <a href="https://docs.google.com/spreadsheets/d/1Ih3Pt6uz-gp5vc0SBxBzl4K0aZoRLwI6dtdtZiXSLz0/edit#gid=1611481919">appleConjoint_p2</a> Google Sheet, you can see the following code chunk under the question label:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>alts <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">unserializeJSON</span>(df_json) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(qID <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>alt1 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>alt2 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">2</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>alt3 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>alts <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">unserializeJSON</span>(df_json) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(qID <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>alt1 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>alt2 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>alt3 <span class="ot">&lt;-</span> alts <span class="sc">%&gt;%</span> <span class="fu">filter</span>(altID <span class="sc">==</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this chunk, the <code>alts</code> data frame is created by converting the <code>df_json</code> object into a data frame and filtering for all alternatives for the first question. Then the <code>alts</code> data frame is broken into three more data frames (<code>alt1</code>, <code>alt2</code>, and <code>alt3</code>) which contain the information about each alternative. These data frames are then used to display information about each alternative. For example, the first alternative is defined using this code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Option <span class="dv">1</span><span class="sc">**</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img src<span class="ot">=</span><span class="st">`</span><span class="at">r alt1$image</span><span class="st">`</span> width<span class="ot">=</span><span class="dv">100</span><span class="sc">&gt;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="er">**</span>Type<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$type</span><span class="st">`</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Price<span class="sc">**</span><span class="er">:</span> <span class="er">$</span> <span class="st">`</span><span class="at">r alt1$price</span><span class="st">`</span> <span class="sc">/</span> lb</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Freshness<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$freshness</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Option <span class="dv">1</span><span class="sc">**</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="er">&lt;</span>img src<span class="ot">=</span><span class="st">`</span><span class="at">r alt1$image</span><span class="st">`</span> width<span class="ot">=</span><span class="dv">100</span><span class="sc">&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="er">**</span>Type<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$type</span><span class="st">`</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Price<span class="sc">**</span><span class="er">:</span> <span class="er">$</span> <span class="st">`</span><span class="at">r alt1$price</span><span class="st">`</span> <span class="sc">/</span> lb</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Freshness<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$freshness</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>I copy this code over to each alternative, adjusting the numbers for alternative 2 and 3. When rendered in formr, the three options looks like this:</p>
 <center>
@@ -400,28 +420,28 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>In the example above, the conjoint choice questions are displayed as “buttons” where all the information for each alternative is shown as a button. This works particularly well for mobile phone applications where the user may need to scroll vertically to see each option.</p>
 <p>An alternative is to use a tabular layout where each column represents an alternative and the row names explain the attribute. This takes a little manipulation to get it right, but the key concept is to use <code>kable()</code> to display the transpose of the <code>alts</code> data frame. I also use the wonderful <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">kableExtra</a> package to modify some of the table stying. If you want to see this version in practice, the survey link is <a href="https://appleconjointtable.formr.org/">here</a>, and the Google Sheet with the configurtions for this is <a href="https://docs.google.com/spreadsheets/d/1EG14Eh9kDBvE_iETfm6l6g90mrQ5sl_zbWaXkwIOGLU">here</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>alts <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">unserializeJSON</span>(df_json) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(qID <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">price =</span> <span class="fu">paste</span>(scales<span class="sc">::</span><span class="fu">dollar</span>(price), <span class="st">"/ lb"</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">image =</span> <span class="fu">paste0</span>(<span class="st">'&lt;img src="'</span>, image, <span class="st">'" width=100&gt;'</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make nicer attribute labels</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Option:</span><span class="st">`</span> <span class="ot">=</span> altID, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at"> </span><span class="st">`</span> <span class="ot">=</span> image,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Price:</span><span class="st">`</span> <span class="ot">=</span> price, </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Type:</span><span class="st">`</span> <span class="ot">=</span> type, </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Freshness:</span><span class="st">`</span> <span class="ot">=</span> freshness)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(alts) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Drop row names</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">t</span>(alts), <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>), </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"center"</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>alts <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">unserializeJSON</span>(df_json) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(qID <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">price =</span> <span class="fu">paste</span>(scales<span class="sc">::</span><span class="fu">dollar</span>(price), <span class="st">"/ lb"</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">image =</span> <span class="fu">paste0</span>(<span class="st">'&lt;img src="'</span>, image, <span class="st">'" width=100&gt;'</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Make nicer attribute labels</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Option:</span><span class="st">`</span> <span class="ot">=</span> altID, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at"> </span><span class="st">`</span> <span class="ot">=</span> image,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Price:</span><span class="st">`</span> <span class="ot">=</span> price, </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Type:</span><span class="st">`</span> <span class="ot">=</span> type, </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Freshness:</span><span class="st">`</span> <span class="ot">=</span> freshness)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(alts) <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># Drop row names</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">t</span>(alts), <span class="at">escape =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hover"</span>, <span class="st">"condensed"</span>), </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">full_width =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"center"</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <center>
 <img src="images/cbc_table.png" width="500">

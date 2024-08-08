@@ -81,7 +81,21 @@
     "href": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html",
     "title": "Choice-based conjoint surveys in R with surveydown",
     "section": "",
-    "text": "formr.org is a flexible platform for making surveys using . In this post, I’m going to show you one approach for using formr to create a choice-based conjoint survey (I’m going to assume that you know what conjoint surveys are, but if not take a look at this quick introduction).\nThroughout this post, I will use a demo survey about people’s preferences for apples with three attributes: type, price, and freshness.1\nYou can view the live demo survey here, and all files used to create the survey are on this GitHub repo."
+    "text": "surveydown is a flexible platform for making surveys using  and quarto. In this post, I’m going to show you one approach for using surveydown to create a choice-based conjoint survey (I’m going to assume that you know what conjoint surveys are, but if not take a look at this quick introduction).\nThroughout this post, I will use a demo survey about people’s preferences for apples with three attributes: type, price, and freshness.1\nYou can view the live demo survey here, and all files used to create the survey are on this GitHub repo."
+  },
+  {
+    "objectID": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html#adding-pages",
+    "href": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html#adding-pages",
+    "title": "Choice-based conjoint surveys in R with surveydown",
+    "section": "Adding pages",
+    "text": "Adding pages\nIn surveydown, pages are delineated using “fences”, like this:\n::: {#welcome .sd-page}\n\nPage 1 content here\n\n:::\n\n::: {#page2 .sd-page}\n\nPage 2 content here\n\n:::\n\nAs you can see, we use three colon symbols :::, called a “fence”, to mark the start and end of pages. In the starting fence, you need to define a page name (e.g. welcome and page2 in the example above) and you need to define the class as .sd-page. Then anything you put between the page fences will appear on that page.\nTo navigate to the next page, you need to insert a sd_next() function call, like this:\n\nsd_next(next_page = 'page2')\n\nIn this case, the above function would need to be placed in a code chunk in between the ::: fences for the welcome page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages."
+  },
+  {
+    "objectID": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html#adding-questions",
+    "href": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html#adding-questions",
+    "title": "Choice-based conjoint surveys in R with surveydown",
+    "section": "Adding questions",
+    "text": "Adding questions\nEvery survey question is created using the sd_question() function."
   },
   {
     "objectID": "blog/2024-08-08-choice-based-conjoint-surveys-with-surveydown/index.html#footnotes",
