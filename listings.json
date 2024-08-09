@@ -22,6 +22,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/2024-08-08-introducing-surveydown/index.html",
       "/blog/2023-04-06-markdown-surveys/index.html",
       "/blog/2023-02-28-parameterized-pdfs-with-quarto/index.html",
       "/blog/2022-12-26-why-chess-is-better-than-golf/index.html",
