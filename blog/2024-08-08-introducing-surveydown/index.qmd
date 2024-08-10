@@ -176,7 +176,7 @@ sd_question(
 )
 ```
 
-The above code chunk will create a mutliple choice question that looks like this:
+The above code chunk will create a multiple choice question that looks like this:
 
 ```{r}
 #| eval: true
@@ -194,17 +194,65 @@ sd_question(
 )
 ```
 
-The `sd_question()` function can also be used to create [other question types](https://jhelvy.github.io/surveydown/articles/question_types.html), like text input, select drop down choices, and more. 
+The `sd_question()` function can be used to create a variety of [question types](https://jhelvy.github.io/surveydown/articles/question_types.html), like text input, select drop down choices, and more by changing the `type` argument.
 
-The function has many other arguments for customizing the look and feel of the question. The `required` argument can be used to make a question required or optional, e.g., `required = TRUE`.
+The function has many other arguments for customizing the look and feel of the question (e.g., `height` and `width`, etc.) as well as a `required` argument that can be used to make a question required or optional (e.g., `required = TRUE`).
 
-# Why?
+## Controlling the survey logic
 
-Open source 
-Free 
-Own your data
-Ease of editing - skip to page, etc
-Version control 
-Reproducible 
+At the very bottom of the .qmd file is a special code chunk that defines the app server. This is where you can customize and control the survey flow logic as well as where you define the database that will store the survey response data. It looks like this:
 
-# How we built
+```{r}
+#| echo: fenced
+#| context: server
+
+# Define the database settings
+db <- sd_database()
+
+# Define the configuration settings
+config <- sd_config()
+
+# The sd_server() function initiates your survey - don't change this
+sd_server(
+  input   = input,
+  session = session,
+  config  = config,
+  db      = db
+)
+```
+
+The `sd_config()` function is where you can define
+
+## Setting up the database
+
+The `sd_database()` function inside the server code chunk is where you can define your database configuration to store your survey response data. The default database is [supabase](https://supabase.com/), an open-source database.
+
+The arguments to the `sd_database()` function are all of the components needed to connect to a database hosted on supabase. You can find detailed instructions on how to set this up in the [surveydown documentation](https://jhelvy.github.io/surveydown/articles/database_setup.html). In general, it should look like this:
+
+```{r}
+db <- sd_database(
+  host       = "",
+  db_name    = "",
+  port       = "",
+  user       = "",
+  table_name = "",
+  password   = Sys.getenv("SUPABASE_PASSWORD")
+)
+```
+
+Each of the characters are elements that can be easily copied from your supabase database configuration. We recommend storing your database password in your `.Renviron` file so that it is not accidentally made public (i.e. don't hard-code in your password!), which can be accessed with the `Sys.getenv()` function.
+
+One configured, any responses on your survey will be stored in your database. You can even check it live - responses are updated on every interaction with the app, such as clicking on a survey question or a next button. The time stamps of each interaction are also automatically stored.
+
+# What problem(s) does surveydown solve?
+
+## Open source
+## Free
+## Own your data
+## Ease of editing - skip to page, etc
+## Version control
+## Reproducible
+
+# How we built it
+
+AI help
