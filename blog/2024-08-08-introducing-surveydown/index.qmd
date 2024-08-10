@@ -1,7 +1,7 @@
 ---
 title: "Introducing {surveydown}: An markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!)"
 description: |
-  A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies (Quarto, shiny, and supabase).
+  A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.
 date: '2024-08-08'
 preview: "logo.png"
 categories:
@@ -14,11 +14,18 @@ categories:
 format: html
 toc: true
 lightbox: true
+execute:
+  eval: false
 ---
 
-```{r setup, include=FALSE}
-library(dplyr)
+<link rel="stylesheet" href="surveydown.css">
+
+```{r}
+#| eval: true
+#| include: false
+
 library(fontawesome)
+library(surveydown)
 ```
 
 <center>
@@ -26,9 +33,9 @@ library(fontawesome)
 </center>
 <br>
 
-You may have read my [previous blog post](https://jhelvy.com/blog/2023-04-06-markdown-surveys/) about an R packaged I called "surveydown". That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn't exist yet. 
+You may have read my [previous blog post](https://jhelvy.com/blog/2023-04-06-markdown-surveys/) about an R packaged I called "surveydown". That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn't exist yet, it was just an idea. 
 
-Well, I have good news - **the package now exists!** 
+Well, I have good news: **the package now exists!** 
 
 In this post, I'm going to show you a quick overview of the {surveydown} R package for making markdown-based surveys.
 
@@ -37,11 +44,11 @@ In this post, I'm going to show you a quick overview of the {surveydown} R packa
 If you've never used surveydown before, the video on [this page]() offers a 5 minute overview that you might find helpful.
 
 [surveydown](https://jhelvy.github.io/surveydown/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
-([Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
-[supabase](https://supabase.com/)).
+[Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
+[supabase](https://supabase.com/).
 
 <center>
-<img src="technologies.png" width=500>
+<img src="technologies.png" width=600>
 </center>
 <br>
 
@@ -59,15 +66,13 @@ The package is still in development, but you can already use it to create survey
 
 # Getting started 
 
-After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), it is recommended that you start with a template survey project. You can create one with the following R command:
+After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), we recommend starting with a template survey project. You can create one with the following R command:
 
 ```{r}
-#| eval: false
-
 surveydown::sd_create_survey("path/to/folder")
 ```
 
-The `"path/to/folder"` is the path to wherever you want the template to be created. Once created, you'll see the following files / folders:
+The `"path/to/folder"` is the path to where you want the template to be created. Once created, you'll see the following files / folders:
 
 ```
 example.qmd
@@ -75,14 +80,25 @@ _extensions
 example.Rproj
 ```
 
-The only file you will need to edit is the `example.qmd` file. This is the main survey file that you will edit and customize for your survey. The `example.Rproj` is just a project file, which I recommend opening to edit your `example.qmd` file in RStudio (if you're using it). Finally, the `_extensions` folder contains the Quarto extension needed to make everything work. 
-If you have the example open, you can click the "Run document" button (in RStudio) or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live just yet - for now, we're going to focus on designing the survey and running it locally to preview it.
+The only file you will need to edit is the `example.qmd` file. This is the main survey file that you will edit and customize for your survey. The `example.Rproj` is just a project file, which I recommend opening to edit your `example.qmd` file in RStudio (if you're using it). Finally, the `_extensions` folder contains the [surveydown Quarto extension](https://github.com/jhelvy/surveydown-ext) needed to make everything work. You can safely ignore this folder - just know that it's needed to make everything work.
 
-# Adding content to your survey 
+If you have the example open, you can click the "Run document" button (in RStudio) or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live - for now, we're going to focus on designing the survey and running it locally to preview it. The example survey should look like this:
 
-To edit your survey, you can add plain text with markdown formatting as well as questions defined in R code chunks. Once all of the main survey content (text, images, questions, etc.) are all defined, you can modify the control logic in the server code chunk, found at the bottom of the main survey .qmd file. We'll get to all of this step-by-step.
+<center>
+<img src="example.png" width=700>
+</center>
 
-For this demo, we have a more detailed example already created that walks you through how to implement a choice-based conjoint survey in a .qmd file with surveydown. You can download this example from [this GitHub repo](https://github.com/pingfan-hu/sdAppleConjoint). I recommend starting with this example when designing your own conjoint survey.
+# A new way to design surveys
+
+In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
+
+The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions that allow you to define the survey content and control logic. Each function starts with `sd_` to make it easy to identify.
+
+To edit your survey, you can add text using markdown formatting, or in RStudio you can edit with the visual editor, which inserts the markdown code for you. Survey questions are defined in R code chunks with a `sd_question()` function from the {surveydown} package. Pages are created using fences, with navigation handled with the `sd_next()` function. 
+
+Once all of the survey content is defined (pages, text, images, questions, etc.), you can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function. Finally, in the same server code chunk you can define the database configuration with the `sd_database()` function to store the survey response data. 
+
+We'll get to all of this step-by-step.
 
 ## Adding pages
 
@@ -103,19 +119,92 @@ Page 2 content here
 
 ```
 
-As you can see, we use three colon symbols `:::`, called a "fence", to mark the start and end of pages. In the starting fence, you need to define a page name (e.g. `welcome` and `page2` in the example above) and you need to define the class as `.sd-page`. Then anything you put between the page fences will appear on that page. 
+As you can see, we use three colon symbols `:::`, called a "fence", to mark the start and end of pages. This notation is commonly used in Quarto for a variety of use cases, like defining [subfigures](https://quarto.org/docs/authoring/figures.html#subfigures) in images.
 
-To navigate to the next page, you need to insert a `sd_next()` function call, like this: 
+
+In the starting fence, you need to define a page name (e.g. `welcome` and `page2` in the example above) and you need to define the class as `.sd-page`. Then anything you put between the page fences will appear on that page. 
+
+To navigate to the next page, you need to insert a `sd_next()` function call inside a code chunk, like this: 
 
 ```{r}
-#| eval: false
+#| echo: fenced
 
 sd_next(next_page = 'page2')
 ```
 
-In this case, the above function would need to be placed in a code chunk in between the `:::` fences for the `welcome` page in order to have a "Next" button that goes on to page 2. You can also send the user to other pages.
+The above code chunk will create a "Next" button that goes on to page 2 that looks like this:
+
+```{r}
+#| eval: true
+#| echo: false
+
+sd_next(next_page = 'page2')
+```
+
+You would need to place the code chunk in between the `:::` fences of the `welcome` page in order to have a "Next" button that goes on to page 2. You can also send the user to other pages by just changing the `next_page` argument. Finally, you can also change the label of the button by changing the `label` argument, like this:
+
+```{r}
+#| echo: fenced
+
+sd_next(next_page = 'page2', label = 'Next page')
+```
+
+```{r}
+#| eval: true
+#| echo: false
+
+sd_next(next_page = 'page2', label = 'Next page')
+```
 
 ## Adding questions
 
-Every survey question is created using the `sd_question()` function.
+Every survey question is created using the `sd_question()` function inside a code chunk. The question type is defined by the `type` argument. For example, to add a multiple choice question, you could insert the following code chunk:
 
+
+```{r}
+#| echo: fenced
+
+sd_question(
+  type  = 'mc',
+  id    = 'penguins',
+  label = "Which is your favorite type of penguin?",
+  option = c(
+    'Adélie'    = 'adelie',
+    'Chinstrap' = 'chinstrap',
+    'Gentoo'    = 'gentoo'
+  )
+)
+```
+
+The above code chunk will create a mutliple choice question that looks like this:
+
+```{r}
+#| eval: true
+#| echo: false
+
+sd_question(
+  type  = 'mc',
+  id    = 'penguins',
+  label = "Which is your favorite type of penguin?",
+  option = c(
+    'Adélie'    = 'adelie',
+    'Chinstrap' = 'chinstrap',
+    'Gentoo'    = 'gentoo'
+  )
+)
+```
+
+The `sd_question()` function can also be used to create [other question types](https://jhelvy.github.io/surveydown/articles/question_types.html), like text input, select drop down choices, and more. 
+
+The function has many other arguments for customizing the look and feel of the question. The `required` argument can be used to make a question required or optional, e.g., `required = TRUE`.
+
+# Why?
+
+Open source 
+Free 
+Own your data
+Ease of editing - skip to page, etc
+Version control 
+Reproducible 
+
+# How we built
