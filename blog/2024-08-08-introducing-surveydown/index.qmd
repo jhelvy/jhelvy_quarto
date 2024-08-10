@@ -116,7 +116,6 @@ Page 1 content here
 Page 2 content here
 
 :::
-
 ```
 
 As you can see, we use three colon symbols `:::`, called a "fence", to mark the start and end of pages. This notation is commonly used in Quarto for a variety of use cases, like defining [subfigures](https://quarto.org/docs/authoring/figures.html#subfigures) in images.
@@ -198,9 +197,9 @@ The `sd_question()` function can be used to create a variety of [question types]
 
 The function has many other arguments for customizing the look and feel of the question (e.g., `height` and `width`, etc.) as well as a `required` argument that can be used to make a question required or optional (e.g., `required = TRUE`).
 
-## Controlling the survey logic
+## The server chunk
 
-At the very bottom of the .qmd file is a special code chunk that defines the app server. This is where you can customize and control the survey flow logic as well as where you define the database that will store the survey response data. It looks like this:
+At the very bottom of the .qmd file is a special "server" code chunk (that's the `#| context: server` bit) that defines the app server. This is where you can customize and control the survey flow logic as well as where you define the database that will store the survey response data. It looks like this:
 
 ```{r}
 #| echo: fenced
@@ -221,11 +220,108 @@ sd_server(
 )
 ```
 
-The `sd_config()` function is where you can define
+The `sd_database()` function is where you set up your database. The `sd_server()` function makes everything run, which you can safely ignore - just don't change it and all will be good!
 
-## Setting up the database
+The middle part (the `sd_config()` function) is where you can define custom control logic for the survey, such as *conditional display* (conditionally displaying a question based on responses to questions), or *conditional skip* (conditionally sending the respondent to a page based on responses to questions).
 
-The `sd_database()` function inside the server code chunk is where you can define your database configuration to store your survey response data. The default database is [supabase](https://supabase.com/), an open-source database.
+### Conditional display
+
+Let's say we had a fourth option for "other" in our multiple choice question about penguins. If the respondent chose it, you may want a second question to popup that allows them to specify the other penguin type. To implement this, you would need to define both questions, e.g.:
+
+```{r}
+#| echo: fenced
+
+sd_question(
+  type  = 'mc',
+  id    = 'penguins',
+  label = "Which is your favorite type of penguin?",
+  option = c(
+    'Adélie'    = 'adelie',
+    'Chinstrap' = 'chinstrap',
+    'Gentoo'    = 'gentoo',
+    'Other'     = 'other'
+  )
+)
+
+sd_question(
+  type  = "text",
+  id    = "penguins_other",
+  label = "Please specify the other penguin type:"
+)
+```
+
+Then in the server code chunk, you could use the `show_if` argument to define that the `penguins_other` question would only be shown if the respondent chose the `other` option in the `penguins` question, like this:
+
+```{r}
+config <- sd_config(
+  show_if = tibble::tribble(
+    ~question_id,  ~question_value, ~target,
+    "penguins",    "other",         "penguins_other"
+  )
+)
+```
+
+Here we're using the `tibble::tribble()` function to define a data frame with three columns:
+
+- `question_id`: The `id` of the triggering question.
+- `question_value`: The triggering value.
+- `target`: The `id` of the target question to display.
+
+You don't have to use `tibble::tribble()`, and in fact if you have a lot of `show_if` conditions, then you could create a csv file with all of your conditions in it and read it in to set the `show_if` conditions (just make sure the header has the same three column names), e.g.:
+
+```{r}
+config <- sd_config(
+  show_if = readr::read_csv('path/to/show_if_conditions.csv')
+  )
+)
+```
+
+### Conditional skip
+
+Often times you'll want to screen people out of a survey based on responses to questions. For example, let's say you only wanted to only include people who own a vehicle. On your first page (e.g., with page name `welcome`), you could screen out people who do _not_ own a vehicle.
+
+First, define a question about their vehicle ownership, e.g.:
+
+```{r}
+#| echo: fenced
+
+sd_question(
+  type  = 'mc',
+  id    = 'vehicle_ownership',
+  label = "Do you own your vehicle?",
+  option = c(
+    'Yes' = 'yes',
+    'No'  = 'no'
+  )
+)
+```
+
+Then in the server code chunk, you could use the `skip_if` argument in `sd_config()` to define the behavior of the next button on the `welcome` page, like this:
+
+```{r}
+config <- sd_config(
+  skip_if = tibble::tribble(
+    ~question_id,        ~question_value, ~target,
+    "vehicle_ownership", "no",            "screenout"
+  )
+)
+```
+
+This sets up a condition where if the respondent chooses `no` on the `vehicle_ownership` question, they will be sent to a page named `screenout`. You could put such a page at the end of the survey, something like this:
+
+```
+::: {#screenout .sd-page}
+
+Sorry, but you are not qualified to take our survey.
+
+:::
+```
+
+Notice that I don't have a `sd_next()` on this screenout page. That is how you define an end point for the survey taker. If there's no "Next" button, then they cannot navigate anywhere else, so the survey is over.
+
+### Setting up the database
+
+The `sd_database()` function inside the server code chunk is where you define your database configuration to store your survey response data. The default database is [supabase](https://supabase.com/) - an amazing open-source database project.
 
 The arguments to the `sd_database()` function are all of the components needed to connect to a database hosted on supabase. You can find detailed instructions on how to set this up in the [surveydown documentation](https://jhelvy.github.io/surveydown/articles/database_setup.html). In general, it should look like this:
 
@@ -240,7 +336,7 @@ db <- sd_database(
 )
 ```
 
-Each of the characters are elements that can be easily copied from your supabase database configuration. We recommend storing your database password in your `.Renviron` file so that it is not accidentally made public (i.e. don't hard-code in your password!), which can be accessed with the `Sys.getenv()` function.
+You would fill in each of the currently blank `""` with elements that can be easily copied from your supabase database configuration. For the `password`, we recommend storing your database password in your `.Renviron` file so that it is not accidentally made public (i.e. don't hard-code in your password!), which can then be read into the current environment with the `Sys.getenv()` function.
 
 One configured, any responses on your survey will be stored in your database. You can even check it live - responses are updated on every interaction with the app, such as clicking on a survey question or a next button. The time stamps of each interaction are also automatically stored.
 
