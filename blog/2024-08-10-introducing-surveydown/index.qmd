@@ -1,8 +1,8 @@
 ---
-title: "Introducing {surveydown}: An markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!)"
+title: "Introducing {surveydown}: A markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!)"
 description: |
   A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.
-date: '2024-08-08'
+date: '2024-08-10'
 preview: "logo.png"
 categories:
   - R
@@ -43,12 +43,11 @@ Later in the post I'll explain a little more about _why_ we built surveydown as 
 
 # What is surveydown?
 
-If you've never used surveydown before, the video on [this page]() offers a 5 minute overview that you might find helpful.
-
 [surveydown](https://jhelvy.github.io/surveydown/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
 [Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
-[supabase](https://supabase.com/).
+[supabase](https://supabase.com/). The video on [this page]() offers a 5 minute overview of the platform.
 
+<br>
 <center>
 <img src="technologies.png" width=600>
 </center>
@@ -91,6 +90,8 @@ If you have the example open, you can click the "Run document" button (in RStudi
 </center>
 
 # A new way to design surveys
+
+## Quick overview
 
 In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
 
@@ -359,7 +360,9 @@ Once you are happy with your survey, you can deploy it live to any server of you
 
 I do a lot of survey research, and I've been frustrated with the survey platforms I've used in the past. The commerical platforms like Qualtrics and SurveyMonkey are great, but they are expensive and are difficult to version control, and collaboration with others is near impossible, especially if your collaborator doesn't have a license of their own. They also don't allow me to own my own survey data, meaning I always am at the mercy of the platform owner. And the features are often limited. It's not easy to do more complex things like randomization, conditional display, etc.
 
-The only other open-source survey platform I have used is [formr](https://formr.org/), which is a very powerful platform, but it is rather clunky to use and is not as easy to edit as a simple markdown file. What we've come up with is a survey platform that is easy to edit, easy to use, and is built entirely on open-source technologies. I think is solves a lot of problems, and hopefully you'll agree.
+The only other open-source survey platform I have used is [formr](https://formr.org/), which is a very powerful platform, but it is rather clunky to use (you define your survey in Google sheet cells), and it is not as easy to edit as a simple markdown file. 
+
+What we've come up with is a survey platform that is flexible, easy to use, and built entirely with open-source technologies. I think it solves a lot of problems, and hopefully you'll agree.
 
 ## Open source
 
@@ -375,10 +378,14 @@ Designing a survey in surveydown is a pretty straightforward process. The markdo
 
 Some other features we added to make your life easier are:
 
-- The ability to skip to specific pages during editing: in the `sd_config()` function, you can define a `start_page` argument that will skip to a specific page when the survey is first loaded.
-- The ability to show all pages at once during editing: in the `sd_config()` function, you can set `show_all_pages = TRUE` to show all the pages at once when the survey is first loaded.
-- The ability to define custom / more complex skip logic: in the `sd_config()` function, you can define a `skip_if_custom` argument that allows you to define any custom function that if true will skip to a specific page.
-- The ability to define custom / more complex conditional display logic: in the `sd_config()` function, you can define a `show_if_custom` argument that allows you to define any custom function that if true will show a specific question.
+- **Start at a specific page when editing**: in the `sd_config()` function, you can define a `start_page` argument that will skip to a specific page when the survey is first loaded.
+- **Show all pages at once when editing**: in the `sd_config()` function, you can set `show_all_pages = TRUE` to show all the pages at once when the survey is first loaded.
+- **Define custom complex skip logic**: in the `sd_config()` function, you can define a `skip_if_custom` argument that allows you to define any custom function that if true will skip to a specific page.
+- **Define custom conditional display logic**: in the `sd_config()` function, you can define a `show_if_custom` argument that allows you to define any custom function that if true will show a specific question.
+
+## Did I mention you can run R code in your survey?
+
+Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. We're also working on adding the ability to work with the data from the survey itself so that you could do some interactive things, like show a respondent how their responses compare to others in real time.
 
 ## Easy version control and collaboration
 
@@ -386,17 +393,19 @@ Because the entire survey is defined in a single plain text file, surveydown nat
 
 ## Reproducible
 
-Surveydown promotes reproducible research by allowing you to define your entire survey in a single, self-contained plain text document. This has a ton of benefits, like:
+Surveydown promotes reproducible research by allowing you to define your entire survey in a single, self-contained plain text document. This has a ton of benefits:
 
 - Want someone else to be able to reproduce your experiment? Just give them the .qmd file and any other files they need (e.g., images, data, etc.), and they can reproduce your survey on their own computer.
 - Want to print out your survey for an appendix? Just set `show_all_pages = TRUE` in the `sd_config()` function and print it to pdf.
-- Want others to see your survey live? Just turn off the database by setting the database to `db <- sd_database()` with no arguments, and your app will function without a database.
+- Want others to see your survey live? Just turn off the database by setting `db <- sd_database()` with no arguments, and your app will function without a database.
+
+Reproducibility is something we had in mind from the start with this project, and we've tried to make it as easy as possible for your surveydown surveys to be fully reproducible.
 
 # How we built it
 
 Before I wrap up, I just want to say that I am absolutely amazed at the time we live in. I have had this idea in mind for many years, but I'm not a web developer, and I never could come up with a way to make it happen. That was actually what motivated me to write my [previous blog post](https://jhelvy.com/blog/2023-04-06-markdown-surveys/) - it was a call for help from others!
 
-But two things happened that made it possible:
+But two things happened relatively recently that made it possible:
 
 1. The rise of Quarto
 2. The rise of LLMs
@@ -405,11 +414,11 @@ After I switched my website over from distill to Quarto, I began to learn more a
 
 Of course, implementing this idea was still really, really hard. There were many different ways to start, and I got some [excellent feedback](https://github.com/quarto-dev/quarto-cli/discussions/6975) from people in the R / Quarto dev community. Garrick Aden-Buie in particular was the first to [propose the idea of using fences](https://github.com/quarto-dev/quarto-cli/discussions/6975#discussioncomment-8828907) to denote page breaks, which was a big breakthrough early on. 
 
-But the real breakthrough came when I started using GPT-4 to help me with trying out many different ideas and developing the overall platform architecture. [This conversation](https://chatgpt.com/share/57fda3b1-2e76-4ab1-b7af-e53eac597986) in particular was game changing. In it, I was able to come to solutions for multiple complex problems, including coming up with the page navigation logic and debating about different platforms for the database. We originally started with using Googlesheets, but ultimately decided on Supabase because it is open-source and just far easier to use.
+But the biggest breakthrough came when I started using GPT-4 to help me brainstorm many different ideas while developing the overall platform architecture. [This conversation](https://chatgpt.com/share/57fda3b1-2e76-4ab1-b7af-e53eac597986) in particular was game changing. In it, I came to solutions for multiple complex problems, including the page navigation logic and which platform to use for the database (we originally started with using Googlesheets, but ultimately decided on Supabase because it is open-source and just far easier to use).
 
 Of course, the AI didn't do everything. Two of my students, [Pingfan Hu](https://github.com/pingfan-hu) and [Bogdan Bunea](https://github.com/Buneabt) have been instrumental in helping implement many of the features the package now has, and they too have leveraged LLMs to accelerate their problem solving. Thank you guys for all of your hard work! 🙏
 
-It's been amazing watching this project come together over such a short period of time. The original converstaions I had with GPT-4 and others in the R / Quarto community were just in March and April of this year (2024), and we really dodn't start developing in ernest until the summer. In just a few months, we've gone from a simple idea to a fully functional survey platform.
+It's been amazing watching this project come together over such a short period of time. The original conversations I had with GPT-4 and others in the R / Quarto community were just in March and April of this year (2024). We really didn't start developing in earnest until the summer, and really only late June / early July at that. In just a few months, we've gone from an idea to a fully functional survey platform.
 
 If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on [github](https://github.com/jhelvy/surveydown/issues).
 
