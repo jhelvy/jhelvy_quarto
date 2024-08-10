@@ -8,7 +8,7 @@
 
 <meta name="author" content="John Paul Helveston">
 <meta name="dcterms.date" content="2024-08-08">
-<meta name="description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies (Quarto, shiny, and supabase).">
+<meta name="description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.">
 
 <title>Introducing {surveydown}: An markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!) – jhelvy.com</title>
 <style>
@@ -126,12 +126,12 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 
 <meta property="og:title" content="Introducing {surveydown}: An markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!) – jhelvy.com">
-<meta property="og:description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies (Quarto, shiny, and supabase).">
+<meta property="og:description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.">
 <meta property="og:image" content="https://www.jhelvy.com/blog/2024-08-08-introducing-surveydown/images/lab/john_helveston_circle.png">
 <meta property="og:site_name" content="https://jhelvy.com">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:title" content="Introducing {surveydown}: An markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!) – jhelvy.com">
-<meta name="twitter:description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies (Quarto, shiny, and supabase).">
+<meta name="twitter:description" content="A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.">
 <meta name="twitter:image" content="https://www.jhelvy.com/blog/2024-08-08-introducing-surveydown/images/lab/john_helveston_circle.png">
 <meta name="twitter:creator" content="@johnhelveston">
 <meta name="twitter:site" content="@johnhelveston">
@@ -250,11 +250,13 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
   <ul>
   <li><a href="#what-is-surveydown" id="toc-what-is-surveydown" class="nav-link active" data-scroll-target="#what-is-surveydown">What is surveydown?</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#adding-content-to-your-survey" id="toc-adding-content-to-your-survey" class="nav-link" data-scroll-target="#adding-content-to-your-survey">Adding content to your survey</a>
+  <li><a href="#a-new-way-to-design-surveys" id="toc-a-new-way-to-design-surveys" class="nav-link" data-scroll-target="#a-new-way-to-design-surveys">A new way to design surveys</a>
   <ul class="collapse">
   <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link" data-scroll-target="#adding-pages">Adding pages</a></li>
   <li><a href="#adding-questions" id="toc-adding-questions" class="nav-link" data-scroll-target="#adding-questions">Adding questions</a></li>
   </ul></li>
+  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
+  <li><a href="#how-we-built" id="toc-how-we-built" class="nav-link" data-scroll-target="#how-we-built">How we built</a></li>
   </ul>
 </nav>
 </nav>
@@ -280,7 +282,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 <div>
   <div class="description">
-    <p>A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies (Quarto, shiny, and supabase).</p>
+    <p>A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.</p>
   </div>
 </div>
 
@@ -309,19 +311,20 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </header>
 
 
+<p><link rel="stylesheet" href="surveydown.css"></p>
 <center>
 <img src="logo.png" width="200">
 </center>
 <p><br></p>
-<p>You may have read my <a href="https://jhelvy.com/blog/2023-04-06-markdown-surveys/">previous blog post</a> about an R packaged I called “surveydown”. That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn’t exist yet.</p>
-<p>Well, I have good news - <strong>the package now exists!</strong></p>
+<p>You may have read my <a href="https://jhelvy.com/blog/2023-04-06-markdown-surveys/">previous blog post</a> about an R packaged I called “surveydown”. That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn’t exist yet, it was just an idea.</p>
+<p>Well, I have good news: <strong>the package now exists!</strong></p>
 <p>In this post, I’m going to show you a quick overview of the {surveydown} R package for making markdown-based surveys.</p>
 <section id="what-is-surveydown" class="level1">
 <h1>What is surveydown?</h1>
 <p>If you’ve never used surveydown before, the video on <a href="">this page</a> offers a 5 minute overview that you might find helpful.</p>
-<p><a href="https://jhelvy.github.io/surveydown/">surveydown</a> is a flexible platform for making surveys in <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> using three open source technologies: (<a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>).</p>
+<p><a href="https://jhelvy.github.io/surveydown/">surveydown</a> is a flexible platform for making surveys in <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> using three open source technologies: <a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>.</p>
 <center>
-<img src="technologies.png" width="500">
+<img src="technologies.png" width="600">
 </center>
 <p><br></p>
 <p>The basic concept is this:</p>
@@ -334,20 +337,27 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting started</h1>
-<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, it is recommended that you start with a template survey project. You can create one with the following R command:</p>
+<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, we recommend starting with a template survey project. You can create one with the following R command:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>surveydown<span class="sc">::</span><span class="fu">sd_create_survey</span>(<span class="st">"path/to/folder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>"path/to/folder"</code> is the path to wherever you want the template to be created. Once created, you’ll see the following files / folders:</p>
+<p>The <code>"path/to/folder"</code> is the path to where you want the template to be created. Once created, you’ll see the following files / folders:</p>
 <pre><code>example.qmd
 _extensions
 example.Rproj</code></pre>
-<p>The only file you will need to edit is the <code>example.qmd</code> file. This is the main survey file that you will edit and customize for your survey. The <code>example.Rproj</code> is just a project file, which I recommend opening to edit your <code>example.qmd</code> file in RStudio (if you’re using it). Finally, the <code>_extensions</code> folder contains the Quarto extension needed to make everything work. If you have the example open, you can click the “Run document” button (in RStudio) or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live just yet - for now, we’re going to focus on designing the survey and running it locally to preview it.</p>
+<p>The only file you will need to edit is the <code>example.qmd</code> file. This is the main survey file that you will edit and customize for your survey. The <code>example.Rproj</code> is just a project file, which I recommend opening to edit your <code>example.qmd</code> file in RStudio (if you’re using it). Finally, the <code>_extensions</code> folder contains the <a href="https://github.com/jhelvy/surveydown-ext">surveydown Quarto extension</a> needed to make everything work. You can safely ignore this folder - just know that it’s needed to make everything work.</p>
+<p>If you have the example open, you can click the “Run document” button (in RStudio) or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live - for now, we’re going to focus on designing the survey and running it locally to preview it. The example survey should look like this:</p>
+<center>
+<img src="example.png" width="700">
+</center>
 </section>
-<section id="adding-content-to-your-survey" class="level1">
-<h1>Adding content to your survey</h1>
-<p>To edit your survey, you can add plain text with markdown formatting as well as questions defined in R code chunks. Once all of the main survey content (text, images, questions, etc.) are all defined, you can modify the control logic in the server code chunk, found at the bottom of the main survey .qmd file. We’ll get to all of this step-by-step.</p>
-<p>For this demo, we have a more detailed example already created that walks you through how to implement a choice-based conjoint survey in a .qmd file with surveydown. You can download this example from <a href="https://github.com/pingfan-hu/sdAppleConjoint">this GitHub repo</a>. I recommend starting with this example when designing your own conjoint survey.</p>
+<section id="a-new-way-to-design-surveys" class="level1">
+<h1>A new way to design surveys</h1>
+<p>In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey!</p>
+<p>The <a href="https://jhelvy.github.io/surveydown/">{surveydown} package</a> provides a set of functions that allow you to define the survey content and control logic. Each function starts with <code>sd_</code> to make it easy to identify.</p>
+<p>To edit your survey, you can add text using markdown formatting, or in RStudio you can edit with the visual editor, which inserts the markdown code for you. Survey questions are defined in R code chunks with a <code>sd_question()</code> function from the {surveydown} package. Pages are created using fences, with navigation handled with the <code>sd_next()</code> function.</p>
+<p>Once all of the survey content is defined (pages, text, images, questions, etc.), you can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the <code>sd_config()</code> function. Finally, in the same server code chunk you can define the database configuration with the <code>sd_database()</code> function to store the survey response data.</p>
+<p>We’ll get to all of this step-by-step.</p>
 <section id="adding-pages" class="level2">
 <h2 class="anchored" data-anchor-id="adding-pages">Adding pages</h2>
 <p>In surveydown, pages are delineated using “fences”, like this:</p>
@@ -363,19 +373,92 @@ Page 2 content here
 
 :::
 </code></pre>
-<p>As you can see, we use three colon symbols <code>:::</code>, called a “fence”, to mark the start and end of pages. In the starting fence, you need to define a page name (e.g.&nbsp;<code>welcome</code> and <code>page2</code> in the example above) and you need to define the class as <code>.sd-page</code>. Then anything you put between the page fences will appear on that page.</p>
-<p>To navigate to the next page, you need to insert a <code>sd_next()</code> function call, like this:</p>
+<p>As you can see, we use three colon symbols <code>:::</code>, called a “fence”, to mark the start and end of pages. This notation is commonly used in Quarto for a variety of use cases, like defining <a href="https://quarto.org/docs/authoring/figures.html#subfigures">subfigures</a> in images.</p>
+<p>In the starting fence, you need to define a page name (e.g.&nbsp;<code>welcome</code> and <code>page2</code> in the example above) and you need to define the class as <code>.sd-page</code>. Then anything you put between the page fences will appear on that page.</p>
+<p>To navigate to the next page, you need to insert a <code>sd_next()</code> function call inside a code chunk, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_next</span>(<span class="at">next_page =</span> <span class="st">'page2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2')</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this case, the above function would need to be placed in a code chunk in between the <code>:::</code> fences for the <code>welcome</code> page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages.</p>
+<p>The above code chunk will create a “Next” button that goes on to page 2 that looks like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<button id="next-page2" type="button" class="btn btn-default action-button" style="display: block; margin: auto;" onclick="Shiny.setInputValue('next_page', 'page2');">Next</button>
+</div>
+</div>
+<p>You would need to place the code chunk in between the <code>:::</code> fences of the <code>welcome</code> page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages by just changing the <code>next_page</code> argument. Finally, you can also change the label of the button by changing the <code>label</code> argument, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2', label = 'Next page')</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<button id="next-page2" type="button" class="btn btn-default action-button" style="display: block; margin: auto;" onclick="Shiny.setInputValue('next_page', 'page2');">Next page</button>
+</div>
+</div>
 </section>
 <section id="adding-questions" class="level2">
 <h2 class="anchored" data-anchor-id="adding-questions">Adding questions</h2>
-<p>Every survey question is created using the <code>sd_question()</code> function.</p>
-
-
+<p>Every survey question is created using the <code>sd_question()</code> function inside a code chunk. The question type is defined by the <code>type</code> argument. For example, to add a multiple choice question, you could insert the following code chunk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'penguins',</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Which is your favorite type of penguin?",</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Adélie'    = 'adelie',</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'Chinstrap' = 'chinstrap',</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">    'Gentoo'    = 'gentoo'</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above code chunk will create a mutliple choice question that looks like this:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container- penguins" data-question-id="penguins" data-required="false" class="question-container">
+<div id="penguins" style="width:100%;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="penguins-label">
+<label class="control-label" id="penguins-label" for="penguins"><p>Which is your favorite type of penguin?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="penguins" value="adelie">
+<span>Adélie</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="penguins" value="chinstrap">
+<span>Chinstrap</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="penguins" value="gentoo">
+<span>Gentoo</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>The <code>sd_question()</code> function can also be used to create <a href="https://jhelvy.github.io/surveydown/articles/question_types.html">other question types</a>, like text input, select drop down choices, and more.</p>
+<p>The function has many other arguments for customizing the look and feel of the question. The <code>required</code> argument can be used to make a question required or optional, e.g., <code>required = TRUE</code>.</p>
 </section>
+</section>
+<section id="why" class="level1">
+<h1>Why?</h1>
+<p>Open source Free Own your data Ease of editing - skip to page, etc Version control Reproducible</p>
+</section>
+<section id="how-we-built" class="level1">
+<h1>How we built</h1>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
