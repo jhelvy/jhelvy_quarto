@@ -258,16 +258,16 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
   <ul class="collapse">
   <li><a href="#conditional-display" id="toc-conditional-display" class="nav-link" data-scroll-target="#conditional-display">Conditional display</a></li>
   <li><a href="#conditional-skip" id="toc-conditional-skip" class="nav-link" data-scroll-target="#conditional-skip">Conditional skip</a></li>
-  </ul></li>
   <li><a href="#setting-up-the-database" id="toc-setting-up-the-database" class="nav-link" data-scroll-target="#setting-up-the-database">Setting up the database</a></li>
   </ul></li>
-  <li><a href="#what-problems-does-surveydown-solve" id="toc-what-problems-does-surveydown-solve" class="nav-link" data-scroll-target="#what-problems-does-surveydown-solve">What problem(s) does surveydown solve?</a>
+  <li><a href="#going-live" id="toc-going-live" class="nav-link" data-scroll-target="#going-live">Going live!</a></li>
+  </ul></li>
+  <li><a href="#why-did-we-build-surveydown" id="toc-why-did-we-build-surveydown" class="nav-link" data-scroll-target="#why-did-we-build-surveydown">Why did we build surveydown?</a>
   <ul class="collapse">
   <li><a href="#open-source" id="toc-open-source" class="nav-link" data-scroll-target="#open-source">Open source</a></li>
-  <li><a href="#free" id="toc-free" class="nav-link" data-scroll-target="#free">Free</a></li>
   <li><a href="#own-your-data" id="toc-own-your-data" class="nav-link" data-scroll-target="#own-your-data">Own your data</a></li>
-  <li><a href="#ease-of-editing---skip-to-page-etc" id="toc-ease-of-editing---skip-to-page-etc" class="nav-link" data-scroll-target="#ease-of-editing---skip-to-page-etc">Ease of editing - skip to page, etc</a></li>
-  <li><a href="#version-control" id="toc-version-control" class="nav-link" data-scroll-target="#version-control">Version control</a></li>
+  <li><a href="#ease-of-editing" id="toc-ease-of-editing" class="nav-link" data-scroll-target="#ease-of-editing">Ease of editing</a></li>
+  <li><a href="#easy-version-control-and-collaboration" id="toc-easy-version-control-and-collaboration" class="nav-link" data-scroll-target="#easy-version-control-and-collaboration">Easy version control and collaboration</a></li>
   <li><a href="#reproducible" id="toc-reproducible" class="nav-link" data-scroll-target="#reproducible">Reproducible</a></li>
   </ul></li>
   <li><a href="#how-we-built-it" id="toc-how-we-built-it" class="nav-link" data-scroll-target="#how-we-built-it">How we built it</a></li>
@@ -333,6 +333,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>You may have read my <a href="https://jhelvy.com/blog/2023-04-06-markdown-surveys/">previous blog post</a> about an R packaged I called “surveydown”. That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn’t exist yet, it was just an idea.</p>
 <p>Well, I have good news: <strong>the package now exists!</strong></p>
 <p>In this post, I’m going to show you a quick overview of the {surveydown} R package for making markdown-based surveys.</p>
+<p>Later in the post I’ll explain a little more about <em>why</em> we built surveydown as well as some of the tools we used to build it.</p>
 <section id="what-is-surveydown" class="level1">
 <h1>What is surveydown?</h1>
 <p>If you’ve never used surveydown before, the video on <a href="">this page</a> offers a 5 minute overview that you might find helpful.</p>
@@ -385,8 +386,7 @@ Page 1 content here
 
 Page 2 content here
 
-:::
-</code></pre>
+:::</code></pre>
 <p>As you can see, we use three colon symbols <code>:::</code>, called a “fence”, to mark the start and end of pages. This notation is commonly used in Quarto for a variety of use cases, like defining <a href="https://quarto.org/docs/authoring/figures.html#subfigures">subfigures</a> in images.</p>
 <p>In the starting fence, you need to define a page name (e.g.&nbsp;<code>welcome</code> and <code>page2</code> in the example above) and you need to define the class as <code>.sd-page</code>. Then anything you put between the page fences will appear on that page.</p>
 <p>To navigate to the next page, you need to insert a <code>sd_next()</code> function call inside a code chunk, like this:</p>
@@ -521,6 +521,11 @@ Page 2 content here
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>This will make the <code>penguins_other</code> question only appear if the respondent chose the <code>other</code> option in the <code>penguins</code> question, like this:</p>
+<center>
+<img src="show_if.gif" width="600" style="box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3); border: 1px solid #000; border-radius: 5px;">
+</center>
+<p><br></p>
 <p>Here we’re using the <code>tibble::tribble()</code> function to define a data frame with three columns:</p>
 <ul>
 <li><code>question_id</code>: The <code>id</code> of the triggering question.</li>
@@ -537,7 +542,8 @@ Page 2 content here
 </section>
 <section id="conditional-skip" class="level3">
 <h3 class="anchored" data-anchor-id="conditional-skip">Conditional skip</h3>
-<p>Often times you’ll want to screen people out of a survey based on responses to questions. For example, let’s say you had a survey about vehicle owners and wanted to only include people who owned their vehicle. On your first page (named <code>welcome</code>), you could screen out people who do <em>not</em> own their vehicle by first defining a question about their vehicle ownership, e.g.:</p>
+<p>Often times you’ll want to screen people out of a survey based on responses to questions. For example, let’s say you only wanted to only include people who own a vehicle. On your first page (e.g., with page name <code>welcome</code>), you could screen out people who do <em>not</em> own a vehicle.</p>
+<p>First, define a question about their vehicle ownership, e.g.:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
@@ -545,39 +551,32 @@ Page 2 content here
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'vehicle_ownership',</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Do you own your vehicle?",</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Yes'    = 'yes',</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'No' = 'no'</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Yes' = 'yes',</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'No'  = 'no'</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Then in the server code chunk, you could use the <code>skip_if</code> argument to define the behavior of the next button on the <code>welcome</code> page: if the respondent chose <code>yes</code>, they would go to the next page defined by the <code>sd_next()</code> function on the <code>welcome</code> page (the default behavior), but if they chose <code>no</code> you could send them to some page at the end, e.g.&nbsp;a page named <code>screenout</code>. the <code>vehicle_ownership</code> question would only be shown if the respondent chose the <code>other</code> option in the <code>penguins</code> question, like this:</p>
+<p>Then in the server code chunk, you could use the <code>skip_if</code> argument in <code>sd_config()</code> to define the behavior of the next button on the <code>welcome</code> page, like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,  <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"penguins"</span>,    <span class="st">"other"</span>,         <span class="st">"penguins_other"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,        <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"vehicle_ownership"</span>, <span class="st">"no"</span>,            <span class="st">"screenout"</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here we’re using the <code>tibble::tribble()</code> function to define a data frame with three columns:</p>
-<ul>
-<li><code>question_id</code>: The <code>id</code> of the triggering question.</li>
-<li><code>question_value</code>: The triggering value.</li>
-<li><code>target</code>: The <code>id</code> of the target question to display.</li>
-</ul>
-<p>You don’t have to use <code>tibble::tribble()</code>, and in fact if you have a lot of <code>show_if</code> conditions, then you could create a csv file with all of your conditions in it and read it in to set the <code>show_if</code> conditions (just make sure the header has the same three column names), e.g.:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'path/to/show_if_conditions.csv'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>This sets up a condition where if the respondent chooses <code>no</code> on the <code>vehicle_ownership</code> question, they will be sent to a page named <code>screenout</code>. You could put such a page at the end of the survey, something like this:</p>
+<pre><code>::: {#screenout .sd-page}
+
+Sorry, but you are not qualified to take our survey.
+
+:::</code></pre>
+<p>Notice that I don’t have a <code>sd_next()</code> on this screenout page. That is how you define an end point for the survey taker. If there’s no “Next” button, then they cannot navigate anywhere else, so the survey is over.</p>
 </section>
-</section>
-<section id="setting-up-the-database" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up-the-database">Setting up the database</h2>
-<p>The <code>sd_database()</code> function inside the server code chunk is where you can define your database configuration to store your survey response data. The default database is <a href="https://supabase.com/">supabase</a>, an open-source database.</p>
+<section id="setting-up-the-database" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-the-database">Setting up the database</h3>
+<p>The <code>sd_database()</code> function inside the server code chunk is where you define your database configuration to store your survey response data. The default database is <a href="https://supabase.com/">supabase</a> - an amazing open-source database project.</p>
 <p>The arguments to the <code>sd_database()</code> function are all of the components needed to connect to a database hosted on supabase. You can find detailed instructions on how to set this up in the <a href="https://jhelvy.github.io/surveydown/articles/database_setup.html">surveydown documentation</a>. In general, it should look like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">sd_database</span>(</span>
@@ -589,34 +588,70 @@ Page 2 content here
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">password   =</span> <span class="fu">Sys.getenv</span>(<span class="st">"SUPABASE_PASSWORD"</span>)</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Each of the characters are elements that can be easily copied from your supabase database configuration. We recommend storing your database password in your <code>.Renviron</code> file so that it is not accidentally made public (i.e.&nbsp;don’t hard-code in your password!), which can be accessed with the <code>Sys.getenv()</code> function.</p>
+<p>You would fill in each of the currently blank <code>""</code> with elements that can be easily copied from your supabase database configuration. For the <code>password</code>, we recommend storing your database password in your <code>.Renviron</code> file so that it is not accidentally made public (i.e.&nbsp;don’t hard-code in your password!), which can then be read into the current environment with the <code>Sys.getenv()</code> function.</p>
 <p>One configured, any responses on your survey will be stored in your database. You can even check it live - responses are updated on every interaction with the app, such as clicking on a survey question or a next button. The time stamps of each interaction are also automatically stored.</p>
 </section>
 </section>
-<section id="what-problems-does-surveydown-solve" class="level1">
-<h1>What problem(s) does surveydown solve?</h1>
+<section id="going-live" class="level2">
+<h2 class="anchored" data-anchor-id="going-live">Going live!</h2>
+<p>Once you are happy with your survey, you can deploy it live to any server of your choice. Since it’s a shiny app, you can deploy it to <a href="https://shinyapps.io/">shinyapps.io</a> for free. The Quarto documentation has good <a href="https://quarto.org/docs/interactive/shiny/running.html#shinyapps">instructions</a> on how to deploy a Quarto shiny app to shinyapps.io, and we’re working on our own instructions in the package documentation.</p>
+</section>
+</section>
+<section id="why-did-we-build-surveydown" class="level1">
+<h1>Why did we build surveydown?</h1>
+<blockquote class="blockquote">
+<p>Do we really need another survey platform?</p>
+</blockquote>
+<p>I do a lot of survey research, and I’ve been frustrated with the survey platforms I’ve used in the past. The commerical platforms like Qualtrics and SurveyMonkey are great, but they are expensive and are difficult to version control, and collaboration with others is near impossible, especially if your collaborator doesn’t have a license of their own. They also don’t allow me to own my own survey data, meaning I always am at the mercy of the platform owner. And the features are often limited. It’s not easy to do more complex things like randomization, conditional display, etc.</p>
+<p>The only other open-source survey platform I have used is <a href="https://formr.org/">formr</a>, which is a very powerful platform, but it is rather clunky to use and is not as easy to edit as a simple markdown file. What we’ve come up with is a survey platform that is easy to edit, easy to use, and is built entirely on open-source technologies. I think is solves a lot of problems, and hopefully you’ll agree.</p>
 <section id="open-source" class="level2">
 <h2 class="anchored" data-anchor-id="open-source">Open source</h2>
-</section>
-<section id="free" class="level2">
-<h2 class="anchored" data-anchor-id="free">Free</h2>
+<p>surveydown is built entirely with open-source technologies, making it transparent and customizable. Best of all, no expensive licenses! Just install and use it!</p>
 </section>
 <section id="own-your-data" class="level2">
 <h2 class="anchored" data-anchor-id="own-your-data">Own your data</h2>
+<p>With surveydown, you retain full ownership and control of your survey data. The responses are stored in your own Supabase database, ensuring that you have complete access to the data. This is particularly important for researchers dealing with sensitive information or those who need to comply with specific data protection regulations. We’re still working on enabling you to use your own hosted database, which will provide even more flexibility.</p>
 </section>
-<section id="ease-of-editing---skip-to-page-etc" class="level2">
-<h2 class="anchored" data-anchor-id="ease-of-editing---skip-to-page-etc">Ease of editing - skip to page, etc</h2>
+<section id="ease-of-editing" class="level2">
+<h2 class="anchored" data-anchor-id="ease-of-editing">Ease of editing</h2>
+<p>Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it’s built on Quarto, you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a <code>quarto preview</code> command in the terminal.</p>
+<p>Some other features we added to make your life easier are:</p>
+<ul>
+<li>The ability to skip to specific pages during editing: in the <code>sd_config()</code> function, you can define a <code>start_page</code> argument that will skip to a specific page when the survey is first loaded.</li>
+<li>The ability to show all pages at once during editing: in the <code>sd_config()</code> function, you can set <code>show_all_pages = TRUE</code> to show all the pages at once when the survey is first loaded.</li>
+<li>The ability to define custom / more complex skip logic: in the <code>sd_config()</code> function, you can define a <code>skip_if_custom</code> argument that allows you to define any custom function that if true will skip to a specific page.</li>
+<li>The ability to define custom / more complex conditional display logic: in the <code>sd_config()</code> function, you can define a <code>show_if_custom</code> argument that allows you to define any custom function that if true will show a specific question.</li>
+</ul>
 </section>
-<section id="version-control" class="level2">
-<h2 class="anchored" data-anchor-id="version-control">Version control</h2>
+<section id="easy-version-control-and-collaboration" class="level2">
+<h2 class="anchored" data-anchor-id="easy-version-control-and-collaboration">Easy version control and collaboration</h2>
+<p>Because the entire survey is defined in a single plain text file, surveydown naturally integrates with version control systems like Git. This allows you to track changes over time, collaborate with team members, and maintain a clear history of your survey’s development.</p>
 </section>
 <section id="reproducible" class="level2">
 <h2 class="anchored" data-anchor-id="reproducible">Reproducible</h2>
+<p>Surveydown promotes reproducible research by allowing you to define your entire survey in a single, self-contained plain text document. This has a ton of benefits, like:</p>
+<ul>
+<li>Want someone else to be able to reproduce your experiment? Just give them the .qmd file and any other files they need (e.g., images, data, etc.), and they can reproduce your survey on their own computer.</li>
+<li>Want to print out your survey for an appendix? Just set <code>show_all_pages = TRUE</code> in the <code>sd_config()</code> function and print it to pdf.</li>
+<li>Want others to see your survey live? Just turn off the database by setting the database to <code>db &lt;- sd_database()</code> with no arguments, and your app will function without a database.</li>
+</ul>
 </section>
 </section>
 <section id="how-we-built-it" class="level1">
 <h1>How we built it</h1>
-<p>AI help</p>
+<p>Before I wrap up, I just want to say that I am absolutely amazed at the time we live in. I have had this idea in mind for many years, but I’m not a web developer, and I never could come up with a way to make it happen. That was actually what motivated me to write my <a href="https://jhelvy.com/blog/2023-04-06-markdown-surveys/">previous blog post</a> - it was a call for help from others!</p>
+<p>But two things happened that made it possible:</p>
+<ol type="1">
+<li>The rise of Quarto</li>
+<li>The rise of LLMs</li>
+</ol>
+<p>After I switched my website over from distill to Quarto, I began to learn more and more about how powerful Quarto really is for building things on the web. Then I saw the <a href="https://quarto.org/docs/dashboards/interactivity/shiny-r.html">Quarto shiny document</a> framework and I immediately thought that this just might be the missing piece I needed to make surveydown a reality. It does all the legwork of converting markdown and R code into a shiny app.</p>
+<p>Of course, implementing this idea was still really, really hard. There were many different ways to start, and I got some <a href="https://github.com/quarto-dev/quarto-cli/discussions/6975">excellent feedback</a> from people in the R / Quarto dev community. Garrick Aden-Buie in particular was the first to <a href="https://github.com/quarto-dev/quarto-cli/discussions/6975#discussioncomment-8828907">propose the idea of using fences</a> to denote page breaks, which was a big breakthrough early on.</p>
+<p>But the real breakthrough came when I started using GPT-4 to help me with trying out many different ideas and developing the overall platform architecture. <a href="https://chatgpt.com/share/57fda3b1-2e76-4ab1-b7af-e53eac597986">This conversation</a> in particular was game changing. In it, I was able to come to solutions for multiple complex problems, including coming up with the page navigation logic and debating about different platforms for the database. We originally started with using Googlesheets, but ultimately decided on Supabase because it is open-source and just far easier to use.</p>
+<p>Of course, the AI didn’t do everything. Two of my students, <a href="https://github.com/pingfan-hu">Pingfan Hu</a> and <a href="https://github.com/Buneabt">Bogdan Bunea</a> have been instrumental in helping implement many of the features the package now has, and they too have leveraged LLMs to accelerate their problem solving. Thank you guys for all of your hard work! 🙏</p>
+<p>It’s been amazing watching this project come together over such a short period of time. The original converstaions I had with GPT-4 and others in the R / Quarto community were just in March and April of this year (2024), and we really dodn’t start developing in ernest until the summer. In just a few months, we’ve gone from a simple idea to a fully functional survey platform.</p>
+<p>If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on <a href="https://github.com/jhelvy/surveydown/issues">github</a>.</p>
+<p>I’m so excited to see what you all will build with surveydown!</p>
 
 
 </section>
