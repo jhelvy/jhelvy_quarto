@@ -67,23 +67,19 @@ The package is still in development, but you can already use it to create survey
 
 # Getting started 
 
-After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), we recommend starting with a template survey project. You can create one with the following R command:
+After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), we recommend starting with a template survey project. To do so, run the following in the R console:
 
 ```{r}
 surveydown::sd_create_survey("path/to/folder")
 ```
 
-The `"path/to/folder"` is the path to where you want the template to be created. Once created, you'll see the following files / folders:
+This will create a folder with the following files:
 
-```
-example.qmd
-_extensions
-example.Rproj
-```
+- `example.qmd`: a template survey you should edit.
+- `example.Rproj`: An RStudio project file (helpful if you're working in RStudio)
+- `_extensions`: A folder with the [surveydown Quarto extension](https://github.com/jhelvy/surveydown-ext) needed to make everything work (don't modify this).
 
-The only file you will need to edit is the `example.qmd` file. This is the main survey file that you will edit and customize for your survey. The `example.Rproj` is just a project file, which I recommend opening to edit your `example.qmd` file in RStudio (if you're using it). Finally, the `_extensions` folder contains the [surveydown Quarto extension](https://github.com/jhelvy/surveydown-ext) needed to make everything work. You can safely ignore this folder - just know that it's needed to make everything work.
-
-If you have the example open, you can click the "Run document" button (in RStudio) or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live - for now, we're going to focus on designing the survey and running it locally to preview it. The example survey should look like this:
+If you have the example open in RStudio, you can click the "Run document" button, or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live - for now, we're going to focus on designing the survey and running it locally to preview it. The example survey should look like this:
 
 <center>
 <img src="example.png" width=700>
@@ -95,7 +91,7 @@ If you have the example open, you can click the "Run document" button (in RStudi
 
 In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
 
-The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions that allow you to define the survey content and control logic. Each function starts with `sd_` to make it easy to identify.
+The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify.
 
 To edit your survey, you can add text using markdown formatting, or in RStudio you can edit with the visual editor, which inserts the markdown code for you. Survey questions are defined in R code chunks with a `sd_question()` function from the {surveydown} package. Pages are created using fences, with navigation handled with the `sd_next()` function. 
 
