@@ -13,6 +13,7 @@ categories:
   - quarto
 format: html
 toc: true
+toc-depth: 3
 lightbox: true
 execute:
   eval: false
@@ -91,13 +92,9 @@ If you have the example open in RStudio, you can click the "Run document" button
 
 In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
 
-The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify.
+The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the `sd_question()` function. Pages are defined using fences (`:::`), and navigation buttons handled with the `sd_next()` function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function, and you can configure the database with the `sd_database()`.
 
-To edit your survey, you can add text using markdown formatting, or in RStudio you can edit with the visual editor, which inserts the markdown code for you. Survey questions are defined in R code chunks with a `sd_question()` function from the {surveydown} package. Pages are created using fences, with navigation handled with the `sd_next()` function. 
-
-Once all of the survey content is defined (pages, text, images, questions, etc.), you can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function. Finally, in the same server code chunk you can define the database configuration with the `sd_database()` function to store the survey response data. 
-
-We'll get to all of this step-by-step.
+In this post, I'll just give a quick summary of a few of these features since the [documentation](https://jhelvy.github.io/surveydown/) has more details.
 
 ## Adding pages
 
@@ -118,7 +115,6 @@ Page 2 content here
 ```
 
 As you can see, we use three colon symbols `:::`, called a "fence", to mark the start and end of pages. This notation is commonly used in Quarto for a variety of use cases, like defining [subfigures](https://quarto.org/docs/authoring/figures.html#subfigures) in images.
-
 
 In the starting fence, you need to define a page name (e.g. `welcome` and `page2` in the example above) and you need to define the class as `.sd-page`. Then anything you put between the page fences will appear on that page. 
 
@@ -158,7 +154,6 @@ sd_next(next_page = 'page2', label = 'Next page')
 
 Every survey question is created using the `sd_question()` function inside a code chunk. The question type is defined by the `type` argument. For example, to add a multiple choice question, you could insert the following code chunk:
 
-
 ```{r}
 #| echo: fenced
 
@@ -194,7 +189,7 @@ sd_question(
 
 The `sd_question()` function can be used to create a variety of [question types](https://jhelvy.github.io/surveydown/articles/question_types.html), like text input, select drop down choices, and more by changing the `type` argument.
 
-The function has many other arguments for customizing the look and feel of the question (e.g., `height` and `width`, etc.) as well as a `required` argument that can be used to make a question required or optional (e.g., `required = TRUE`).
+The function has many other arguments for customizing the look and feel of the question (e.g., `height` and `width`, etc.).
 
 ## The server chunk
 
@@ -221,9 +216,17 @@ sd_server(
 
 The `sd_database()` function is where you set up your database. The `sd_server()` function makes everything run, which you can safely ignore - just don't change it and all will be good!
 
-The middle part (the `sd_config()` function) is where you can define custom control logic for the survey, such as *conditional display* (conditionally displaying a question based on responses to questions), or *conditional skip* (conditionally sending the respondent to a page based on responses to questions).
+The middle part (the `sd_config()` function) is where you can define custom control logic for the survey, such as [*conditional display*](#conditional-display) (conditionally displaying a question based on responses to questions), or [*conditional skip*](#conditional-skip) (conditionally sending the respondent to a page based on responses to questions).
 
-### Conditional display
+## Going live!
+
+Once you are happy with your survey, you can deploy it live to any server of your choice. Since it's a shiny app, you can [deploy it to shinyapps.io](https://quarto.org/docs/interactive/shiny/running.html#shinyapps) for free! 
+
+# Features
+
+Since surveydown is built on top of Shiny, it provides tremendous flexibility in terms of what you can do with your survey. Below are a few examples of some commons things you may want to do with your survey.
+
+## Conditional display
 
 Let's say we had a fourth option for "other" in our multiple choice question about penguins. If the respondent chose it, you may want a second question to popup that allows them to specify the other penguin type. To implement this, you would need to define both questions, e.g.:
 
@@ -282,7 +285,7 @@ config <- sd_config(
 )
 ```
 
-### Conditional skip
+## Conditional skip
 
 Often times you'll want to screen people out of a survey based on responses to questions. For example, let's say you only wanted to only include people who own a vehicle. On your first page (e.g., with page name `welcome`), you could screen out people who do _not_ own a vehicle.
 
@@ -325,30 +328,114 @@ Sorry, but you are not qualified to take our survey.
 
 Notice that I don't have a `sd_next()` on this screenout page. That is how you define an end point for the survey taker. If there's no "Next" button, then they cannot navigate anywhere else, so the survey is over.
 
-### Setting up the database
+## Required responses
 
-The `sd_database()` function inside the server code chunk is where you define your database configuration to store your survey response data. The default database is [supabase](https://supabase.com/) - an amazing open-source database project.
-
-The arguments to the `sd_database()` function are all of the components needed to connect to a database hosted on supabase. You can find detailed instructions on how to set this up in the [surveydown documentation](https://jhelvy.github.io/surveydown/articles/database_setup.html). In general, it should look like this:
+By default, no questions are required. However, you can make questions required by adding the question `id` to the `required` argument in `sd_config()`, like this:
 
 ```{r}
-db <- sd_database(
-  host       = "",
-  db_name    = "",
-  port       = "",
-  user       = "",
-  table_name = "",
-  password   = Sys.getenv("SUPABASE_PASSWORD")
+config <- sd_config(
+  required = c("vehicle_ownership", "penguins_other")
 )
 ```
 
-You would fill in each of the currently blank `""` with elements that can be easily copied from your supabase database configuration. For the `password`, we recommend storing your database password in your `.Renviron` file so that it is not accidentally made public (i.e. don't hard-code in your password!), which can then be read into the current environment with the `Sys.getenv()` function.
+This will make the respondent unable to proceed until they have answered the required questions. It will also place a red asterisk (*) next to the question label to indicate that the question is required.
 
-One configured, any responses on your survey will be stored in your database. You can even check it live - responses are updated on every interaction with the app, such as clicking on a survey question or a next button. The time stamps of each interaction are also automatically stored.
+You can also make all questions required by setting `all_questions_required = TRUE` like this:
 
-## Going live!
+```{r}
+config <- sd_config(
+  all_questions_required = TRUE
+)
+```
 
-Once you are happy with your survey, you can deploy it live to any server of your choice. Since it's a shiny app, you can deploy it to [shinyapps.io](https://shinyapps.io/) for free. The Quarto documentation has good [instructions](https://quarto.org/docs/interactive/shiny/running.html#shinyapps) on how to deploy a Quarto shiny app to shinyapps.io, and we're working on our own instructions in the package documentation.
+## Reactivity
+
+One other feature that is particularly powerful is the ability to use R code in your survey via Shiny's reactive programming. This allows you to make your survey more interactive and to use the full power of R to create custom functionality.
+
+### Demo 1: Displaying content based on previous responses
+
+Let's say you wanted to create a survey that asked the respondent's name, and then displayed a personalized message based on their name. You could do this by first asking their name:
+
+```{r}
+sd_question(
+  type  = "text",
+  id    = "name",
+  label = "What is your name?"
+)
+```
+
+Then you can use the `sd_display_value("name")` function to display the value of the `name` question in other parts of your survey. For example:
+
+```{r}
+Welcome, `r sd_display_value("name")`!
+```
+
+Which would render as something like "Welcome, Dave!" (assuming the respondent entered "Dave" in the `name` question). This works because the `sd_display_value()` function is reactive, meaning it will update the display based on the respondent's responses.
+
+### Demo 2: Displaying randomized question labels
+
+Let's say you wanted to show a series of questions, but you wanted to randomize the labels shown for each question. You could do this by first defining a list of labels, and then using the `sd_question_reactive()` function to create a question that will display a random label from the list. 
+
+For example, let's ask the respondent to rate different car brands from a random set of brands. You could first pre-define the randomized sets of brands for each respondent and store it as a csv file, like this:
+
+```{r}
+brands <- c("Toyota", "Ford", "Chevrolet", "Honda", "Nissan", "Tesla")
+design <- data.frame(
+  respondent_id = rep(1:10, each = 3),
+  brand = unlist(lapply(1:10, function(x) sample(brands, 3, replace = FALSE)))
+)
+write_csv(design, "design.csv")
+```
+
+This would make a design file that looks like this:
+
+```{r}
+#| eval: true
+#| echo: false
+
+brands <- c("Toyota", "Ford", "Chevrolet", "Honda", "Nissan", "Tesla")
+design <- data.frame(
+  respondent_id = rep(1:10, each = 3),
+  brand = unlist(lapply(1:10, function(x) sample(brands, 3, replace = FALSE)))
+)
+head(design)
+```
+
+Note that this would not be done in your survey.qmd file - it's just a one-time thing to create the design (probably stored in an R file).
+
+Then in your server code chunk, you could read in the design file and use it to randomize the labels for each question based on a randomly chosen respondent:
+
+```{r}
+design <- read_csv("design.csv")
+resp_id <- sample(design$respondent_id, 1)
+df_resp <- design %>% filter(respondent_id == resp_id)
+
+options <- c(1, 2, 3)
+names(options) <- df_resp$brand
+
+sd_question_reactive(
+  type  = "mc",
+  id    = "brands",
+  label = "Which of these brands do you like best?",
+  option = options
+)
+```
+
+Here the `sd_question_reactive()` function is used because the labels depend on the randomly chosen respondent. This means the labels will be different for each respondent.
+
+Since this is a reactive question, **this code must be placed inside the server code chunk**, not where you want it to appear in the survey. To define where in the survey the question should appear, you use the `sd_display_question()` function with the `id` set to the same value as the `id` in the `sd_question_reactive()` function, like this:
+
+```{r}
+sd_display_question(id = "brands")
+```
+
+Now the `brands` question will be displayed in the survey where you put this code chunk.
+
+Note that all question responses are automatically saved to the database, but if you wanted to store some other value (e.g. the randomly chosen `respondent_id`), you could do that with the `sd_store_value()` function, like this:
+
+```{r}
+sd_store_value(resp_id)
+```
 
 # Why did we build surveydown?
 
@@ -370,7 +457,7 @@ With surveydown, you retain full ownership and control of your survey data. The 
 
 ## Ease of editing
 
-Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it's built on Quarto, you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a `quarto preview` command in the terminal.
+Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it's built on [Quarto](https://quarto.org/), you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a `quarto serve` command in the terminal.
 
 Some other features we added to make your life easier are:
 
@@ -381,7 +468,7 @@ Some other features we added to make your life easier are:
 
 ## Did I mention you can run R code in your survey?
 
-Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. We're also working on adding the ability to work with the data from the survey itself so that you could do some interactive things, like show a respondent how their responses compare to others in real time.
+Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. You can also add interactive components to your surveys, such as showing a respondent how their responses compare to others in real time.
 
 ## Easy version control and collaboration
 
