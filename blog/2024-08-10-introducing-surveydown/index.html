@@ -255,13 +255,19 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
   <li><a href="#quick-overview" id="toc-quick-overview" class="nav-link" data-scroll-target="#quick-overview">Quick overview</a></li>
   <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link" data-scroll-target="#adding-pages">Adding pages</a></li>
   <li><a href="#adding-questions" id="toc-adding-questions" class="nav-link" data-scroll-target="#adding-questions">Adding questions</a></li>
-  <li><a href="#the-server-chunk" id="toc-the-server-chunk" class="nav-link" data-scroll-target="#the-server-chunk">The server chunk</a>
+  <li><a href="#the-server-chunk" id="toc-the-server-chunk" class="nav-link" data-scroll-target="#the-server-chunk">The server chunk</a></li>
+  <li><a href="#going-live" id="toc-going-live" class="nav-link" data-scroll-target="#going-live">Going live!</a></li>
+  </ul></li>
+  <li><a href="#features" id="toc-features" class="nav-link" data-scroll-target="#features">Features</a>
   <ul class="collapse">
   <li><a href="#conditional-display" id="toc-conditional-display" class="nav-link" data-scroll-target="#conditional-display">Conditional display</a></li>
   <li><a href="#conditional-skip" id="toc-conditional-skip" class="nav-link" data-scroll-target="#conditional-skip">Conditional skip</a></li>
-  <li><a href="#setting-up-the-database" id="toc-setting-up-the-database" class="nav-link" data-scroll-target="#setting-up-the-database">Setting up the database</a></li>
+  <li><a href="#required-responses" id="toc-required-responses" class="nav-link" data-scroll-target="#required-responses">Required responses</a></li>
+  <li><a href="#reactivity" id="toc-reactivity" class="nav-link" data-scroll-target="#reactivity">Reactivity</a>
+  <ul class="collapse">
+  <li><a href="#demo-1-displaying-content-based-on-previous-responses" id="toc-demo-1-displaying-content-based-on-previous-responses" class="nav-link" data-scroll-target="#demo-1-displaying-content-based-on-previous-responses">Demo 1: Displaying content based on previous responses</a></li>
+  <li><a href="#demo-2-displaying-randomized-question-labels" id="toc-demo-2-displaying-randomized-question-labels" class="nav-link" data-scroll-target="#demo-2-displaying-randomized-question-labels">Demo 2: Displaying randomized question labels</a></li>
   </ul></li>
-  <li><a href="#going-live" id="toc-going-live" class="nav-link" data-scroll-target="#going-live">Going live!</a></li>
   </ul></li>
   <li><a href="#why-did-we-build-surveydown" id="toc-why-did-we-build-surveydown" class="nav-link" data-scroll-target="#why-did-we-build-surveydown">Why did we build surveydown?</a>
   <ul class="collapse">
@@ -354,16 +360,17 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </section>
 <section id="getting-started" class="level1">
 <h1>Getting started</h1>
-<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, we recommend starting with a template survey project. You can create one with the following R command:</p>
+<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, we recommend starting with a template survey project. To do so, run the following in the R console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>surveydown<span class="sc">::</span><span class="fu">sd_create_survey</span>(<span class="st">"path/to/folder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The <code>"path/to/folder"</code> is the path to where you want the template to be created. Once created, you’ll see the following files / folders:</p>
-<pre><code>example.qmd
-_extensions
-example.Rproj</code></pre>
-<p>The only file you will need to edit is the <code>example.qmd</code> file. This is the main survey file that you will edit and customize for your survey. The <code>example.Rproj</code> is just a project file, which I recommend opening to edit your <code>example.qmd</code> file in RStudio (if you’re using it). Finally, the <code>_extensions</code> folder contains the <a href="https://github.com/jhelvy/surveydown-ext">surveydown Quarto extension</a> needed to make everything work. You can safely ignore this folder - just know that it’s needed to make everything work.</p>
-<p>If you have the example open, you can click the “Run document” button (in RStudio) or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live - for now, we’re going to focus on designing the survey and running it locally to preview it. The example survey should look like this:</p>
+<p>This will create a folder with the following files:</p>
+<ul>
+<li><code>example.qmd</code>: a template survey you should edit.</li>
+<li><code>example.Rproj</code>: An RStudio project file (helpful if you’re working in RStudio)</li>
+<li><code>_extensions</code>: A folder with the <a href="https://github.com/jhelvy/surveydown-ext">surveydown Quarto extension</a> needed to make everything work (don’t modify this).</li>
+</ul>
+<p>If you have the example open in RStudio, you can click the “Run document” button, or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live - for now, we’re going to focus on designing the survey and running it locally to preview it. The example survey should look like this:</p>
 <center>
 <img src="example.png" width="700">
 </center>
@@ -373,10 +380,8 @@ example.Rproj</code></pre>
 <section id="quick-overview" class="level2">
 <h2 class="anchored" data-anchor-id="quick-overview">Quick overview</h2>
 <p>In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey!</p>
-<p>The <a href="https://jhelvy.github.io/surveydown/">{surveydown} package</a> provides a set of functions that allow you to define the survey content and control logic. Each function starts with <code>sd_</code> to make it easy to identify.</p>
-<p>To edit your survey, you can add text using markdown formatting, or in RStudio you can edit with the visual editor, which inserts the markdown code for you. Survey questions are defined in R code chunks with a <code>sd_question()</code> function from the {surveydown} package. Pages are created using fences, with navigation handled with the <code>sd_next()</code> function.</p>
-<p>Once all of the survey content is defined (pages, text, images, questions, etc.), you can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the <code>sd_config()</code> function. Finally, in the same server code chunk you can define the database configuration with the <code>sd_database()</code> function to store the survey response data.</p>
-<p>We’ll get to all of this step-by-step.</p>
+<p>The <a href="https://jhelvy.github.io/surveydown/">{surveydown} package</a> provides a set of functions for defining the survey content and control logic. Each function starts with <code>sd_</code> to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the <code>sd_question()</code> function. Pages are defined using fences (<code>:::</code>), and navigation buttons handled with the <code>sd_next()</code> function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the <code>sd_config()</code> function, and you can configure the database with the <code>sd_database()</code>.</p>
+<p>In this post, I’ll just give a quick summary of a few of these features since the <a href="https://jhelvy.github.io/surveydown/">documentation</a> has more details.</p>
 </section>
 <section id="adding-pages" class="level2">
 <h2 class="anchored" data-anchor-id="adding-pages">Adding pages</h2>
@@ -396,9 +401,9 @@ Page 2 content here
 <p>In the starting fence, you need to define a page name (e.g.&nbsp;<code>welcome</code> and <code>page2</code> in the example above) and you need to define the class as <code>.sd-page</code>. Then anything you put between the page fences will appear on that page.</p>
 <p>To navigate to the next page, you need to insert a <code>sd_next()</code> function call inside a code chunk, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2')</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2')</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above code chunk will create a “Next” button that goes on to page 2 that looks like this:</p>
 <div class="cell">
@@ -408,9 +413,9 @@ Page 2 content here
 </div>
 <p>You would need to place the code chunk in between the <code>:::</code> fences of the <code>welcome</code> page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages by just changing the <code>next_page</code> argument. Finally, you can also change the label of the button by changing the <code>label</code> argument, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2', label = 'Next page')</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_next(next_page = 'page2', label = 'Next page')</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -422,25 +427,25 @@ Page 2 content here
 <h2 class="anchored" data-anchor-id="adding-questions">Adding questions</h2>
 <p>Every survey question is created using the <code>sd_question()</code> function inside a code chunk. The question type is defined by the <code>type</code> argument. For example, to add a multiple choice question, you could insert the following code chunk:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'penguins',</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Which is your favorite type of penguin?",</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Adélie'    = 'adelie',</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'Chinstrap' = 'chinstrap',</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">    'Gentoo'    = 'gentoo'</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'penguins',</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Which is your favorite type of penguin?",</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Adélie'    = 'adelie',</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'Chinstrap' = 'chinstrap',</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">    'Gentoo'    = 'gentoo'</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The above code chunk will create a multiple choice question that looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="container- penguins" data-question-id="penguins" data-required="false" class="question-container">
+<div id="container- penguins" data-question-id="penguins" class="question-container">
 <div id="penguins" style="width:100%;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="penguins-label">
-<label class="control-label" id="penguins-label" for="penguins"><p>Which is your favorite type of penguin?</p>
+<label class="control-label" id="penguins-label" for="penguins"><p>Which is your favorite type of penguin? <span class="required-asterisk" style="display:none; color: red; font-size: 1.5em; vertical-align: middle; position: relative; top: 0.1em;">*</span></p>
 </label>
 <div class="shiny-options-group">
 <div class="radio">
@@ -467,64 +472,73 @@ Page 2 content here
 </div>
 </div>
 <p>The <code>sd_question()</code> function can be used to create a variety of <a href="https://jhelvy.github.io/surveydown/articles/question_types.html">question types</a>, like text input, select drop down choices, and more by changing the <code>type</code> argument.</p>
-<p>The function has many other arguments for customizing the look and feel of the question (e.g., <code>height</code> and <code>width</code>, etc.) as well as a <code>required</code> argument that can be used to make a question required or optional (e.g., <code>required = TRUE</code>).</p>
+<p>The function has many other arguments for customizing the look and feel of the question (e.g., <code>height</code> and <code>width</code>, etc.).</p>
 </section>
 <section id="the-server-chunk" class="level2">
 <h2 class="anchored" data-anchor-id="the-server-chunk">The server chunk</h2>
 <p>At the very bottom of the .qmd file is a special “server” code chunk (that’s the <code>#| context: server</code> bit) that defines the app server. This is where you can customize and control the survey flow logic as well as where you define the database that will store the survey response data. It looks like this:</p>
 <div class="cell" data-context="server">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: server</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Define the database settings</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">db &lt;- sd_database()</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in"># Define the configuration settings</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">config &lt;- sd_config()</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in"># The sd_server() function initiates your survey - don't change this</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">sd_server(</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="in">  input   = input,</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">  session = session,</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">  config  = config,</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">  db      = db</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| context: server</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in"># Define the database settings</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">db &lt;- sd_database()</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in"># Define the configuration settings</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">config &lt;- sd_config()</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in"># The sd_server() function initiates your survey - don't change this</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">sd_server(</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="in">  input   = input,</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">  session = session,</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="in">  config  = config,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="in">  db      = db</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>sd_database()</code> function is where you set up your database. The <code>sd_server()</code> function makes everything run, which you can safely ignore - just don’t change it and all will be good!</p>
-<p>The middle part (the <code>sd_config()</code> function) is where you can define custom control logic for the survey, such as <em>conditional display</em> (conditionally displaying a question based on responses to questions), or <em>conditional skip</em> (conditionally sending the respondent to a page based on responses to questions).</p>
-<section id="conditional-display" class="level3">
-<h3 class="anchored" data-anchor-id="conditional-display">Conditional display</h3>
+<p>The middle part (the <code>sd_config()</code> function) is where you can define custom control logic for the survey, such as <a href="#conditional-display"><em>conditional display</em></a> (conditionally displaying a question based on responses to questions), or <a href="#conditional-skip"><em>conditional skip</em></a> (conditionally sending the respondent to a page based on responses to questions).</p>
+</section>
+<section id="going-live" class="level2">
+<h2 class="anchored" data-anchor-id="going-live">Going live!</h2>
+<p>Once you are happy with your survey, you can deploy it live to any server of your choice. Since it’s a shiny app, you can <a href="https://quarto.org/docs/interactive/shiny/running.html#shinyapps">deploy it to shinyapps.io</a> for free!</p>
+</section>
+</section>
+<section id="features" class="level1">
+<h1>Features</h1>
+<p>Since surveydown is built on top of Shiny, it provides tremendous flexibility in terms of what you can do with your survey. Below are a few examples of some commons things you may want to do with your survey.</p>
+<section id="conditional-display" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-display">Conditional display</h2>
 <p>Let’s say we had a fourth option for “other” in our multiple choice question about penguins. If the respondent chose it, you may want a second question to popup that allows them to specify the other penguin type. To implement this, you would need to define both questions, e.g.:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'penguins',</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Which is your favorite type of penguin?",</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Adélie'    = 'adelie',</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'Chinstrap' = 'chinstrap',</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">    'Gentoo'    = 'gentoo',</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="in">    'Other'     = 'other'</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = "text",</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = "penguins_other",</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Please specify the other penguin type:"</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'penguins',</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Which is your favorite type of penguin?",</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Adélie'    = 'adelie',</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'Chinstrap' = 'chinstrap',</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">    'Gentoo'    = 'gentoo',</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">    'Other'     = 'other'</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = "text",</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = "penguins_other",</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Please specify the other penguin type:"</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then in the server code chunk, you could use the <code>show_if</code> argument to define that the <code>penguins_other</code> question would only be shown if the respondent chose the <code>other</code> option in the <code>penguins</code> question, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,  <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"penguins"</span>,    <span class="st">"other"</span>,         <span class="st">"penguins_other"</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,  <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"penguins"</span>,    <span class="st">"other"</span>,         <span class="st">"penguins_other"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will make the <code>penguins_other</code> question only appear if the respondent chose the <code>other</code> option in the <code>penguins</code> question, like this:</p>
 <center>
@@ -539,37 +553,37 @@ Page 2 content here
 </ul>
 <p>You don’t have to use <code>tibble::tribble()</code>, and in fact if you have a lot of <code>show_if</code> conditions, then you could create a csv file with all of your conditions in it and read it in to set the <code>show_if</code> conditions (just make sure the header has the same three column names), e.g.:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'path/to/show_if_conditions.csv'</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">show_if =</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'path/to/show_if_conditions.csv'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="er">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="conditional-skip" class="level3">
-<h3 class="anchored" data-anchor-id="conditional-skip">Conditional skip</h3>
+<section id="conditional-skip" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-skip">Conditional skip</h2>
 <p>Often times you’ll want to screen people out of a survey based on responses to questions. For example, let’s say you only wanted to only include people who own a vehicle. On your first page (e.g., with page name <code>welcome</code>), you could screen out people who do <em>not</em> own a vehicle.</p>
 <p>First, define a question about their vehicle ownership, e.g.:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'vehicle_ownership',</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Do you own your vehicle?",</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Yes' = 'yes',</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'No'  = 'no'</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">sd_question(</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">  type  = 'mc',</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">  id    = 'vehicle_ownership',</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="in">  label = "Do you own your vehicle?",</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="in">  option = c(</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="in">    'Yes' = 'yes',</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="in">    'No'  = 'no'</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then in the server code chunk, you could use the <code>skip_if</code> argument in <code>sd_config()</code> to define the behavior of the next button on the <code>welcome</code> page, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,        <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"vehicle_ownership"</span>, <span class="st">"no"</span>,            <span class="st">"screenout"</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip_if =</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span>question_id,        <span class="sc">~</span>question_value, <span class="sc">~</span>target,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"vehicle_ownership"</span>, <span class="st">"no"</span>,            <span class="st">"screenout"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This sets up a condition where if the respondent chooses <code>no</code> on the <code>vehicle_ownership</code> question, they will be sent to a page named <code>screenout</code>. You could put such a page at the end of the survey, something like this:</p>
 <pre><code>::: {#screenout .sd-page}
@@ -579,27 +593,93 @@ Sorry, but you are not qualified to take our survey.
 :::</code></pre>
 <p>Notice that I don’t have a <code>sd_next()</code> on this screenout page. That is how you define an end point for the survey taker. If there’s no “Next” button, then they cannot navigate anywhere else, so the survey is over.</p>
 </section>
-<section id="setting-up-the-database" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-the-database">Setting up the database</h3>
-<p>The <code>sd_database()</code> function inside the server code chunk is where you define your database configuration to store your survey response data. The default database is <a href="https://supabase.com/">supabase</a> - an amazing open-source database project.</p>
-<p>The arguments to the <code>sd_database()</code> function are all of the components needed to connect to a database hosted on supabase. You can find detailed instructions on how to set this up in the <a href="https://jhelvy.github.io/surveydown/articles/database_setup.html">surveydown documentation</a>. In general, it should look like this:</p>
+<section id="required-responses" class="level2">
+<h2 class="anchored" data-anchor-id="required-responses">Required responses</h2>
+<p>By default, no questions are required. However, you can make questions required by adding the question <code>id</code> to the <code>required</code> argument in <code>sd_config()</code>, like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">sd_database</span>(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">host       =</span> <span class="st">""</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">db_name    =</span> <span class="st">""</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">port       =</span> <span class="st">""</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">user       =</span> <span class="st">""</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">table_name =</span> <span class="st">""</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">password   =</span> <span class="fu">Sys.getenv</span>(<span class="st">"SUPABASE_PASSWORD"</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">required =</span> <span class="fu">c</span>(<span class="st">"vehicle_ownership"</span>, <span class="st">"penguins_other"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You would fill in each of the currently blank <code>""</code> with elements that can be easily copied from your supabase database configuration. For the <code>password</code>, we recommend storing your database password in your <code>.Renviron</code> file so that it is not accidentally made public (i.e.&nbsp;don’t hard-code in your password!), which can then be read into the current environment with the <code>Sys.getenv()</code> function.</p>
-<p>One configured, any responses on your survey will be stored in your database. You can even check it live - responses are updated on every interaction with the app, such as clicking on a survey question or a next button. The time stamps of each interaction are also automatically stored.</p>
+<p>This will make the respondent unable to proceed until they have answered the required questions. It will also place a red asterisk (*) next to the question label to indicate that the question is required.</p>
+<p>You can also make all questions required by setting <code>all_questions_required = TRUE</code> like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">all_questions_required =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="reactivity" class="level2">
+<h2 class="anchored" data-anchor-id="reactivity">Reactivity</h2>
+<p>One other feature that is particularly powerful is the ability to use R code in your survey via Shiny’s reactive programming. This allows you to make your survey more interactive and to use the full power of R to create custom functionality.</p>
+<section id="demo-1-displaying-content-based-on-previous-responses" class="level3">
+<h3 class="anchored" data-anchor-id="demo-1-displaying-content-based-on-previous-responses">Demo 1: Displaying content based on previous responses</h3>
+<p>Let’s say you wanted to create a survey that asked the respondent’s name, and then displayed a personalized message based on their name. You could do this by first asking their name:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_question</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">type  =</span> <span class="st">"text"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id    =</span> <span class="st">"name"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="st">"What is your name?"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then you can use the <code>sd_display_value("name")</code> function to display the value of the <code>name</code> question in other parts of your survey. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Welcome, <span class="st">`</span><span class="at">r sd_display_value("name")</span><span class="st">`</span><span class="sc">!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Which would render as something like “Welcome, Dave!” (assuming the respondent entered “Dave” in the <code>name</code> question). This works because the <code>sd_display_value()</code> function is reactive, meaning it will update the display based on the respondent’s responses.</p>
 </section>
-<section id="going-live" class="level2">
-<h2 class="anchored" data-anchor-id="going-live">Going live!</h2>
-<p>Once you are happy with your survey, you can deploy it live to any server of your choice. Since it’s a shiny app, you can deploy it to <a href="https://shinyapps.io/">shinyapps.io</a> for free. The Quarto documentation has good <a href="https://quarto.org/docs/interactive/shiny/running.html#shinyapps">instructions</a> on how to deploy a Quarto shiny app to shinyapps.io, and we’re working on our own instructions in the package documentation.</p>
+<section id="demo-2-displaying-randomized-question-labels" class="level3">
+<h3 class="anchored" data-anchor-id="demo-2-displaying-randomized-question-labels">Demo 2: Displaying randomized question labels</h3>
+<p>Let’s say you wanted to show a series of questions, but you wanted to randomize the labels shown for each question. You could do this by first defining a list of labels, and then using the <code>sd_question_reactive()</code> function to create a question that will display a random label from the list.</p>
+<p>For example, let’s ask the respondent to rate different car brands from a random set of brands. You could first pre-define the randomized sets of brands for each respondent and store it as a csv file, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>brands <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Toyota"</span>, <span class="st">"Ford"</span>, <span class="st">"Chevrolet"</span>, <span class="st">"Honda"</span>, <span class="st">"Nissan"</span>, <span class="st">"Tesla"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">respondent_id =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">3</span>),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">brand =</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="cf">function</span>(x) <span class="fu">sample</span>(brands, <span class="dv">3</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>)))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(design, <span class="st">"design.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This would make a design file that looks like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  respondent_id  brand
+1             1   Ford
+2             1 Nissan
+3             1  Tesla
+4             2 Toyota
+5             2  Tesla
+6             2   Ford</code></pre>
+</div>
+</div>
+<p>Note that this would not be done in your survey.qmd file - it’s just a one-time thing to create the design (probably stored in an R file).</p>
+<p>Then in your server code chunk, you could read in the design file and use it to randomize the labels for each question based on a randomly chosen respondent:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>design <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"design.csv"</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>resp_id <span class="ot">&lt;-</span> <span class="fu">sample</span>(design<span class="sc">$</span>respondent_id, <span class="dv">1</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df_resp <span class="ot">&lt;-</span> design <span class="sc">%&gt;%</span> <span class="fu">filter</span>(respondent_id <span class="sc">==</span> resp_id)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>options <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(options) <span class="ot">&lt;-</span> df_resp<span class="sc">$</span>brand</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_question_reactive</span>(</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">type  =</span> <span class="st">"mc"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">id    =</span> <span class="st">"brands"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> <span class="st">"Which of these brands do you like best?"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">option =</span> options</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here the <code>sd_question_reactive()</code> function is used because the labels depend on the randomly chosen respondent. This means the labels will be different for each respondent.</p>
+<p>Since this is a reactive question, <strong>this code must be placed inside the server code chunk</strong>, not where you want it to appear in the survey. To define where in the survey the question should appear, you use the <code>sd_display_question()</code> function with the <code>id</code> set to the same value as the <code>id</code> in the <code>sd_question_reactive()</code> function, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_display_question</span>(<span class="at">id =</span> <span class="st">"brands"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now the <code>brands</code> question will be displayed in the survey where you put this code chunk.</p>
+<p>Note that all question responses are automatically saved to the database, but if you wanted to store some other value (e.g.&nbsp;the randomly chosen <code>respondent_id</code>), you could do that with the <code>sd_store_value()</code> function, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd_store_value</span>(resp_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 </section>
 <section id="why-did-we-build-surveydown" class="level1">
@@ -620,7 +700,7 @@ Sorry, but you are not qualified to take our survey.
 </section>
 <section id="ease-of-editing" class="level2">
 <h2 class="anchored" data-anchor-id="ease-of-editing">Ease of editing</h2>
-<p>Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it’s built on Quarto, you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a <code>quarto preview</code> command in the terminal.</p>
+<p>Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it’s built on <a href="https://quarto.org/">Quarto</a>, you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a <code>quarto serve</code> command in the terminal.</p>
 <p>Some other features we added to make your life easier are:</p>
 <ul>
 <li><strong>Start at a specific page when editing</strong>: in the <code>sd_config()</code> function, you can define a <code>start_page</code> argument that will skip to a specific page when the survey is first loaded.</li>
@@ -631,7 +711,7 @@ Sorry, but you are not qualified to take our survey.
 </section>
 <section id="did-i-mention-you-can-run-r-code-in-your-survey" class="level2">
 <h2 class="anchored" data-anchor-id="did-i-mention-you-can-run-r-code-in-your-survey">Did I mention you can run R code in your survey?</h2>
-<p>Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. We’re also working on adding the ability to work with the data from the survey itself so that you could do some interactive things, like show a respondent how their responses compare to others in real time.</p>
+<p>Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. You can also add interactive components to your surveys, such as showing a respondent how their responses compare to others in real time.</p>
 </section>
 <section id="easy-version-control-and-collaboration" class="level2">
 <h2 class="anchored" data-anchor-id="easy-version-control-and-collaboration">Easy version control and collaboration</h2>
