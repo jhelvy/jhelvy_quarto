@@ -38,15 +38,13 @@ You may have read my [previous blog post](https://jhelvy.com/blog/2023-04-06-mar
 
 Well, I have good news: **the package now exists!** 
 
-In this post, I'm going to show you a quick overview of the {surveydown} R package for making markdown-based surveys.
+In this post, I'm going to show you a quick overview of the {surveydown} R package for making markdown-based surveys as well as a little about _why_ we built surveydown.
 
-Later in the post I'll explain a little more about _why_ we built surveydown as well as some of the tools we used to build it.
-
-# What is surveydown?
+# A new way to design surveys
 
 [surveydown](https://jhelvy.github.io/surveydown/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
 [Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
-[supabase](https://supabase.com/). The video on [this page]() offers a 5 minute overview of the platform.
+[supabase](https://supabase.com/). The package is still in development, but you can already use it to create surveys. 
 
 <br>
 <center>
@@ -64,9 +62,55 @@ The basic concept is this:
 3.  Store your survey responses in a [supabase](https://supabase.com/)
     database.
 
-The package is still in development, but you can already use it to create surveys. 
+In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
 
-# Getting started 
+The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the `sd_question()` function. Pages are defined using fences (`:::`), and navigation buttons handled with the `sd_next()` function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function, and you can configure the database with the `sd_database()`. 
+
+The [documentation](https://jhelvy.github.io/surveydown/) has many more details on all of this, and later in this post I'll give a quick overview of a few of these features. But first, let me tell you a little about _why_ we decided to build surveydown.
+
+# Why did we build surveydown?
+
+> Do we really need another survey platform?
+
+I do a lot of survey research, and I've been frustrated with the survey platforms I've used in the past. The commerical platforms like Qualtrics and SurveyMonkey are great, but they are expensive and are difficult to version control, and collaboration with others is near impossible, especially if your collaborator doesn't have a license of their own. They also don't allow me to own my own survey data, meaning I always am at the mercy of the platform owner. And the features are often limited. It's not easy to do more complex things like randomization, conditional display, etc.
+
+The only other open-source survey platform I have used is [formr](https://formr.org/), which is a very powerful platform, but it is rather clunky to use (you define your survey in Google sheet cells...there's a learning curve), and it is not as easy to edit as a simple markdown file. 
+
+What we've come up with is a survey platform that is flexible, _relatively_ easy to use, and built entirely with open-source technologies. I think it solves a lot of problems, and hopefully someone out there will find it useful.
+
+## Open source
+
+surveydown is built entirely with open-source technologies, making it transparent and customizable. Best of all, no expensive licenses! Just install and use it! 
+
+## Own your data
+
+With surveydown, you retain full ownership and control of your survey data. The responses are stored in your own Supabase database, ensuring that you have complete access to the data. This is particularly important for researchers dealing with sensitive information or those who need to comply with specific data protection regulations. We're still working on enabling you to use your own hosted database, which will provide even more flexibility.
+
+## Ease of editing
+
+Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it's built on [Quarto](https://quarto.org/), you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a `quarto serve` command in the terminal.
+
+## Did I mention you can run R code in your survey?
+
+Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the values shown in a question, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. You can also add interactive components to your surveys, such as showing a respondent how their responses compare to others in real time.
+
+## Easy version control and collaboration
+
+Because the entire survey is defined in a single plain text file, surveydown naturally integrates with version control systems like Git. This allows you to track changes over time, collaborate with team members, and maintain a clear history of your survey's development.
+
+## Reproducible
+
+Surveydown promotes reproducible research by allowing you to define your entire survey in a single, self-contained plain text document. This has a ton of benefits:
+
+- Want someone else to be able to reproduce your experiment? Just give them the .qmd file and any other files they need (e.g., images, data, etc.), and they can reproduce your survey on their own computer.
+- Want to print out your survey for an appendix? Render the survey with all pages visible then print it to pdf.
+- Want others to see your survey live? Just set the database into pause mode and your survey will function without recording any responses.
+
+Reproducibility is something we had in mind from the start with this project, and we've tried to make it as easy as possible for your surveydown surveys to be fully reproducible.
+
+# Introduction to surveydown
+
+## Getting started 
 
 After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), we recommend starting with a template survey project. To do so, run the following in the R console:
 
@@ -85,16 +129,6 @@ If you have the example open in RStudio, you can click the "Run document" button
 <center>
 <img src="example.png" width=700>
 </center>
-
-# A new way to design surveys
-
-## Quick overview
-
-In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
-
-The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the `sd_question()` function. Pages are defined using fences (`:::`), and navigation buttons handled with the `sd_next()` function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function, and you can configure the database with the `sd_database()`.
-
-In this post, I'll just give a quick summary of a few of these features since the [documentation](https://jhelvy.github.io/surveydown/) has more details.
 
 ## Adding pages
 
@@ -436,53 +470,6 @@ Note that all question responses are automatically saved to the database, but if
 ```{r}
 sd_store_value(resp_id)
 ```
-
-# Why did we build surveydown?
-
-> Do we really need another survey platform?
-
-I do a lot of survey research, and I've been frustrated with the survey platforms I've used in the past. The commerical platforms like Qualtrics and SurveyMonkey are great, but they are expensive and are difficult to version control, and collaboration with others is near impossible, especially if your collaborator doesn't have a license of their own. They also don't allow me to own my own survey data, meaning I always am at the mercy of the platform owner. And the features are often limited. It's not easy to do more complex things like randomization, conditional display, etc.
-
-The only other open-source survey platform I have used is [formr](https://formr.org/), which is a very powerful platform, but it is rather clunky to use (you define your survey in Google sheet cells), and it is not as easy to edit as a simple markdown file. 
-
-What we've come up with is a survey platform that is flexible, easy to use, and built entirely with open-source technologies. I think it solves a lot of problems, and hopefully you'll agree.
-
-## Open source
-
-surveydown is built entirely with open-source technologies, making it transparent and customizable. Best of all, no expensive licenses! Just install and use it! 
-
-## Own your data
-
-With surveydown, you retain full ownership and control of your survey data. The responses are stored in your own Supabase database, ensuring that you have complete access to the data. This is particularly important for researchers dealing with sensitive information or those who need to comply with specific data protection regulations. We're still working on enabling you to use your own hosted database, which will provide even more flexibility.
-
-## Ease of editing
-
-Designing a survey in surveydown is a pretty straightforward process. The markdown-based approach allows for quick modifications and easy navigation through your survey. And since it's built on [Quarto](https://quarto.org/), you can use all of the features of Quarto to make your survey look great, like changing the theme, adding custom CSS, etc. You can also easily preview your survey as you edit it, and even run your survey locally to test it out before you deploy it, either with a button click in RStudio or with a `quarto serve` command in the terminal.
-
-Some other features we added to make your life easier are:
-
-- **Start at a specific page when editing**: in the `sd_config()` function, you can define a `start_page` argument that will skip to a specific page when the survey is first loaded.
-- **Show all pages at once when editing**: in the `sd_config()` function, you can set `show_all_pages = TRUE` to show all the pages at once when the survey is first loaded.
-- **Define custom complex skip logic**: in the `sd_config()` function, you can define a `skip_if_custom` argument that allows you to define any custom function that if true will skip to a specific page.
-- **Define custom conditional display logic**: in the `sd_config()` function, you can define a `show_if_custom` argument that allows you to define any custom function that if true will show a specific question.
-
-## Did I mention you can run R code in your survey?
-
-Every surveydown survey uses R code chunks for questions. But you can also insert R code for all sorts of other things. For example, if you wanted to randomize the order of the questions in your survey, you could write some R code for that. Want to insert a plot of something? Write a little ggplot code. You can also add interactive components to your surveys, such as showing a respondent how their responses compare to others in real time.
-
-## Easy version control and collaboration
-
-Because the entire survey is defined in a single plain text file, surveydown naturally integrates with version control systems like Git. This allows you to track changes over time, collaborate with team members, and maintain a clear history of your survey's development.
-
-## Reproducible
-
-Surveydown promotes reproducible research by allowing you to define your entire survey in a single, self-contained plain text document. This has a ton of benefits:
-
-- Want someone else to be able to reproduce your experiment? Just give them the .qmd file and any other files they need (e.g., images, data, etc.), and they can reproduce your survey on their own computer.
-- Want to print out your survey for an appendix? Just set `show_all_pages = TRUE` in the `sd_config()` function and print it to pdf.
-- Want others to see your survey live? Just turn off the database by setting `db <- sd_database()` with no arguments, and your app will function without a database.
-
-Reproducibility is something we had in mind from the start with this project, and we've tried to make it as easy as possible for your surveydown surveys to be fully reproducible.
 
 # How we built it
 
