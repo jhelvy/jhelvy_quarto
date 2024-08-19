@@ -342,7 +342,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>In this post, I’m going to show you a quick overview of the {surveydown} R package for making markdown-based surveys as well as a little about <em>why</em> we built surveydown.</p>
 <section id="a-new-way-to-design-surveys" class="level1">
 <h1>A new way to design surveys</h1>
-<p><a href="https://jhelvy.github.io/surveydown/">surveydown</a> is a flexible platform for making surveys in <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> using three open source technologies: <a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>. The package is still in development, but you can already use it to create surveys.</p>
+<p><a href="https://surveydown.org/">surveydown</a> is a flexible platform for making surveys in <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> using three open source technologies: <a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>. The package is still in development, but you can already use it to create surveys.</p>
 <br>
 <center>
 <img src="technologies.png" width="600">
@@ -355,8 +355,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <li>Store your survey responses in a <a href="https://supabase.com/">supabase</a> database.</li>
 </ol>
 <p>In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey!</p>
-<p>The <a href="https://jhelvy.github.io/surveydown/">{surveydown} package</a> provides a set of functions for defining the survey content and control logic. Each function starts with <code>sd_</code> to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the <code>sd_question()</code> function. Pages are defined using fences (<code>:::</code>), and navigation buttons handled with the <code>sd_next()</code> function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the <code>sd_config()</code> function, and you can configure the database with the <code>sd_database()</code>.</p>
-<p>The <a href="https://jhelvy.github.io/surveydown/">documentation</a> has many more details on all of this, and later in this post I’ll give a quick overview of a few of these features. But first, let me tell you a little about <em>why</em> we decided to build surveydown.</p>
+<p>The <a href="https://pkg.surveydown.org/">{surveydown} package</a> provides a set of functions for defining the survey content and control logic. Each function starts with <code>sd_</code> to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the <code>sd_question()</code> function. Pages are defined using fences (<code>:::</code>), and navigation buttons handled with the <code>sd_next()</code> function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the <code>sd_config()</code> function, and you can configure the database with the <code>sd_database()</code>.</p>
+<p>The <a href="https://surveydown.org/">documentation</a> has many more details on all of this, and later in this post I’ll give a quick overview of a few of these features. But first, let me tell you a little about <em>why</em> we decided to build surveydown.</p>
 </section>
 <section id="why-did-we-build-surveydown" class="level1">
 <h1>Why did we build surveydown?</h1>
@@ -401,7 +401,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <h1>Introduction to surveydown</h1>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>After getting everything <a href="https://jhelvy.github.io/surveydown/articles/installation.html">installed</a>, we recommend starting with a template survey project. To do so, run the following in the R console:</p>
+<p>After getting everything <a href="https://surveydown.org/installation">installed</a>, we recommend starting with a template survey project. To do so, run the following in the R console:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>surveydown<span class="sc">::</span><span class="fu">sd_create_survey</span>(<span class="st">"path/to/folder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -409,7 +409,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <ul>
 <li><code>example.qmd</code>: a template survey you should edit.</li>
 <li><code>example.Rproj</code>: An RStudio project file (helpful if you’re working in RStudio)</li>
-<li><code>_extensions</code>: A folder with the <a href="https://github.com/jhelvy/surveydown-ext">surveydown Quarto extension</a> needed to make everything work (don’t modify this).</li>
+<li><code>_extensions</code>: A folder with the <a href="https://github.com/surveydown-dev/surveydown-ext">surveydown Quarto extension</a> needed to make everything work (don’t modify this).</li>
 </ul>
 <p>If you have the example open in RStudio, you can click the “Run document” button, or in your terminal run <code>quarto serve example.qmd</code>. Either approach should render the example survey into a shiny app that you can preview in a browser. Don’t worry just yet about setting up your database or making the survey live - for now, we’re going to focus on designing the survey and running it locally to preview it. The example survey should look like this:</p>
 <center>
@@ -504,7 +504,7 @@ Page 2 content here
 </div>
 </div>
 </div>
-<p>The <code>sd_question()</code> function can be used to create a variety of <a href="https://jhelvy.github.io/surveydown/articles/question_types.html">question types</a>, like text input, select drop down choices, and more by changing the <code>type</code> argument.</p>
+<p>The <code>sd_question()</code> function can be used to create a variety of <a href="https://surveydown.org/questions">question types</a>, like text input, select drop down choices, and more by changing the <code>type</code> argument.</p>
 <p>The function has many other arguments for customizing the look and feel of the question (e.g., <code>height</code> and <code>width</code>, etc.).</p>
 </section>
 <section id="the-server-chunk" class="level2">
@@ -534,7 +534,7 @@ Page 2 content here
 </section>
 <section id="going-live" class="level2">
 <h2 class="anchored" data-anchor-id="going-live">Going live!</h2>
-<p>Once you are happy with your survey, you can deploy it live to any server of your choice. Since it’s a shiny app, you can <a href="https://quarto.org/docs/interactive/shiny/running.html#shinyapps">deploy it to shinyapps.io</a> for free!</p>
+<p>Once you are happy with your survey, you can deploy it live to any server of your choice. Since it’s a shiny app, you can <a href="https://surveydown.org/deployment">deploy it to shinyapps.io</a> for free!</p>
 </section>
 </section>
 <section id="features" class="level1">
@@ -631,7 +631,7 @@ Sorry, but you are not qualified to take our survey.
 <p>By default, no questions are required. However, you can make questions required by adding the question <code>id</code> to the <code>required</code> argument in <code>sd_config()</code>, like this:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>config <span class="ot">&lt;-</span> <span class="fu">sd_config</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">required =</span> <span class="fu">c</span>(<span class="st">"vehicle_ownership"</span>, <span class="st">"penguins_other"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">required_questions =</span> <span class="fu">c</span>(<span class="st">"vehicle_ownership"</span>, <span class="st">"penguins_other"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will make the respondent unable to proceed until they have answered the required questions. It will also place a red asterisk (*) next to the question label to indicate that the question is required.</p>
@@ -677,12 +677,12 @@ Sorry, but you are not qualified to take our survey.
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  respondent_id     brand
-1             1      Ford
-2             1 Chevrolet
-3             1    Toyota
-4             2    Nissan
-5             2     Honda
-6             2    Toyota</code></pre>
+1             1     Honda
+2             1      Ford
+3             1    Nissan
+4             2      Ford
+5             2    Nissan
+6             2 Chevrolet</code></pre>
 </div>
 </div>
 <p>Note that this would not be done in your survey.qmd file - it’s just a one-time thing to create the design (probably stored in an R file).</p>
@@ -728,7 +728,7 @@ Sorry, but you are not qualified to take our survey.
 <p>But the biggest breakthrough came when I started using GPT-4 to help me brainstorm many different ideas while developing the overall platform architecture. <a href="https://chatgpt.com/share/57fda3b1-2e76-4ab1-b7af-e53eac597986">This conversation</a> in particular was game changing. In it, I came to solutions for multiple complex problems, including the page navigation logic and which platform to use for the database (we originally started with using Googlesheets, but ultimately decided on Supabase because it is open-source and just far easier to use).</p>
 <p>Of course, the AI didn’t do everything. Two of my students, <a href="https://github.com/pingfan-hu">Pingfan Hu</a> and <a href="https://github.com/Buneabt">Bogdan Bunea</a> have been instrumental in helping implement many of the features the package now has, and they too have leveraged LLMs to accelerate their problem solving. Thank you guys for all of your hard work! 🙏</p>
 <p>It’s been amazing watching this project come together over such a short period of time. The original conversations I had with GPT-4 and others in the R / Quarto community were just in March and April of this year (2024). We really didn’t start developing in earnest until the summer, and really only late June / early July at that. In just a few months, we’ve gone from an idea to a fully functional survey platform.</p>
-<p>If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on <a href="https://github.com/jhelvy/surveydown/issues">github</a>.</p>
+<p>If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on <a href="https://github.com/surveydown-dev/surveydown/issues">github</a>.</p>
 <p>I’m so excited to see what you all will build with surveydown!</p>
 
 
