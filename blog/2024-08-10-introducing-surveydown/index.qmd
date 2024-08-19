@@ -42,7 +42,7 @@ In this post, I'm going to show you a quick overview of the {surveydown} R packa
 
 # A new way to design surveys
 
-[surveydown](https://jhelvy.github.io/surveydown/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
+[surveydown](https://surveydown.org/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
 [Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
 [supabase](https://supabase.com/). The package is still in development, but you can already use it to create surveys. 
 
@@ -64,9 +64,9 @@ The basic concept is this:
 
 In surveydown, your entire survey is designed using markdown and R code in a single Quarto document. There is no GUI or drag-and-drop interface - simply write plain text (markdown and R code) and boom - you have a survey! 
 
-The [{surveydown} package](https://jhelvy.github.io/surveydown/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the `sd_question()` function. Pages are defined using fences (`:::`), and navigation buttons handled with the `sd_next()` function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function, and you can configure the database with the `sd_database()`. 
+The [{surveydown} package](https://pkg.surveydown.org/) provides a set of functions for defining the survey content and control logic. Each function starts with `sd_` to make them easy to identify. You can add content to your survey using markdown formatting, or in RStudio you can edit with the visual editor. Survey questions are defined in R code chunks with the `sd_question()` function. Pages are defined using fences (`:::`), and navigation buttons handled with the `sd_next()` function. You can modify the control logic in the server code chunk (the last code chunk at the bottom of the .qmd file) with the `sd_config()` function, and you can configure the database with the `sd_database()`. 
 
-The [documentation](https://jhelvy.github.io/surveydown/) has many more details on all of this, and later in this post I'll give a quick overview of a few of these features. But first, let me tell you a little about _why_ we decided to build surveydown.
+The [documentation](https://surveydown.org/) has many more details on all of this, and later in this post I'll give a quick overview of a few of these features. But first, let me tell you a little about _why_ we decided to build surveydown.
 
 # Why did we build surveydown?
 
@@ -112,7 +112,7 @@ Reproducibility is something we had in mind from the start with this project, an
 
 ## Getting started 
 
-After getting everything [installed](https://jhelvy.github.io/surveydown/articles/installation.html), we recommend starting with a template survey project. To do so, run the following in the R console:
+After getting everything [installed](https://surveydown.org/installation), we recommend starting with a template survey project. To do so, run the following in the R console:
 
 ```{r}
 surveydown::sd_create_survey("path/to/folder")
@@ -122,7 +122,7 @@ This will create a folder with the following files:
 
 - `example.qmd`: a template survey you should edit.
 - `example.Rproj`: An RStudio project file (helpful if you're working in RStudio)
-- `_extensions`: A folder with the [surveydown Quarto extension](https://github.com/jhelvy/surveydown-ext) needed to make everything work (don't modify this).
+- `_extensions`: A folder with the [surveydown Quarto extension](https://github.com/surveydown-dev/surveydown-ext) needed to make everything work (don't modify this).
 
 If you have the example open in RStudio, you can click the "Run document" button, or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live - for now, we're going to focus on designing the survey and running it locally to preview it. The example survey should look like this:
 
@@ -221,7 +221,7 @@ sd_question(
 )
 ```
 
-The `sd_question()` function can be used to create a variety of [question types](https://jhelvy.github.io/surveydown/articles/question_types.html), like text input, select drop down choices, and more by changing the `type` argument.
+The `sd_question()` function can be used to create a variety of [question types](https://surveydown.org/questions), like text input, select drop down choices, and more by changing the `type` argument.
 
 The function has many other arguments for customizing the look and feel of the question (e.g., `height` and `width`, etc.).
 
@@ -254,7 +254,7 @@ The middle part (the `sd_config()` function) is where you can define custom cont
 
 ## Going live!
 
-Once you are happy with your survey, you can deploy it live to any server of your choice. Since it's a shiny app, you can [deploy it to shinyapps.io](https://quarto.org/docs/interactive/shiny/running.html#shinyapps) for free! 
+Once you are happy with your survey, you can deploy it live to any server of your choice. Since it's a shiny app, you can [deploy it to shinyapps.io](https://surveydown.org/deployment) for free! 
 
 # Features
 
@@ -368,7 +368,7 @@ By default, no questions are required. However, you can make questions required 
 
 ```{r}
 config <- sd_config(
-  required = c("vehicle_ownership", "penguins_other")
+  required_questions = c("vehicle_ownership", "penguins_other")
 )
 ```
 
@@ -490,6 +490,6 @@ Of course, the AI didn't do everything. Two of my students, [Pingfan Hu](https:/
 
 It's been amazing watching this project come together over such a short period of time. The original conversations I had with GPT-4 and others in the R / Quarto community were just in March and April of this year (2024). We really didn't start developing in earnest until the summer, and really only late June / early July at that. In just a few months, we've gone from an idea to a fully functional survey platform.
 
-If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on [github](https://github.com/jhelvy/surveydown/issues).
+If you give surveydown a try, please let us know what you think! And if you find a bug or something you wished existed, please post an issue on [github](https://github.com/surveydown-dev/surveydown/issues).
 
 I'm so excited to see what you all will build with surveydown!
