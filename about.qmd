@@ -14,7 +14,7 @@ execute:
 source("_common.R")
 ```
 
-Welcome! I am a researcher, engineer, choice modeler, [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) developer, musician, swing dancer, and an Assistant Professor in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University. See my [CV](cv.qmd) for more details.
+Welcome! I am a researcher, engineer, choice modeler, [{{< fa brands r-project >}}](https://www.r-project.org/about.html) developer, musician, swing dancer, and an Assistant Professor in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University. See my [CV](cv.qmd) for more details.
 
 # Short Bio
 
@@ -30,15 +30,15 @@ I have also extensively studied the EV industry, both in China and the U.S. In a
 
 You can see more about my research on my [Research Page](research.qmd).
 
-# The `r make_icon("fab fa-r-project")` Programming Language
+# Open Source Software & {{< fa brands r-project >}}
 
 <center>
 ![Hex stickers for R packages and courses I've developed](images/hex/hex_logos.png){width=80% .external}
 </center>
 
-I use and contribute to [`r make_icon("fab fa-r-project")`](https://www.r-project.org/about.html) in most of my research and teaching. One specific category of research is choice modeling. I use [choice-based conjoint](https://sawtoothsoftware.com/help/lighthouse-studio/manual/hid_web_whatcbc.html) surveys to measure people's preferences for a variety of technologies and policies. I have developed several packages for implementing conjoint in `r make_icon("fab fa-r-project")`, including [`{logitr}`](https://jhelvy.github.io/logitr/) for estimating multinomial and mixed logit models with preference space and "willingness-to-pay" space utility parameterizations, and [`{cbcTools}`](https://jhelvy.github.io/cbcTools/) for  designing and conducting power analyses for choice-based conjoint surveys. I also developed the [`{surveydown}`](https://jhelvy.github.io/surveydown/) package along with [Pingfan Hu](https://pingfanhu.com/) and Bogdan Bunea for making markdown-based surveys with Quarto shiny documents. I also co-authored the [`{renderthis}`](https://jhelvy.github.io/renderthis/) package with [Garrick Aden-Buie](https://www.garrickadenbuie.com/) for rendering media (e.g., [`xaringan`](https://github.com/yihui/xaringan) slides) into multiple different formats. Finally , I also [teach](teaching.html) multiple programming and data analytics courses in `r make_icon("fab fa-r-project")`, and all of my course materials are built using `r make_icon("fab fa-r-project")`, including course websites and slides. 
+I use and contribute to [{{< fa brands r-project >}}](https://www.r-project.org/about.html) in most of my research and teaching. One specific category of research is choice modeling. I use [choice-based conjoint](https://sawtoothsoftware.com/help/lighthouse-studio/manual/hid_web_whatcbc.html) surveys to measure people's preferences for a variety of technologies and policies. I have developed several packages for implementing conjoint in {{< fa brands r-project >}}, including [`{logitr}`](https://jhelvy.github.io/logitr/) for estimating multinomial and mixed logit models with preference space and "willingness-to-pay" space utility parameterizations, and [`{cbcTools}`](https://jhelvy.github.io/cbcTools/) for  designing and conducting power analyses for choice-based conjoint surveys. I also developed the [`{surveydown}`](https://jhelvy.github.io/surveydown/) package along with [Pingfan Hu](https://pingfanhu.com/) and Bogdan Bunea for making markdown-based surveys with Quarto shiny documents. I also co-authored the [`{renderthis}`](https://jhelvy.github.io/renderthis/) package with [Garrick Aden-Buie](https://www.garrickadenbuie.com/) for rendering media (e.g., [`xaringan`](https://github.com/yihui/xaringan) slides) into multiple different formats. Finally , I also [teach](teaching.html) multiple programming and data analytics courses in {{< fa brands r-project >}}, and all of my course materials are built using {{< fa brands r-project >}}, including course websites and slides. 
 
-You can see more of my `r make_icon("fab fa-r-project")` projects and source code on my GitHub page: [https://github.com/jhelvy/](https://github.com/jhelvy/)
+You can see more of my {{< fa brands r-project >}} projects and source code on my GitHub page: [https://github.com/jhelvy/](https://github.com/jhelvy/)
 
 # China & 中文
 

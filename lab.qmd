@@ -75,22 +75,6 @@ John Paul Helveston is an Assistant Professor in the [Department of Engineering 
 
 :::float-left
 
-<img src="images/lab/laura_roberson.jpg" width="150px">
-
-### Laura Roberson
-
-Laura is focusing her dissertation research on consumer acceptance and interaction with innovative technologies, especially in the transportation industry. Her research interests include electric vehicle adoption, innovation developments and policies that promote innovations. She also has 9+ years working for a global automotive manufacturer, giving her a balance of academic and industry knowledge and experience. Laura received her BS in Industrial and Systems Engineering from Virginia Tech and her MS in Systems Engineering from the great GWU EMSE department.
-
-<br>
-
-<img src="images/lab/leah_kaplan.jpg" width="150px">
-
-### Leah Kaplan
-
-Leah is a National Science Foundation Graduate Research Fellow. Leah graduated summa cum laude with her Bachelor’s in chemical engineering from the University of Arizona before moving to DC to pursue an interest in science policy. Leah interned with the House Committee on Science, Space, and Technology and worked for the Arizona State University Consortium for Science, Policy & Outcomes. Leah’s primary research interest is decision-making under uncertainty related to emerging technologies, with a focus on transportation. She aims to understand how we can leverage technologies for the benefit of, rather than detriment to, society.
-
-<br>
-
 <img src="images/lab/lujin_zhao.jpg" width="150px">
 
 ### Lujin Zhao (赵鲁晋)
@@ -113,11 +97,27 @@ Pingfan received a M.P.E. degree in Mechanical Engineering from Sydney Universit
 
 Michael Rossetti is a data scientist and software engineer. He has worked as a data analyst for a winning US Presidential campaign, an analytics director for a Silicon Valley startup, and a technology consultant for the US Government. He teaches courses in data science, computer science, and software development, and conducts research in applied machine learning.
 
+<br>
+
+<img src="images/lab/zain_hoda.png" width="150px">
+
+### Zain Hoda
+
+Zain Hoda is 
+
 :::
 
 ## Undergraduate Students
 
 :::float-left
+
+<img src="images/lab/bogdan_bunea.jpg" width="150px">
+
+### Bogdan Bunea
+
+Bogdan is an undergraduate student majoring in Systems Engineering and minoring in Computer Science. In his time at GWU, Bogdan has worked in multiple labs (EMSE & MAE) as well as participated in multiple clubs such as GWU-Rocket and GWU-Sat. In Dr. Helveston's lab, Bogdan helped create a databasing system for the [surveydown](https://surveydown.org/), an open source survey project. Bogdan also helped with data wrangling and scraping data about all available cars on the market.
+
+<br>
 
 <img src="images/lab/lola_nurullaeva.jpg" width="150px">
 
@@ -133,11 +133,19 @@ Lola is an undergraduate student in Systems Engineering at The George Washington
 
 :::float-left
 
-<img src="images/lab/saurav_pantha.jpg" width="150px">
+<img src="images/lab/laura_roberson.jpg" width="150px">
 
-### Saurav Pantha (MS Systems Engineering, 2021)
+### Laura Roberson (PhD Systems Engineering, 2024)
 
-Saurav worked with Professor Helveston as a masters student in Systems Engineering at George Washington University. Originally from Kathmandu, Nepal, he graduated with he MS degree in Systems Engineering in 2021. Before GW, he worked at a business consulting firm based out of Bangalore, India, helping multiple automotive & banking clients to solve business problems through data analytics solutions. Within Dr. Helveston's lab, he supported multiple research projects by setting up a pipeline for a MySQL database, writing R scripts to clean & wrangle data, and conducting literature surveys. In his free time, he loves to go on treks and watch Manchester United's soccer games live.
+Laura dissertation focused on consumer acceptance and interaction with innovative technologies, especially in the transportation industry. Her research interests include electric vehicle adoption, innovation developments and policies that promote innovations. She also has 10+ years working for a global automotive manufacturer, giving her a balance of academic and industry knowledge and experience. Laura received her BS in Industrial and Systems Engineering from Virginia Tech and her MS in Systems Engineering from the great GWU EMSE department. She defended her dissertation in February 2024.
+
+<br>
+
+<img src="images/lab/leah_kaplan.jpg" width="150px">
+
+### Leah Kaplan (PhD Systems Engineering, 2024)
+
+Leah pursued her PhD in Systems Engineering as a National Science Foundation Graduate Research Fellow. Leah graduated summa cum laude with her Bachelor’s in chemical engineering from the University of Arizona before moving to DC to pursue an interest in science policy. Leah interned with the House Committee on Science, Space, and Technology and worked for the Arizona State University Consortium for Science, Policy & Outcomes. Leah’s primary research interest is decision-making under uncertainty related to emerging technologies, with a focus on transportation. Her dissertation focused on understanding how we can leverage technologies for the benefit of, rather than detriment to, society. She defended her dissertation in August 2024.
 
 <br>
 
@@ -146,6 +154,14 @@ Saurav worked with Professor Helveston as a masters student in Systems Engineeri
 ### Eliese Ottinger (BS Systems Engineering, 2023; MS Systems Engineering, 2024)
 
 Eliese worked with Professor Helveston as both an undergraduate and masters student in Systems Engineering at George Washington University. She graduated with her Bachelors degree in Systems Engineering in 2023 with minors in Sustainability and Mathematics, and will graduate with her MS degree in 2024. In Dr. Helveston's lab, she analyzed differences in how people drive gas vehicles and electric vehicles and is an author on a [resulting publication](https://www.sciencedirect.com/science/article/abs/pii/S254243512300404X).
+
+<br>
+
+<img src="images/lab/saurav_pantha.jpg" width="150px">
+
+### Saurav Pantha (MS Systems Engineering, 2021)
+
+Saurav worked with Professor Helveston as a masters student in Systems Engineering at George Washington University. Originally from Kathmandu, Nepal, he graduated with he MS degree in Systems Engineering in 2021. Before GW, he worked at a business consulting firm based out of Bangalore, India, helping multiple automotive & banking clients to solve business problems through data analytics solutions. Within Dr. Helveston's lab, he supported multiple research projects by setting up a pipeline for a MySQL database, writing R scripts to clean & wrangle data, and conducting literature surveys. In his free time, he loves to go on treks and watch Manchester United's soccer games live.
 
 <br>
 
@@ -173,21 +189,17 @@ Amelia worked with Professor Helveston as a sophomore undergraduate student in S
 
 :::
 
-## Opportunities
+# Opportunities
 
-### Current Opportunities
+## Current Opportunities
 
-I am currently seeking a Ph.D. student to join my lab starting in the Fall 2023 semester. Learn more [here](https://github.com/jhelvy/jhelvy_distill/raw/master/opportunities/phd.pdf). 
-
-### Ph.D. Students
-
-I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me as your advisor, please send me an email with the following attachments:
+While I am not currently seeking new Ph.D. students, I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me as your advisor, please send me an email with the following attachments:
 
 - Your CV.
 - A written statement describing specific research topics you are interested in and why (at least one page).
 - A summary of your prior research experience and skills.
 
-### Graduate Research Assistants
+## Graduate Research Assistants
 
 Although currently I am not seeking a GRA for ongoing research projects, there is a good chance that I may have opportunities in the near future. If you are a masters student and would like to gain some research experience in my lab, please send me an email with the following information:
 
@@ -197,13 +209,13 @@ Although currently I am not seeking a GRA for ongoing research projects, there i
 
 Candidates with the following skills / experience are particularly encouraged: webscraping, data cleaning, exploratory data analysis, life cycle assessment, simulation.
 
-### Undergraduate Research Assistants
+## Undergraduate Research Assistants
 
 If you are an undergraduate student and would like to gain some research experience in my lab, don't hesitate to send me an email. I frequently have specific research tasks that make for great undergraduate research projects. If you are interested, please send me an email with the following information:
 
 - Your CV.
 - A brief statement describing specific research topics you are interested in and why.
 
-### Visitors
+## Visitors
 
 I am happy to welcome visiting scholars and students to my lab. Although I do not have funding at the moment to sponsor visitors, I would be happy to host you if you can be funded by your own institutions or other sources. Please email me your CV and research plan for further discussions.

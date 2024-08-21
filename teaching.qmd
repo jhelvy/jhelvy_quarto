@@ -51,6 +51,7 @@ This course provides students with a foundation in exploring data using the [R p
 
 **Semesters Taught**:
 
+- [Fall 2024](https://eda.seas.gwu.edu/2024-Fall/)
 - [Fall 2023](https://eda.seas.gwu.edu/2023-Fall/)
 - [Fall 2022](https://eda.seas.gwu.edu/2022-Fall/)
 - [Spring 2021](https://eda.seas.gwu.edu/2021-Spring/)
@@ -60,12 +61,7 @@ This course provides students with a foundation in exploring data using the [R p
 
 ::: {.g-col-9}
 
-**Project Showcases**:
-
-- [Fall 2023](https://eda.seas.gwu.edu/showcase/2023-fall.html)
-- [Fall 2022](https://eda.seas.gwu.edu/showcase/2022-fall.html)
-- [Spring 2021](https://eda.seas.gwu.edu/showcase/2021-spring.html)
-- [Spring 2020](https://eda.seas.gwu.edu/showcase/2020-spring.html)
+[**Project Showcases**](https://eda.seas.gwu.edu/showcase)
 
 :::
 
@@ -87,6 +83,7 @@ This course provides students with data analysis techniques to inform design dec
 
 **Semesters Taught**:
 
+- [Fall 2024](https://madd.seas.gwu.edu/2024-Fall/)
 - [Fall 2023](https://madd.seas.gwu.edu/2023-Fall/)
 - [Fall 2022](https://madd.seas.gwu.edu/2022-Fall/)
 - [Fall 2021](https://madd.seas.gwu.edu/2021-Fall/)
@@ -96,11 +93,7 @@ This course provides students with data analysis techniques to inform design dec
 
 ::: {.g-col-9}
 
-**Project Showcases**:
-
-- [Fall 2023](https://madd.seas.gwu.edu/showcase/2023-fall.html)
-- [Fall 2022](https://madd.seas.gwu.edu/showcase/2022-fall.html)
-- [Fall 2021](https://madd.seas.gwu.edu/showcase/2021-fall.html)
+[**Project Showcases**](https://madd.seas.gwu.edu/showcase)
 
 :::
 
