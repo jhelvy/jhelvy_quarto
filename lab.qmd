@@ -97,11 +97,11 @@ Michael Rossetti is a data scientist and software engineer. He has worked as a d
 
 <br>
 
-<img src="images/lab/zain_hoda.png" width="150px">
+<img src="images/lab/zain_hoda.jpg" width="150px">
 
 ### Zain Hoda
 
-Zain Hoda is 
+Zain received his MS in Data Analytics from George Washington University. Prior to joining GW, Zain had roughly five years of experience in Data Mining and ETL. Zain's research area is the adoption of electric vehicles in Disadvantaged communities. He is currently working on a study using conjoint analysis to examine the feasibility of EV adoption in DACs within the context of financial constraints and EV availability in these communities.
 
 :::
 
