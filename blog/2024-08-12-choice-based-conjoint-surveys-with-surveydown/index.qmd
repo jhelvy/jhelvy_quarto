@@ -3,7 +3,7 @@ title: Choice-based conjoint surveys in R with surveydown
 description: |
   A how-to guide for using R to design and implement choice-based conjoint surveys using the surveydown R package
 date: '2024-08-08'
-preview: "images/example.png"
+image: "images/example.png"
 categories:
   - R
   - tutorial

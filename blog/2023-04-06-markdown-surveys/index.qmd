@@ -3,7 +3,7 @@ title: "{surveydown}: An open source, markdown-based survey framework (that does
 description: |
   Let's build this, who's with me?
 date: '2023-04-06'
-preview: "logo.png"
+image: "logo.png"
 categories:
   - R
   - markdown

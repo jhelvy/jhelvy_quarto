@@ -3,7 +3,7 @@ title: In search of keyboard nirvana
 description: |
   My journey to find a more ergonomic (and useful) keyboard
 date: '2021-07-03'
-preview: "images/red_pill.gif"
+image: "images/red_pill.gif"
 categories:
   - productivity
   - keyboards

@@ -3,7 +3,7 @@ title: Choice-based conjoint surveys in R with formr
 description: |
   A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org
 date: '2021-09-18'
-preview: "images/example.png"
+image: "images/example.png"
 categories:
   - R
   - tutorial

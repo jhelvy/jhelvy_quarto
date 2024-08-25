@@ -3,7 +3,7 @@ title: "Why chess is a better game than golf"
 description: |
   I asked ChatGPT to write this blog post. Here's what it came up with.
 date: '2022-12-26'
-preview: "images/chess-golf.png"
+image: "images/chess-golf.png"
 categories:
   - software
 format: html

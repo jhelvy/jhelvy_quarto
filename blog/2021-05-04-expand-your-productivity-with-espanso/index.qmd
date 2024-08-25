@@ -3,7 +3,7 @@ title: "Expand your productivity with espanso"
 description: |
   Custom text snippets with espanso: a text expander written in Rust
 date: '2021-05-04'
-preview: "images/date.gif"
+image: "images/date.gif"
 categories:
   - productivity
   - R

@@ -3,7 +3,7 @@ title: Simulating the Squid Game bridge scene in R
 description: |
   A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene **Contains Spoilers**
 date: '2021-10-19'
-preview: "squid-game.png"
+image: "squid-game.png"
 categories:
   - R
   - monte carlo

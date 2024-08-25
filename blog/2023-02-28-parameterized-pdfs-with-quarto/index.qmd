@@ -3,7 +3,7 @@ title: "Render parameterized reports with Quarto"
 description: |
   A quick how-to guide for making reports in Quarto with custom parameters, and a couple fixes for some current limitations.
 date: '2023-02-28'
-preview: "quarto.png"
+image: "quarto.png"
 categories:
   - quarto
   - productivity

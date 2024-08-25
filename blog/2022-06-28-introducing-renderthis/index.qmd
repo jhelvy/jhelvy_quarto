@@ -5,7 +5,7 @@ description: |
   {xaringan} slides to different output types (previously called
   {xaringanBuilder})
 date: '2022-06-28'
-preview: "images/logo.png"
+image: "images/logo.png"
 categories:
   - R
   - package
