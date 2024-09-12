@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: I lead interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. I apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies. I have expertise in choice modeling, programming in R, China, and the global electric vehicle industry.
+description: I lead interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. I apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies. I have expertise in choice modeling, survey design, programming in R, China, and the global electric vehicle industry.
 preview: images/lab/john_helveston.png
 execute: 
   echo: false
