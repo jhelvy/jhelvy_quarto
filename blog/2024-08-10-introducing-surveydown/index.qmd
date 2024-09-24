@@ -29,6 +29,12 @@ library(fontawesome)
 library(surveydown)
 ```
 
+::: {.callout-important}
+
+**This post was made just after launching surveydown. Much of the platform architecture has changed since then, so check the [documentation](https://surveydown.org/documentation) for the latest correct information.**
+
+:::
+
 <center>
 <img src="logo.png" width=200>
 </center>
