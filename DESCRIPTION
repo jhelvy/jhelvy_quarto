@@ -24,6 +24,8 @@ Imports:
     remotes,
     rmarkdown,
     roxygen2,
+    shiny,
+    shinylive,
     tidyverse,
     viridis,
     xaringanExtra
