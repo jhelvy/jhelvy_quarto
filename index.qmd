@@ -3,17 +3,16 @@ title: "John Paul Helveston"
 image: "images/lab/john_helveston_circle.png"
 execute: 
   echo: false
-  message: false
   warning: false
 about:
   template: trestles
   links:
+    - icon: github
+      href: https://github.com/jhelvy
     - icon: twitter
       href: https://twitter.com/JohnHelveston
     - icon: linkedin
       href: https://www.linkedin.com/in/jhelvy/
-    - icon: github
-      href: https://github.com/jhelvy
     - icon: mastodon
       href: https://fediscience.org/\\@jhelvy
     - text: '<i class="ai ai-google-scholar fa-lg"></i>'

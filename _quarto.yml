@@ -18,6 +18,7 @@ project:
     - "blog/**/*.qmd"
     - "research/**/*.qmd"
     - "charts.qmd"
+    - "good-eats.qmd"
     - "404.qmd"
     - "da-faq.qmd"
     - "!research/template.qmd"
@@ -75,6 +76,9 @@ website:
             target: blank
           - icon: twitter
             href: https://twitter.com/JohnHelveston
+            target: blank
+          - text: Bluesky
+            href: https://bsky.app/profile/jhelvy.bsky.social
             target: blank
           - icon: linkedin
             href: https://www.linkedin.com/in/jhelvy

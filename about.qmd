@@ -6,7 +6,6 @@ preview: images/john_dancing.jpg
 lightbox: true
 execute: 
   echo: false
-  message: false
   warning: false
 ---
 

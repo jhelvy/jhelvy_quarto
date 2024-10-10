@@ -3,10 +3,16 @@ title: "Good Eats"
 twitter:
   creator: "@JohnHelveston"
 preview: images/john_china_duck.jpg
+execute: 
+  echo: false
+  warning: false
 ---
 
 ```{r setup}
 source("_common.R")
 ```
 
-This is my good eats page
+Map of some real good eats
+
+<iframe src="https://www.google.com/maps/d/embed?mid=12qcVGJCO3EihNqxfYBTJ9Vv37mw&ehbc=2E312F" width="800" height="600"></iframe>
+
