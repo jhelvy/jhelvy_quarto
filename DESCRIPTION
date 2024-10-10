@@ -30,5 +30,3 @@ Imports:
     tidyverse,
     viridis,
     xaringanExtra
-Remotes:
-    surveydown-dev/surveydown

@@ -25,7 +25,6 @@ execute:
 #| eval: true
 #| include: false
 
-library(fontawesome)
 library(surveydown)
 ```
 
@@ -48,7 +47,7 @@ In this post, I'm going to show you a quick overview of the {surveydown} R packa
 
 # A new way to design surveys
 
-[surveydown](https://surveydown.org/) is a flexible platform for making surveys in `r fa("r-project")` using three open source technologies:
+[surveydown](https://surveydown.org/) is a flexible platform for making surveys in {{< fa brands r-project >}} using three open source technologies:
 [Quarto](https://quarto.org/), [shiny](https://shiny.posit.co/), and
 [supabase](https://supabase.com/). The package is still in development, but you can already use it to create surveys. 
 
