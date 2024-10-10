@@ -26,6 +26,9 @@ Imports:
     roxygen2,
     shiny,
     shinylive,
+    surveydown,
     tidyverse,
     viridis,
     xaringanExtra
+Remotes:
+    surveydown-dev/surveydown
