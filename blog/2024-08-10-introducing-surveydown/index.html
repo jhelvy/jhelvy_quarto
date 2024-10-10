@@ -77,6 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -208,6 +210,10 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
  <span class="dropdown-text"></span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="https://bsky.app/profile/jhelvy.bsky.social" target="blank">
+ <span class="dropdown-text">Bluesky</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://www.linkedin.com/in/jhelvy" target="blank"><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="dropdown-text"></span></a>
@@ -336,6 +342,19 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 
 <p><link rel="stylesheet" href="surveydown.css"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>This post was made just after launching surveydown. Much of the platform architecture has changed since then, so check the <a href="https://surveydown.org/documentation">documentation</a> for the latest correct information.</strong></p>
+</div>
+</div>
 <center>
 <img src="logo.png" width="200">
 </center>
@@ -345,7 +364,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>In this post, I’m going to show you a quick overview of the {surveydown} R package for making markdown-based surveys as well as a little about <em>why</em> we built surveydown.</p>
 <section id="a-new-way-to-design-surveys" class="level1">
 <h1>A new way to design surveys</h1>
-<p><a href="https://surveydown.org/">surveydown</a> is a flexible platform for making surveys in <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> using three open source technologies: <a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>. The package is still in development, but you can already use it to create surveys.</p>
+<p><a href="https://surveydown.org/">surveydown</a> is a flexible platform for making surveys in <i class="fa-brands fa-r-project" aria-label="r-project"></i> using three open source technologies: <a href="https://quarto.org/">Quarto</a>, <a href="https://shiny.posit.co/">shiny</a>, and <a href="https://supabase.com/">supabase</a>. The package is still in development, but you can already use it to create surveys.</p>
 <br>
 <center>
 <img src="technologies.png" width="600">
@@ -444,7 +463,9 @@ Page 2 content here
 <p>The above code chunk will create a “Next” button that goes on to page 2 that looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<button id="next-page2" type="button" class="btn btn-default action-button" style="display: block; margin: auto;" onclick="Shiny.setInputValue('next_page', 'page2');">Next</button>
+<div data-next-page="page2" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue('next_page', this.parentElement.getAttribute('data-next-page'));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
 </div>
 </div>
 <p>You would need to place the code chunk in between the <code>:::</code> fences of the <code>welcome</code> page in order to have a “Next” button that goes on to page 2. You can also send the user to other pages by just changing the <code>next_page</code> argument. Finally, you can also change the label of the button by changing the <code>label</code> argument, like this:</p>
@@ -455,7 +476,9 @@ Page 2 content here
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<button id="next-page2" type="button" class="btn btn-default action-button" style="display: block; margin: auto;" onclick="Shiny.setInputValue('next_page', 'page2');">Next page</button>
+<div data-next-page="page2" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue('next_page', this.parentElement.getAttribute('data-next-page'));" style="display: block; margin: auto;" type="button">Next page</button>
+</div>
 </div>
 </div>
 </section>
@@ -479,9 +502,9 @@ Page 2 content here
 <p>The above code chunk will create a multiple choice question that looks like this:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="container- penguins" data-question-id="penguins" class="question-container">
-<div id="penguins" style="width:100%;" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="penguins-label">
-<label class="control-label" id="penguins-label" for="penguins"><p>Which is your favorite type of penguin? <span class="required-asterisk" style="display:none; color: red; font-size: 1.5em; vertical-align: middle; position: relative; top: 0.1em;">*</span></p>
+<div id="container-penguins" data-question-id="penguins" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue('penguins_interacted', true, {priority: 'event'});">
+<div id="penguins" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="penguins-label">
+<label class="control-label" id="penguins-label" for="penguins"><p>Which is your favorite type of penguin?</p>
 </label>
 <div class="shiny-options-group">
 <div class="radio">
@@ -504,6 +527,7 @@ Page 2 content here
 </div>
 </div>
 </div>
+<span class="hidden-asterisk">*</span>
 </div>
 </div>
 </div>
@@ -681,10 +705,10 @@ Sorry, but you are not qualified to take our survey.
 <div class="cell-output cell-output-stdout">
 <pre><code>  respondent_id     brand
 1             1     Honda
-2             1      Ford
-3             1    Nissan
+2             1    Nissan
+3             1      Ford
 4             2      Ford
-5             2    Nissan
+5             2    Toyota
 6             2 Chevrolet</code></pre>
 </div>
 </div>
