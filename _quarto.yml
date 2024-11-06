@@ -12,8 +12,6 @@ project:
     - "research.qmd"
     - "projects.qmd"
     - "teaching.qmd"
-    - "talks/index.qmd"
-    - "talks/**/*.qmd"
     - "blog/index.qmd"
     - "blog/**/*.qmd"
     - "research/**/*.qmd"
@@ -62,8 +60,6 @@ website:
         href: teaching.qmd
       - text: "Misc. Projects"
         href: projects.qmd
-      - text: "Talks"
-        href: talks/index.qmd
       - text: "Blog"
         href: blog/index.qmd
   page-footer:
