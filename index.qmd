@@ -9,8 +9,8 @@ about:
   links:
     - icon: github
       href: https://github.com/jhelvy
-    - icon: twitter
-      href: https://twitter.com/JohnHelveston
+    - text: '<i class="fa fa-brands fa-bluesky fa-lg"></i>'
+      href: https://bsky.app/profile/jhelvy.bsky.social
     - icon: linkedin
       href: https://www.linkedin.com/in/jhelvy/
     - icon: mastodon

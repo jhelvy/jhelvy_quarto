@@ -74,10 +74,7 @@ website:
             href: https://github.com/jhelvy
             aria-label: GitHub
             target: blank
-          - icon: twitter
-            href: https://twitter.com/JohnHelveston
-            target: blank
-          - text: Bluesky
+          - text: "<i class='fa fa-brands fa-bluesky'></i>"
             href: https://bsky.app/profile/jhelvy.bsky.social
             target: blank
           - icon: linkedin
@@ -111,4 +108,3 @@ format:
     link-external-icon: false
     # This is to include fontawesome and academic icons in the headers:
     include-in-header: "_includes/header.html"
-    
