@@ -1,6 +1,6 @@
 ---
 title: Miscellaneous Projects
-description: A collection of some projects (that may or may not be related to my research).
+description: A collection of miscellaneous projects that may or may not be related to my research.
 preview: images/lab/john_helveston_circle.png
 execute: 
   echo: false

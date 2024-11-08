@@ -58,7 +58,7 @@ website:
         href: research.qmd
       - text: "Teaching"
         href: teaching.qmd
-      - text: "Misc. Projects"
+      - text: "Projects"
         href: projects.qmd
       - text: "Blog"
         href: blog/index.qmd
