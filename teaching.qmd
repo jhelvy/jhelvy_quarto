@@ -2,7 +2,9 @@
 title: "Teaching"
 description: I teach undergraduate and graduate courses on data analysis in R in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University.
 preview: images/lab/john_helveston.png
-format: html 
+toc: true
+toc-location: left
+toc-title: "Courses"
 execute: 
   echo: false
   warning: false
@@ -12,9 +14,11 @@ execute:
 source("_common.R")
 ```
 
-Content for workshops I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
+<center>
+Content for **workshops** I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
+</center>
 
-<hr>
+### [EMSE 4571: Programming for Analytics](https://p4a.seas.gwu.edu/)
 
 ::: {.grid}
 
@@ -34,15 +38,13 @@ Content for workshops I've given can be found at [workshops.jhelvy.com](https://
 
 ::: {.g-col-9}
 
-### [EMSE 4571: Programming for Analytics](https://p4a.seas.gwu.edu/)
-
 This course provides a foundation in programming for analytics using the [R programming language](https://www.r-project.org/) with a comparison to [Python](https://www.python.org/). Topics covered include fundamentals of programming (operators, data types, objects, functions, conditionals, loops, strings, testing, and debugging) as well as techniques for working with data sets in R and Python (file input/output, data structures, data wrangling, data visualization, external packages, and reproducible reporting). Emphasis will be on producing clear, robust, and reasonably efficient code using top-down design, informal analysis, and effective testing and debugging. Students will primarily work on individual programming assignments to develop skills in computational problem solving, writing code, and working with data. Students will be assessed through quizzes, homework assignments, and exams. Teaching will involve interactive lectures with plenty of time spent live coding and working on practice problems in class. This course assumes no prior programming experience and is an ideal preparation for higher level courses in data analytics.
 
 :::
 
 :::
 
-<br><hr>
+### [EMSE 4572: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
 
 ::: {.grid}
 
@@ -64,15 +66,13 @@ This course provides a foundation in programming for analytics using the [R prog
 
 ::: {.g-col-9}
 
-### [EMSE 4572: Exploratory Data Analysis](https://eda.seas.gwu.edu/)
-
 This course provides students with a foundation in exploring data using the [R programming language](https://www.r-project.org/). Students will learn how to source, manage, transform, and explore a wide variety of data types. Students will also master the fundamental concepts for visualizing and communicating information contained in raw data, including the human psychology of visual information processing. All analyses will be conducted to support reproducibility from raw data to results using [RMarkdown](https://bookdown.org/yihui/rmarkdown/). Teaching will involve interactive lectures with plenty of class time spent working on examples and coding. Students will be assessed through in-class quizzes, reading reflections, and exploratory projects. Throughout the semester, students will work on a research project of their own design to demonstrate mastery of the course's topics. At the end of the semester, students will submit a final, reproducible report of their project along with a 10-minute video presentation of their findings.
 
 :::
 
 :::
 
-<br><hr>
+### [EMSE 6035: Marketing of Technology](https://madd.seas.gwu.edu/)
 
 ::: {.grid}
 
@@ -94,15 +94,13 @@ This course provides students with a foundation in exploring data using the [R p
 
 ::: {.g-col-9}
 
-### [EMSE 6035: Marketing of Technology](https://madd.seas.gwu.edu/)
-
 This course provides students with data analysis techniques to inform design decisions in an uncertain, competitive market; topics include consumer choice modeling, programming in the [R programming language](https://www.r-project.org/), survey design, conjoint analysis, optimization, market simulation, and professional communication skills. Over the course of the semester, students will learn and apply theory and methods to a team project to assess the market competitiveness of an emerging product / technology and use marketing analytics to generate design insights. At the end of the semester, students will submit a final, reproducible report of their project along with a 10-minute presentation of their findings. This course has a "flipped" classroom structure. Students will spend the majority of class time working through guiding practice exercises or working on their projects. To prepare for class, students must complete weekly assignments that involve watching and reviewing recorded lecture materials and answering related practice questions.
 
 :::
 
 :::
 
-<br><hr>
+### [R for Analytics Primer](https://jhelvy.github.io/r4aPrimer/)
 
 ::: {.grid}
 
@@ -113,8 +111,6 @@ This course provides students with data analysis techniques to inform design dec
 :::
 
 ::: {.g-col-9}
-
-### [R for Analytics Primer](https://jhelvy.github.io/r4aPrimer/)
 
 A self-guided tutorial for developing a foundation in programming in R for data analysis, including data input/output, data wrangling, and data visualization using the [Tidyverse](https://www.tidyverse.org/).
 
