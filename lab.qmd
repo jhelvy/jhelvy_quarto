@@ -69,17 +69,21 @@ John Paul Helveston is an Assistant Professor in the [Department of Engineering 
 
 :::
 
-## Ph.D. Students
+## Post-Docs
 
 :::float-left
 
-<img src="images/lab/lujin_zhao.jpg" width="150px">
+<img src="images/lab/xiatian_iogansen.png" width="150px">
 
-### Lujin Zhao (赵鲁晋)
+### Xiatian Iogansen, Ph.D.
 
-Lujin received a B.S. in Agricultural and Resources Economics from University of Maryland, a M.S. degree in Economics from Tufts University, and a M.S. degree in Data Analytics from the George Washington University. His interests are China’s EV subsidy policies, environmental impacts from the EV industry, and energy policy. For the past several years, he has been living in the DC area and he really enjoys the summertime here except for during June, July and August.
+Xiatian’s research centers on modeling travel behavior and consumer preferences in emerging transportation technologies. She joined The George Washington University and the National Institute of Standards and Technology in January 2025 as a postdoctoral researcher, focusing on vehicle electrification. She completed her Ph.D. in Transportation Technology and Policy at the [Institute of Transportation Studies](https://its.berkeley.edu/), UC Davis. Xiatian holds dual master’s degrees in Urban Planning and Transportation Engineering from the University of Washington and previously interned with the Washington State Department of Transportation. She received a Ph.D. Dissertation Grant from the Pacific Southwest Region University Transportation Center (PSR UTC) and the ITS-Davis Corporate Affiliate Fellowship from Toyota Motor Corporation. Additionally, she was honored as the USDOT Outstanding Student of the Year by PSR UTC.
 
-<br>
+:::
+
+## Ph.D. Students
+
+:::float-left
 
 <img src="images/lab/pingfan_hu.jpg" width="150px">
 
@@ -148,6 +152,16 @@ Laura dissertation focused on consumer acceptance and interaction with innovativ
 #### PhD Systems Engineering, 2024
 
 Leah pursued her PhD in Systems Engineering as a National Science Foundation Graduate Research Fellow. Leah graduated summa cum laude with her Bachelor’s in chemical engineering from the University of Arizona before moving to DC to pursue an interest in science policy. Leah interned with the House Committee on Science, Space, and Technology and worked for the Arizona State University Consortium for Science, Policy & Outcomes. Leah’s primary research interest is decision-making under uncertainty related to emerging technologies, with a focus on transportation. Her dissertation focused on understanding how we can leverage technologies for the benefit of, rather than detriment to, society. She defended her dissertation in August 2024.
+
+<br>
+
+<img src="images/lab/lujin_zhao.jpg" width="150px">
+
+### Lujin Zhao (赵鲁晋)
+
+#### PhD Engineering Management, 2024
+
+Lujin received a B.S. in Agricultural and Resources Economics from University of Maryland, a M.S. degree in Economics from Tufts University, and a M.S. degree in Data Analytics from the George Washington University. His interests are China’s EV subsidy policies, environmental impacts from the EV industry, and energy policy. For the past several years, he has been living in the DC area and he really enjoys the summertime here except for during June, July and August.
 
 <br>
 
