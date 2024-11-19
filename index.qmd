@@ -9,12 +9,10 @@ about:
   links:
     - icon: github
       href: https://github.com/jhelvy
-    - text: '<i class="fa fa-brands fa-bluesky fa-lg"></i>'
+    - text: '<i class="fa fa-brands fa-bluesky"></i>'
       href: https://bsky.app/profile/jhelvy.bsky.social
     - icon: linkedin
       href: https://www.linkedin.com/in/jhelvy/
-    - icon: mastodon
-      href: https://fediscience.org/\\@jhelvy
     - text: '<i class="ai ai-google-scholar fa-lg"></i>'
       href: https://scholar.google.com/citations?user=DY2D56IAAAAJ
     - text: '<i class="ai ai-researchgate fa-lg"></i>'
