@@ -1,47 +1,63 @@
-name: Render and Deploy Quarto Site
+name: Render and Publish Quarto Site
+
 on:
   push:
-    branches: main
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
   schedule:
-    # Runs daily at midnight (EST)
-    - cron: '0 5 * * *'
+    # Scheduled to run at midnight EST (5:00 UTC) every Sunday
+    - cron: '0 5 * * 0'
+
 jobs:
-  build:
-    runs-on: macos-13
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_VERSION: '4.3.2'
+
     steps:
       - uses: actions/checkout@v4
-      - uses: r-lib/actions/setup-pandoc@v2
-      - name: Install brew dependencies
-        run: |
-          brew update
-          brew install qpdf
-          # brew install gfortran
-          brew install libgit2
-      - uses: r-lib/actions/setup-r@v2
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.3.2'
-          use-public-rspm: true
-      - uses: quarto-dev/quarto-actions/setup@v2
-      - name: Query dependencies
+          r-version: ${{ env.R_VERSION }}
+          use-public-rspm: true  # Use RStudio Package Manager for better reliability
+
+      - name: Install system dependencies
         run: |
-          options(download.file.method = "libcurl")
-          options(repos = "https://cran.rstudio.com")
-          install.packages('remotes')
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
+
+      - name: Query R package dependencies
+        run: |
+          install.packages(c('remotes', 'here'))
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
+
       - name: Cache R packages
         uses: actions/cache@v4
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.r-version }}-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.r-version }}-
-      - name: Install dependencies
+          key: ${{ runner.os }}-${{ env.R_VERSION }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ env.R_VERSION }}-1-
+
+      - name: Install R dependencies
         run: |
-          install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
-          remotes::install_github("surveydown-dev/surveydown@main")
+          install.packages("pkgdown")  # Removed "type = binary" as we're on Ubuntu
         shell: Rscript {0}
-      - name: Publish to GitHub Pages (and render)
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+
+      - name: Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
