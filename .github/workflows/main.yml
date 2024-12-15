@@ -29,14 +29,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            libcurl4-openssl-dev \
-            libharfbuzz-dev \
-            libfribidi-dev \
-            libicu-dev \
-            libxml2-dev \
-            libssl-dev \
-            libgit2-dev
+          sudo apt-get install -y libicu-dev libcurl4-openssl-dev r-base
 
       - name: Query R package dependencies
         run: |
@@ -54,6 +47,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
+          install.packages("stringi", configure.args = "--with-icudt-system=yes")
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown")  # Removed "type = binary" as we're on Ubuntu
         shell: Rscript {0}
