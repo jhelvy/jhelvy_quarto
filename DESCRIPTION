@@ -26,7 +26,6 @@ Imports:
     roxygen2,
     shiny,
     shinylive,
-    stringr,
     surveydown,
     tidyverse,
     viridis,
