@@ -7,6 +7,8 @@ execute:
 about:
   template: trestles
   links:
+    - text: '<i class="ai ai-cv fa-lg"></i>'
+      href: https://jhelvy.com/cv
     - icon: github
       href: https://github.com/jhelvy
     - text: '<i class="fa fa-brands fa-bluesky"></i>'
