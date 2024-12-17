@@ -28,6 +28,7 @@ Content for **workshops** I've given can be found at [workshops.jhelvy.com](http
 
 **Semesters Taught**:
 
+- [Spring 2025](https://p4a.seas.gwu.edu/2025-Spring/)
 - [Spring 2024](https://p4a.seas.gwu.edu/2024-Spring/)
 - [Spring 2023](https://p4a.seas.gwu.edu/2023-Spring/)
 - [Spring 2022](https://p4a.seas.gwu.edu/2022-Spring/)

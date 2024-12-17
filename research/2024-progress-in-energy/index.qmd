@@ -8,7 +8,7 @@ execute:
 ```{r setup, include=FALSE}
 source(here::here("_common.R"))
 pub <- get_pubs() %>% 
-    filter(id_scholar == 'HDshCWvjkbEC')
+    filter(id_scholar == 'R3hNpaxXUhUC')
 pub$summary <- FALSE
 ```
 
