@@ -1,0 +1,24 @@
+date,title,event,location,repo
+2025-05-08,,,,
+2025-04-30,Competition vs Collaboration Across Clean Tech: Is Reshoring Possible?,Jefferies US China Summit – Understanding Geopolitical Rivalry & Strategic Priorities,Remote,2025-jeffries-us-china-summit
+2025-04-23,The EV Transition in the U.S. & China,"CSIS Congressional Bootcamp: The Future of Energy, National Security, and Innovation","Washington, DC, USA",2025-csis
+2025-04-08,The EV Transition in the U.S. & China: Reflections on the Inflation Reduction Act and Future Direction,"Charging Ahead in Uncertain Times, hosted by the GW Alliance for a Sustainable Future","Washington, DC, USA",2025-gwu-charging-ahead
+2025-03-24,Healthier & Happier Hands: Software and Hardware Solutions for More Ergonomic Typing,2025 GWU Open Source Conference (OSCON),"Washington, DC, USA",2025-oscon-healthy-hands
+2025-02-21,The U.S.-China Clean Energy Race: Reflections on the Inflation Reduction Act and Future Direction,Princeton Julis-Rabinowitz Center for Public Policy & Finance Conference,"Princeton, NJ, USA",2025-princeton-industrial-policy
+2025-01-09,Disparities in Plug-in Electric Vehicle Availability and Affordability in the United States,EV Policy Council,"Washington, DC, USA",2025-ev-policy-council
+2024-08-07,Battery-Powered Bargains? Assessing Electric Vehicle Resale Value in the United States,2024 Bridging Transportation Researchers (BTR) Conference,Remote,2024-btr6
+2024-06-20,Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation,2024 ISSST Conference,"Baltimore, MD, USA",2024-issst-conf
+2024-06-14,The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry,2024 Industry Studies Conference,"Sacramento, CA, USA",2024-isa-conf-china-ev
+2024-02-21,Using Marketing Analytics to Measure Consumer Preferences and Inform Policy,Masterclass Presentation to SEED Global Education,Remote,2024-helveston-da-faa
+2024-01-11,Quantifying Plug-in Electric Vehicle (PEV) mileage,EV Policy Council,"Washington, DC, USA",2024-ev-policy-council-vmt
+2023-10-06,Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation,RIT Visit,"Rochester, NY, USA",2023-rit-visit
+2023-06-01,Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation,2023 Industry Studies Conference,"Columbus, OH, USA",2023-isa-conf
+2023-05-10,Data Analytics at GWU,Presentation to the Federal Academic Aliance Program,"Washington, DC, USA",2023-helveston-da-faa
+2022-11-18,Quantifying the cost savings of global solar photovoltaic supply chains,2022 Association for Public Policy Analysis & Management (APPAM) Conference,"Washington, DC, USA",2022-appam-solar-learning
+2022-10-28,Quantifying the cost savings of global solar photovoltaic supply chains,[ITIF](https://itif.org/) Junior Scholars Seminar,Remote,2022-itif-seminar-solar-learning
+2022-09-30,The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry,“Chinese Industrial Policy: Sectors and Resources” conference at UCSD,"San Diego, CA, USA",2022-ucsd-conf-china-ev-policy
+2022-06-25,Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets,2022 Industry Studies Conference (original slides repo [here](https://github.com/jhelvy/2022-isa-conf-solar)),"Philadelphia, PA, USA",2022-isa-conf-solar-learning
+2022-05-06,The cbcTools Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R,2022 Sawtooth Software Conference (original slides repo [here](https://github.com/jhelvy/2022-sawtooth-conf))	,"Orlando, FL, USA",2022-sawtooth-conf-cbcTools
+2021-07-06,Healthier & Happier Hands: Software and Hardware Solutions for More Ergonomic Typing,[2021 useR conference](https://user2021.r-project.org/) lightning ⚡️ talk. I discuss software and hardware solutions for more ergonomic typing ⌨️ ❤️ 🙌 ❤️ (original slide repo [here](https://github.com/jhelvy/2021-useR-healthy-hands)),Remote,2021-useR-conf-healthy-hands
+2021-04-20,The {logitr} R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models,2021 Sawtooth Software Conference: Turbo Choice Modeling Seminar (original slides repo [here](https://github.com/jhelvy/2021-sawtooth-conf))	,"San Antonio, TX, USA",2021-sawtooth-conf-logitr
+2021-01-21,Using formr to create R-powered surveys with individualized feedback,2021 rstudio::conf lightning ⚡️ talk (original slides repo [here](https://github.com/jhelvy/surveys-with-formr))	,Remote,2021-rstudio-conf-surveys-with-formr

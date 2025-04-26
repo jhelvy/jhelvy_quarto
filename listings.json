@@ -1,5 +1,20 @@
 [
   {
+    "listing": "/blog/index.html",
+    "items": [
+      "/blog/2024-08-10-introducing-surveydown/index.html",
+      "/blog/2023-04-06-markdown-surveys/index.html",
+      "/blog/2023-02-28-parameterized-pdfs-with-quarto/index.html",
+      "/blog/2022-12-26-why-chess-is-better-than-golf/index.html",
+      "/blog/2022-06-28-introducing-renderthis/index.html",
+      "/blog/2021-10-19-monte-carlo-bridge-game/index.html",
+      "/blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html",
+      "/blog/2021-07-03-in-search-of-keyboard-nirvana/index.html",
+      "/blog/2021-05-04-expand-your-productivity-with-espanso/index.html",
+      "/blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html"
+    ]
+  },
+  {
     "listing": "/research/index.html",
     "items": [
       "/research/2015-transportation-research-part-a-policy-and-practice/index.html",
@@ -18,21 +33,6 @@
       "/research/2023-transportation-research-record/index.html",
       "/research/2024-environmental-research-letters/index.html",
       "/research/2024-transport-policy/index.html"
-    ]
-  },
-  {
-    "listing": "/blog/index.html",
-    "items": [
-      "/blog/2024-08-10-introducing-surveydown/index.html",
-      "/blog/2023-04-06-markdown-surveys/index.html",
-      "/blog/2023-02-28-parameterized-pdfs-with-quarto/index.html",
-      "/blog/2022-12-26-why-chess-is-better-than-golf/index.html",
-      "/blog/2022-06-28-introducing-renderthis/index.html",
-      "/blog/2021-10-19-monte-carlo-bridge-game/index.html",
-      "/blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html",
-      "/blog/2021-07-03-in-search-of-keyboard-nirvana/index.html",
-      "/blog/2021-05-04-expand-your-productivity-with-espanso/index.html",
-      "/blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html"
     ]
   }
 ]
