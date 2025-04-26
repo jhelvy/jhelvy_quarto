@@ -19,6 +19,7 @@ project:
     - "good-eats.qmd"
     - "404.qmd"
     - "da-faq.qmd"
+    - "slides.qmd"
     - "!research/template.qmd"
   resources:
     - "content/"

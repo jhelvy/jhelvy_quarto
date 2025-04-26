@@ -28,5 +28,6 @@ Imports:
     shinylive,
     surveydown,
     tidyverse,
+    tinytable,
     viridis,
     xaringanExtra
