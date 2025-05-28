@@ -1,0 +1,45 @@
+---
+title: "Workshops"
+execute: 
+  echo: false
+  warning: false
+format: 
+  html:
+    page-layout: full
+---
+
+```{r setup}
+source("_common.R")
+```
+
+Links to various workshops:
+
+```{r, echo=FALSE}
+
+# NOTE: The slides.lua file is inserted as a filter in _quarto.yml to 
+# avoid the insertion of a <colgroup> in the html around this table: 
+# https://github.com/jgm/pandoc/issues/8139
+
+library(knitr)
+library(dplyr)
+library(kableExtra)
+library(glue)
+library(tinytable)
+
+workshops <- readr::read_csv(file.path('content', 'workshops.csv')) %>%
+    mutate(
+      Site = glue(
+        '<a href="https://jhelvy.github.io/{repo}" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a>'
+      ),
+      Source = glue(
+        '<a href="https://github.com/jhelvy/{repo}" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>'
+      )
+    ) %>% 
+    select(-repo) %>%
+    janitor::clean_names(case = 'title')
+
+workshops |> 
+  tt(theme = "grid", width = c(0.3, 1.1, 0.7, 0.4, 0.2, 0.2)) |>
+  style_tt(fontsize = 1.1) 
+  # format_tt(quarto = TRUE)
+```

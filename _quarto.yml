@@ -20,6 +20,7 @@ project:
     - "404.qmd"
     - "da-faq.qmd"
     - "slides.qmd"
+    - "workshops.qmd"
     - "!research/template.qmd"
   resources:
     - "content/"
