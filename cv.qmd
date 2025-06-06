@@ -14,6 +14,6 @@ Source code to generate CV available on <a href="https://github.com/jhelvy/cv" t
 
 :::{.column-page}
 
-<iframe width="1000" height="600" src="https://nbviewer.org/github/jhelvy/cv/blob/main/cv-jph.pdf" title="Information"></iframe>
+<iframe width="900" height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://raw.githubusercontent.com/jhelvy/cv/main/cv-jph.pdf&chrome=true" title="CV"></iframe>
 
 :::
