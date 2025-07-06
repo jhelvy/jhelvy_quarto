@@ -189,9 +189,9 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
     <script>
 
-      function styleCell_h0xmw3s4j15ct712t1t7(i, j, css_id) {
-          var table = document.getElementById("tinytable_h0xmw3s4j15ct712t1t7");
-          var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
+      function styleCell_zr339sh6xl0nnk21ddxf(i, j, css_id) {
+          var table = document.getElementById("tinytable_zr339sh6xl0nnk21ddxf");
+          var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
               cell.classList.add(css_id);
@@ -200,56 +200,61 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_h0xmw3s4j15ct712t1t7');
-        var newRow = table.insertRow(i);
+        var table = document.getElementById('tinytable_zr339sh6xl0nnk21ddxf');
+        // Find the row with data-row attribute matching i
+        var targetRow = table.querySelector(`tr [data-row="${i}"]`).closest('tr');
+        var newRow = table.insertRow(targetRow.rowIndex);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
+        newCell.setAttribute("data-col", "0");
+        newCell.setAttribute("data-row", i - 1);
         // newCell.innerText = content;
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_h0xmw3s4j15ct712t1t7(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_h0xmw3s4j15ct712t1t7");
-        const targetRow = table.rows[i];
-        const targetCell = targetRow.cells[j];
+      function spanCell_zr339sh6xl0nnk21ddxf(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_zr339sh6xl0nnk21ddxf");
+        const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+        if (!targetCell) {
+          console.warn(`Cell at (${i}, ${j}) not found.`);
+        }
+
+        // Get all cells that need to be removed
+        const cellsToRemove = [];
         for (let r = 0; r < rowspan; r++) {
-          // Only start deleting cells to the right for the first row (r == 0)
-          if (r === 0) {
-            // Delete cells to the right of the target cell in the first row
-            for (let c = colspan - 1; c > 0; c--) {
-              if (table.rows[i + r].cells[j + c]) {
-                table.rows[i + r].deleteCell(j + c);
-              }
-            }
-          }
-          // For rows below the first, delete starting from the target column
-          if (r > 0) {
-            for (let c = colspan - 1; c >= 0; c--) {
-              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
-                table.rows[i + r].deleteCell(j);
-              }
+          for (let c = 0; c < colspan; c++) {
+            if (r === 0 && c === 0) continue; // Skip the target cell
+            const cell = table.querySelector(`[data-row="${i + r}"][data-col="${j + c}"]`);
+            if (cell) {
+              cellsToRemove.push(cell);
             }
           }
         }
-        // Set rowspan and colspan of the target cell
-        targetCell.rowSpan = rowspan;
-        targetCell.colSpan = colspan;
+
+        // Remove all cells
+        cellsToRemove.forEach(cell => cell.remove());
+
+        // Set rowspan and colspan of the target cell if it exists
+        if (targetCell) {
+          targetCell.rowSpan = rowspan;
+          targetCell.colSpan = colspan;
+        }
       }
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 0, j: 4 }, { i: 1, j: 4 }, { i: 2, j: 4 }, { i: 3, j: 4 }, { i: 4, j: 4 }, { i: 0, j: 5 }, { i: 1, j: 5 }, { i: 2, j: 5 }, { i: 3, j: 5 }, { i: 4, j: 5 },  ], css_id: 'tinytable_css_zuwvdluf1ktaqmvi12yh',}, 
-          { positions: [ { i: 0, j: 3 }, { i: 1, j: 3 }, { i: 2, j: 3 }, { i: 3, j: 3 }, { i: 4, j: 3 },  ], css_id: 'tinytable_css_k7comhwgzyyq404hjc9p',}, 
-          { positions: [ { i: 0, j: 2 }, { i: 1, j: 2 }, { i: 2, j: 2 }, { i: 3, j: 2 }, { i: 4, j: 2 },  ], css_id: 'tinytable_css_lufm9yu2psvdt7j0gwsw',}, 
-          { positions: [ { i: 0, j: 1 }, { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 4, j: 1 },  ], css_id: 'tinytable_css_gn7hhdgsdczm23rue5ld',}, 
-          { positions: [ { i: 0, j: 0 }, { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 },  ], css_id: 'tinytable_css_ijqld4wr2cpckmet4pu1',}, 
+          { positions: [ { i: '0', j: 4 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '0', j: 5 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 },  ], css_id: 'tinytable_css_y7hgqojr3ooo5njvj3rs',}, 
+          { positions: [ { i: '0', j: 3 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 },  ], css_id: 'tinytable_css_khcau1jahx1ng1vl5dpl',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 },  ], css_id: 'tinytable_css_7f9uls7c6fa87tyvuv2s',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 },  ], css_id: 'tinytable_css_21xfb0kmnklqymz1d508',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 },  ], css_id: 'tinytable_css_b6dynsenya1rockm0340',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_h0xmw3s4j15ct712t1t7(cell.i, cell.j, group.css_id);
+                  styleCell_zr339sh6xl0nnk21ddxf(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -257,58 +262,58 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_zuwvdluf1ktaqmvi12yh, .table th.tinytable_css_zuwvdluf1ktaqmvi12yh { font-size: 1.1em; width: 6.89655172413793%; }
-      .table td.tinytable_css_k7comhwgzyyq404hjc9p, .table th.tinytable_css_k7comhwgzyyq404hjc9p { font-size: 1.1em; width: 13.7931034482759%; }
-      .table td.tinytable_css_lufm9yu2psvdt7j0gwsw, .table th.tinytable_css_lufm9yu2psvdt7j0gwsw { font-size: 1.1em; width: 24.1379310344828%; }
-      .table td.tinytable_css_gn7hhdgsdczm23rue5ld, .table th.tinytable_css_gn7hhdgsdczm23rue5ld { font-size: 1.1em; width: 37.9310344827586%; }
-      .table td.tinytable_css_ijqld4wr2cpckmet4pu1, .table th.tinytable_css_ijqld4wr2cpckmet4pu1 { font-size: 1.1em; width: 10.3448275862069%; }
+      .table td.tinytable_css_y7hgqojr3ooo5njvj3rs, .table th.tinytable_css_y7hgqojr3ooo5njvj3rs { font-size: 1.1em; width: 6.89655172413793%; }
+      .table td.tinytable_css_khcau1jahx1ng1vl5dpl, .table th.tinytable_css_khcau1jahx1ng1vl5dpl { font-size: 1.1em; width: 13.7931034482759%; }
+      .table td.tinytable_css_7f9uls7c6fa87tyvuv2s, .table th.tinytable_css_7f9uls7c6fa87tyvuv2s { font-size: 1.1em; width: 24.1379310344828%; }
+      .table td.tinytable_css_21xfb0kmnklqymz1d508, .table th.tinytable_css_21xfb0kmnklqymz1d508 { font-size: 1.1em; width: 37.9310344827586%; }
+      .table td.tinytable_css_b6dynsenya1rockm0340, .table th.tinytable_css_b6dynsenya1rockm0340 { font-size: 1.1em; width: 10.3448275862069%; }
     </style>
     <div class="container">
-      <table class="table table-bordered" id="tinytable_h0xmw3s4j15ct712t1t7" style="table-layout: fixed; width: 100% !important; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="table table-bordered" id="tinytable_zr339sh6xl0nnk21ddxf" style="table-layout: fixed; width: 100% !important; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         <thead>
         
               <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Title</th>
-                <th scope="col">Event</th>
-                <th scope="col">Location</th>
-                <th scope="col">Site</th>
-                <th scope="col">Source</th>
+                <th scope="col" data-row="0" data-col="0">Date</th>
+                <th scope="col" data-row="0" data-col="1">Title</th>
+                <th scope="col" data-row="0" data-col="2">Event</th>
+                <th scope="col" data-row="0" data-col="3">Location</th>
+                <th scope="col" data-row="0" data-col="4">Site</th>
+                <th scope="col" data-row="0" data-col="5">Source</th>
               </tr>
         </thead>
         
         <tbody>
                 <tr>
-                  <td>2025-05-29</td>
-                  <td>surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys</td>
-                  <td>Workshops for Ukraine</td>
-                  <td>Remote</td>
-                  <td><a href="https://jhelvy.github.io/2025-surveydown-workshop" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
-                  <td><a href="https://github.com/jhelvy/2025-surveydown-workshop" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
+                  <td data-row="1" data-col="0">2025-05-29</td>
+                  <td data-row="1" data-col="1">surveydown: An Open-Source, Markdown-Based Platform for Interactive and Reproducible Surveys</td>
+                  <td data-row="1" data-col="2">Workshops for Ukraine</td>
+                  <td data-row="1" data-col="3">Remote</td>
+                  <td data-row="1" data-col="4"><a href="https://jhelvy.github.io/2025-surveydown-workshop" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                  <td data-row="1" data-col="5"><a href="https://github.com/jhelvy/2025-surveydown-workshop" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
                 </tr>
                 <tr>
-                  <td>2024-04-05</td>
-                  <td>An Introduction to Effective Storytelling and Data Visualization</td>
-                  <td>Workshop</td>
-                  <td>West Point, NY</td>
-                  <td><a href="https://jhelvy.github.io/stories-with-data" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
-                  <td><a href="https://github.com/jhelvy/stories-with-data" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
+                  <td data-row="2" data-col="0">2024-04-05</td>
+                  <td data-row="2" data-col="1">An Introduction to Effective Storytelling and Data Visualization</td>
+                  <td data-row="2" data-col="2">Workshop</td>
+                  <td data-row="2" data-col="3">West Point, NY</td>
+                  <td data-row="2" data-col="4"><a href="https://jhelvy.github.io/stories-with-data" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                  <td data-row="2" data-col="5"><a href="https://github.com/jhelvy/stories-with-data" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
                 </tr>
                 <tr>
-                  <td>2023-06-15</td>
-                  <td>An Open Source Framework for Choice Based Conjoint Experiments in R</td>
-                  <td>2023 Quant UX Conference</td>
-                  <td>Remote</td>
-                  <td><a href="https://jhelvy.github.io/2023-qux-conf-conjoint" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
-                  <td><a href="https://github.com/jhelvy/2023-qux-conf-conjoint" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
+                  <td data-row="3" data-col="0">2023-06-15</td>
+                  <td data-row="3" data-col="1">An Open Source Framework for Choice Based Conjoint Experiments in R</td>
+                  <td data-row="3" data-col="2">2023 Quant UX Conference</td>
+                  <td data-row="3" data-col="3">Remote</td>
+                  <td data-row="3" data-col="4"><a href="https://jhelvy.github.io/2023-qux-conf-conjoint" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                  <td data-row="3" data-col="5"><a href="https://github.com/jhelvy/2023-qux-conf-conjoint" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
                 </tr>
                 <tr>
-                  <td>2022-07-12</td>
-                  <td>An Introduction to Effective Data Visualization and Storytelling for Researchers</td>
-                  <td>2022 DTAIS Summer Workshop Series</td>
-                  <td>Washington, D.C.</td>
-                  <td><a href="https://jhelvy.github.io/dtais-dataviz" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
-                  <td><a href="https://github.com/jhelvy/dtais-dataviz" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
+                  <td data-row="4" data-col="0">2022-07-12</td>
+                  <td data-row="4" data-col="1">An Introduction to Effective Data Visualization and Storytelling for Researchers</td>
+                  <td data-row="4" data-col="2">2022 DTAIS Summer Workshop Series</td>
+                  <td data-row="4" data-col="3">Washington, D.C.</td>
+                  <td data-row="4" data-col="4"><a href="https://jhelvy.github.io/dtais-dataviz" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i></a></td>
+                  <td data-row="4" data-col="5"><a href="https://github.com/jhelvy/dtais-dataviz" target="_blank" rel="noopener"><i class="bi bi-github"></i></a></td>
                 </tr>
         </tbody>
       </table>
