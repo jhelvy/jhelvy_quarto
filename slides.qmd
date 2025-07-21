@@ -12,7 +12,7 @@ format:
 source("_common.R")
 ```
 
-General introduction to my current research: [HTML](https://slides.jhelvy.com/helveston-research), [PDF](https://github.com/jhelvy/slides/raw/main/helveston-research/helveston-research.pdf)
+General introduction to my current research: [HTML](https://jhelvy.github.io/research-overview), [PDF](https://github.com/jhelvy/research-overview/blob/main/helveston-research.pdf?raw=true)
 
 Slides for various talks:
 
@@ -28,12 +28,25 @@ library(kableExtra)
 library(glue)
 library(tinytable)
 
+root_url_slides <- 'https://jhelvy.github.io/'
+root_url_pdf <- 'https://github.com/jhelvy/'
+root_url_slides_old <- paste0(root_url_slides, 'slides-old/')
+root_url_pdf_old <- paste0(root_url_pdf, 'slides-old/')
+
 slides <- readr::read_csv(file.path('content', 'slides.csv')) %>%
     mutate(
-        slides = glue('[HTML](https://jhelvy.github.io/{repo})'),
-        pdf = glue('[PDF](https://github.com/jhelvy/{repo}/blob/main/{repo}.pdf?raw=true)')
+      slides = ifelse(
+        old == 1, 
+        glue('[HTML]({root_url_slides_old}{repo})'),
+        glue('[HTML]({root_url_slides}{repo})')
+      ),
+      pdf = ifelse(
+        old == 1,
+        glue('[PDF]({root_url_pdf_old}/blob/main/{repo}/{repo}.pdf?raw=true)'),
+        glue('[PDF]({root_url_pdf}{repo}/blob/main/{repo}.pdf?raw=true)')
+      )
     ) %>%
-    select(-repo) %>%
+    select(-repo, -old) %>%
     janitor::clean_names(case = 'title') %>%
     rename(" " = Pdf)
 
