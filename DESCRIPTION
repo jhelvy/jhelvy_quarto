@@ -31,3 +31,5 @@ Imports:
     tinytable,
     viridis,
     xaringanExtra
+Remotes:
+    vincentarelbundock/tinytable
