@@ -190,8 +190,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
     <script>
 
-      function styleCell_bs4tgj9z7uk8rbzoh7pe(i, j, css_id) {
-          var table = document.getElementById("tinytable_bs4tgj9z7uk8rbzoh7pe");
+      function styleCell_j9h0kwxvt9m2te1dkctu(i, j, css_id) {
+          var table = document.getElementById("tinytable_j9h0kwxvt9m2te1dkctu");
           var cell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -200,8 +200,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
               console.warn(`Cell at (${i}, ${j}) not found.`);
           }
       }
-      function spanCell_bs4tgj9z7uk8rbzoh7pe(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_bs4tgj9z7uk8rbzoh7pe");
+      function spanCell_j9h0kwxvt9m2te1dkctu(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_j9h0kwxvt9m2te1dkctu");
         const targetCell = table.querySelector(`[data-row="${i}"][data-col="${j}"]`);
         if (!targetCell) {
           console.warn(`Cell at (${i}, ${j}) not found.`);
@@ -232,16 +232,16 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '0', j: 4 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '0', j: 5 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 },  ], css_id: 'tinytable_css_l8i13sqg781zi9zhmob1',}, 
-          { positions: [ { i: '0', j: 3 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 },  ], css_id: 'tinytable_css_ywh6v47v1stvxmv09k7x',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '0', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 },  ], css_id: 'tinytable_css_6c63yindks7ptxrftpn1',}, 
-          { positions: [ { i: '0', j: 0 }, { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '10', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 }, { i: '14', j: 0 }, { i: '15', j: 0 }, { i: '16', j: 0 }, { i: '17', j: 0 }, { i: '18', j: 0 }, { i: '19', j: 0 }, { i: '20', j: 0 }, { i: '21', j: 0 }, { i: '22', j: 0 }, { i: '23', j: 0 }, { i: '24', j: 0 }, { i: '25', j: 0 },  ], css_id: 'tinytable_css_9ut71rpj17agalsuh5vr',}, 
+          { positions: [ { i: '0', j: 4 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '26', j: 4 }, { i: '0', j: 5 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 }, { i: '26', j: 5 },  ], css_id: 'tinytable_css_s6hfw674mrjs91d50k0c',}, 
+          { positions: [ { i: '0', j: 3 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 }, { i: '26', j: 3 },  ], css_id: 'tinytable_css_pchodi41zd2vszyzotz2',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '26', j: 1 }, { i: '0', j: 2 }, { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 }, { i: '26', j: 2 },  ], css_id: 'tinytable_css_a7l6dhjr9arxtu50g2b5',}, 
+          { positions: [ { i: '0', j: 0 }, { i: '1', j: 0 }, { i: '2', j: 0 }, { i: '3', j: 0 }, { i: '4', j: 0 }, { i: '5', j: 0 }, { i: '6', j: 0 }, { i: '7', j: 0 }, { i: '8', j: 0 }, { i: '9', j: 0 }, { i: '10', j: 0 }, { i: '11', j: 0 }, { i: '12', j: 0 }, { i: '13', j: 0 }, { i: '14', j: 0 }, { i: '15', j: 0 }, { i: '16', j: 0 }, { i: '17', j: 0 }, { i: '18', j: 0 }, { i: '19', j: 0 }, { i: '20', j: 0 }, { i: '21', j: 0 }, { i: '22', j: 0 }, { i: '23', j: 0 }, { i: '24', j: 0 }, { i: '25', j: 0 }, { i: '26', j: 0 },  ], css_id: 'tinytable_css_f4lz2hykbg9g5t8x8r3i',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_bs4tgj9z7uk8rbzoh7pe(cell.i, cell.j, group.css_id);
+                  styleCell_j9h0kwxvt9m2te1dkctu(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -249,14 +249,14 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_l8i13sqg781zi9zhmob1, .table th.tinytable_css_l8i13sqg781zi9zhmob1 { font-size: 1em; width: 3.84615384615385%; }
-      .table td.tinytable_css_ywh6v47v1stvxmv09k7x, .table th.tinytable_css_ywh6v47v1stvxmv09k7x { font-size: 1em; width: 19.2307692307692%; }
-      .table td.tinytable_css_6c63yindks7ptxrftpn1, .table th.tinytable_css_6c63yindks7ptxrftpn1 { font-size: 1em; width: 30.7692307692308%; }
-      .table td.tinytable_css_9ut71rpj17agalsuh5vr, .table th.tinytable_css_9ut71rpj17agalsuh5vr { font-size: 1em; width: 11.5384615384615%; }
+      .table td.tinytable_css_s6hfw674mrjs91d50k0c, .table th.tinytable_css_s6hfw674mrjs91d50k0c { font-size: 1em; width: 3.84615384615385%; }
+      .table td.tinytable_css_pchodi41zd2vszyzotz2, .table th.tinytable_css_pchodi41zd2vszyzotz2 { font-size: 1em; width: 19.2307692307692%; }
+      .table td.tinytable_css_a7l6dhjr9arxtu50g2b5, .table th.tinytable_css_a7l6dhjr9arxtu50g2b5 { font-size: 1em; width: 30.7692307692308%; }
+      .table td.tinytable_css_f4lz2hykbg9g5t8x8r3i, .table th.tinytable_css_f4lz2hykbg9g5t8x8r3i { font-size: 1em; width: 11.5384615384615%; }
     </style>
     <div class="container">
       
-<table id="tinytable_bs4tgj9z7uk8rbzoh7pe" class="table caption-top table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false">
+<table id="tinytable_j9h0kwxvt9m2te1dkctu" class="table caption-top table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th" scope="col" data-row="0" data-col="0">Date</th>
@@ -269,204 +269,212 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td data-row="1" data-col="0">2025-08-06</td>
-<td data-row="1" data-col="1">Spatial Patterns of Electric Vehicle<br>Accessibility in the United States</td>
-<td data-row="1" data-col="2">2025 Bridging Transportation Researchers (BTR) Conference</td>
-<td data-row="1" data-col="3">Remote</td>
-<td data-row="1" data-col="4"><a href="https://jhelvy.github.io/2025-btr7-ev-spatial">HTML</a></td>
-<td data-row="1" data-col="5"><a href="https://github.com/jhelvy/2025-btr7-ev-spatial/blob/main/2025-btr7-ev-spatial.pdf?raw=true">PDF</a></td>
+<td data-row="1" data-col="0">2025-09-17</td>
+<td data-row="1" data-col="1">Introducing surveydown: An open-source platform for programmable, markdown-based surveys</td>
+<td data-row="1" data-col="2">posit::conf(2025)</td>
+<td data-row="1" data-col="3">Atlanta, GA, USA</td>
+<td data-row="1" data-col="4"><a href="https://jhelvy.github.io/2025-posit-conf-surveydown">HTML</a></td>
+<td data-row="1" data-col="5"><a href="https://github.com/jhelvy/2025-posit-conf-surveydown/blob/main/2025-posit-conf-surveydown.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="2" data-col="0">2025-06-19</td>
-<td data-row="2" data-col="1">Clean Tech and Trade in an Era of Nationalism</td>
-<td data-row="2" data-col="2">Energy Transitions Policy and Modeling at a Crossroads: New communities, approaches, and scenarios</td>
-<td data-row="2" data-col="3">Snowmass, CO, USA</td>
-<td data-row="2" data-col="4"><a href="https://jhelvy.github.io/2025-snowmass">HTML</a></td>
-<td data-row="2" data-col="5"><a href="https://github.com/jhelvy/2025-snowmass/blob/main/2025-snowmass.pdf?raw=true">PDF</a></td>
+<td data-row="2" data-col="0">2025-08-06</td>
+<td data-row="2" data-col="1">Spatial Patterns of Electric Vehicle<br>Accessibility in the United States</td>
+<td data-row="2" data-col="2">2025 Bridging Transportation Researchers (BTR) Conference</td>
+<td data-row="2" data-col="3">Remote</td>
+<td data-row="2" data-col="4"><a href="https://jhelvy.github.io/2025-btr7-ev-spatial">HTML</a></td>
+<td data-row="2" data-col="5"><a href="https://github.com/jhelvy/2025-btr7-ev-spatial/blob/main/2025-btr7-ev-spatial.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="3" data-col="0">2025-05-08</td>
-<td data-row="3" data-col="1">The American EV Transition: Looking Ahead While Lagging Behind</td>
-<td data-row="3" data-col="2">2025 UCSD Workshop on Climate and U.S.-China Relations</td>
-<td data-row="3" data-col="3">San Diego, CA, USA</td>
-<td data-row="3" data-col="4"><a href="https://jhelvy.github.io/2025-ucsd-us-china">HTML</a></td>
-<td data-row="3" data-col="5"><a href="https://github.com/jhelvy/2025-ucsd-us-china/blob/main/2025-ucsd-us-china.pdf?raw=true">PDF</a></td>
+<td data-row="3" data-col="0">2025-06-19</td>
+<td data-row="3" data-col="1">Clean Tech and Trade in an Era of Nationalism</td>
+<td data-row="3" data-col="2">Energy Transitions Policy and Modeling at a Crossroads: New communities, approaches, and scenarios</td>
+<td data-row="3" data-col="3">Snowmass, CO, USA</td>
+<td data-row="3" data-col="4"><a href="https://jhelvy.github.io/2025-snowmass">HTML</a></td>
+<td data-row="3" data-col="5"><a href="https://github.com/jhelvy/2025-snowmass/blob/main/2025-snowmass.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="4" data-col="0">2025-04-30</td>
-<td data-row="4" data-col="1">Competition vs Collaboration Across Clean Tech: Is Reshoring Possible?</td>
-<td data-row="4" data-col="2">Jefferies US China Summit – Understanding Geopolitical Rivalry &amp; Strategic Priorities</td>
-<td data-row="4" data-col="3">Remote</td>
-<td data-row="4" data-col="4"><a href="https://jhelvy.github.io/2025-jeffries-us-china-summit">HTML</a></td>
-<td data-row="4" data-col="5"><a href="https://github.com/jhelvy/2025-jeffries-us-china-summit/blob/main/2025-jeffries-us-china-summit.pdf?raw=true">PDF</a></td>
+<td data-row="4" data-col="0">2025-05-08</td>
+<td data-row="4" data-col="1">The American EV Transition: Looking Ahead While Lagging Behind</td>
+<td data-row="4" data-col="2">2025 UCSD Workshop on Climate and U.S.-China Relations</td>
+<td data-row="4" data-col="3">San Diego, CA, USA</td>
+<td data-row="4" data-col="4"><a href="https://jhelvy.github.io/2025-ucsd-us-china">HTML</a></td>
+<td data-row="4" data-col="5"><a href="https://github.com/jhelvy/2025-ucsd-us-china/blob/main/2025-ucsd-us-china.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="5" data-col="0">2025-04-23</td>
-<td data-row="5" data-col="1">The EV Transition in the U.S. &amp; China</td>
-<td data-row="5" data-col="2">CSIS Congressional Bootcamp: The Future of Energy, National Security, and Innovation</td>
-<td data-row="5" data-col="3">Washington, DC, USA</td>
-<td data-row="5" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-csis">HTML</a></td>
-<td data-row="5" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-csis/2025-csis.pdf?raw=true">PDF</a></td>
+<td data-row="5" data-col="0">2025-04-30</td>
+<td data-row="5" data-col="1">Competition vs Collaboration Across Clean Tech: Is Reshoring Possible?</td>
+<td data-row="5" data-col="2">Jefferies US China Summit – Understanding Geopolitical Rivalry &amp; Strategic Priorities</td>
+<td data-row="5" data-col="3">Remote</td>
+<td data-row="5" data-col="4"><a href="https://jhelvy.github.io/2025-jeffries-us-china-summit">HTML</a></td>
+<td data-row="5" data-col="5"><a href="https://github.com/jhelvy/2025-jeffries-us-china-summit/blob/main/2025-jeffries-us-china-summit.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="6" data-col="0">2025-04-08</td>
-<td data-row="6" data-col="1">The EV Transition in the U.S. &amp; China: Reflections on the Inflation Reduction Act and Future Direction</td>
-<td data-row="6" data-col="2">Charging Ahead in Uncertain Times, hosted by the GW Alliance for a Sustainable Future</td>
+<td data-row="6" data-col="0">2025-04-23</td>
+<td data-row="6" data-col="1">The EV Transition in the U.S. &amp; China</td>
+<td data-row="6" data-col="2">CSIS Congressional Bootcamp: The Future of Energy, National Security, and Innovation</td>
 <td data-row="6" data-col="3">Washington, DC, USA</td>
-<td data-row="6" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-gwu-charging-ahead">HTML</a></td>
-<td data-row="6" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-gwu-charging-ahead/2025-gwu-charging-ahead.pdf?raw=true">PDF</a></td>
+<td data-row="6" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-csis">HTML</a></td>
+<td data-row="6" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-csis/2025-csis.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="7" data-col="0">2025-03-24</td>
-<td data-row="7" data-col="1">Healthier &amp; Happier Hands: Software and Hardware Solutions for More Ergonomic Typing</td>
-<td data-row="7" data-col="2">2025 GWU Open Source Conference (OSCON)</td>
+<td data-row="7" data-col="0">2025-04-08</td>
+<td data-row="7" data-col="1">The EV Transition in the U.S. &amp; China: Reflections on the Inflation Reduction Act and Future Direction</td>
+<td data-row="7" data-col="2">Charging Ahead in Uncertain Times, hosted by the GW Alliance for a Sustainable Future</td>
 <td data-row="7" data-col="3">Washington, DC, USA</td>
-<td data-row="7" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-oscon-healthy-hands">HTML</a></td>
-<td data-row="7" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-oscon-healthy-hands/2025-oscon-healthy-hands.pdf?raw=true">PDF</a></td>
+<td data-row="7" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-gwu-charging-ahead">HTML</a></td>
+<td data-row="7" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-gwu-charging-ahead/2025-gwu-charging-ahead.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="8" data-col="0">2025-02-21</td>
-<td data-row="8" data-col="1">The U.S.-China Clean Energy Race: Reflections on the Inflation Reduction Act and Future Direction</td>
-<td data-row="8" data-col="2">Princeton Julis-Rabinowitz Center for Public Policy &amp; Finance Conference</td>
-<td data-row="8" data-col="3">Princeton, NJ, USA</td>
-<td data-row="8" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-princeton-industrial-policy">HTML</a></td>
-<td data-row="8" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-princeton-industrial-policy/2025-princeton-industrial-policy.pdf?raw=true">PDF</a></td>
+<td data-row="8" data-col="0">2025-03-24</td>
+<td data-row="8" data-col="1">Healthier &amp; Happier Hands: Software and Hardware Solutions for More Ergonomic Typing</td>
+<td data-row="8" data-col="2">2025 GWU Open Source Conference (OSCON)</td>
+<td data-row="8" data-col="3">Washington, DC, USA</td>
+<td data-row="8" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-oscon-healthy-hands">HTML</a></td>
+<td data-row="8" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-oscon-healthy-hands/2025-oscon-healthy-hands.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="9" data-col="0">2025-01-09</td>
-<td data-row="9" data-col="1">Disparities in Plug-in Electric Vehicle Availability and Affordability in the United States</td>
-<td data-row="9" data-col="2">EV Policy Council</td>
-<td data-row="9" data-col="3">Washington, DC, USA</td>
-<td data-row="9" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-ev-policy-council">HTML</a></td>
-<td data-row="9" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-ev-policy-council/2025-ev-policy-council.pdf?raw=true">PDF</a></td>
+<td data-row="9" data-col="0">2025-02-21</td>
+<td data-row="9" data-col="1">The U.S.-China Clean Energy Race: Reflections on the Inflation Reduction Act and Future Direction</td>
+<td data-row="9" data-col="2">Princeton Julis-Rabinowitz Center for Public Policy &amp; Finance Conference</td>
+<td data-row="9" data-col="3">Princeton, NJ, USA</td>
+<td data-row="9" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-princeton-industrial-policy">HTML</a></td>
+<td data-row="9" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-princeton-industrial-policy/2025-princeton-industrial-policy.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="10" data-col="0">2024-08-07</td>
-<td data-row="10" data-col="1">Battery-Powered Bargains? Assessing Electric Vehicle Resale Value in the United States</td>
-<td data-row="10" data-col="2">2024 Bridging Transportation Researchers (BTR) Conference</td>
-<td data-row="10" data-col="3">Remote</td>
-<td data-row="10" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-btr6">HTML</a></td>
-<td data-row="10" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-btr6/2024-btr6.pdf?raw=true">PDF</a></td>
+<td data-row="10" data-col="0">2025-01-09</td>
+<td data-row="10" data-col="1">Disparities in Plug-in Electric Vehicle Availability and Affordability in the United States</td>
+<td data-row="10" data-col="2">EV Policy Council</td>
+<td data-row="10" data-col="3">Washington, DC, USA</td>
+<td data-row="10" data-col="4"><a href="https://jhelvy.github.io/slides-old/2025-ev-policy-council">HTML</a></td>
+<td data-row="10" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2025-ev-policy-council/2025-ev-policy-council.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="11" data-col="0">2024-06-20</td>
-<td data-row="11" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation</td>
-<td data-row="11" data-col="2">2024 ISSST Conference</td>
-<td data-row="11" data-col="3">Baltimore, MD, USA</td>
-<td data-row="11" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-issst-conf">HTML</a></td>
-<td data-row="11" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-issst-conf/2024-issst-conf.pdf?raw=true">PDF</a></td>
+<td data-row="11" data-col="0">2024-08-07</td>
+<td data-row="11" data-col="1">Battery-Powered Bargains? Assessing Electric Vehicle Resale Value in the United States</td>
+<td data-row="11" data-col="2">2024 Bridging Transportation Researchers (BTR) Conference</td>
+<td data-row="11" data-col="3">Remote</td>
+<td data-row="11" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-btr6">HTML</a></td>
+<td data-row="11" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-btr6/2024-btr6.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="12" data-col="0">2024-06-14</td>
-<td data-row="12" data-col="1">The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry</td>
-<td data-row="12" data-col="2">2024 Industry Studies Conference</td>
-<td data-row="12" data-col="3">Sacramento, CA, USA</td>
-<td data-row="12" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-isa-conf-china-ev">HTML</a></td>
-<td data-row="12" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-isa-conf-china-ev/2024-isa-conf-china-ev.pdf?raw=true">PDF</a></td>
+<td data-row="12" data-col="0">2024-06-20</td>
+<td data-row="12" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation</td>
+<td data-row="12" data-col="2">2024 ISSST Conference</td>
+<td data-row="12" data-col="3">Baltimore, MD, USA</td>
+<td data-row="12" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-issst-conf">HTML</a></td>
+<td data-row="12" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-issst-conf/2024-issst-conf.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="13" data-col="0">2024-02-21</td>
-<td data-row="13" data-col="1">Using Marketing Analytics to Measure Consumer Preferences and Inform Policy</td>
-<td data-row="13" data-col="2">Masterclass Presentation to SEED Global Education</td>
-<td data-row="13" data-col="3">Remote</td>
-<td data-row="13" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-helveston-da-faa">HTML</a></td>
-<td data-row="13" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-helveston-da-faa/2024-helveston-da-faa.pdf?raw=true">PDF</a></td>
+<td data-row="13" data-col="0">2024-06-14</td>
+<td data-row="13" data-col="1">The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry</td>
+<td data-row="13" data-col="2">2024 Industry Studies Conference</td>
+<td data-row="13" data-col="3">Sacramento, CA, USA</td>
+<td data-row="13" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-isa-conf-china-ev">HTML</a></td>
+<td data-row="13" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-isa-conf-china-ev/2024-isa-conf-china-ev.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="14" data-col="0">2024-01-11</td>
-<td data-row="14" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage</td>
-<td data-row="14" data-col="2">EV Policy Council</td>
-<td data-row="14" data-col="3">Washington, DC, USA</td>
-<td data-row="14" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-ev-policy-council-vmt">HTML</a></td>
-<td data-row="14" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-ev-policy-council-vmt/2024-ev-policy-council-vmt.pdf?raw=true">PDF</a></td>
+<td data-row="14" data-col="0">2024-02-21</td>
+<td data-row="14" data-col="1">Using Marketing Analytics to Measure Consumer Preferences and Inform Policy</td>
+<td data-row="14" data-col="2">Masterclass Presentation to SEED Global Education</td>
+<td data-row="14" data-col="3">Remote</td>
+<td data-row="14" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-helveston-da-faa">HTML</a></td>
+<td data-row="14" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-helveston-da-faa/2024-helveston-da-faa.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="15" data-col="0">2023-10-06</td>
-<td data-row="15" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation</td>
-<td data-row="15" data-col="2">RIT Visit</td>
-<td data-row="15" data-col="3">Rochester, NY, USA</td>
-<td data-row="15" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-rit-visit">HTML</a></td>
-<td data-row="15" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-rit-visit/2023-rit-visit.pdf?raw=true">PDF</a></td>
+<td data-row="15" data-col="0">2024-01-11</td>
+<td data-row="15" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage</td>
+<td data-row="15" data-col="2">EV Policy Council</td>
+<td data-row="15" data-col="3">Washington, DC, USA</td>
+<td data-row="15" data-col="4"><a href="https://jhelvy.github.io/slides-old/2024-ev-policy-council-vmt">HTML</a></td>
+<td data-row="15" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2024-ev-policy-council-vmt/2024-ev-policy-council-vmt.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="16" data-col="0">2023-06-01</td>
+<td data-row="16" data-col="0">2023-10-06</td>
 <td data-row="16" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation</td>
-<td data-row="16" data-col="2">2023 Industry Studies Conference</td>
-<td data-row="16" data-col="3">Columbus, OH, USA</td>
-<td data-row="16" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-isa-conf">HTML</a></td>
-<td data-row="16" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-isa-conf/2023-isa-conf.pdf?raw=true">PDF</a></td>
+<td data-row="16" data-col="2">RIT Visit</td>
+<td data-row="16" data-col="3">Rochester, NY, USA</td>
+<td data-row="16" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-rit-visit">HTML</a></td>
+<td data-row="16" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-rit-visit/2023-rit-visit.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="17" data-col="0">2023-05-10</td>
-<td data-row="17" data-col="1">Data Analytics at GWU</td>
-<td data-row="17" data-col="2">Presentation to the Federal Academic Aliance Program</td>
-<td data-row="17" data-col="3">Washington, DC, USA</td>
-<td data-row="17" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-helveston-da-faa">HTML</a></td>
-<td data-row="17" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-helveston-da-faa/2023-helveston-da-faa.pdf?raw=true">PDF</a></td>
+<td data-row="17" data-col="0">2023-06-01</td>
+<td data-row="17" data-col="1">Quantifying Plug-in Electric Vehicle (PEV) mileage and depreciation</td>
+<td data-row="17" data-col="2">2023 Industry Studies Conference</td>
+<td data-row="17" data-col="3">Columbus, OH, USA</td>
+<td data-row="17" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-isa-conf">HTML</a></td>
+<td data-row="17" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-isa-conf/2023-isa-conf.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="18" data-col="0">2022-11-18</td>
-<td data-row="18" data-col="1">Quantifying the cost savings of global solar photovoltaic supply chains</td>
-<td data-row="18" data-col="2">2022 Association for Public Policy Analysis &amp; Management (APPAM) Conference</td>
+<td data-row="18" data-col="0">2023-05-10</td>
+<td data-row="18" data-col="1">Data Analytics at GWU</td>
+<td data-row="18" data-col="2">Presentation to the Federal Academic Aliance Program</td>
 <td data-row="18" data-col="3">Washington, DC, USA</td>
-<td data-row="18" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-appam-solar-learning">HTML</a></td>
-<td data-row="18" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-appam-solar-learning/2022-appam-solar-learning.pdf?raw=true">PDF</a></td>
+<td data-row="18" data-col="4"><a href="https://jhelvy.github.io/slides-old/2023-helveston-da-faa">HTML</a></td>
+<td data-row="18" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2023-helveston-da-faa/2023-helveston-da-faa.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="19" data-col="0">2022-10-28</td>
+<td data-row="19" data-col="0">2022-11-18</td>
 <td data-row="19" data-col="1">Quantifying the cost savings of global solar photovoltaic supply chains</td>
-<td data-row="19" data-col="2"><a href="https://itif.org/">ITIF</a> Junior Scholars Seminar</td>
-<td data-row="19" data-col="3">Remote</td>
-<td data-row="19" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-itif-seminar-solar-learning">HTML</a></td>
-<td data-row="19" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-itif-seminar-solar-learning/2022-itif-seminar-solar-learning.pdf?raw=true">PDF</a></td>
+<td data-row="19" data-col="2">2022 Association for Public Policy Analysis &amp; Management (APPAM) Conference</td>
+<td data-row="19" data-col="3">Washington, DC, USA</td>
+<td data-row="19" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-appam-solar-learning">HTML</a></td>
+<td data-row="19" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-appam-solar-learning/2022-appam-solar-learning.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="20" data-col="0">2022-09-30</td>
-<td data-row="20" data-col="1">The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry</td>
-<td data-row="20" data-col="2">“Chinese Industrial Policy: Sectors and Resources” conference at UCSD</td>
-<td data-row="20" data-col="3">San Diego, CA, USA</td>
-<td data-row="20" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-ucsd-conf-china-ev-policy">HTML</a></td>
-<td data-row="20" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-ucsd-conf-china-ev-policy/2022-ucsd-conf-china-ev-policy.pdf?raw=true">PDF</a></td>
+<td data-row="20" data-col="0">2022-10-28</td>
+<td data-row="20" data-col="1">Quantifying the cost savings of global solar photovoltaic supply chains</td>
+<td data-row="20" data-col="2"><a href="https://itif.org/">ITIF</a> Junior Scholars Seminar</td>
+<td data-row="20" data-col="3">Remote</td>
+<td data-row="20" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-itif-seminar-solar-learning">HTML</a></td>
+<td data-row="20" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-itif-seminar-solar-learning/2022-itif-seminar-solar-learning.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="21" data-col="0">2022-06-25</td>
-<td data-row="21" data-col="1">Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets</td>
-<td data-row="21" data-col="2">2022 Industry Studies Conference (original slides repo <a href="https://github.com/jhelvy/2022-isa-conf-solar">here</a>)</td>
-<td data-row="21" data-col="3">Philadelphia, PA, USA</td>
-<td data-row="21" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-isa-conf-solar-learning">HTML</a></td>
-<td data-row="21" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-isa-conf-solar-learning/2022-isa-conf-solar-learning.pdf?raw=true">PDF</a></td>
+<td data-row="21" data-col="0">2022-09-30</td>
+<td data-row="21" data-col="1">The Rise of Chinese Leadership in the Plug-in Electric Vehicle Industry</td>
+<td data-row="21" data-col="2">“Chinese Industrial Policy: Sectors and Resources” conference at UCSD</td>
+<td data-row="21" data-col="3">San Diego, CA, USA</td>
+<td data-row="21" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-ucsd-conf-china-ev-policy">HTML</a></td>
+<td data-row="21" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-ucsd-conf-china-ev-policy/2022-ucsd-conf-china-ev-policy.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="22" data-col="0">2022-05-06</td>
-<td data-row="22" data-col="1">The cbcTools Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R</td>
-<td data-row="22" data-col="2">2022 Sawtooth Software Conference (original slides repo <a href="https://github.com/jhelvy/2022-sawtooth-conf">here</a>)</td>
-<td data-row="22" data-col="3">Orlando, FL, USA</td>
-<td data-row="22" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-sawtooth-conf-cbcTools">HTML</a></td>
-<td data-row="22" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-sawtooth-conf-cbcTools/2022-sawtooth-conf-cbcTools.pdf?raw=true">PDF</a></td>
+<td data-row="22" data-col="0">2022-06-25</td>
+<td data-row="22" data-col="1">Quantifying the role of globalized solar photovoltaic supply chains in reaching climate targets</td>
+<td data-row="22" data-col="2">2022 Industry Studies Conference (original slides repo <a href="https://github.com/jhelvy/2022-isa-conf-solar">here</a>)</td>
+<td data-row="22" data-col="3">Philadelphia, PA, USA</td>
+<td data-row="22" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-isa-conf-solar-learning">HTML</a></td>
+<td data-row="22" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-isa-conf-solar-learning/2022-isa-conf-solar-learning.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="23" data-col="0">2021-07-06</td>
-<td data-row="23" data-col="1">Healthier &amp; Happier Hands: Software and Hardware Solutions for More Ergonomic Typing</td>
-<td data-row="23" data-col="2"><a href="https://user2021.r-project.org/">2021 useR conference</a> lightning ⚡️ talk. I discuss software and hardware solutions for more ergonomic typing ⌨️ ❤️ 🙌 ❤️ (original slide repo <a href="https://github.com/jhelvy/2021-useR-healthy-hands">here</a>)</td>
-<td data-row="23" data-col="3">Remote</td>
-<td data-row="23" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-useR-conf-healthy-hands">HTML</a></td>
-<td data-row="23" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-useR-conf-healthy-hands/2021-useR-conf-healthy-hands.pdf?raw=true">PDF</a></td>
+<td data-row="23" data-col="0">2022-05-06</td>
+<td data-row="23" data-col="1">The cbcTools Package: Tools for Designing and Testing Choice-Based Conjoint Surveys in R</td>
+<td data-row="23" data-col="2">2022 Sawtooth Software Conference (original slides repo <a href="https://github.com/jhelvy/2022-sawtooth-conf">here</a>)</td>
+<td data-row="23" data-col="3">Orlando, FL, USA</td>
+<td data-row="23" data-col="4"><a href="https://jhelvy.github.io/slides-old/2022-sawtooth-conf-cbcTools">HTML</a></td>
+<td data-row="23" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2022-sawtooth-conf-cbcTools/2022-sawtooth-conf-cbcTools.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="even">
-<td data-row="24" data-col="0">2021-04-20</td>
-<td data-row="24" data-col="1">The {logitr} R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models</td>
-<td data-row="24" data-col="2">2021 Sawtooth Software Conference: Turbo Choice Modeling Seminar (original slides repo <a href="https://github.com/jhelvy/2021-sawtooth-conf">here</a>)</td>
-<td data-row="24" data-col="3">San Antonio, TX, USA</td>
-<td data-row="24" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-sawtooth-conf-logitr">HTML</a></td>
-<td data-row="24" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-sawtooth-conf-logitr/2021-sawtooth-conf-logitr.pdf?raw=true">PDF</a></td>
+<td data-row="24" data-col="0">2021-07-06</td>
+<td data-row="24" data-col="1">Healthier &amp; Happier Hands: Software and Hardware Solutions for More Ergonomic Typing</td>
+<td data-row="24" data-col="2"><a href="https://user2021.r-project.org/">2021 useR conference</a> lightning ⚡️ talk. I discuss software and hardware solutions for more ergonomic typing ⌨️ ❤️ 🙌 ❤️ (original slide repo <a href="https://github.com/jhelvy/2021-useR-healthy-hands">here</a>)</td>
+<td data-row="24" data-col="3">Remote</td>
+<td data-row="24" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-useR-conf-healthy-hands">HTML</a></td>
+<td data-row="24" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-useR-conf-healthy-hands/2021-useR-conf-healthy-hands.pdf?raw=true">PDF</a></td>
 </tr>
 <tr class="odd">
-<td data-row="25" data-col="0">2021-01-21</td>
-<td data-row="25" data-col="1">Using formr to create R-powered surveys with individualized feedback</td>
-<td data-row="25" data-col="2">2021 rstudio::conf lightning ⚡️ talk (original slides repo <a href="https://github.com/jhelvy/surveys-with-formr">here</a>)</td>
-<td data-row="25" data-col="3">Remote</td>
-<td data-row="25" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-rstudio-conf-surveys-with-formr">HTML</a></td>
-<td data-row="25" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-rstudio-conf-surveys-with-formr/2021-rstudio-conf-surveys-with-formr.pdf?raw=true">PDF</a></td>
+<td data-row="25" data-col="0">2021-04-20</td>
+<td data-row="25" data-col="1">The {logitr} R Package: Obtaining Willingness to Pay Estimates from Preference Space and Willingness to Pay Space Utility Models</td>
+<td data-row="25" data-col="2">2021 Sawtooth Software Conference: Turbo Choice Modeling Seminar (original slides repo <a href="https://github.com/jhelvy/2021-sawtooth-conf">here</a>)</td>
+<td data-row="25" data-col="3">San Antonio, TX, USA</td>
+<td data-row="25" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-sawtooth-conf-logitr">HTML</a></td>
+<td data-row="25" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-sawtooth-conf-logitr/2021-sawtooth-conf-logitr.pdf?raw=true">PDF</a></td>
+</tr>
+<tr class="even">
+<td data-row="26" data-col="0">2021-01-21</td>
+<td data-row="26" data-col="1">Using formr to create R-powered surveys with individualized feedback</td>
+<td data-row="26" data-col="2">2021 rstudio::conf lightning ⚡️ talk (original slides repo <a href="https://github.com/jhelvy/surveys-with-formr">here</a>)</td>
+<td data-row="26" data-col="3">Remote</td>
+<td data-row="26" data-col="4"><a href="https://jhelvy.github.io/slides-old/2021-rstudio-conf-surveys-with-formr">HTML</a></td>
+<td data-row="26" data-col="5"><a href="https://github.com/jhelvy/slides-old//blob/main/2021-rstudio-conf-surveys-with-formr/2021-rstudio-conf-surveys-with-formr.pdf?raw=true">PDF</a></td>
 </tr>
 </tbody>
 </table>
