@@ -17,6 +17,7 @@ project:
     - "research/**/*.qmd"
     - "charts.qmd"
     - "good-eats.qmd"
+    - "dogs.qmd"
     - "404.qmd"
     - "da-faq.qmd"
     - "slides.qmd"

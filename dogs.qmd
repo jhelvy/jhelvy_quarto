@@ -1,0 +1,30 @@
+---
+title: "Dogs"
+toc: true
+toc-location: left
+lightbox: true
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r setup}
+source("_common.R")
+
+year <- as.numeric(format(Sys.time(), "%Y"))
+age_riley <- year - 2015
+age_minnie <- year - 2023
+```
+
+We have two dogs, and their collar tags have links to this page, so if you found this page, you probably found one of our dogs. If you did, please call or text me at (727) 437-2285.
+
+Thank you!
+
+Here is a little about each of our dogs:
+
+Name | Riley | Minnie
+---|------|--------
+Age | `r age_riley` years | `r age_minnie` years
+Breed | English Shepherd | Miniature Pointer
+Color | Black w/tan feet | Black w/white feet
+Photo | ![](images/riley.png){height=250px} | ![](images/minnie.png){height=250px}
