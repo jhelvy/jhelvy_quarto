@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="">
 
-<title>Blog – jhelvy.com</title>
+<title>Dogs – jhelvy.com</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,26 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/favicon/favicon.ico" rel="icon">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a58d4237de3afa67a8496e33be0e749c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/favicon/favicon.ico" rel="icon">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a58d4237de3afa67a8496e33be0e749c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,36 +67,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-author','listing-summary','listing-description','listing-extsite','listing-repo',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 8,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-title","listing-date"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HQNG5WQE3X"></script>
 
 <script type="text/javascript">
@@ -122,47 +89,22 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Blog – jhelvy.com">
-<meta property="og:image" content="https://www.jhelvy.com/blog/2024-08-10-introducing-surveydown/logo.png">
+<meta property="og:title" content="Dogs – jhelvy.com">
+<meta property="og:description" content="The personal website of John Paul Helveston">
+<meta property="og:image" content="https://www.jhelvy.com/images/riley.png">
 <meta property="og:site_name" content="https://jhelvy.com">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image:height" content="1680">
-<meta property="og:image:width" content="1680">
-<meta name="twitter:title" content="Blog – jhelvy.com">
-<meta name="twitter:image" content="https://www.jhelvy.com/blog/images/lab/john_helveston_circle.png">
+<meta property="og:image:height" content="757">
+<meta property="og:image:width" content="719">
+<meta name="twitter:title" content="Dogs – jhelvy.com">
+<meta name="twitter:description" content="The personal website of John Paul Helveston">
+<meta name="twitter:image" content="https://www.jhelvy.com/images/lab/john_helveston_circle.png">
 <meta name="twitter:creator" content="@johnhelveston">
 <meta name="twitter:site" content="@johnhelveston">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1422">
+<meta name="twitter:image-width" content="1422">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -172,7 +114,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">jhelvy.com</span>
     </a>
   </div>
@@ -183,27 +125,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../lab.html"> 
+    <a class="nav-link" href="./lab.html"> 
 <span class="menu-text">Lab</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
+    <a class="nav-link" href="./research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
+    <a class="nav-link" href="./teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../projects.html"> 
+    <a class="nav-link" href="./projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
+    <a class="nav-link" href="./blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -214,24 +156,26 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    
+</nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="Y29uam9pbnQ=">conjoint <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlzdGlsbA==">distill <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2V5Ym9hcmRz">keyboards <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFya2Rvd24=">markdown <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bW9udGUlMjBjYXJsbw==">monte carlo <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cGFja2FnZQ==">package <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cHJvZHVjdGl2aXR5">productivity <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cXVhcnRv">quarto <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(9)</span></div><div class="category" data-category="c2hpbnk=">shiny <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c29mdHdhcmU=">software <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dHV0b3JpYWw=">tutorial <span class="quarto-category-count">(2)</span></div></div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Dogs</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -243,304 +187,49 @@ window.Quarto = {
 </header>
 
 
+<p>We have two dogs, and their collar tags have links to this page, so if you found this page, you probably found one of our dogs. If you did, please call or text me at (727) 437-2285.</p>
+<p>Thank you!</p>
+<p>Here is a little about each of our dogs:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 35%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Riley</th>
+<th>Minnie</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Age</td>
+<td>10 years</td>
+<td>2 years</td>
+</tr>
+<tr class="even">
+<td>Breed</td>
+<td>English Shepherd</td>
+<td>Miniature Pointer</td>
+</tr>
+<tr class="odd">
+<td>Color</td>
+<td>Black w/tan feet</td>
+<td>Black w/white feet</td>
+</tr>
+<tr class="even">
+<td>Photo</td>
+<td><img src="images/riley.png" height="250"></td>
+<td><img src="images/minnie.png" height="250"></td>
+</tr>
+</tbody>
+</table>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ3BhY2thZ2UlMkNtYXJrZG93biUyQ3NoaW55JTJDcGFja2FnZSUyQ3F1YXJ0bw==" data-listing-date-sort="1723248000000" data-listing-file-modified-sort="1756146839611" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3569">
-<div class="thumbnail"><a href="../blog/2024-08-10-introducing-surveydown/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2024-08-10-introducing-surveydown/logo.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2024-08-10-introducing-surveydown/index.html" class="no-external">Introducing {surveydown}: A markdown-based framework for generating surveys with Quarto and shiny (that now exists!!!)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2024-08-10-introducing-surveydown/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2024-08-10-introducing-surveydown/index.html" class="no-external">
-<p>A quick overview of the {surveydown} R package for making markdown-based surveys with open-source technologies: Quarto, shiny, and supabase.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2024-08-10-introducing-surveydown/index.html" class="no-external">
-<div class="listing-date">
-2024-08-10
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ21hcmtkb3duJTJDcHJvZHVjdGl2aXR5JTJDcGFja2FnZQ==" data-listing-date-sort="1680739200000" data-listing-file-modified-sort="1756146839608" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2565">
-<div class="thumbnail"><a href="../blog/2023-04-06-markdown-surveys/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2023-04-06-markdown-surveys/logo.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2023-04-06-markdown-surveys/index.html" class="no-external">{surveydown}: An open source, markdown-based survey framework (that doesn’t exist yet)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2023-04-06-markdown-surveys/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2023-04-06-markdown-surveys/index.html" class="no-external">
-<p>Let’s build this, who’s with me?</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2023-04-06-markdown-surveys/index.html" class="no-external">
-<div class="listing-date">
-2023-04-06
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="cXVhcnRvJTJDcHJvZHVjdGl2aXR5JTJDUg==" data-listing-date-sort="1677542400000" data-listing-file-modified-sort="1756146839607" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1891">
-<div class="thumbnail"><a href="../blog/2023-02-28-parameterized-pdfs-with-quarto/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2023-02-28-parameterized-pdfs-with-quarto/quarto.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2023-02-28-parameterized-pdfs-with-quarto/index.html" class="no-external">Render parameterized reports with Quarto</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2023-02-28-parameterized-pdfs-with-quarto/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2023-02-28-parameterized-pdfs-with-quarto/index.html" class="no-external">
-<p>A quick how-to guide for making reports in Quarto with custom parameters, and a couple fixes for some current limitations.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2023-02-28-parameterized-pdfs-with-quarto/index.html" class="no-external">
-<div class="listing-date">
-2023-02-28
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="c29mdHdhcmU=" data-listing-date-sort="1672012800000" data-listing-file-modified-sort="1756146839607" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1685">
-<div class="thumbnail"><a href="../blog/2022-12-26-why-chess-is-better-than-golf/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2022-12-26-why-chess-is-better-than-golf/images/chess-golf.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2022-12-26-why-chess-is-better-than-golf/index.html" class="no-external">Why chess is a better game than golf</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2022-12-26-why-chess-is-better-than-golf/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2022-12-26-why-chess-is-better-than-golf/index.html" class="no-external">
-<p>I asked ChatGPT to write this blog post. Here’s what it came up with.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2022-12-26-why-chess-is-better-than-golf/index.html" class="no-external">
-<div class="listing-date">
-2022-12-26
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="UiUyQ3BhY2thZ2UlMkNzb2Z0d2FyZQ==" data-listing-date-sort="1656374400000" data-listing-file-modified-sort="1756146839607" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2110">
-<div class="thumbnail"><a href="../blog/2022-06-28-introducing-renderthis/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2022-06-28-introducing-renderthis/images/logo.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2022-06-28-introducing-renderthis/index.html" class="no-external">Introducing the {renderthis} package</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2022-06-28-introducing-renderthis/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2022-06-28-introducing-renderthis/index.html" class="no-external">
-<p>A brief introduction to the {renderthis} package for rendering {xaringan} slides to different output types (previously called {xaringanBuilder})</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2022-06-28-introducing-renderthis/index.html" class="no-external">
-<div class="listing-date">
-2022-06-28
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ21vbnRlJTIwY2FybG8=" data-listing-date-sort="1634601600000" data-listing-file-modified-sort="1756146839597" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3238">
-<div class="thumbnail"><a href="../blog/2021-10-19-monte-carlo-bridge-game/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2021-10-19-monte-carlo-bridge-game/squid-game.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2021-10-19-monte-carlo-bridge-game/index.html" class="no-external">Simulating the Squid Game bridge scene in R</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2021-10-19-monte-carlo-bridge-game/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2021-10-19-monte-carlo-bridge-game/index.html" class="no-external">
-<p>A simple monte carlo simulation of the expected number of survivors from the Squid Game bridge scene <strong>Contains Spoilers</strong></p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2021-10-19-monte-carlo-bridge-game/index.html" class="no-external">
-<div class="listing-date">
-2021-10-19
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="UiUyQ3R1dG9yaWFsJTJDY29uam9pbnQ=" data-listing-date-sort="1631923200000" data-listing-file-modified-sort="1756146839593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2170">
-<div class="thumbnail"><a href="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/images/example.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html" class="no-external">Choice-based conjoint surveys in R with formr</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html" class="no-external">
-<p>A how-to guide for using R to design and implement choice-based conjoint surveys using formr.org</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/index.html" class="no-external">
-<div class="listing-date">
-2021-09-18
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="cHJvZHVjdGl2aXR5JTJDa2V5Ym9hcmRzJTJDUg==" data-listing-date-sort="1625270400000" data-listing-file-modified-sort="1756146839592" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3706">
-<div class="thumbnail"><a href="../blog/2021-07-03-in-search-of-keyboard-nirvana/index.html" class="no-external">
-
-<img loading="lazy" src="../blog/2021-07-03-in-search-of-keyboard-nirvana/images/red_pill.gif" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2021-07-03-in-search-of-keyboard-nirvana/index.html" class="no-external">In search of keyboard nirvana</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2021-07-03-in-search-of-keyboard-nirvana/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2021-07-03-in-search-of-keyboard-nirvana/index.html" class="no-external">
-<p>My journey to find a more ergonomic (and useful) keyboard</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2021-07-03-in-search-of-keyboard-nirvana/index.html" class="no-external">
-<div class="listing-date">
-2021-07-03
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-categories="cHJvZHVjdGl2aXR5JTJDUg==" data-listing-date-sort="1620086400000" data-listing-file-modified-sort="1756146839461" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3231">
-<div class="thumbnail"><a href="../blog/2021-05-04-expand-your-productivity-with-espanso/index.html" class="no-external">
-
-<img loading="lazy" data-src="../blog/2021-05-04-expand-your-productivity-with-espanso/images/date.gif" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2021-05-04-expand-your-productivity-with-espanso/index.html" class="no-external">Expand your productivity with espanso</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2021-05-04-expand-your-productivity-with-espanso/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2021-05-04-expand-your-productivity-with-espanso/index.html" class="no-external">
-<p>Custom text snippets with espanso: a text expander written in Rust</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2021-05-04-expand-your-productivity-with-espanso/index.html" class="no-external">
-<div class="listing-date">
-2021-05-04
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-categories="dHV0b3JpYWwlMkNkaXN0aWxsJTJDUg==" data-listing-date-sort="1616630400000" data-listing-file-modified-sort="1756146839354" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2528">
-<div class="thumbnail"><a href="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html" class="no-external">
-
-<img loading="lazy" data-src="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/images/css_html.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html" class="no-external">Customizing distill with {htmltools} and CSS</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html" class="no-external"></a>
-</div>
-<div class="delink listing-description"><a href="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html" class="no-external">
-<p>How I added lots of little features to my distill site with the {htmltools} package, CSS, and a handful of little R functions.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/2021-03-25-customizing-distill-with-htmltools-and-css/index.html" class="no-external">
-<div class="listing-date">
-2021-03-25
-</div>
-<div class="listing-author">
-John Paul Helveston
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -967,5 +656,5 @@ John Paul Helveston
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
