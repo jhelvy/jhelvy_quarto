@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,14 +71,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../images/favicon/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-499bef19857d318602ff8aa7bdec38c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-490d8fbb5cc7c26b2dc6fe2970945007.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -152,6 +153,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">jhelvy.com</span>
     </a>
@@ -288,18 +291,18 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <h1><a href="https://unleash-shiny.rinterface.com/htmltools-overview.html">{htmltools}</a> to the rescue!</h1>
 <p>Luckily, some <a href="https://unleash-shiny.rinterface.com/references.html#ref-R-htmltools">clever folks</a> wrote a package that generates html code! Since html controls formatting by wrapping content inside tags, the {htmltools} package uses a bunch of handy functions to generate those tags for you. For example, if I wanted to make a level 1 header tag, I could use the <code>h1()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltools)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(htmltools)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">h1</span>(<span class="st">"Hello World"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; &lt;h1&gt;Hello World&lt;/h1&gt;</code></pre>
 </div>
 </div>
 <p>For most situations, this works great, but there are also times where I need a tag that isn’t yet supported. In those case, you can insert the tags yourself as a string and use the <code>tag()</code> function to create custom tags. For example, the <code>&lt;aside&gt;</code> tag is used in distill to put content in the sidebar, but {htmltools} does not have an <code>aside()</code> function. Instead, I can create those tages like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">tag</span>(<span class="st">"aside"</span>, <span class="st">"Hello World"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> <span class="fu">tag</span>(<span class="st">"aside"</span>, <span class="st">"Hello World"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; &lt;aside&gt;Hello World&lt;/aside&gt;</code></pre>
 </div>
@@ -310,7 +313,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <h1>Getting organized</h1>
 <p>Before I started writing functions, I needed to find a convenient place to put them so I could use them later in my distill articles and posts. Following the typical folder structure for R packages, I decided to make a folder called “R” in the root directory of my distill site and put a file called <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/R/functions.R"><code>functions.R</code></a> in it. Now I can access any functions I write inside this file by calling the following at the top of any .Rmd file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"R"</span>, <span class="st">"functions.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"R"</span>, <span class="st">"functions.R"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>It’s kind of like calling <code>library(package)</code> at the top of a file, except your functions don’t live in a package. Eventually, I may choose to move some of my functions to an external package so others can use them, but for now they’ll live happily in my <code>functions.R</code> file 😄.</p>
 </section>
@@ -319,7 +322,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>Inspired by <a href="https://www.andrewheiss.com/research/">Andrew Heiss’s research page</a>, I wanted to insert a haiku summary next to each citation of each paper on my <a href="https://jhelvy.github.io/publications.html">publications page</a>. All you need to do is wrap some text in <code>&lt;aside&gt;</code> tags and it will show up in the side bar. But rather than write the html for each haiku (e.g.&nbsp;<code>&lt;aside&gt;haiku text&lt;/aside&gt;</code>), I decided to write a simple function to generate the html tags for me.</p>
 <p>I started with three functions to generate the tags for some center-aligned text in the sidebar:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generates &lt;aside&gt;text&lt;/aside&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generates &lt;aside&gt;text&lt;/aside&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>aside <span class="ot">&lt;-</span> <span class="cf">function</span>(text) {</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(htmltools<span class="sc">::</span><span class="fu">tag</span>(<span class="st">"aside"</span>, <span class="fu">list</span>(text)))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -332,28 +335,28 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generates &lt;aside&gt;&lt;center&gt;text&lt;/center&gt;&lt;/aside&gt;</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>aside_center <span class="ot">&lt;-</span> <span class="cf">function</span>(text) {</span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">aside</span>(<span class="fu">center</span>(<span class="fu">list</span>(text))))</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now I can insert some center-aligned text in the sidebar with the function <code>aside_center(text)</code>. But since haikus have a particular 5-7-5 syllabic structure, I thought it would be better to put each line on a separate row. I also wanted the haikus to be in italic font. So I wrote a <code>haiku()</code> function that takes three text inputs and generates the html to put them in the side bar on separate lines:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>haiku <span class="ot">&lt;-</span> <span class="cf">function</span>(one, two, three) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>haiku <span class="ot">&lt;-</span> <span class="cf">function</span>(one, two, three) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">aside_center</span>(<span class="fu">list</span>(</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    htmltools<span class="sc">::</span><span class="fu">em</span>(</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      one, htmltools<span class="sc">::</span><span class="fu">br</span>(),</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      two, htmltools<span class="sc">::</span><span class="fu">br</span>(),</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      three)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )))</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>With this little function, I can insert haikus throughout my publications page without having to write any html! For example, the html for the haiku for our recent <a href="https://doi.org/10.1088/1748-9326/aba715">paper</a> in <em>Environmental Research Letters</em> is generated like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">haiku</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">haiku</span>(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"A five minute ride"</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"In an EV can increase"</span>,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"The chance you'll buy one"</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(html)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt; &lt;aside&gt;
 #&gt;   &lt;center&gt;
@@ -377,34 +380,34 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <h1>Link “buttons” with icons + text</h1>
 <p>Everyone knows that cool points are directly proportional to usage of <a href="https://fontawesome.com/">fontawesome</a> icons on your website. So when it came time to add links to content on my <a href="https://jhelvy.github.io/publications.html">publications page</a>, I <em>had</em> to find a way to make it easier to insert icons with the links. Since {htmltools} does not have a default tag for <code>&lt;i&gt;&lt;/i&gt;</code>, I made a function to build the tags using <code>htmltools::tag()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generates &lt;i class="icon"&gt;&lt;/i&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generates &lt;i class="icon"&gt;&lt;/i&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>make_icon <span class="ot">&lt;-</span> <span class="cf">function</span>(icon) {</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(htmltools<span class="sc">::</span><span class="fu">tag</span>(<span class="st">"i"</span>, <span class="fu">list</span>(<span class="at">class =</span> icon)))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>I can now get an icon for any fontawesome by using it’s class. For example, I can get the GitHub icon like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_icon</span>(<span class="st">"fab fa-github"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_icon</span>(<span class="st">"fab fa-github"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Because this function just generates generic <code>&lt;i&gt;&lt;/i&gt;</code> tags, it works with other icon libraries too. For example, I can insert the Google Scholar icon from <a href="https://jpswalsh.github.io/academicons/">academic icons</a> using <code>make_icon("ai ai-google-scholar")</code>. Cool!</p>
 <p>Of course I want links that have icons + text, so I made another function to paste on the text:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>make_icon_text <span class="ot">&lt;-</span> <span class="cf">function</span>(icon, text) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>make_icon_text <span class="ot">&lt;-</span> <span class="cf">function</span>(icon, text) {</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(htmltools<span class="sc">::</span><span class="fu">HTML</span>(<span class="fu">paste0</span>(<span class="fu">make_icon</span>(icon), <span class="st">" "</span>, text)))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And finally, to make a link, I need to make one more function using the <code>htmltools::a()</code> function. I also added a class I called <code>"icon-link"</code> so I could add some CSS styling later to these links:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>icon_link <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">icon =</span> <span class="cn">NULL</span>, <span class="at">text =</span> <span class="cn">NULL</span>, <span class="at">url =</span> <span class="cn">NULL</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>icon_link <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">icon =</span> <span class="cn">NULL</span>, <span class="at">text =</span> <span class="cn">NULL</span>, <span class="at">url =</span> <span class="cn">NULL</span>) {</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(icon)) {</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    text <span class="ot">&lt;-</span> <span class="fu">make_icon_text</span>(icon, text)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(htmltools<span class="sc">::</span><span class="fu">a</span>(<span class="at">href =</span> url, text, <span class="at">class =</span> <span class="st">"icon-link"</span>))</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>By itself, this function will produce a link with an icon and text. To make it looks more like a button (which is what I wanted), I added the following CSS in my <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/css/jhelvy.css"><code>jhelvy.css</code></a> theme, which is the theme I set to all pages in my <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/_site.yml"><code>_site.yml</code></a> file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.icon-link</span> {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.icon-link</span> {</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--color-primary</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--color-white</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">3</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">3</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
@@ -415,7 +418,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.icon-link</span><span class="in">:hover</span> {</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--color-secondary</span><span class="fu">)</span><span class="op">;</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--color-white</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
 .icon-link {
     background-color: var(--color-primary);
@@ -436,7 +439,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </blockquote>
 <p>You can see how these “buttons” look on my <a href="https://jhelvy.github.io/publications.html">publications page</a>. For example, the three buttons at the top are generated with this chunk in my <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/publications.Rmd"><code>publications.Rmd</code></a> file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">icon_link</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">icon_link</span>(</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> <span class="st">"ai ai-google-scholar"</span>,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="st">"Google Scholar"</span>,</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">url  =</span> <span class="st">"https://scholar.google.com/citations?user=DY2D56IAAAAJ"</span></span>
@@ -450,7 +453,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">icon =</span> <span class="st">"ai ai-researchgate"</span>,</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="st">"Research Gate"</span>,</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">url  =</span> <span class="st">"https://www.researchgate.net/profile/John_Helveston"</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <center>
 <div class="cell">
@@ -469,7 +472,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="side-note-on-academic-icons">Side note on academic icons</h2>
 <p>The distill package supports <a href="https://fontawesome.com/">fontawesome</a> icons out of the box, but if you want to include <a href="https://jpswalsh.github.io/academicons/">academic icons</a> you’ll need to include a link to the style sheet in the page header. You can quickly add it to all pages by making a <code>header.html</code> file in your root directory that contains this line:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then in your <code>_site.yml</code> you can add it to every page by changing the <code>output</code> parameter:</p>
 <pre><code>output:
@@ -489,21 +492,21 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="float-a-single-image" class="level2">
 <h2 class="anchored" data-anchor-id="float-a-single-image">Float a single image</h2>
 <p>If you have just a single image that you want to wrap text around, you can do it like this:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>:::float-image</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>:::float-image</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r out.width='150px', out.extra='style="float:left; padding:10px"', echo=FALSE}</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"path/to/image"</span>)</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>Here is some text you want to wrap around the image.</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can name the div whatever you want - I just used <code>float-image</code> to be descriptive. I included all the CSS needed to float the image in the code chunk settings: <code>out.width='150px', out.extra='style="float:left; padding:10px"'</code>. You may want to adjust the padding to fit your site’s look and feel, but this should be all you need to get the job done.</p>
 </section>
 <section id="float-multiple-images" class="level2">
 <h2 class="anchored" data-anchor-id="float-multiple-images">Float multiple images</h2>
 <p>Since I use this layout frequently, I decided to define two classes, <code>float-left</code> and <code>float-right</code>, in my <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/css/jhelvy.css"><code>jhelvy.css</code></a> theme that style any images in a div with those classes to float left or right, with a little padding:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.float-left</span> img {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.float-left</span> img {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">float</span><span class="ch">:</span><span class="dv">left</span><span class="op">;</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span><span class="op">;</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -511,7 +514,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">.float-right</span> img {</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">float</span><span class="ch">:</span><span class="dv">right</span><span class="op">;</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">0</span><span class="dt">px</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <style type="text/css">
 .float-left img {
     float:left;
@@ -525,14 +528,14 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </style>
 </div>
 <p>Now to float an image and wrap text around it, all I need to do is use one of those classes for the div name, and any images between the <code>:::</code> marks will be floated left or right:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>:::float-left</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>:::float-left</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width='150px'}</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"path/to/image"</span>)</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>Here is some text you want to wrap around the image.</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can use whatever method you want to insert images, like <code>knitr::include_graphics()</code> or just insert direct html (which is what I actually end up doing most often).</p>
 <blockquote class="blockquote">
 <p><strong>Caveat</strong>: Anything in the div created by <code>:::</code> will be masked to the table of contents, so I don’t recomment wrapping a whole article inside <code>:::</code> to float multiple images (though you could) and instead recommend wrapping just the elements you want to float.</p>
@@ -544,7 +547,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>I wanted to put a date somewhere on my site so people can see when it was last updated, and I figured the footer was a good location since it’s out of the way but still on every page (even blog posts). The thing is, {distill} generates the footer from a single, static <code>_footer.html</code> file in the root directory. So if I want the date to update in the footer, I have to update the <code>_footer.html</code> file on every build.</p>
 <p>Not a problem - just make a <code>create_footer()</code> function and call it before you build the site! My <code>create_footer()</code> function lives in my <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/R/functions.R"><code>functions.R</code></a> file, and it’s a bit long as it also inserts some icons and other text. But the main part doing the date updating is the function <code>last_updated()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>last_updated <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>last_updated <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(htmltools<span class="sc">::</span><span class="fu">span</span>(</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste0</span>(</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">'Last updated on '</span>,</span>
@@ -552,18 +555,18 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="st">"font-size:0.8rem;"</span>)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This just generates a span of the text “Last updated on {date}” with a smaller font size. I call this function inside my <code>create_footer()</code> function to grab the latest date, then the function write the <code>_footer.html</code> file to the root directory.</p>
 <p>To simplify the site build, I put a <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/build_site.R">build_site.R</a> file in root directory with code to load all the functions in <code>functions.R</code>, create the footer, then build the site:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"R"</span>, <span class="st">"functions.R"</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">file.path</span>(<span class="st">"R"</span>, <span class="st">"functions.R"</span>))</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Fist build the footer to capture today's date</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">create_footer</span>()</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then render the site</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="at">encoding =</span> <span class="st">'UTF-8'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render_site</span>(<span class="at">encoding =</span> <span class="st">'UTF-8'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now I just source <code>build_site.R</code> and my site builds with an updated footer to today’s date! What’s even more fun is I use a <a href="https://github.com/jhelvy/jhelvy.github.io/blob/master/.github/workflows/build_site.yml">GitHub Action</a> to automatically run <code>build_site.R</code> every time I commit something to the repo where my site lives and commit all the site files to my <code>gh-pages</code> branch. So I never have to worry about creating the footer - it’s all done automatically!</p>
 </section>
@@ -626,13 +629,14 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
