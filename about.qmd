@@ -13,11 +13,11 @@ execute:
 source("_common.R")
 ```
 
-Welcome! I am a researcher, engineer, choice modeler, [{{< fa brands r-project >}}](https://www.r-project.org/about.html) developer, musician, swing dancer, and an Assistant Professor in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University. See my [CV](cv.qmd) for more details.
+Welcome! I am a researcher, engineer, choice modeler, [{{< fa brands r-project >}}](https://www.r-project.org/about.html) developer, musician, swing dancer, and an Associate Professor in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University. See my [CV](cv.qmd) for more details.
 
 # Short Bio
 
-John Paul (JP) is an Assistant Professor at George Washington University in the Department of Engineering Management and Systems Engineering. His [research](research.qmd) focuses on understanding how consumer preferences, market dynamics, and policy affect the emergence and adoption of low-carbon technologies, such as electric vehicles and renewable energy technologies. He also studies the critical relationship between the US and China in developing and mass producing these technologies. He has expertise in discrete choice modeling, conjoint analysis, survey design, exploratory data analysis, interview-based research methods, the R programming language, China, and the global electric vehicle industry. He speaks fluent Mandarin Chinese and has conducted extensive fieldwork in China. John holds a Ph.D. and M.S. in Engineering and Public Policy from Carnegie Mellon University and a B.S. in Engineering Science and Mechanics (ESM) from Virginia Tech.
+John Paul (JP) is an Associate Professor at George Washington University in the Department of Engineering Management and Systems Engineering. His [research](research.qmd) focuses on understanding how consumer preferences, market dynamics, and policy affect the emergence and adoption of low-carbon technologies, such as electric vehicles and renewable energy technologies. He also studies the critical relationship between the US and China in developing and mass producing these technologies. He has expertise in discrete choice modeling, conjoint analysis, survey design, exploratory data analysis, interview-based research methods, the R programming language, China, and the global electric vehicle industry. He speaks fluent Mandarin Chinese and has conducted extensive fieldwork in China. John holds a Ph.D. and M.S. in Engineering and Public Policy from Carnegie Mellon University and a B.S. in Engineering Science and Mechanics (ESM) from Virginia Tech.
 
 # Brief Summary on My Research 
 
