@@ -14,9 +14,9 @@ execute:
 source("_common.R")
 ```
 
-<center>
-Content for **workshops** I've given can be found at [workshops.jhelvy.com](https://workshops.jhelvy.com/)
-</center>
+### [Workshops](https://jhelvy.com/workshops)
+
+Content for **workshops** I've given can be found at [https://jhelvy.com/workshops](https://jhelvy.com/workshops)
 
 ### [EMSE 4571: Programming for Analytics](https://p4a.seas.gwu.edu/)
 
