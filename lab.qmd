@@ -113,6 +113,14 @@ Zain received his MS in Data Analytics from George Washington University. Prior 
 
 :::float-left
 
+<img src="images/lab/jake_springer.png" width="150px">
+
+### Jake Springer
+
+Jake is an undergraduate student studying Systems Engineering with a minor in Chinese Language and Literature. Jake is involved in several clubs, including SEASPAN, Theta Tau, and INCOSE. In Dr. Helveston's lab, Jake has worked on wrangling data regarding the U.S. car market and creating visuals to address changes in the market.
+
+<br>
+
 <img src="images/lab/bogdan_bunea.jpg" width="150px">
 
 ### Bogdan Bunea
