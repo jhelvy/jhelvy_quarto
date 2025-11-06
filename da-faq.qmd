@@ -100,7 +100,7 @@ Some courses have restrictions on who can register for a variety of reasons. Oft
 
 - For EMSE courses: Fill out an [RTF]({{< var rtf_url >}}){target="_blank"} and send it to [Professor Helveston](mailto:jph@gwu.edu) for approval.
 - For CSCI courses: Go to the [CS Department’s Registration help form](https://go.gwu.edu/csregs) and fill out the request form.
-- For DATS courses: Fill out the [Data Science Course Registration Request Form](https://forms.gle/umUEf5rHk1EfvTzn6). If you're unsure, you can also [email DATS](mailto:datasci@gwu.edu).
+- For DATS courses: Fill out the [Data Science Course Registration Request Form](https://forms.gle/JfGU2ZDoFWscWwW86). If you're unsure, you can also [email DATS](mailto:datasci@gwu.edu).
 - For any other course: Fill out an [RTF]({{< var rtf_url >}}){target="_blank"} and send it to the course instructor for approval. In these cases (especially if it's a course outside of SEAS), also include a message as to why you want to enroll in the course.
 
 In general, if there are prerequisite issues preventing you from registering, also explain in your email why you should be exempt from the prerequisite (e.g. you have prior experience or have taken a similar course, etc.). There are no guarantees that you will be allowed to enroll in the course, but following these steps is the best approach.
