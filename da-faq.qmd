@@ -75,7 +75,7 @@ No. This is not required as long as you have a statistics/probability course at 
 
 ### Can you help me choose electives?
 
-In general, any 6000 level course should generally be able to be counted for one of your two unrestricted electives. To find courses you may be interested in, check these resources:
+Any 6000 level course in SEAS or DATS will be able to be counted for one of your two unrestricted electives. You may, however, be restricted from online only courses if you are an international student. To find courses you may be interested in, check these resources:
 
 - View the [schedule of classes](https://my.gwu.edu/mod/pws/index.cfm) to see what will actually be offered in the semester you are interested in. Not all courses are offered every semester, and this is the best way to know what will actually be offered.
 - View [this Google sheet](https://docs.google.com/spreadsheets/d/1PA4o0bH3TPpPpGG5OHWRKvkUoDgmQ1gmBw3dlJPDjh0/edit?usp=sharing) of common electives. While this list is not a comprehensive list of all electives, it does represent courses that DA students have taken in the past. It is a good list to start with when searching for electives, and it is continuously updated.
@@ -86,7 +86,7 @@ You must take at least **3** courses in the track you have selected – two are 
  
 ### Can I take course X which is not listed in the degree requirements?
 
-If it is a 6000 level course, then generally yes it can be one of your two unrestricted electives. You should contact your advisor for approval first.
+If it is a 6000 level course in SEAS or DATS, then yes it can be one of your two unrestricted electives. You may, however, be restricted from online only courses if you are an international student. You should contact your advisor for approval first.
 
 Yes, but you will need to fill out the [CS Department’s Registration help form](https://go.gwu.edu/csregs). Contact your advisor or cs@gwu.edu for more information.
 
