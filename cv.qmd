@@ -1,5 +1,8 @@
 ---
 title: "Curriculum Vitae"
+format: 
+  html:
+    page-layout: full
 execute: 
   echo: false
   message: false
@@ -14,6 +17,6 @@ Source code to generate CV available on <a href="https://github.com/jhelvy/cv" t
 
 :::{.column-page}
 
-<iframe width="900" height="600" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://raw.githubusercontent.com/jhelvy/cv/main/cv-jph.pdf&chrome=true" title="CV"></iframe>
+<iframe width="100%" height="600" src="https://jhelvy.github.io/cv/cv-jph.pdf" title="CV"></iframe>
 
 :::
