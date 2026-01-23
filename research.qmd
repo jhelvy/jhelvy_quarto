@@ -69,13 +69,13 @@ pubs <- get_pubs()
 
 `r make_pub_list(pubs, "book")`
 
-## Magazine Publications
-
-`r make_pub_list(pubs, "magazine")`
-
 ## Opinion Editorials
 
 `r make_pub_list(pubs, "oped")`
+
+## Podcasts
+
+`r make_pub_list(pubs, "podcast")`
 
 ## Other
 
