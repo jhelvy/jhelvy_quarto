@@ -192,13 +192,18 @@ thead, tbody, tfoot, tr, td, th {
 
 /* changes border color of note callout */
 div.callout-note.callout {
-    border-left-color: $navbar-bg;
+    border: 1px solid $primary-color;
 }
 
 /* changes header background of note callout */
 div.callout-note.callout-style-default>.callout-header {
-    background-color: $code-bg;
-    color: $navbar-bg;
+    background-color: $primary-color;
+    color: white;
+}
+
+/* makes the callout note icon white */
+div.callout-note.callout-style-default>.callout-header .callout-icon::before {
+    filter: brightness(0) invert(1);
 }
 
 /* makes the font size for the subheadings in the TOC a little smaller */
@@ -231,6 +236,11 @@ pre {
     color: #fff;
     background-color: $primary-color-dark;
     padding: 5px 5px 5px 18px;
+}
+
+/* Add spacing below images */
+img {
+    margin-bottom: 1rem;
 }
 
 /* For floating images - see lab page, for example */
