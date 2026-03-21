@@ -4,3 +4,5 @@
 _site
 .Rhistory
 site_libs
+
+**/*.quarto_ipynb
