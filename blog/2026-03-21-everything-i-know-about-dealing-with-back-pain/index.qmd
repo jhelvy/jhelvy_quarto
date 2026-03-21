@@ -8,6 +8,7 @@ categories:
 format: html
 toc: true
 toc-depth: 2
+image: spine-disc-injury-explained.png
 ---
 
 If you suffer from back pain, you can recover and eventually eliminate the pain. Depending on the issue, it can take a very long time - sometimes you see progress in just a few weeks, others it can take a year or two. And no, you probably don't need surgery. 
@@ -96,6 +97,14 @@ When you do sit, make sure you have good lumbar support. I use an inflatable lum
 
 And of course, make sure your monitor is at eye level, and that your keyboard and mouse are positioned so that your arms are at a comfortable angle. Ergonomics matter, and small adjustments can make a big difference in how much strain you put on your back throughout the day.
 
+## Equipment
+
+There are a few pieces of equipment that can be helpful in managing back pain. Beyond the lumbar support pillow, having a good seat cushion can also help reduce pressure on your spine when sitting for long periods. 
+
+I use a [Everlasting Comfort Memory Foam](https://www.amazon.com/dp/B0DX7JRJ3M) seat which has a slope that helps keep pressure off of my thighs while sitting and keep the overall compression level down. I sit on this at my desk and in my car when driving.
+
+I also recommend getting a good ice pack, which can help reduce inflammation and numb the pain during a flare up. Laying on one for about half an hour can help reduce inflammation. I recommend the [REVIX Gel Ice Pack](https://www.amazon.com/dp/B086R3RTSH).
+
 ## Diet 
 
 Your diet can have a significant impact on your back pain. Inflammation is a key driver of pain, and certain foods can either increase or decrease inflammation in the body. Focus on fruits and vegetables, lean proteins, and healthy fats. Avoid processed foods, sugary drinks, and excessive alcohol, as these can increase inflammation. This is all just basically good diet advice, anyway, but you might be surprised how much of an effect poor dietary habits can have on your back pain. 
@@ -180,7 +189,7 @@ In fact, back is can be even more prevalent in people in their late 20s to early
 
 As you age, your discs actually harden and become less likely to bulge, which can actually reduce the risk of certain types of back pain. So while back pain can affect people of all ages, it's not necessarily more common in older adults, nor is it uncommon in younger adults. The key is to take care of your back and to address any pain or discomfort as soon as it arises, regardless of your age.
 
-## What Happened To You?
+## What's Your Back Pain Story?
 
 I first started experiencing back pain in my late twenties, and it was a gradual onset. Originally, the pain was misdiagnosed as a hip issue, because the sciatic pain was wrapping around my right hip. It took me two years to discover that I actually had a bulging L5-S1 disc that was pushing on my S1 nerve. 
 
@@ -192,7 +201,7 @@ In June 2025, I traveled for about three weeks straight to different conferences
 
 The compression on my nerve was much worse than it had been before, and the nerve damage was much more severe. I had almost no control over my right foot for the first two weeks, and I had to use crutches to walk for about a month. The pain levels were so high that I was rotating between ibuprofen and tylenol every 4 hours just to be able to sleep at night.
 
-I once again started the process of seeing lots of surgeons and doctors and trying to figure out what treatment plan I had. But the only surgery offer on the table was a spinal fusion, which I was not ready to do. So I decided to take the non-surgical route again, and I started doing the things that I should have been doing all along - modifying my movements, walking every day, doing the Big Three exercises, and being very disciplined about it.
+I once again started the process of seeing lots of surgeons and doctors and trying to figure out what treatment plan I had. But the only surgery offer on the table was a spinal fusion, which I was not ready to do. So I decided to take the non-surgical route, and I started doing the things that I should have been doing all along - modifying my movements, walking every day, doing the Big Three exercises, and being very disciplined about it.
 
 One of the most important interventions this time was getting an epidural steroid injection just 10 days after the injury. That dramatically reduced the inflammation and allowed me to make more progress with walking and exercises.
 
