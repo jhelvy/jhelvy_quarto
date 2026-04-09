@@ -190,6 +190,11 @@ thead, tbody, tfoot, tr, td, th {
     padding-bottom: 2px !important;
 }
 
+/* Fix tinytable text color when OS is in dark mode but site is light */
+.tinytable {
+    color: var(--bs-body-color) !important;
+}
+
 /* changes border color of note callout */
 div.callout-note.callout {
     border: 1px solid $primary-color;

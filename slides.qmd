@@ -18,8 +18,8 @@ Slides for various talks:
 
 ```{r, echo=FALSE}
 
-# NOTE: The slides.lua file is inserted as a filter in _quarto.yml to 
-# avoid the insertion of a <colgroup> in the html around this table: 
+# NOTE: The slides.lua file is inserted as a filter in _quarto.yml to
+# avoid the insertion of a <colgroup> in the html around this table:
 # https://github.com/jgm/pandoc/issues/8139
 
 library(knitr)
@@ -34,24 +34,31 @@ root_url_slides_old <- paste0(root_url_slides, 'slides-old/')
 root_url_pdf_old <- paste0(root_url_pdf, 'slides-old/')
 
 slides <- readr::read_csv(file.path('content', 'slides.csv')) %>%
-    mutate(
-      slides = ifelse(
-        old == 1, 
-        glue('[HTML]({root_url_slides_old}{repo})'),
-        glue('[HTML]({root_url_slides}{repo})')
+  mutate(
+    slides = ifelse(
+      old == 1,
+      glue(
+        '<a href="{root_url_slides_old}{repo}" target="_blank" title="HTML Slides"><i class="bi bi-window-fullscreen"></i></a>'
       ),
-      pdf = ifelse(
-        old == 1,
-        glue('[PDF]({root_url_pdf_old}/blob/main/{repo}/{repo}.pdf?raw=true)'),
-        glue('[PDF]({root_url_pdf}{repo}/blob/main/{repo}.pdf?raw=true)')
+      glue(
+        '<a href="{root_url_slides}{repo}" target="_blank" title="HTML Slides"><i class="bi bi-window-fullscreen"></i></a>'
       )
-    ) %>%
-    select(-repo, -old) %>%
-    janitor::clean_names(case = 'title') %>%
-    rename(" " = Pdf)
+    ),
+    pdf = ifelse(
+      old == 1,
+      glue(
+        '<a href="{root_url_pdf_old}/blob/main/{repo}/{repo}.pdf?raw=true" target="_blank" title="PDF"><i class="bi bi-file-pdf-fill"></i></a>'
+      ),
+      glue(
+        '<a href="{root_url_pdf}{repo}/blob/main/{repo}.pdf?raw=true" target="_blank" title="PDF"><i class="bi bi-file-pdf-fill"></i></a>'
+      )
+    )
+  ) %>%
+  select(-repo, -old) %>%
+  janitor::clean_names(case = 'title') %>%
+  rename(" " = Pdf)
 
-slides |> 
+slides |>
   tt(theme = "grid", width = c(0.3, 0.8, 0.8, 0.5, 0.1, 0.1)) |>
-  style_tt(fontsize = 1) |> 
-  format_tt(quarto = TRUE)
+  style_tt(fontsize = 1)
 ```
