@@ -76,5 +76,6 @@ format:
     smooth-scroll: true
     link-external-newwindow: true
     link-external-icon: false
+    lightbox: true
     # This is to include fontawesome and academic icons in the headers:
     include-in-header: "_includes/header.html"
