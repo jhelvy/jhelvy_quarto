@@ -119,7 +119,7 @@ Zain received his MS in Data Analytics from George Washington University. Prior 
 
 Jake is an undergraduate student studying Systems Engineering with a minor in Chinese Language and Literature. Jake is involved in several clubs, including SEASPAN, Theta Tau, and INCOSE. In Dr. Helveston's lab, Jake has worked on wrangling data regarding the U.S. car market and creating visuals to address changes in the market.
 
-<br>
+<div style="clear:left; margin-bottom:1rem;"></div>
 
 <img src="images/lab/bogdan_bunea.jpg" width="150px">
 
@@ -127,7 +127,7 @@ Jake is an undergraduate student studying Systems Engineering with a minor in Ch
 
 Bogdan is an undergraduate student majoring in Systems Engineering and minoring in Computer Science. In his time at GWU, Bogdan has worked in multiple labs (EMSE & MAE) as well as participated in multiple clubs such as GWU-Rocket and GWU-Sat. In Dr. Helveston's lab, Bogdan helped create a databasing system for the [surveydown](https://surveydown.org/), an open source survey project. Bogdan also helped with data wrangling and scraping data about all available cars on the market.
 
-<br>
+<div style="clear:left; margin-bottom:1rem;"></div>
 
 <img src="images/lab/lola_nurullaeva.jpg" width="150px">
 
