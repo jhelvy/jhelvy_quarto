@@ -195,6 +195,31 @@ thead, tbody, tfoot, tr, td, th {
     color: var(--bs-body-color) !important;
 }
 
+/* Tinytable row striping, hover, border, and header */
+table[data-quarto-disable-processing] {
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+table[data-quarto-disable-processing] thead tr {
+    background-color: $primary-color;
+}
+
+table[data-quarto-disable-processing] thead th {
+    color: white !important;
+    border-color: $primary-color !important;
+}
+
+table[data-quarto-disable-processing] tbody tr:nth-child(even) {
+    background-color: rgba($blue, 0.06);
+}
+
+table[data-quarto-disable-processing] tbody tr:hover {
+    background-color: rgba($blue, 0.15);
+    transition: background-color 0.15s ease;
+}
+
 /* changes border color of note callout */
 div.callout-note.callout {
     border: 1px solid $primary-color;
