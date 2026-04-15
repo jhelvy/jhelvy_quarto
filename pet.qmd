@@ -1,5 +1,5 @@
 ---
-title: "Dogs"
+title: "Pets"
 toc: true
 toc-location: left
 lightbox: true
@@ -28,3 +28,4 @@ Age | `r age_riley` years
 Breed | English Shepherd 
 Color | Black w/tan feet 
 Photo | ![](images/riley.png){height=250px} 
+
