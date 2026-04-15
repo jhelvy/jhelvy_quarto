@@ -13,19 +13,18 @@ source("_common.R")
 
 year <- as.numeric(format(Sys.time(), "%Y"))
 age_riley <- year - 2015
-age_minnie <- year - 2023
+age_taki <- year - 2025
 ```
 
-We have one dog, Riley, and his collar tag has a link to this page, so if you found this page, you probably found our dog. If you did, please call or text me at (727) 437-2285.
+We have one dog, Riley, and one cat, Taki. If you found this page, you probably found our dog or cat. If you did, please call or text me at (757) 503-3500.
 
 Thank you!
 
-Here is a little more about Riley:
+Here is a little more about out pets:
 
-Name | Riley 
----|------
-Age | `r age_riley` years 
-Breed | English Shepherd 
-Color | Black w/tan feet 
-Photo | ![](images/riley.png){height=250px} 
-
+Name | Riley | Taki
+---|------|------
+Age | `r age_riley` years | `r age_taki` years 
+Breed | English Shepherd | [Tabby cat](https://en.wikipedia.org/wiki/Tabby_cat)
+Color | Black w/tan feet | Brown tabby with black stripes
+Photo | ![](images/riley.png){height=250px} | ![](images/taki.png){height=250px} 
