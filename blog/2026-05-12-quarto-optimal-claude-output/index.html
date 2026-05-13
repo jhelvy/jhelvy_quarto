@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="John Paul Helveston">
-<meta name="dcterms.date" content="2022-12-26">
-<meta name="description" content="I asked ChatGPT to write this blog post. Here’s what it came up with.">
+<meta name="dcterms.date" content="2026-05-13">
+<meta name="description" content="Why you should start asking your favorite LLM (cough Claude cough) to produce .qmd files">
 
-<title>Why chess is a better game than golf – jhelvy.com</title>
+<title>The Unreasonable Effectiveness of Quarto – jhelvy.com</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -47,6 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-333a26afe5e2b637caef6975e346f8a6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,21 +99,21 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 
 
-<meta property="og:title" content="Why chess is a better game than golf – jhelvy.com">
-<meta property="og:description" content="I asked ChatGPT to write this blog post. Here’s what it came up with.">
-<meta property="og:image" content="https://www.jhelvy.com/blog/2022-12-26-why-chess-is-better-than-golf/images/chess-golf.png">
+<meta property="og:title" content="The Unreasonable Effectiveness of Quarto – jhelvy.com">
+<meta property="og:description" content="Why you should start asking your favorite LLM (cough Claude cough) to produce .qmd files">
+<meta property="og:image" content="https://www.jhelvy.com/blog/2026-05-12-quarto-optimal-claude-output/image.png">
 <meta property="og:site_name" content="jhelvy.com">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image:height" content="599">
-<meta property="og:image:width" content="640">
-<meta name="twitter:title" content="Why chess is a better game than golf – jhelvy.com">
-<meta name="twitter:description" content="I asked ChatGPT to write this blog post. Here’s what it came up with.">
-<meta name="twitter:image" content="https://www.jhelvy.com/blog/2022-12-26-why-chess-is-better-than-golf/images/chess-golf.png">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1536">
+<meta name="twitter:title" content="The Unreasonable Effectiveness of Quarto – jhelvy.com">
+<meta name="twitter:description" content="Why you should start asking your favorite LLM (cough Claude cough) to produce .qmd files">
+<meta name="twitter:image" content="https://www.jhelvy.com/blog/2026-05-12-quarto-optimal-claude-output/image.png">
 <meta name="twitter:creator" content="@johnhelveston">
 <meta name="twitter:site" content="@johnhelveston">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="599">
-<meta name="twitter:image-width" content="640">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1536">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -169,8 +172,13 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#round-1" id="toc-round-1" class="nav-link active" data-scroll-target="#round-1">Round 1</a></li>
-  <li><a href="#round-2" id="toc-round-2" class="nav-link" data-scroll-target="#round-2">Round 2</a></li>
+  <li><a href="#rich-output-through-code" id="toc-rich-output-through-code" class="nav-link active" data-scroll-target="#rich-output-through-code">Rich output through code</a></li>
+  <li><a href="#one-source-any-format" id="toc-one-source-any-format" class="nav-link" data-scroll-target="#one-source-any-format">One source, any format</a></li>
+  <li><a href="#token-efficiency" id="toc-token-efficiency" class="nav-link" data-scroll-target="#token-efficiency">Token efficiency</a></li>
+  <li><a href="#version-control-and-human-editability" id="toc-version-control-and-human-editability" class="nav-link" data-scroll-target="#version-control-and-human-editability">Version control and human editability</a></li>
+  <li><a href="#content-and-presentation-stay-separate" id="toc-content-and-presentation-stay-separate" class="nav-link" data-scroll-target="#content-and-presentation-stay-separate">Content and presentation stay separate</a></li>
+  <li><a href="#you-dont-even-need-to-know-quarto-to-use-it" id="toc-you-dont-even-need-to-know-quarto-to-use-it" class="nav-link" data-scroll-target="#you-dont-even-need-to-know-quarto-to-use-it">You don’t even need to know Quarto to use it</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
 </nav>
@@ -179,20 +187,21 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why chess is a better game than golf</h1>
+<h1 class="title">The Unreasonable Effectiveness of Quarto</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">software</div>
+    <div class="quarto-category">quarto</div>
     <div class="quarto-category">AI</div>
+    <div class="quarto-category">productivity</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    <p>I asked ChatGPT to write this blog post. Here’s what it came up with.</p>
+    <p>Why you should start asking your favorite LLM (<em>cough</em> Claude <em>cough</em>) to produce .qmd files</p>
   </div>
 </div>
 
@@ -209,7 +218,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2022-12-26</p>
+      <p class="date">2026-05-13</p>
     </div>
   </div>
   
@@ -222,58 +231,191 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 
 
 <center>
-<img src="chess-golf.png" width="600">
+<img src="image169.png" width="100%">
 </center>
-<aside>
-Image source: https://theawesomer.com/golf-chess-set/132440/
-</aside>
-<p>If you’ve been paying attention to AI progress in 2022, you almost certainly have heard of <a href="https://chat.openai.com/chat">ChatGPT</a>, an AI engine made by <a href="https://openai.com/">Open AI</a>, that can generate remarkably detailed text and code to prompts. Like many, I wanted to test it out to see what it could come up with. This post summarizes the results of that experiment.</p>
-<p>This initial post is based on the very first publicly available chat engine, ChatGPT, which is based on GPT3. In the future, I plan to update this post with responses from increasingly performant chat AIs to the exact same prompts.</p>
-<section id="round-1" class="level1">
-<h1>Round 1</h1>
-<p>My starting prompt for this post was quite simple:</p>
+<p><a href="https://x.com/trq212">Thariq</a> at Anthropic recently posted a wonderful <a href="https://x.com/trq212/status/2052809885763747935">thread</a> arguing that markdown files (the dominant file format used by agents to communicate with us) are inferior to raw HTML, and that having agents generate HTML files is a much preferred output. I largely agree and don’t dispute his reasoning — HTML really is a great output format that provides a richness that markdown simply cannot produce.</p>
+<p>But as I was reading his thread, I couldn’t help but think:</p>
 <blockquote class="blockquote">
-<p>Write a blog post arguing why chess is a much better game for people to adopt than golf.</p>
+<p>“man…if only he knew about Quarto”</p>
 </blockquote>
-<p>I chose this prompt for several reasons. First, it asks for an argumentative blog post, and I wanted to see how well the chat AI would do at coming up with some arguments for this topic. Second, I wanted to see what the AI would write on a topic that I haven’t seen someone else write about before. I tried to think of something relatively obscure, but specific enough that there might be some clear, logical arguments.</p>
-<p>But most importantly, I wanted to see what specific arguments the AI would use. There are some rather obvious social and environmental aspects to this topic, such as the difference in resource requirements to play each game (golf, for example, requires a lot more land). Both games are also social activities, and both can be played across just about all ages. There are also mental and health benefits to each game. I was curious what arguments the AI would use with no further prompting.</p>
-<p>Here is what it produced based on the first prompt:</p>
-<blockquote class="blockquote">
-<p>Chess and golf are both popular leisure activities that require strategy, skill, and mental focus. However, there are several reasons why chess is a much better game for people to adopt than golf.</p>
-<p>First, chess is a much more accessible and affordable game than golf. While golf requires expensive equipment and exclusive membership to a club or course, all you need to play chess is a chessboard and pieces, which can be purchased for a relatively low cost. Additionally, chess can be played anywhere, whether it’s at home, in a park, or online, while golf requires a dedicated course.</p>
-<p>Second, chess is a more inclusive game than golf. Golf has a reputation for being a primarily wealthy and white-dominated sport, while chess has a more diverse player base and is more accessible to people of different socio-economic backgrounds.</p>
-<p>Third, chess has a range of benefits for the mind and body. Studies have shown that playing chess can improve problem-solving skills, critical thinking, and memory, as well as reduce the risk of developing conditions such as dementia and Alzheimer’s disease. Golf, on the other hand, has fewer cognitive benefits and requires more physical exertion, making it less suitable for those with mobility issues or disabilities.</p>
-<p>Finally, chess is a more universal and timeless game than golf. While golf is primarily popular in certain parts of the world and has a somewhat limited appeal, chess is played and enjoyed by people all over the globe, and its popularity has endured for centuries.</p>
-<p>In conclusion, chess is a superior game to golf for several reasons. It is more accessible, inclusive, beneficial for the mind, and universal in its appeal. If you’re looking for a strategic and mentally stimulating activity, chess is the clear choice.</p>
-</blockquote>
-<p>Overall, not too shabby for a single-line prompt. But the post itself was rather simple and robotic. The writing structure is about as basic as you could get, and the arguments are all pretty obvious. For a grade school writing assignment, this would pass, but it’s nothing I would be excited about reading.</p>
-<p>That said, I found it impressive that I didn’t even need to prompt it about including social aspects around this topic. The response highlighted the exclusivity of golf, and it also mentioned something about health benefits from chess.</p>
-<p>But the biggest flaw I saw was the lack of any references to some of the claims in the post. In particular, the AI wrote a sentence stating that “studies have shown that playing chess can…reduce the risk of developing conditions such as dementia and Alzheimer’s disease.” Any post that includes a line like that better have some references to those “studies.” So I updated my prompt asking explicitly for references. I also asked the AI to include details about the environmental impacts of golf as that is a well-known issue with the game.</p>
+<p><a href="https://quarto.org/">Quarto</a> brands itself as “an open-source scientific and technical publishing system,” but it is so, so much more than that. Quarto is funamentally a publishing framework that separates <em>content</em> from <em>format</em>. It produces documents that are always current, always flexible, and (as I’ll argue in this post) exceptionally good for working with LLMs.</p>
+<p>Just like Thariq does in his post about HTML, I’ll focus this post on some of the reasons why adding a “q” in front of “md” is my preferred approach for working with LLM outputs.</p>
+<section id="rich-output-through-code" class="level2">
+<h2 class="anchored" data-anchor-id="rich-output-through-code">Rich output through code</h2>
+<p>Thariq’s central argument is <em>information density</em>. HTML can render styled tables, SVG diagrams, interactive charts, and color-coded content — things that flat Markdown simply cannot do. That is all true.</p>
+<p>But Quarto docs can produce all of that through code. Drop an R or Python block into a .qmd file and you get an interactive plotly chart, a beautifully formatted table, a ggplot visualization with your exact color palette. The output is just as rich as anything HTML can show, but the difference is that the source file stays readable. Any user can directly read the markdown content inside the .qmd file, and of course can choose to render it into a desired output to read it in a preferred form.</p>
+<p>And there’s a second advantage that goes beyond visual richness: a .qmd document stays current. An HTML document is a snapshot. Once Claude writes those numbers into the markup, they are frozen. If the data changes, you have to ask Claude to re-generate the HTML again, or you have to edit the HTML by hand 😱.</p>
+<p>A .qmd file runs code at render time. Just point it at the updated CSV, run <code>quarto render</code>, and the tables and charts update automatically.</p>
 </section>
-<section id="round-2" class="level1">
-<h1>Round 2</h1>
-<p>My second prompt read:</p>
+<section id="one-source-any-format" class="level2">
+<h2 class="anchored" data-anchor-id="one-source-any-format">One source, any format</h2>
+<p>HTML is one output format. If the report you made for yourself turns out to be something your boss wants as a Word document, you are either asking Claude again or doing an imperfect copy-paste.</p>
+<p>A .qmd file renders to HTML, PDF, Word, or a RevealJS presentation. Rather than spending time or tokens on the output format, you can focus on the output <em>content</em>, leaving the formatting to Quarto. If you need to make a change, just modify the YAML header and run <code>quarto render</code>. The content stays exactly the same, only the output format changes.</p>
+<p>What’s even better is that most LLMs and agents like Claude code understand Quarto syntax very, very well, so you don’t even really have to think too much about what specific changes in the YAML header you need to make. Just tell CC “I’d like this as a pdf” and it’ll update the yaml. That is <em>way</em> easier (and <em>way</em> faster) than having CC re-generate an entire new output.</p>
+<p>To me, this is the right division of labor: Claude writes the content, Quarto handles the format.</p>
+</section>
+<section id="token-efficiency" class="level2">
+<h2 class="anchored" data-anchor-id="token-efficiency">Token efficiency</h2>
+<p>When you ask Claude to produce a format directly (HTML, PDF, Word, etc.) you pay for all the boilerplate that format requires. HTML needs a full document structure with a <code>&lt;head&gt;</code> and embedded CSS. LaTeX needs <code>\documentclass</code> declarations and everything wrapped in <code>\begin{document}</code>. Office Open XML (the format inside a <code>.docx</code> file) is hundreds of lines of namespace-laden markup just to hold a few paragraphs. These things add up.</p>
+<p>With .qmd, you always pay for the same thing: clean Markdown plus a few lines of YAML. Whether you are targeting HTML, PDF, or Word, the source file looks almost identical — and so does the token count.</p>
+<p>To put numbers on this, I ran the same prompt through Claude 8 times, each time asking for a different output format. The prompt asked for a summary report on EV charging standards (CCS, CHAdeMO, and NACS) with an introduction, comparison table, pros/cons section, and conclusion (I study the EV market, so this is what I came up with). The example is rich enough to surface real formating overhead costs.</p>
+<p>I split the conditions into two groups:</p>
+<ul>
+<li><strong>Direct formats</strong>: Claude produces the final file itself — a complete HTML file (with <code>&lt;head&gt;</code>, embedded CSS, <code>&lt;body&gt;</code>), a compilable LaTeX document, Office Open XML (the raw XML inside a <code>.docx</code>), and plain Markdown.</li>
+<li><strong>Quarto formats</strong>: Claude produces a <code>.qmd</code> file with the appropriate <code>format:</code> in the YAML frontmatter — <code>html</code>, <code>pdf</code>, <code>docx</code>, and <code>gfm</code>. The user renders it locally with <code>quarto render</code>.</li>
+</ul>
+<p>Everything else was held constant: same model (<code>claude-haiku-4-5</code>), same document specification, same <code>max_tokens</code> limit. The full <a href="experiments/measure_tokens.py">Python script</a> is available if you want to run it yourself.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-tokens" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dumbbell plot with four output types on the y-axis. Teal dots on the left show Quarto token counts; coral dots on the right show direct format token counts, connected by a grey line.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/fig-tokens-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Output tokens by output type. Teal dots are Quarto (.qmd); coral dots are direct format. Each row connects the same target output."><img src="index_files/figure-html/fig-tokens-1.png" class="img-fluid figure-img" alt="Dumbbell plot with four output types on the y-axis. Teal dots on the left show Quarto token counts; coral dots on the right show direct format token counts, connected by a grey line." width="960"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Output tokens by output type. Teal dots are Quarto (.qmd); coral dots are direct format. Each row connects the same target output.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The numbers speak for themselves. Here is the full breakdown:</p>
+<center>
+<div style="width:500px">
+<div class="cell">
+<div id="tbl-tokens" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Output token comparison: direct format vs.&nbsp;Quarto.
+</figcaption>
+<div aria-describedby="tbl-tokens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Output Type</th>
+<th style="text-align: right;">Direct Tokens</th>
+<th style="text-align: right;">Quarto Tokens</th>
+<th style="text-align: left;">Direct ÷ Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Word</td>
+<td style="text-align: right;">8,097</td>
+<td style="text-align: right;">1,121</td>
+<td style="text-align: left;">7.2×</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Html</td>
+<td style="text-align: right;">4,046</td>
+<td style="text-align: right;">1,022</td>
+<td style="text-align: left;">4×</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pdf</td>
+<td style="text-align: right;">1,992</td>
+<td style="text-align: right;">1,123</td>
+<td style="text-align: left;">1.8×</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Markdown</td>
+<td style="text-align: right;">1,267</td>
+<td style="text-align: right;">1,282</td>
+<td style="text-align: left;">1×</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<div class="cell">
+<div id="tbl-chars" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-chars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Character count comparison: direct format vs.&nbsp;Quarto.
+</figcaption>
+<div aria-describedby="tbl-chars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Output Type</th>
+<th style="text-align: right;">Direct Chars</th>
+<th style="text-align: right;">Quarto Chars</th>
+<th style="text-align: left;">Direct ÷ Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Word</td>
+<td style="text-align: right;">19,475</td>
+<td style="text-align: right;">5,303</td>
+<td style="text-align: left;">3.7×</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Html</td>
+<td style="text-align: right;">16,559</td>
+<td style="text-align: right;">4,850</td>
+<td style="text-align: left;">3.4×</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pdf</td>
+<td style="text-align: right;">7,835</td>
+<td style="text-align: right;">5,526</td>
+<td style="text-align: left;">1.4×</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Markdown</td>
+<td style="text-align: right;">5,892</td>
+<td style="text-align: right;">5,885</td>
+<td style="text-align: left;">1×</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</div>
+</center>
+<p>The worst case is asking Claude to produce Office Open XML directly: <strong>8,097 output tokens</strong> just to get the raw XML that lives inside a <code>.docx</code> file 🤦. Ask for a Quarto document targeting Word instead and you get the same rendered output from <strong>1,121 tokens</strong>. That’s a <strong>7× reduction</strong>.</p>
+<p>HTML direct (4,046 tokens) costs 4× more than Quarto HTML (1,022 tokens). LaTeX direct (1,992) costs 1.8× more than Quarto PDF (1,123). Only plain Markdown is in the same ballpark as Quarto — because Markdown already <em>is</em> essentially what <code>.qmd</code> files look like without the YAML frontmatter.</p>
+<p>Now look at the Quarto column specifically: HTML, PDF, and Word all land between 1,000 and 1,100 tokens. With .qmd, the format you choose barely affects the cost. The “one source, any format” approach is not just convenient, it’s also cheap!</p>
+</section>
+<section id="version-control-and-human-editability" class="level2">
+<h2 class="anchored" data-anchor-id="version-control-and-human-editability">Version control and human editability</h2>
+<p>Thariq flags this himself in his FAQ: “HTML diffs are noisy and hard to review compared to Markdown.” That is a real cost, and it compounds the more you iterate on a document.</p>
+<p>But a .qmd file is just plain text. You can put it in git, review changes, and edit it in any text editor. When you want to change a sentence, you just change the sentence.</p>
+<p>Most documents Claude produces need at least one human edit pass before they are ready. That edit is fast and low-friction with a .qmd file. With raw HTML, you are wading through markup just to find the paragraph you want to change.</p>
+</section>
+<section id="content-and-presentation-stay-separate" class="level2">
+<h2 class="anchored" data-anchor-id="content-and-presentation-stay-separate">Content and presentation stay separate</h2>
+<p>With raw HTML, styling is baked into the document. Thariq’s solution for consistent styling is to maintain a design system HTML file and pass it to Claude as context so that new documents match. That works, but it is a workaround for a problem that .qmd does not have.</p>
+<p>In a .qmd file, the content is simply Markdown. The presentation, in contrast, lives in the YAML header, or in a shared theme file that every document on your site inherits from. Change the font or color scheme once and every document updates. This is the way.</p>
+</section>
+<section id="you-dont-even-need-to-know-quarto-to-use-it" class="level2">
+<h2 class="anchored" data-anchor-id="you-dont-even-need-to-know-quarto-to-use-it">You don’t even need to know Quarto to use it</h2>
+<p>One of the most amazing things about tools like Claude code is that is already knows everything. All the docs, all the formatting requirements, all the syntax - it’s all there. All you have to do is ask Claude to produce a .qmd file and it will understand.</p>
+<p>Just change your prompt from:</p>
 <blockquote class="blockquote">
-<p>I want you to write me a blog post. This post should include technical details to support any arguments provided to it. The topic of the post is to argue why chess is a much better game for people to adopt than golf. Include details about the environmental damages from golf as well as information about the social dynamic of golf, such as networking benefits.</p>
+<p>“Produce a Word doc…”</p>
 </blockquote>
-<p>Here is the response I got:</p>
+<p>to:</p>
 <blockquote class="blockquote">
-<p>Certainly, here is a blog post arguing why chess is a better game than golf:</p>
-<p>Why Chess is a Better Game than Golf</p>
-<p>Golf is a popular leisure activity enjoyed by millions of people around the world, but it is not without its drawbacks. In contrast, chess is a game that offers numerous benefits and is a superior choice for those looking for a challenging and rewarding pastime.</p>
-<p>One of the main criticisms of golf is its environmental impact, particularly with regard to land use. Golf courses require a significant amount of land to be developed and maintained, and this land is often taken from natural habitats. According to a study published in the Journal of Environmental Management, the average golf course in the United States occupies approximately 120 acres (48.5 hectares) of land (Karecha, Jorgensen, &amp; Madsen, 2002). This land is often not available for other uses, such as agriculture or housing, leading to a loss of ecosystem services and biodiversity (Karecha et al., 2002). In addition, the chemicals used to keep the greens and fairways in pristine condition can have negative impacts on local ecosystems (Karecha et al., 2002). In contrast, chess requires no physical space or resources beyond a board and pieces, making it a more environmentally friendly option.</p>
-<p>Golf can also be a divisive and exclusive activity. Golf courses and club memberships are often expensive, making them out of reach for many people. This exclusivity can create a social hierarchy and foster a culture of elitism. In contrast, chess is a game that can be enjoyed by people of all ages, backgrounds, and skill levels. It requires no special equipment or facilities, making it accessible to everyone.</p>
-<p>But while golf may be traditionally seen as a game for social networking, chess can offer similar opportunities for social interaction and networking. Many chess clubs and organizations exist worldwide, providing a platform for people with a shared interest in the game to come together and socialize. These clubs often host tournaments and other events, providing opportunities for players to compete and meet new people. In addition, the internet has made it possible for chess players to connect and play with others online, further expanding the potential for social interaction and networking.</p>
-<p>Perhaps the most compelling reason to choose chess over golf is the cognitive benefits of the game. Chess is a highly strategic and challenging game that requires deep concentration and problem-solving skills. It has been shown to improve brain function, including memory, critical thinking, and decision-making skills (Gauthier, Tardif, &amp; Belleville, 2010). In contrast, golf is often viewed as a leisurely activity that does not offer the same level of mental stimulation.</p>
-<p>In conclusion, chess is a superior game to golf for a variety of reasons. It is environmentally friendly, particularly with regard to land use and chemical use, accessible to all, and offers significant cognitive benefits. It can also provide opportunities for social interaction and networking. If you’re looking for a challenging and rewarding pastime, consider giving chess a try. You might be surprised at how much you enjoy it.</p>
-<p><strong>References</strong>:</p>
-<p>Gauthier, S., Tardif, C., &amp; Belleville, S. (2010). The benefits of chess for children’s cognitive and social development: A systematic review. Frontiers in Psychology, 1, 186. https://doi.org/10.3389/fpsyg.2010.00186</p>
-<p>Karecha, J., Jorgensen, B. E., &amp; Madsen, J. (2002). The environmental impacts of golf courses: A review. Journal of Environmental Management, 66(3), 319-334. https://doi.org/10.1006/jema.2002.0490</p>
+<p>“Produce a Quarto doc that renders to a Word doc…”</p>
 </blockquote>
-<p>These additions felt a lot more impactful than the original post in terms of writing a persuasive argument. I appreciated the inclusion of “facts” like the amount of land used for an average golf course, as well as references to support those “facts.”</p>
-<p>The problem is these “facts” are fake. The references included look real, but they are both completely fabricated. The DOI links included are actually real DOIs, but they link to totally different and unrelated papers. So after reading this, I actually have no idea whether the average golf course in the U.S. is 120 acres, or whether golf courses lead to a “loss of ecosystem services and biodiversity.” The only way I can think to find out about whether these statements are true is to use an actual search engine like Google to search for real sources.</p>
-<p>I found this outcome deeply troubling. The overall writing was much better in this second round with a more detailed prompt, but the arguments are based on potentially false results with fabricated references.</p>
-<p>Where this goes next is going to get really interesting. Will the next chat AI be able to include references to real research papers? Will the arguments become more nuanced? Will the output include more quantitative arguments, such as quantifying the reduction in biodiversity from golf courses (if that’s even true)? Given how quickly these models are developing I would not be surprised if the answer to all of the above is “yes”. Time will tell, and I will update this post when the next chat AI is made publicly available.</p>
+<p>That’s it, CC will understand.</p>
+<p>But it gets better! Because the amazing community of developers out there have already started making skills for CC that you can download and use to even further customize CC’s output!</p>
+<p>For example, check out the <a href="https://github.com/posit-dev/skills/tree/main/quarto">Posit Quarto skills</a>, maintained by the absolute Quarto wizard <a href="https://github.com/mcanouil">Mickaël Canouil</a>. Leveraging skills and other settings in your CLAUDE.md file, you can achieve some very effective and efficient agentic workflows.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>There’s so much more I want to write about, but that’s all I have time for at the moment (I didn’t even mention lua filters - omg you won’t believe what you can achieve with Claude Code, Quarto, and Lua!).</p>
+<p>For now, I hope you give Quarto a try with your favorite LLM. As the world of AI agents continues to evolve, I expect Quarto will become an even more useful and powerful tool.</p>
 
 
 </section>
@@ -702,6 +844,38 @@ Image source: https://theawesomer.com/golf-chess-set/132440/
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
