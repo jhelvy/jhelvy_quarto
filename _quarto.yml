@@ -23,6 +23,7 @@ project:
     - "slides.qmd"
     - "workshops.qmd"
     - "!research/template.qmd"
+    - "!blog/2026-05-12-quarto-optimal-claude-output/experiments"
   resources:
     - "content/"
     - "css"
