@@ -26,7 +26,7 @@ library(ggtext)
 font <- 'Roboto Condensed'
 ```
 
-[Thariq](https://x.com/trq212) at Anthropic recently posted a wonderful [thread](https://x.com/trq212/status/2052809885763747935) arguing that markdown files (the dominant file format used by agents to communicate with us) are inferior to raw HTML, and that having agents generate HTML files is a much preferred output. I largely agree and don't dispute his reasoning — HTML really is a great output format that provides a richness that markdown simply cannot produce.
+[Thariq](https://x.com/trq212) at Anthropic recently posted a wonderful [thread](https://x.com/trq212/status/2052809885763747935) titled "The Unreasonable Effectiveness of HTML", arguing that markdown files (the dominant file format used by agents to communicate with us) are inferior to raw HTML, and that having agents generate HTML files is a much preferred output. I largely agree and don't dispute his reasoning — HTML really is a great output format that provides a richness that markdown simply cannot produce.
 
 But as I was reading his thread, I couldn't help but think:
 
