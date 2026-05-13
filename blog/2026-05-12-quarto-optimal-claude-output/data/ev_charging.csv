@@ -1,0 +1,7 @@
+standard,origin,max_power_kw,connector_shape,adoption_region,open_standard
+CCS1,USA/EU,350,Combined,North America / Europe,Yes
+CCS2,EU,350,Combined,Europe,Yes
+CHAdeMO,Japan,400,Round,Japan / legacy,Yes
+NACS,USA (Tesla),250,Blade,North America (growing),Yes (since 2023)
+GB/T,China,237,Proprietary,China,Partial
+MCS,EU,3500,Combined (future),Heavy trucks / EU,Yes

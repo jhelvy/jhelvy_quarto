@@ -1,0 +1,92 @@
+```yaml
+---
+title: "Electric Vehicle Charging Standards: A Comparative Analysis"
+subtitle: "CCS, CHAdeMO, and NACS"
+author: "EV Infrastructure Report"
+date: today
+format: gfm
+---
+
+## Introduction
+
+The electric vehicle (EV) market has experienced rapid growth over the past decade, but the proliferation of charging standards has created a fragmented landscape that challenges drivers and infrastructure developers alike. Three primary fast-charging standards have emerged as dominant: the Combined Charging System (CCS), CHAdeMO, and the newer North American Charging Standard (NACS, formerly known as Tesla's proprietary connector). Understanding the differences between these standards is crucial for consumers, manufacturers, and infrastructure planners as the EV ecosystem continues to evolve.
+
+## Comparison Table
+
+| Standard | Origin | Max Power (kW) | Connector Shape | Adoption Region |
+|----------|--------|----------------|-----------------|-----------------|
+| CCS (Combined Charging System) | Germany/USA (BMW, Daimler, Ford, GM) | 350 | Two-pin setup with additional DC pins below AC pins | Europe, North America, Asia-Pacific |
+| CHAdeMO | Japan (Nissan, Mitsubishi, Subaru) | 200 | Single large circular connector with flat contact pins | Japan, parts of Europe, limited North America |
+| NACS (North American Charging Standard) | USA (Tesla) | 250 | Compact with retractable contacts | North America (expanding globally) |
+
+## Analysis by Standard
+
+### CCS (Combined Charging System)
+
+**Advantages:**
+
+- **Wide Adoption**: Currently the most widely deployed standard across Europe and North America
+- **High Power Capacity**: Supports up to 350 kW, enabling rapid charging times for compatible vehicles
+- **Backward Compatibility**: AC charging pins integrated with DC charging pins reduce infrastructure complexity
+- **Mature Ecosystem**: Extensive network of charging stations already established
+- **Multi-Regional Support**: Strong presence across Europe, North America, and growing in Asia-Pacific
+
+**Disadvantages:**
+
+- **Bulky Connector**: Physically larger than competitors, making it less portable and harder to handle
+- **Complex Design**: Integration of AC and DC pins increases manufacturing complexity
+- **Slower Global Standardization**: Still competing for dominance in some regions
+- **Regional Variations**: Subtle differences in implementation across regions can cause compatibility issues
+
+### CHAdeMO
+
+**Advantages:**
+
+- **High Initial Power Capacity**: Supports up to 200 kW of direct current charging
+- **Established in Japan**: Strong support from Japanese manufacturers and extensive charging network
+- **Reliable Performance**: Proven track record with older EV models, particularly Nissan LEAFs
+- **Smaller Connector Size**: More compact design compared to CCS
+
+**Disadvantages:**
+
+- **Limited Global Adoption**: Primarily concentrated in Japan with declining presence elsewhere
+- **Lower Maximum Power**: 200 kW limit falls behind emerging CCS capabilities
+- **Uncertain Future**: Manufacturers are increasingly shifting away from CHAdeMO
+- **Regional Isolation**: Limited charging infrastructure outside Japan and select European locations
+- **Legacy Standard**: Viewed as outdated by many manufacturers and infrastructure developers
+
+### NACS (North American Charging Standard)
+
+**Advantages:**
+
+- **Compact Design**: Smaller, lighter connector is more ergonomic and portable
+- **High Power Capacity**: Supports 250 kW and potential for future expansion
+- **Simplicity**: Streamlined design reduces manufacturing complexity
+- **Growing Adoption**: Major manufacturers (Ford, General Motors, Hyundai, Kia) committing to NACS
+- **Modern Standard**: Purpose-built with contemporary EV technology in mind
+- **Expandable Ecosystem**: Tesla's extensive Supercharger network becoming available to other brands
+
+**Disadvantages:**
+
+- **Recent Standard**: Lacks the maturity and proven track record of CCS and CHAdeMO
+- **North American Focus**: Limited international presence outside North America
+- **Infrastructure Gap**: Fewer public charging stations compared to CCS globally
+- **Potential for Change**: Still relatively new, future modifications remain possible
+- **Competition with CCS**: In direct competition for market dominance in North America
+
+## Conclusion and Recommendations
+
+The EV charging landscape is at a critical inflection point. While CCS remains the incumbent standard with the most extensive global infrastructure, NACS is rapidly gaining momentum, particularly in North America with commitments from major manufacturers. CHAdeMO, once a serious contender, is fading as Japanese manufacturers prepare to transition to other standards.
+
+**Practical Recommendations:**
+
+1. **For New EV Buyers in North America**: Consider vehicles with NACS support, as major charging networks are rapidly converting to this standard. However, ensure backward compatibility or multi-standard support during this transition period.
+
+2. **For New EV Buyers Globally**: CCS remains the safest choice for international travel and long-term compatibility, particularly outside North America.
+
+3. **For Infrastructure Investors**: Prioritize NACS deployments in North America while maintaining CCS infrastructure investments in Europe and Asia-Pacific. Multi-standard stations remain prudent during this transition.
+
+4. **For Manufacturers**: Embrace NACS in North America while maintaining CCS support globally. The period of multiple standards is transitional—consolidation around one or two standards will occur within the next 5-7 years.
+
+The future likely points toward a two-standard world: NACS dominant in North America and CCS dominant internationally, with CHAdeMO gradually phasing out. This consolidation will benefit consumers, infrastructure developers, and manufacturers through reduced complexity and increased interoperability.
+```

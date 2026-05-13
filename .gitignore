@@ -6,3 +6,4 @@ _site
 site_libs
 
 **/*.quarto_ipynb
+.env

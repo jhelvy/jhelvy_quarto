@@ -1,0 +1,9 @@
+condition,format_type,output_type,input_tokens,output_tokens,char_count
+direct_html,direct,html,155,4046,16559
+direct_markdown,direct,markdown,137,1267,5892
+direct_latex,direct,pdf,163,1992,7835
+direct_docx_xml,direct,word,161,8097,19475
+quarto_html,quarto,html,173,1022,4850
+quarto_pdf,quarto,pdf,173,1123,5526
+quarto_word,quarto,word,168,1121,5303
+quarto_markdown,quarto,markdown,169,1282,5885

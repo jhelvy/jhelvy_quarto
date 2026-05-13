@@ -1,0 +1,15 @@
+{
+  "hash": "d0489e84beff5ef5deb7fec75d81b068",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"EV Charging Standards: A Comparison\"\nformat:\n  docx: default\n  pdf: default\nexecute:\n  echo: false\n  message: false\n  warning: false\n---\n\n::: {.cell}\n::: {.cell-output-display}\n\n\nTable: EV Charging Standards Comparison\n\n|Standard |Origin      | Max Power (kW)|Connector Shape   |Adoption Region         |Open Standard    |\n|:--------|:-----------|--------------:|:-----------------|:-----------------------|:----------------|\n|CCS1     |USA/EU      |            350|Combined          |North America / Europe  |Yes              |\n|CCS2     |EU          |            350|Combined          |Europe                  |Yes              |\n|CHAdeMO  |Japan       |            400|Round             |Japan / legacy          |Yes              |\n|NACS     |USA (Tesla) |            250|Blade             |North America (growing) |Yes (since 2023) |\n|GB/T     |China       |            237|Proprietary       |China                   |Partial          |\n|MCS      |EU          |           3500|Combined (future) |Heavy trucks / EU       |Yes              |\n\n\n:::\n:::\n\n\nAs of 2026, NACS (North American Charging Standard) has become the dominant connector in North America, with CCS remaining the European standard. CHAdeMO is now largely legacy outside Japan, while China maintains its own GB/T ecosystem. MCS is an emerging standard targeting heavy-duty trucks and commercial fleets.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}
