@@ -48,6 +48,10 @@ A .qmd file runs code at render time. Just point it at the updated CSV, run `qua
 
 ## One source, any format
 
+<center>
+<img src="its-all-markdown.jpg" width=100%>
+</center>
+
 HTML is one output format. If the report you made for yourself turns out to be something your boss wants as a Word document, you are either asking Claude again or doing an imperfect copy-paste.
 
 A .qmd file renders to HTML, PDF, Word, or a RevealJS presentation. Rather than spending time or tokens on the output format, you can focus on the output _content_, leaving the formatting to Quarto. If you need to make a change, just modify the YAML header and run `quarto render`. The content stays exactly the same, only the output format changes. 
