@@ -32,17 +32,17 @@ But as I was reading his thread, I couldn't help but think:
 
 > "man...if only he knew about Quarto"
 
-[Quarto](https://quarto.org/) brands itself as "an open-source scientific and technical publishing system," but it is so, so much more than that. Quarto is funamentally a publishing framework that separates _content_ from _format_. It produces documents that are always current, always flexible, and (as I'll argue in this post) exceptionally good for working with LLMs.
+[Quarto](https://quarto.org/) brands itself as "an open-source scientific and technical publishing system," but it is so, so much more than that. Quarto is funamentally an abstraction layer that separates _content_ from _format_. It produces documents that are always current, always flexible, and (as I'll argue in this post) exceptionally good for working with LLMs.
 
 Just like Thariq does in his post about HTML, I'll focus this post on some of the reasons why adding a "q" in front of "md" is my preferred approach for working with LLM outputs.
 
 ## Rich output through code
 
-Thariq's central argument is _information density_. HTML can render styled tables, SVG diagrams, interactive charts, and color-coded content — things that flat Markdown simply cannot do. That is all true.
+Thariq's central argument is about _information density_. HTML can render styled tables, SVG diagrams, interactive charts, and color-coded content — things that flat Markdown simply cannot do. That is all true.
 
 But Quarto docs can produce all of that through code. Drop an R or Python block into a .qmd file and you get an interactive plotly chart, a beautifully formatted table, a ggplot visualization with your exact color palette. The output is just as rich as anything HTML can show, but the difference is that the source file stays readable. Any user can directly read the markdown content inside the .qmd file, and of course can choose to render it into a desired output to read it in a preferred form.
 
-And there's a second advantage that goes beyond visual richness: a .qmd document stays current. An HTML document is a snapshot. Once Claude writes those numbers into the markup, they are frozen. If the data changes, you have to ask Claude to re-generate the HTML again, or you have to edit the HTML by hand 😱. 
+And there's a second advantage that goes beyond visual richness: **a .qmd document stays current**. An HTML document is a snapshot. Once Claude writes those numbers into the markup, they are frozen. If the data changes, you have to ask Claude to re-generate the HTML again, or you have to edit the HTML by hand 😱. 
 
 A .qmd file runs code at render time. Just point it at the updated CSV, run `quarto render`, and the tables and charts update automatically.
 
@@ -58,7 +58,7 @@ A .qmd file renders to HTML, PDF, Word, or a RevealJS presentation. Rather than 
 
 What's even better is that most LLMs and agents like Claude code understand Quarto syntax very, very well, so you don't even really have to think too much about what specific changes in the YAML header you need to make. Just tell CC "I'd like this as a pdf" and it'll update the yaml. That is _way_ easier (and _way_ faster) than having CC re-generate an entire new output.
 
-To me, this is the right division of labor: Claude writes the content, Quarto handles the format.
+To me, this is the right division of labor: **Claude writes the content, Quarto handles the format**
 
 ## Token efficiency
 
@@ -86,8 +86,8 @@ results <- read_csv("data/token_results.csv", show_col_types = FALSE)
 #| echo: false
 #| fig-height: 5
 #| fig-width: 10
-#| fig-cap: "Output tokens by output type. Teal dots are Quarto (.qmd); coral dots are direct format. Each row connects the same target output."
-#| fig-alt: "Dumbbell plot with four output types on the y-axis. Teal dots on the left show Quarto token counts; coral dots on the right show direct format token counts, connected by a grey line."
+#| fig-cap: "Output tokens by output type. Blue dots are Quarto (.qmd); coral dots are direct format. Each row connects the same target output."
+#| fig-alt: "Dumbbell plot with four output types on the y-axis. Blue dots on the left show Quarto token counts; coral dots on the right show direct format token counts, connected by a grey line."
 results |>
   select(output_type, format_type, output_tokens) |>
   mutate(
@@ -203,7 +203,7 @@ The worst case is asking Claude to produce Office Open XML directly: **8,097 out
 
 HTML direct (4,046 tokens) costs 4× more than Quarto HTML (1,022 tokens). LaTeX direct (1,992) costs 1.8× more than Quarto PDF (1,123). Only plain Markdown is in the same ballpark as Quarto — because Markdown already *is* essentially what `.qmd` files look like without the YAML frontmatter.
 
-Now look at the Quarto column specifically: HTML, PDF, and Word all land between 1,000 and 1,100 tokens. With .qmd, the format you choose barely affects the cost. The "one source, any format" approach is not just convenient, it's also cheap!
+Now look at the Quarto column specifically: HTML, PDF, and Word all land between 1,000 and 1,100 tokens. With .qmd, the format you choose barely affects the cost. The "one source, any format" approach is not just convenient, it's also cheaper!
 
 ## Version control and human editability
 
@@ -217,11 +217,13 @@ Most documents Claude produces need at least one human edit pass before they are
 
 With raw HTML, styling is baked into the document. Thariq's solution for consistent styling is to maintain a design system HTML file and pass it to Claude as context so that new documents match. That works, but it is a workaround for a problem that .qmd does not have.
 
-In a .qmd file, the content is simply Markdown. The presentation, in contrast, lives in the YAML header, or in a shared theme file that every document on your site inherits from. Change the font or color scheme once and every document updates. This is the way.
+In a .qmd file, the content is simply Markdown. The presentation, in contrast, lives in the YAML header, or in a shared theme file that every document on your site inherits from. Change the font or color scheme once and every document updates. Or leverage [Quarto's _brand.yml](https://quarto.org/docs/authoring/brand.html) feature to customize the appearance of your documents across multiple formats.
+
+This is the way.
 
 ## You don't even need to know Quarto to use it
 
-One of the most amazing things about tools like Claude code is that is already knows everything. All the docs, all the formatting requirements, all the syntax - it's all there. All you have to do is ask Claude to produce a .qmd file and it will understand. 
+One of the most amazing things about tools like Claude code is that it already knows a LOT about Quarto - all the docs, all the formatting requirements, all the syntax. All you have to do is ask it to produce a .qmd file and it will understand for the most part. 
  
 Just change your prompt from:
 
@@ -231,11 +233,11 @@ to:
 
 > "Produce a Quarto doc that renders to a Word doc..."
 
-That's it, CC will understand. 
+That's it!
 
-But it gets better! Because the amazing community of developers out there have already started making skills for CC that you can download and use to even further customize CC's output! 
+Of course, it's always better to have a more complete understanding of the tools you're using, but you don't need to let unfamiliarity with Quarto (if you're new to it) be a hindrance to you using Quarto with LLMs. Just start building and learn along the way. I find Quarto incredibly intuitive to use once you see a few examples, and it's also very easy to trace changes that agentic tools make to your code in Quarto since it's mostly just markdown. 
 
-For example, check out the [Posit Quarto skills](https://github.com/posit-dev/skills/tree/main/quarto), maintained by the absolute Quarto wizard [Mickaël Canouil](https://github.com/mcanouil). Leveraging skills and other settings in your CLAUDE.md file, you can achieve some very effective and efficient agentic workflows.
+But wait - it gets better! Because the amazing community of developers out there have already started making skills for CC that you can download and use to even further customize CC's output! For example, check out the [Posit Quarto skills](https://github.com/posit-dev/skills/tree/main/quarto), maintained by the absolute Quarto wizard [Mickaël Canouil](https://github.com/mcanouil). Leveraging skills and other settings in your CLAUDE.md file, you can achieve some very effective and efficient agentic workflows.
 
 ## Conclusion
 
