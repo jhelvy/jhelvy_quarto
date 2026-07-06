@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Paul Helveston">
+<meta name="dcterms.date" content="2026-07-03">
+<meta name="description" content="I’d been putting off adding a compiled backend to {logitr} for years because I knew it would take weeks of work. With Claude Code I did it in two days.">
+
+<title>Making {logitr} dramatically faster with Claude Code – jhelvy.com</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/favicon/favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-35bf783690d249daeb853f766eaf0e2b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HQNG5WQE3X"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- academic icons -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<!-- altmetric icons -->
+<script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+<!-- fontawesome icons -->
+<script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
+
+
+
+
+<meta property="og:title" content="Making {logitr} dramatically faster with Claude Code – jhelvy.com">
+<meta property="og:description" content="I’d been putting off adding a compiled backend to {logitr} for years because I knew it would take weeks of work. With Claude Code I did it in two days.">
+<meta property="og:image" content="https://www.jhelvy.com/blog/2026-07-03-logitr-faster-with-claude-code/benchmark_draws.png">
+<meta property="og:site_name" content="jhelvy.com">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image:height" content="1650">
+<meta property="og:image:width" content="2700">
+<meta name="twitter:title" content="Making {logitr} dramatically faster with Claude Code – jhelvy.com">
+<meta name="twitter:description" content="I’d been putting off adding a compiled backend to {logitr} for years because I knew it would take weeks of work. With Claude Code I did it in two days.">
+<meta name="twitter:image" content="https://www.jhelvy.com/blog/2026-07-03-logitr-faster-with-claude-code/benchmark_draws.png">
+<meta name="twitter:creator" content="@johnhelveston">
+<meta name="twitter:site" content="@johnhelveston">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="1650">
+<meta name="twitter:image-width" content="2700">
+</head>
+
+<body class="floating nav-fixed slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">jhelvy.com</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lab.html"> 
+<span class="menu-text">Lab</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#the-slow-part" id="toc-the-slow-part" class="nav-link active" data-scroll-target="#the-slow-part">The slow part</a></li>
+  <li><a href="#the-fix" id="toc-the-fix" class="nav-link" data-scroll-target="#the-fix">The fix</a></li>
+  <li><a href="#doing-it-in-two-days-with-claude-code" id="toc-doing-it-in-two-days-with-claude-code" class="nav-link" data-scroll-target="#doing-it-in-two-days-with-claude-code">Doing it in two days with Claude Code</a></li>
+  <li><a href="#the-payoff" id="toc-the-payoff" class="nav-link" data-scroll-target="#the-payoff">The payoff</a></li>
+  <li><a href="#so-what-does-all-this-speed-actually-buy-you" id="toc-so-what-does-all-this-speed-actually-buy-you" class="nav-link" data-scroll-target="#so-what-does-all-this-speed-actually-buy-you">So what does all this speed actually buy you?</a></li>
+  <li><a href="#what-really-made-this-fast-to-implement" id="toc-what-really-made-this-fast-to-implement" class="nav-link" data-scroll-target="#what-really-made-this-fast-to-implement">What <em>really</em> made this fast to implement</a></li>
+  <li><a href="#try-it" id="toc-try-it" class="nav-link" data-scroll-target="#try-it">Try it</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Making {logitr} dramatically faster with Claude Code</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">package</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">performance</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    <p>I’d been putting off adding a compiled backend to {logitr} for years because I knew it would take weeks of work. With Claude Code I did it in two days.</p>
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Paul Helveston </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-07-03</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<center>
+<img src="benchmark_draws.png" width="100%">
+</center>
+<p>I first started writing <a href="https://jhelvy.github.io/logitr/">{logitr}</a> back in 2014 as a PhD student at CMU. It started as some <i class="fa-brands fa-r-project" aria-label="r-project"></i> files for estimating multinomial and mixed logit models in the “Willingness to Pay” (WTP) space, mostly because there weren’t reliable open-source packages at the time for this, and because reviewers for my <a href="https://www.jhelvy.com/research/2015-transportation-research-part-a-policy-and-practice/">first paper</a> asked for WTP space models.</p>
+<p>When I first wrote the various <i class="fa-brands fa-r-project" aria-label="r-project"></i> files, speed wasn’t all that important - I was just writing it to get my paper done. But I quickly realized that speed was going to be pretty important because these models require a LOT of iteration. See, WTP space models have non-convex log-likelihood functions, and they tend to bounce around a lot during estimation, often resulting in many iterations that don’t converge on a solution. If you want to get a good run, you have to run a multi-start from lots of different random starting points, many of which will diverge. All that repetition translates to time, and the faster any one run goes, the more space you can search in a fixed amount of time.</p>
+<p>So as I started porting those files into a proper <i class="fa-brands fa-r-project" aria-label="r-project"></i> package, I also started thinking about ways I could make the code run faster. I quickly fell into a hole of performance engineering, and the single best thing I did to speed it up was hand-derive the gradients of each and every type of model that the package supported. I also did a few smaller things around re-factoring the gradients so that large portions could be pre-computed and passed through as essentially constants. This all resulted in a pretty fast package, so fast that I wrote about some of these design choices in the <a href="https://doi.org/10.18637/jss.v105.i10">JSS paper</a> I wrote about the package. By the time that paper was published (2023), {logitr} out-performed pretty much every other <i class="fa-brands fa-r-project" aria-label="r-project"></i> package that supported mixed logit models by a considerable amount.</p>
+<p>Nonetheless, there was always one part of the package that I wasn’t quite satisfied with: <strong>models with a large number of random draws.</strong></p>
+<section id="the-slow-part" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-slow-part">The slow part</h2>
+<p><a href="https://en.wikipedia.org/wiki/Mixed_logit">Mixed logit models</a> are estimated by <em>simulating</em> the log-likelihood function. Internally, the package basically approximates an integral with a bunch of random draws, and the more draws you use, the more accurate your answer will be (at the cost of more computation).</p>
+<p>For example, take a look at how “normal” a normal distribution looks as you increase the number of random draws. Below I show the same true normal distribution in red and a histogram of random draws in blue for 50, 500, and 5,000 random draws:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="index_files/figure-html/draws-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/draws-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="page-columns page-full"><p>In case the chart above isn’t obvious enough, it turns out <a href="https://doi.org/10.1016/j.jocm.2019.04.003">we probably should be using a LOT more draws</a>  than we often do in the field of choice modeling - as many as 20,000 draws in the case of 10 or more attributes. This is a problem, because most packages use <em>very few</em> draws (like 50-100), largely because the people who write statistical packages like these aren’t computer scientists (myself included) and value other things than speed, like reproducibility and correctness. In fact, the vast majority of packages use around 50 draws by default, including {logitr} (up until now…more on that below)!</p><div class="no-row-height column-margin column-container"><span class="margin-aside">Czajkowski, M., &amp; Budziński, W. (2019). Simulation error in maximum likelihood estimation of discrete choice models. <em>Journal of Choice Modelling</em>, 31, 73-85.</span></div></div>
+<p>{logitr} was already faster than the other <i class="fa-brands fa-r-project" aria-label="r-project"></i> packages people use for this, but at large draw counts it still slowed down, and it couldn’t really handle the very large draw counts. When using amounts like 10,000 and up, it would crash as most computers would run out of memory.</p>
+</section>
+<section id="the-fix" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-fix">The fix</h2>
+<p>One option to speed things up had been apparent to me for a few years: <strong>GPUs</strong>. I knew this could work because the incredible Python package <a href="https://xlogit.readthedocs.io/">xlogit</a> (by the brilliant <a href="https://arteagac.github.io/">Cristian Arteaga</a>) does just that. Like {logitr}, xlogit is already fast, but when you deploy it on a machine with GPUs, it can easily handle many 10s of thousands of draws.</p>
+<p>However, not everyone has access to GPUs, and getting something like this to work for free or low cost requires cloud platforms like Google Colab to get access to the truly fast hardware. So I didn’t want to necessarily go this route. I wanted something that could still be run on a laptop / desktop, and ideally one with a multi-core CPU (as most modern machines have).</p>
+<p>Furthermore, {logitr} still ran entirely in <i class="fa-brands fa-r-project" aria-label="r-project"></i>, which, like Python and other higher-level languages, is terribly slow compared to C++:</p>
+<center>
+<img src="c-plus-plus-talking-to-python.png" width="80%">
+</center>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside"><a href="https://www.reddit.com/r/ProgrammerHumor/comments/w1upl0/c_talking_to_python/">From Reddit</a></span></div></div>
+<p>Changing things so that the main calculations were run in compiled C++ instead of <i class="fa-brands fa-r-project" aria-label="r-project"></i> is something that I have seen many other packages do to achieve much higher speeds. So this too felt like the right direction to move in, but I just never did it. Adding a compiled backend to a package like this is the kind of job that’s genuinely really, really challenging. I never really knew where to begin, and I never had the time to truly learn how it all works. Doing this would mean porting the log-likelihood and its analytic gradient to C++ and keep the math <em>exactly</em> right while also setting up infrastructure to confirm the results still match the <i class="fa-brands fa-r-project" aria-label="r-project"></i> version down to the last decimal and wiring up multithreading without breaking anything. That’s weeks and weeks of hard stuff, and it’s very easy to get something subtly / silently wrong.</p>
+<p>So it sat on my to-do list for years, with me secretly hoping someone else who has mastered C++ would come along and write it for me (open source ftw?).</p>
+</section>
+<section id="doing-it-in-two-days-with-claude-code" class="level2">
+<h2 class="anchored" data-anchor-id="doing-it-in-two-days-with-claude-code">Doing it in two days with Claude Code</h2>
+<p>Well, no one came along to write my C++ code. But about a year ago I started using <a href="https://claude.com/claude-code">Claude Code</a> to write increasingly more and more code. And now, about one year into using it, I felt confident enough to try and give this a shot. <strong>It built everything in 48 hours.</strong> (For those who want to know, all of the code was written with Claude Opus 4.8.)</p>
+<p>I’m still absolutely gobsmacked that this worked at all, let alone just how fast I was able to put it all together. Here’s roughly what was added, in order:</p>
+<p><strong>A compiled C++ backend.</strong> The mixed logit log-likelihood and gradient are now available as an <a href="https://www.rcpp.org/">Rcpp</a> implementation, controlled by a new <code>backend</code> argument and turned on by default for mixed logit models. It produces the same results as the old <i class="fa-brands fa-r-project" aria-label="r-project"></i> code to floating-point precision, and on its own it’s about 4× faster.</p>
+<p><strong>Multithreading over the draws.</strong> On top of the compiled backend, the random draws are now processed in parallel across cores via a new <code>numThreads</code> argument. This stacks on top of the compiled speedup, and it scales with however many cores you have.</p>
+<p><strong>Support for very large draw counts.</strong> A new <code>numDrawsBatch</code> argument streams the draws in batches so that peak memory stays bounded by the batch size rather than the total number of draws. That’s what makes 10,000+ draws actually feasible instead of blowing up your RAM.</p>
+<p><strong>Better draws by default.</strong> The default <code>drawType</code> is now Sobol instead of Halton (Halton sequences get correlated once you have more than about 5 random parameters), and I added Modified Latin Hypercube Sampling as a <code>"mlhs"</code> option, which tends to reach a given accuracy with fewer draws.</p>
+<p><strong>Cleaner parallel multistart.</strong> The parallelized multistart now runs on <a href="https://mirai.r-lib.org/">{mirai}</a> instead of the old <code>mclapply</code>/PSOCK machinery, so there’s one code path that behaves the same on every platform.</p>
+<p>Now, you may be thinking, “Wow, that’s a s#!% ton of complex code,” and you would be right. But the important thing is that every one of these changes was checked against the original <i class="fa-brands fa-r-project" aria-label="r-project"></i> implementation at each step and produced identical results. The amount of testing that went in along the way was enormous, and it accounted for probably over half of the tokens used.</p>
+<p>The other reason I’m rather confident in the results is that the core codebase was already hand-created and vetted over years by me. Agentic LLMs work extremely well when you point them at something that already exists. In this case, the code for the gradients (the core part used in the C++ code) was already there, so it was really just a language translation problem. LLMs are exceptionally good at that kind of task.</p>
+</section>
+<section id="the-payoff" class="level2">
+<h2 class="anchored" data-anchor-id="the-payoff">The payoff</h2>
+<p>Here’s the head-to-head comparison against the other <i class="fa-brands fa-r-project" aria-label="r-project"></i> packages I benchmark against, estimating the same preference-space mixed logit model:</p>
+<center>
+<img src="benchmark.png" width="100%">
+</center>
+<p>At 1,500 draws, single-threaded {logitr} finishes in about 15.5 seconds. The other 4 packages I compared against range from roughly 2.9× to 8× slower, and that’s giving the ones that can use multiple cores their best multi-core times while {logitr} runs on a single thread. Turn on {logitr}’s own multithreading and the gap gets wider still.</p>
+<p>But the comparison I find most fun is the one at the top of this post: how {logitr} scales as you crank up the number of draws, comparing the old <i class="fa-brands fa-r-project" aria-label="r-project"></i> path against the new compiled backend on one core and on all 10.</p>
+<p>At 10,000 draws:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Backend</th>
+<th style="text-align: right;">Time</th>
+<th style="text-align: right;">Speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><i class="fa-brands fa-r-project" aria-label="r-project"></i> (<code>cpu</code>)</td>
+<td style="text-align: right;">502 s</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Compiled, 1 core</td>
+<td style="text-align: right;">111 s</td>
+<td style="text-align: right;">4.5×</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Compiled, 10 cores</td>
+<td style="text-align: right;">17.8 s</td>
+<td style="text-align: right;">28×</td>
+</tr>
+</tbody>
+</table>
+<p>The <i class="fa-brands fa-r-project" aria-label="r-project"></i> implementation that used to be the only option takes about 8.4 minutes at 10,000 draws. The compiled backend on all 10 cores does the same work in under 18 seconds, a 28× speedup. (These particular numbers are from a 10-core Apple laptop running {logitr} 1.2.0; the exact figures will vary by machine, but the shape of it holds.)</p>
+</section>
+<section id="so-what-does-all-this-speed-actually-buy-you" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-does-all-this-speed-actually-buy-you">So what does all this speed actually buy you?</h2>
+<p><strong>More draws.</strong> Remember, the whole reason to want more draws is that the simulated log-likelihood is an approximation, and with too few draws it gets noisy. To see just how noisy, I ran a little experiment: I estimated the same model 10 times at each of several draw counts, each time with a different set of random draws (MLHS draws, which are randomized, with every run starting from the same converged starting point). Any spread in the converged log-likelihood across those 10 runs comes from the simulation noise – it shifts where each run lands, and with few enough draws it can even warp the likelihood surface so much that a run converges to a different local optimum entirely:</p>
+<center>
+<img src="benchmark_loglik.png" width="100%">
+</center>
+<p>At 50 draws, the converged log-likelihood lands anywhere in a window about 89 log-likelihood units wide, depending purely on which random draws you happen to get. That’s easily enough to flip a likelihood ratio test or change which model looks “best.” At 500 draws the window is about 3.3× narrower, and it keeps shrinking as you add more (not perfectly monotonically – an occasional low-draw run wanders off to another local optimum, which is the simulation noise problem in its most dramatic form).</p>
+<p>And with the compiled backend, estimating this model with 500 draws takes just 0.7 seconds on my machine. So I changed the default: <strong>{logitr} now uses <code>numDraws = 500</code></strong> instead of 50. The field has stuck with tiny draw counts for decades ({mlogit} and {gmnl} default to 40, Stata’s <code>mixlogit</code> to 50) mostly because more draws used to be painfully slow. At these speeds, there’s no longer a good reason to accept that much simulation noise.</p>
+</section>
+<section id="what-really-made-this-fast-to-implement" class="level2">
+<h2 class="anchored" data-anchor-id="what-really-made-this-fast-to-implement">What <em>really</em> made this fast to implement</h2>
+<p>I should probably take a minute to clarify how my collaboration with Claude code actually went, because I don’t think “the AI did everything” is the main takeaway here, nor is it fair to myself as the core developer and the many, many <i class="fa-brands fa-r-project" aria-label="r-project"></i> developers out there who laid the groundwork for this sort of C++ workaround for speed.</p>
+<p>From the very beginning, I made every architectural call. I decided to keep {logitr}’s general flat data layout instead of re-tensorizing it (ala xlogit) precisely because I didn’t want users to only have speed if they had access to a GPU, which few have, and also because I didn’t expect the juice would be worth the squeeze. That is, we’d probably be able to get a bit faster, but requiring specialized hardware for a <i class="fa-brands fa-r-project" aria-label="r-project"></i> stats package just feels overly complex, especially for future maintenance, and also there’s already xlogit for that in python, so if you <em>really</em> want to use a GPU, you can already with xlogit.</p>
+<p>Furthermore, I insisted on keeping my hand-written analytic gradients rather than swapping for a numerical approximation, which Claude code tried to do mulitple times (I’m guessing because in ML land that’s the typical thing devs do?…it <em>really</em> wanted to do this early on til I scolded it and said to knock it off and keep my analytic gradients). Finally, I also chose Rcpp over Rust for the main backend as it was easier to integrate with what was otherwise a pure <i class="fa-brands fa-r-project" aria-label="r-project"></i> package (Rust is another common choice for <i class="fa-brands fa-r-project" aria-label="r-project"></i> devs).</p>
+<p>What Claude Code did was the part I had been avoiding: writing the actual C++ kernels, wiring up the threading, and building the benchmarking harness, all at a pace I could never match by hand. It also caught things I would have burned an afternoon on, like the fact that benchmarking a compiled backend under <code>devtools::load_all()</code> silently compiles it unoptimized and makes it look <em>slower</em> than the <i class="fa-brands fa-r-project" aria-label="r-project"></i> code. When testing with a C++ backend, you actually have to <code>devtools::install()</code> the thing, and <em>then</em> run the tests.</p>
+<p>Also, through every single implementation and code change, I reviewed all of it - every line. Correctness came first the whole way with careful conversations and directions, constant testing, and interogating the LLM at every step. The parity tests with the prior version of logitr are the reason that I’m comfortable making this faster backend now the default.</p>
+<p>Overall, it was kind of a surreal experience pulling this together in just 48 hours. The amount of work that went into this backend build out could easily have taken an entire summer, and the fact that I started on Wednesday and it’s already done, documented, and tested on a Friday is just bonkers. I think we’ve crossed the Rubicon here with tools like Claude Code. For all the critiques of LLM systems (and there are many), I have to say, I don’t think we will ever go back to writing code without them. The gain here is nothing short of extraordinary.</p>
+<p>Another big takeaway from this experience is that <strong>there is now no excuse for accepting lower performance when the only thing between you and that performance is code.</strong> If the concepts are clear in your head and you have a real roadmap, then the build itself is a matter of sitting down with Claude for a day or two. Work that used to be a months-long slog now fits in a weekend, sometimes an afternoon.</p>
+</section>
+<section id="try-it" class="level2">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>The compiled backend is in the development version of {logitr} now. Installing from source requires a C++ compiler, which is the one new wrinkle for people building from GitHub:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("remotes")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jhelvy/logitr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you use mixed logit models with a lot of draws, I’d love for you to give it a spin and let me know how it goes. And if, like me, you’ve been sitting on some gnarly performance project because it looked like too much of a slog, this might be a good time to take another look at it.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.jhelvy\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ <a href="https://www.jhelvy.com/cv.html">CV</a> &nbsp;<a href="https://github.com/jhelvy" target="blank"><i class="bi bi-github"></i></a> &nbsp;<a href="https://bsky.app/profile/jhelvy.bsky.social" target="blank"><i class="fa fa-brands fa-bluesky"></i></a> &nbsp;<a href="https://www.linkedin.com/in/jhelvy" target="blank"><i class="bi bi-linkedin"></i></a> &nbsp;<a href="https://scholar.google.com/citations?user=DY2D56IAAAAJ" target="blank"><i class="ai ai-google-scholar fa-lg"></i></a> &nbsp;<a href="https://www.researchgate.net/profile/John_Helveston" target="blank"><i class="ai ai-researchgate fa-lg"></i></a> &nbsp;<a href="https://orcid.org/0000-0002-2657-9191" target="blank"><i class="ai ai-orcid fa-lg"></i></a><br>Site made with <i class="bi bi-heart-fill"></i>, <a href="https://github.com/jhelvy/jhelvy_quarto" target="_blank"><i class="bi bi-git"></i></a>, and <a href="https://quarto.org/" target="_blank"><img src="https://quarto.org/favicon.png" width="12"> quarto</a><br>© 2024 John Paul Helveston
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
