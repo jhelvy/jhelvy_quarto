@@ -2,7 +2,6 @@ project:
   type: website
   output-dir: _site
   preview:
-    port: 5896
     browser: true
   render:
     - "index.qmd"
