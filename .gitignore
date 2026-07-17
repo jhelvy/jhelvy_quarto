@@ -7,3 +7,8 @@ site_libs
 
 **/*.quarto_ipynb
 .env
+
+# OMB comments post: summary data lives in the research repo
+# (jhelvy/omb-grant-rule-comments); not committed here. The frozen render
+# output (_freeze) IS committed, so the published site still builds.
+/blog/2026-07-16-omb-grant-rule-comments/data/
