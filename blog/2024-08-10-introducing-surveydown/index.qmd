@@ -34,9 +34,8 @@ library(surveydown)
 
 :::
 
-<center>
-<img src="logo.png" width=200>
-</center>
+![](logo.png){fig-align="center" width="200px"}
+
 <br>
 
 You may have read my [previous blog post](https://jhelvy.com/blog/2023-04-06-markdown-surveys/) about an R packaged I called "surveydown". That post described some ideas I was thinking about for a package that would allow people to design surveys using markdown and R. But the package didn't exist yet, it was just an idea. 
@@ -52,9 +51,7 @@ In this post, I'm going to show you a quick overview of the {surveydown} R packa
 [supabase](https://supabase.com/). The package is still in development, but you can already use it to create surveys. 
 
 <br>
-<center>
-<img src="technologies.png" width=600>
-</center>
+![](technologies.png){fig-align="center" width="600px"}
 <br>
 
 The basic concept is this:
@@ -131,9 +128,7 @@ This will create a folder with the following files:
 
 If you have the example open in RStudio, you can click the "Run document" button, or in your terminal run `quarto serve example.qmd`. Either approach should render the example survey into a shiny app that you can preview in a browser. Don't worry just yet about setting up your database or making the survey live - for now, we're going to focus on designing the survey and running it locally to preview it. The example survey should look like this:
 
-<center>
-<img src="example.png" width=700>
-</center>
+![](example.png){fig-align="center" width="700px"}
 
 ## Adding pages
 
@@ -197,13 +192,13 @@ Every survey question is created using the `sd_question()` function inside a cod
 #| echo: fenced
 
 sd_question(
-  type  = 'mc',
-  id    = 'penguins',
+  type = 'mc',
+  id = 'penguins',
   label = "Which is your favorite type of penguin?",
   option = c(
-    'Adélie'    = 'adelie',
+    'Adélie' = 'adelie',
     'Chinstrap' = 'chinstrap',
-    'Gentoo'    = 'gentoo'
+    'Gentoo' = 'gentoo'
   )
 )
 ```
@@ -215,13 +210,13 @@ The above code chunk will create a multiple choice question that looks like this
 #| echo: false
 
 sd_question(
-  type  = 'mc',
-  id    = 'penguins',
+  type = 'mc',
+  id = 'penguins',
   label = "Which is your favorite type of penguin?",
   option = c(
-    'Adélie'    = 'adelie',
+    'Adélie' = 'adelie',
     'Chinstrap' = 'chinstrap',
-    'Gentoo'    = 'gentoo'
+    'Gentoo' = 'gentoo'
   )
 )
 ```
@@ -246,10 +241,10 @@ config <- sd_config()
 
 # The sd_server() function initiates your survey - don't change this
 sd_server(
-  input   = input,
+  input = input,
   session = session,
-  config  = config,
-  db      = db
+  config = config,
+  db = db
 )
 ```
 
@@ -273,20 +268,20 @@ Let's say we had a fourth option for "other" in our multiple choice question abo
 #| echo: fenced
 
 sd_question(
-  type  = 'mc',
-  id    = 'penguins',
+  type = 'mc',
+  id = 'penguins',
   label = "Which is your favorite type of penguin?",
   option = c(
-    'Adélie'    = 'adelie',
+    'Adélie' = 'adelie',
     'Chinstrap' = 'chinstrap',
-    'Gentoo'    = 'gentoo',
-    'Other'     = 'other'
+    'Gentoo' = 'gentoo',
+    'Other' = 'other'
   )
 )
 
 sd_question(
-  type  = "text",
-  id    = "penguins_other",
+  type = "text",
+  id = "penguins_other",
   label = "Please specify the other penguin type:"
 )
 ```
@@ -296,17 +291,15 @@ Then in the server code chunk, you could use the `show_if` argument to define th
 ```{r}
 config <- sd_config(
   show_if = tibble::tribble(
-    ~question_id,  ~question_value, ~target,
-    "penguins",    "other",         "penguins_other"
+    ~question_id , ~question_value , ~target          ,
+    "penguins"   , "other"         , "penguins_other"
   )
 )
 ```
 
 This will make the `penguins_other` question only appear if the respondent chose the `other` option in the `penguins` question, like this:
 
-<center>
-<img src="show_if.gif" width=600 style="box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3); border: 1px solid #000; border-radius: 5px;">
-</center>
+![](show_if.gif){fig-align="center" width="600px" style="box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3); border: 1px solid #000; border-radius: 5px;"}
 <br>
 
 Here we're using the `tibble::tribble()` function to define a data frame with three columns:
@@ -334,12 +327,12 @@ First, define a question about their vehicle ownership, e.g.:
 #| echo: fenced
 
 sd_question(
-  type  = 'mc',
-  id    = 'vehicle_ownership',
+  type = 'mc',
+  id = 'vehicle_ownership',
   label = "Do you own your vehicle?",
   option = c(
     'Yes' = 'yes',
-    'No'  = 'no'
+    'No' = 'no'
   )
 )
 ```
@@ -349,8 +342,8 @@ Then in the server code chunk, you could use the `skip_if` argument in `sd_confi
 ```{r}
 config <- sd_config(
   skip_if = tibble::tribble(
-    ~question_id,        ~question_value, ~target,
-    "vehicle_ownership", "no",            "screenout"
+    ~question_id        , ~question_value , ~target     ,
+    "vehicle_ownership" , "no"            , "screenout"
   )
 )
 ```
@@ -397,8 +390,8 @@ Let's say you wanted to create a survey that asked the respondent's name, and th
 
 ```{r}
 sd_question(
-  type  = "text",
-  id    = "name",
+  type = "text",
+  id = "name",
   label = "What is your name?"
 )
 ```
@@ -453,8 +446,8 @@ options <- c(1, 2, 3)
 names(options) <- df_resp$brand
 
 sd_question_reactive(
-  type  = "mc",
-  id    = "brands",
+  type = "mc",
+  id = "brands",
   label = "Which of these brands do you like best?",
   option = options
 )

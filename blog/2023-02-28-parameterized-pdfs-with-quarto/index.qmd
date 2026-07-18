@@ -12,9 +12,7 @@ format: html
 toc: true
 ---
 
-<center>
-<img src="quarto.png" width=300>
-</center>
+![](quarto.png){fig-align="center" width="300px"}
 
 [Quarto](https://quarto.org/) is an open-source scientific and technical publishing system built on Pandoc. Many view it as the "next generation" of [RMarkdown](https://rmarkdown.rstudio.com/), though it is more general in that is supports mutliple languages and is not R-specific.
 

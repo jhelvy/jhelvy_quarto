@@ -12,9 +12,7 @@ format: html
 echo: false
 ---
 
-<center>
-<img src="image169.png" width=100%>
-</center>
+![](image169.png){fig-align="center" width="100%"}
 
 ```{r}
 #| label: setup
@@ -48,9 +46,7 @@ A .qmd file runs code at render time. Just point it at the updated CSV, run `qua
 
 ## One source, any format
 
-<center>
-<img src="its-all-markdown.jpg" width=100%>
-</center>
+![](its-all-markdown.jpg){fig-align="center" width="100%"}
 
 HTML is one output format. If the report you made for yourself turns out to be something your boss wants as a Word document, you are either asking Claude again or doing an imperfect copy-paste.
 

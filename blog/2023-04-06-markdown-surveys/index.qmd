@@ -27,9 +27,7 @@ library(fontawesome)
 library(dplyr)
 ```
 
-<center>
-<img src="logo.png" width=350>
-</center>
+![](logo.png){fig-align="center" width="350px"}
 
 I do a lot of research using surveys. My current platform of choice is [formr](https://formr.org/), a flexible platform for making surveys using `r fa("r-project")` (see my [blog post](https://www.jhelvy.com/posts/2021-09-18-choice-based-conjoint-surveys-in-r-with-formr/) on how to use it to implement a choice-based conjoint survey). While formr is powerful in terms of it's flexibility, it has a bit of a learning curve and isn't the easiest tool for novices. And alternative platforms like Qualtrics, Google forms, etc. have their own issues, one of which is simply that they use a [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG) interface, which makes it difficult to collaborate, version control, reproduce, etc.   
 
@@ -206,13 +204,9 @@ rexper:
 
 When run, the basic example makes a shiny survey that looks like this:
 
-<center>
-<img src="simple-survey.png" width=600>
-</center>
+![](simple-survey.png){fig-align="center" width="600px"}
 
-<center>
-<img src="success.gif" width=400>
-</center>
+![](success.gif){fig-align="center" width="400px"}
 
 <aside>
 Gif from https://vsgif.com/gif/2859497

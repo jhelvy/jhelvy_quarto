@@ -11,9 +11,7 @@ format: html
 toc: true
 ---
 
-<center>
-<img src="chess-golf.png" width=600>
-</center>
+![](images/chess-golf.png){fig-align="center" width=500}
 
 <aside>
 Image source: https://theawesomer.com/golf-chess-set/132440/

@@ -83,11 +83,7 @@ But being the lazy programmer I am, I wanted a _single_ function that rendered t
 
 # Build all the things!
 
-<center>
-<center>
-<img src="images/build.gif" width=50%>
-</center>
-</center>
+![](images/build.gif){fig-align="center" width="50%"}
 
 <aside>[Image source](https://giphy.com/gifs/TheDemocrats-dnc-democrats-dncgif-sbc05kozq8QvqBjmMS)</aside>
 
@@ -154,9 +150,7 @@ One of the complaints I had early on with {xaringan} is that there was no way to
 
 For this reason, we are working on a `to_handout()` function that will be introduced in the next version of {renderthis}. Below is an example of a set of demo slides.
 
-<center>
-<img src="https://user-images.githubusercontent.com/5420529/130334143-0c026584-4213-47a3-9976-e5515f715521.png" width=100%>
-</center>
+![](https://user-images.githubusercontent.com/5420529/130334143-0c026584-4213-47a3-9976-e5515f715521.png){fig-align="center" width="100%"}
 
 We're also planning on supporting rendering Quarto slides, which again was one of the motivations to change the package name to a more general one.
 

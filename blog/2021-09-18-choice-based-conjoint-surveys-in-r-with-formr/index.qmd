@@ -98,9 +98,7 @@ In this chunk, the `alts` data frame is created by converting the `df_json` obje
 
 I copy this code over to each alternative, adjusting the numbers for alternative 2 and 3. When rendered in formr, the three options looks like this:
 
-<center>
-<img src="images/example.png" width=500>
-</center>
+![](images/example.png){fig-align="center" width="500px"}
 
 And that's it! The nice thing about this approach is that the only thing I need to modify in these code chunks for the remaining choice questions is the question number used to define the `alts` data frame. Other than that, the code for the question label and the alternatives can be reused on the rest of the choice questions.
 
@@ -135,9 +133,7 @@ kable(t(alts), escape = FALSE) %>%
   )
 ```
 
-<center>
-<img src="images/cbc_table.png" width=500>
-</center>
+![](images/cbc_table.png){fig-align="center" width="500px"}
 
 # Implementing the surveys in formr
 
@@ -173,9 +169,7 @@ Notice that there are two points where respondents can be screened out of the su
 
 Here is a screenshot of the specific run settings:
 
-<center>
-<img src="images/run.png" width=100%>
-</center>
+![](images/run.png){fig-align="center" width="100%"}
 
 # Time stamps `r fa("clock")`
 

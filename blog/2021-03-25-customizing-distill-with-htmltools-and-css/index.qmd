@@ -25,9 +25,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-<center>
-<img src="images/css_html.png" width=100%>
-</center>
+![](images/css_html.png){fig-align="center" width="100%"}
 
 One of the things I love about [{distill}](https://rstudio.github.io/distill/) as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. I tried using [{blogdown}](https://bookdown.org/yihui/blogdown/) with the [Hugo Academic theme](https://themes.gohugo.io/academic/), but in the end I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill's incredible [post](https://alison.rbind.io/post/new-year-new-blogdown/) on how to do it (btw, if you want to make a blogdown site, you totally should read her [posts on blogdown](https://alison.rbind.io/categories/blogdown/)). Distill was just simpler, so I dove in.
 
@@ -41,9 +39,7 @@ So that's what I set out to do - write a bunch of functions and hack away at CSS
 
 For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the "inspect" tool in Chrome to grab the html by right-clicking on it and selecting "Copy element", like this:
 
-<center>
-<img src="images/inspect.gif" width=100% class="shadow">
-</center>
+![](images/inspect.gif){fig-align="center" width="100%" class="shadow"}
 
 With some html in hand, I had a template to work with. My starting point was always to just drop the html directly into a page and edit it until it looked the way I wanted. But most of the time I needed to replicate and reuse that html in multiple places, so I had to find a way to write R code to _generate_ html.
 
@@ -248,9 +244,7 @@ output:
 
 A very common layout I see on lots of sites is an image floated to the left or right with text wrapping around it. Here's an example from my [lab page](https://jhelvy.github.io/lab.html):
 
-<center>
-<img src="images/text_wrap.png" width="600px" class="shadow">
-</center>
+![](images/text_wrap.png){fig-align="center" width="600px" class="shadow"}
 
 There are probably lots of ways to do this, but a simple enough solution is to use the `:::` notation to create custom divs. This isn't needed if your output is a `html_document`, but for distill articles you need to create a new div that includes the image _and_ text wrapping around it (see [this issue](https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2) for details as to why you have to do this).
 

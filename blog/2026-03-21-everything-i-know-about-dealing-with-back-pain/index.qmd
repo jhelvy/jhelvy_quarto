@@ -91,9 +91,7 @@ The best thing I've found in the long run is to get a height-adjustable desk and
 
 When you do sit, make sure you have good lumbar support. I use an inflatable lumbar pillow on my chair, and it makes a big difference in keeping my spine in a good position.
 
-<center>
-<img src="lumbar-pillow.png" width="50%" alt="Inflatable lumbar pillow for lower-back support">
-</center>
+![Inflatable lumbar pillow for lower-back support](lumbar-pillow.png){fig-align="center" width="50%"}
 
 And of course, make sure your monitor is at eye level, and that your keyboard and mouse are positioned so that your arms are at a comfortable angle. Ergonomics matter, and small adjustments can make a big difference in how much strain you put on your back throughout the day.
 

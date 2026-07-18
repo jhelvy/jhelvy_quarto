@@ -24,9 +24,7 @@ knitr::opts_chunk$set(
 set.seed(5678)
 ```
 
-<center>
-<img src="squid-game.png" width=600>
-</center>
+![](squid-game.png){fig-align="center" width="600px"}
 
 If you had a Netflix account in 2021, chances are you've at least heard of [Squid Game](https://en.wikipedia.org/wiki/Squid_Game) -- a South Korean survival drama in which players play a series of children's games for the chance to win a large sum of money, with the penalty of death if they lose. The show is like a mixture of [Richard Connell](https://en.wikipedia.org/wiki/Richard_Connell)'s [The Most Dangerous Game](https://en.wikipedia.org/wiki/The_Most_Dangerous_Game), the [Hunger Games](https://en.wikipedia.org/wiki/The_Hunger_Games), and the horror stories of [Edgar Allan Poe](https://en.wikipedia.org/wiki/Edgar_Allan_Poe). It quickly became the #1 most most-watched show after just one week of being released.
 
@@ -244,9 +242,7 @@ _Updated October 22, 2021_
 
 Many people on [twitter](https://twitter.com/JohnHelveston/status/1450830941056815105?s=20) and [reddit](https://www.reddit.com/r/rstats/comments/qcpckz/simulating_the_squid_game_bridge_scene_in_r/) had some great suggestions about this post. In particular, @evalparse had a [brilliant, one-line solution](https://twitter.com/evalparse/status/1450925271603843073?ref_src=twsrc%5Etfw) for simulating the number of survivors in one game:
 
-<center>
-<img src="evalparse.png" width=400>
-</center>
+![](evalparse.png){fig-align="center" width="400px"}
 
 One critique that was mentioned multiple times was that my simulations left out a critical element in the game: **time**. In the show, the players had just 16 minutes to cross the bridge, otherwise all of the glass panes shatter and anyone left behind dies. I originally omitted time for simplicity, but looking back at it now this is a pretty crucial element in the game because it means that the latter order numbers aren't necessarily so safe after all -- the further back in line you are, the higher risk you face of running out of time.
 

@@ -70,9 +70,7 @@ r500 <- ll_range$range[ll_range$numDraws == 500]
 t500 <- ll_range$med_time[ll_range$numDraws == 500]
 ```
 
-<center>
-<img src="benchmark_draws.png" width=100%>
-</center>
+![](benchmark_draws.png){fig-align="center" width="100%"}
 
 I first started writing [{logitr}](https://jhelvy.github.io/logitr/) back in 2014 as a PhD student at CMU. It started as some {{< fa brands r-project >}} files for estimating multinomial and mixed logit models in the "Willingness to Pay" (WTP) space, mostly because there weren't reliable open-source packages at the time for this, and because reviewers for my [first paper](https://www.jhelvy.com/research/2015-transportation-research-part-a-policy-and-practice/) asked for WTP space models. 
 
@@ -130,9 +128,8 @@ However, not everyone has access to GPUs, and getting something like this to wor
 
 Furthermore, {logitr} still ran entirely in {{< fa brands r-project >}}, which, like Python and other higher-level languages, is terribly slow compared to C++:
 
-<center>
-<img src="c-plus-plus-talking-to-python.png" width=80%>
-</center>[[From Reddit](https://www.reddit.com/r/ProgrammerHumor/comments/w1upl0/c_talking_to_python/)]{.aside}
+![](c-plus-plus-talking-to-python.png){fig-align="center" width="80%"}
+[[From Reddit](https://www.reddit.com/r/ProgrammerHumor/comments/w1upl0/c_talking_to_python/)]{.aside}
 
 Changing things so that the main calculations were run in compiled C++ instead of {{< fa brands r-project >}} is something that I have seen many other packages do to achieve much higher speeds. So this too felt like the right direction to move in, but I just never did it. Adding a compiled backend to a package like this is the kind of job that's genuinely really, really challenging. I never really knew where to begin, and I never had the time to truly learn how it all works. Doing this would mean porting the log-likelihood and its analytic gradient to C++ and keep the math *exactly* right while also setting up infrastructure to confirm the results still match the {{< fa brands r-project >}} version down to the last decimal and wiring up multithreading without breaking anything. That's weeks and weeks of hard stuff, and it's very easy to get something subtly / silently wrong.
 
@@ -162,9 +159,7 @@ The other reason I'm rather confident in the results is that the core codebase w
 
 Here's the head-to-head comparison against the other {{< fa brands r-project >}} packages I benchmark against, estimating the same preference-space mixed logit model:
 
-<center>
-<img src="benchmark.png" width=100%>
-</center>
+![](benchmark.png){fig-align="center" width="100%"}
 
 At `r format(md, big.mark = ",")` draws, single-threaded {logitr} finishes in about `r round(l1, 1)` seconds. The other `r nOther` packages I compared against range from roughly `r round(minSlow, 1)`× to `r round(maxSlow, 1)`× slower, and that's giving the ones that can use multiple cores their best multi-core times while {logitr} runs on a single thread. Turn on {logitr}'s own multithreading and the gap gets wider still.
 
@@ -184,9 +179,7 @@ The {{< fa brands r-project >}} implementation that used to be the only option t
 
 **More draws.** Remember, the whole reason to want more draws is that the simulated log-likelihood is an approximation, and with too few draws it gets noisy. To see just how noisy, I ran a little experiment: I estimated the same model 10 times at each of several draw counts, each time with a different set of random draws (MLHS draws, which are randomized, with every run starting from the same converged starting point). Any spread in the converged log-likelihood across those 10 runs comes from the simulation noise -- it shifts where each run lands, and with few enough draws it can even warp the likelihood surface so much that a run converges to a different local optimum entirely:
 
-<center>
-<img src="benchmark_loglik.png" width=100%>
-</center>
+![](benchmark_loglik.png){fig-align="center" width="100%"}
 
 At 50 draws, the converged log-likelihood lands anywhere in a window about `r round(r50)` log-likelihood units wide, depending purely on which random draws you happen to get. That's easily enough to flip a likelihood ratio test or change which model looks "best." At 500 draws the window is about `r round(r50 / r500, 1)`× narrower, and it keeps shrinking as you add more (not perfectly monotonically -- an occasional low-draw run wanders off to another local optimum, which is the simulation noise problem in its most dramatic form).
 
