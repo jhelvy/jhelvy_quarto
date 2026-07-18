@@ -1,17 +1,17 @@
 ---
-title: "A public rejection of OMB's proposed grant rule"
+title: "The public overwhelmingly rejects OMB's proposed federal grant rule"
 description: |
   OMB has proposed a sweeping rewrite of the rules that govern every federal grant. Thousands of people filed comments. I downloaded them to look at what they actually say.
 date: '2026-07-18'
-image: "stance.png"
+image: "02_stance.png"
 categories:
   - R
   - data
   - policy
   - science
 format: html
-draft: true
 echo: false
+draft: true
 ---
 
 ```{r}
@@ -26,24 +26,24 @@ sections <- read_csv(
   col_types = cols(section = col_character())
 )
 topics <- read_csv("data/summary_topics.csv", show_col_types = FALSE)
-
 total_n <- sum(stance$n)
 s_pct <- function(k) stance$pct[stance$stance == k]
 sec_pct <- function(s) sections$pct[sections$section == s]
 top_pct <- function(t) topics$pct[topics$topic == t]
-
 fmt <- function(x) format(x, big.mark = ",")
 ```
 
-In May 2026, the White House Office of Management and Budget (OMB) quietly proposed one of the most consequential changes to federal research funding in a generation. It's a rule with a boring name: the [*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance). The vast majority of people in their normal lives will never directly encounter this rule, but if passed as it's currently written, it will undoubtedly impact everyone one way or another. The rule fundamentally undermines science by putting political appointees--not experts--in charge of all federal grants, including the National Science Foundation (NSF), the National Institutes of Health (NIH), all federal departments (Dept. of Defense, Dept. of Energy, etc.) - every single grant by any federal agency. *Science* Editor-in-Chief Holden Thorp wrote in a June editorial titled ["Another red alert for American science,"](https://www.science.org/doi/10.1126/science.aej3572) that the proposed rule would bypass congressional intent and starve federal research. The [rule does far more](https://defendfederalresearch.org/) than that, but that at least gives you a sense of the scope. 
+In May 2026, the White House Office of Management and Budget (OMB) quietly proposed one of the most consequential changes to federal grant funding in a generation. It's a rule with a boring name: the [*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance). The vast majority of people have no idea about this rule or what it encompasses, but if passed as it's currently written, it will have a resounding impact on the nation as a whole and the future of all science, healthcare, technological leadership, and more in the U.S. for generations.
 
-This post is a summary of what people said in the public comment period from May 29 to July 13, 2026. The code for the complete anlaysis is available at [https://github.com/jhelvy/omb-grant-rule-comments](https://github.com/jhelvy/omb-grant-rule-comments).
+In addition to its impact on federal funding for state and local governments, tribes, universities, nonprofits, public authorities, school districts, healthcare organizations, small businesses, and research institutes (yes, it touches ALL of that), the rule fundamentally undermines science by putting political appointees--not experts--in charge of all federal grant making. That includes the National Science Foundation (NSF), the National Institutes of Health (NIH), all federal departments that issue research grants (Dept. of Defense, Dept. of Energy, etc.) - every single grant by *any* federal agency. Holden Thorp, Editor-in-Chief of *Science*, wrote in a June editorial titled ["Another red alert for American science"](https://www.science.org/doi/10.1126/science.aej3572) that the proposed rule would bypass congressional intent for agencies like NSF and NIH and starve federal research. The [rule does far more](https://defendfederalresearch.org/) than that, but that gives you a sense of the scope.
 
-**TLDR**: The response by the public was a **resounding opposition to the rule change**. 
+This post provides a detailed accounting of what people said in the public comment period from May 29 to July 13, 2026. The code for the complete anlaysis is available at [https://github.com/jhelvy/omb-grant-rule-comments](https://github.com/jhelvy/omb-grant-rule-comments).
+
+**TLDR**: The response by the public is a **resounding opposition to the rule change**.
 
 ## An historic response
 
-Despite OMB's effort to minimize public comments on the ruling (allocating just 45 days for public comment on a ruling that affects over $1 trillion in federal assistance), the comment period drew a staggering response. The total number of comments is unclear due to how comments are actually counted (see [this post](https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on) as an example of how you can inflate the official count, but you can basically just say that one comments represents a lot of people, so 1 comment can be counted as 1 million...yet it's that dumb), but the official count is 496,775 comments. 
+Despite OMB's effort to minimize public comments on the ruling by allocating *only 45 days* for public comment on a ruling that affects over $1 trillion in federal assistance, the comment period drew a staggering response. The official count is 496,775 comments, though that number is likely inflated due to how comments are counted. As outlined in [this post](https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on), you can inflate the official count by basically just say that one comment represents a lot of people, so 1 comment will literally be counted as 1 million comments if you say so...yes, it's that dumb.
 
 <center>
 <img src="comments.png" width=100%>
@@ -55,7 +55,7 @@ Image from [post by Christopher Steven Marcum](https://www.linkedin.com/feed/upd
 
 :::
 
-Now, as I said above, that number is almost certainly highly inflated, but the response is still historic by any measure. As of writing this on 07/18/26, **~54,000 individual comments** have been released by OMB, which includes all comments through the end of June. Since the comment period went through July 13, **I expect the total comment number to grow to somewhere between 70k and 80k**, give or take 10k. As [noted by Christopher Steven Marcum](https://www.linkedin.com/feed/update/urn:li:share:7482810379866271744/), that number is completely unprecedented in the 13-year-history of 2 CFR 200 public comments, which previously drew just 300, 215, and 2,008 comments in 2013, 2019, and 2023, respectively.
+Nonetheless, the response is still historic by any measure. As of writing this on 07/18/26, **~54,000 individual comments** have been released by OMB, which includes all comments through the end of June. Since the comment period went through July 13, **I expect the total comment number to be somewhere between 70k and 80k**, give or take 10k. As [noted by Christopher Steven Marcum](https://www.linkedin.com/feed/update/urn:li:share:7482810379866271744/), that number is completely unprecedented in the 13-year-history of 2 CFR 200 public comments, which previously drew a mere 300, 215, and 2,008 comments in 2013, 2019, and 2023, respectively. Compared to the most-recent 2023 comment period, the total number of comments this time is a **~4000% increase**.
 
 ::: {.callout-note}
 
@@ -65,45 +65,81 @@ OMB reviews and releases comments based on the date recieved, so once all the co
 
 ## What the rule actually does
 
-The proposed rule rewrites [2 CFR Part 200](https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200) --- the "Uniform Guidance" that sets the ground rules for federal grants --- and the single biggest move is a change in *status*: it would convert what has long been non-binding **guidance** into binding **regulation**. On top of thatreclassification, it layers in a set of substantive changes that lawyers have written up in detail ([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/06/omb-rule-proposes-significant-changes-to-federal-financial-assistance), [Faegre Drinker](https://www.faegredrinker.com/en/insights/publications/2026/6mb-proposes-extensive-reformation-of-federal-grant-regulations)). A few of the ones that show up over and over in the comments:
+The proposed rule rewrites [2 CFR Part 200](https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200) --- the "Uniform Guidance" that sets the ground rules for federal grants --- and the single biggest move is a change in *status*: it would convert what has long been non-binding **guidance** into binding **regulation**. On top of that reclassification, it layers in a long list of substantive changes that lawyers have written up in detail ([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/06/omb-rule-proposes-significant-changes-to-federal-financial-assistance), [Faegre Drinker](https://www.faegredrinker.com/en/insights/publications/2026/6/omb-proposes-extensive-reformation-of-federal-grant-regulations)) and that [defendfederalresearch.org](https://defendfederalresearch.org/the-rule.html) catalogs section by section. The ones that keep showing up in the comments:
 
-- **Political review of grants before they're awarded.** Under the proposed §200.205, a senior political appointee would review and could override the merit / peer-review process that agencies like NIH and NSF use to decide which science gets funded.
-- **Discretionary termination "in the national interest."** The proposed §200.340 would let an agency terminate a grant, in whole or in part, whenever it decides the award no longer serves "agency priorities" or "the national interest." Yes, the language is actually that vague (on purpose).
-- **New limits on what grant money can pay for** --- publication and open-access fees (§200.461), conference attendance (§200.432), professional memberships (§200.454) --- plus restrictions on foreign collaborations (§200.220) and a "domestic-first" framework for R&D.
+- **Political review of grants before they're awarded.** Under the proposed §200.205, a senior political appointee would review every discretionary award --- each of which must "demonstrably advance the President's policy priorities" --- and could override the merit / peer-review process that agencies like NIH and NSF use to decide which science gets funded. Peer review is explicitly demoted to "advisory," and the rule bars funding tied to "anti-American values," an undefined term.
+- **Discretionary termination, with no real appeal.** The proposed §200.340 would let an agency terminate a grant, in whole or in part, whenever it decides the award "no longer advances agency priorities or the national interest" (yes, the language is that vague, on purpose), plus a new 90-day "stop-work" suspension power. And under §§200.341–343, for these discretionary terminations the agency "is not required to allow for objections, hearings, and appeals" --- a recipient's only recourse is to sue in the U.S. Court of Federal Claims.
+- **Ideological strings on what research can say and do.** A cluster of new provisions bars spending that promotes "theories of disparate-impact liability" (§200.218), houses an "unlawful-DEI" prohibition plus a "gender ideology" clause denying the "sex binary" and pediatric gender care (§200.300), restricts campus events by "viewpoint, content, or subject matter" even when unfunded (§200.219), and makes elective-abortion costs unallowable (§200.477).
+- **New vetting of who gets funded.** The proposed §200.206 expands applicant "risk" review to cover affiliations with organizations that advocate overthrowing the government, along with a "history of questionable practices" --- a bucket broad enough to sweep in work later deemed "non-replicable" or inconsistent with "religious liberty."
+- **New limits on what grant money can pay for.** Publication and open-access fees (§200.461) and conference attendance (§200.432) would each require case-by-case agency pre-approval, alongside fresh limits on professional memberships (§200.454), advertising (§200.421), and more.
+- **Walls around international and domestic work.** §200.220 extends foreign-collaboration prohibitions government-wide, and a "domestic-first" framework (§200.202) makes U.S.-only entities the default for research awards, with foreign partners allowed only by senior-appointee exception. Recipients would also face mandatory E-Verify (§200.303) and English-only award materials (§200.111).
 
 If any of that sounds like it would reshape how research actually gets done in this country, well, that's more or less what the commenters think too.
 
-## A quick note on the numbers
+## Overwhelming opposition
 
-Here's the thing you have to keep in mind for everything that follows. The docket page reports **hundreds of thousands** of comments *received*, but regulations.gov only posts a fraction of them individually, and it releases them in **batches** over time. So the comments you can actually download are a *moving, partial* slice of the whole. As I write this I've pulled **`r fmt(total_n)`** individually-posted comments, and that number is still climbing as more get released.[The full pipeline --- scraping, consolidating,
-and this analysis --- is on [GitHub](https://github.com/jhelvy/omb-grant-rule-comments) and is fully reproducible.]{.aside}
+```{r}
+#| label: setup-extra
+#| include: false
+stance_kind <- read_csv(
+  "data/summary_stance_by_kind.csv",
+  show_col_types = FALSE
+)
+commenter <- read_csv("data/summary_commenter_type.csv", show_col_types = FALSE)
+concern <- read_csv("data/summary_primary_concern.csv", show_col_types = FALSE)
 
-So treat all of this as a **snapshot**, not a final tally. I'll re-run it once the dust settles.
+support_total <- stance_kind$Total[stance_kind$stance == "support"]
+support_ff <- stance_kind$`form letter`[stance_kind$stance == "support"]
+support_orig <- stance_kind$original[stance_kind$stance == "support"]
+oppose_orig <- stance_kind$original[stance_kind$stance == "oppose"]
+pct_ff_support <- round(100 * support_ff / support_total)
 
-## Overwhelmingly opposed
+ct_n <- function(t) commenter$n[commenter$commenter_type == t]
+pc_pct <- function(t) {
+  round(100 * concern$n[concern$primary_concern == t] / sum(concern$n))
+}
+```
 
 The headline is not subtle. Of the `r fmt(total_n)` comments I've analyzed so
-far, roughly **`r round(s_pct("oppose"))`% read as opposed** to the rule, versus
-under **`r round(s_pct("support"), 1)`% in support**. The rest didn't land
-cleanly on one side of my (admittedly crude) classifier.
+far, **`r round(s_pct("oppose"))`% oppose** the rule and just
+**`r round(s_pct("support"), 1)`% support** it. The rest split between comments
+that stake out a genuinely mixed position (`r round(s_pct("mixed"), 1)`%) and
+ones too short or indirect to call (`r round(s_pct("unclear"), 1)`%).
 
 <center>
-<img src="stance.png" width=85%>
+<img src="02_stance.png" width=85%>
 </center>
 
-I should be honest about how I got that number, because it matters.[This is
-exactly the kind of task a large language model would do far better than
-keyword matching --- reading each comment and judging its stance. That's my
-planned next step; consider these counts the fast first pass.]{.aside} I did
-*not* read `r fmt(total_n)` comments. I scored stance with a keyword heuristic:
-high-precision phrases that name the rule ("oppose this rule," "urge you to
-withdraw"), backed up by a net count of negative-vs-positive language for the
-comments that don't use an obvious phrase. It's approximate. It will
-misclassify some comments, and it leaves a chunk in the "unclear" bucket
-(mostly short or rhetorically indirect comments). But the direction is
-unmistakable, and spot-checking the "unclear" pile turns up far more quiet
-opposition than genuine neutrality --- so if anything, this *understates* how
-lopsided the response is.
+This is a real change from the first version of this post. Back then I scored
+stance with a keyword heuristic and left about a third of the comments stranded
+in an "unclear" bucket. I've now replaced that guesswork with an actual read of
+every comment: I ran each *unique* comment text through a large language model
+(OpenAI's GPT-4o-mini) and asked it to judge the stance, the kind of person
+writing, and the single provision the comment cares about most.[Each unique text
+is classified once and the label reused for its verbatim copies, so a form letter
+sent thousands of times doesn't cost thousands of API calls.]{.aside} To check
+it, I hand-labeled 300 random comments and compared notes with the model: it
+agreed with me on **97.7%** of them, and never once missed a genuine support
+comment. That's good enough to trust the shape of the picture --- and the shape
+is lopsided.
+
+## Where the support actually comes from
+
+That already-small support number comes with a big asterisk. When you separate
+individually written comments from mass-mailed form letters, the support column
+nearly evaporates:
+
+<center>
+<img src="07_stance_by_kind.png" width=100%>
+</center>
+
+Of the roughly `r fmt(support_total)` comments scored as *supporting* the rule,
+about **`r pct_ff_support`% are verbatim copies of a single form letter**
+praising the reforms as fraud prevention. Strip out the templates and count only
+people who wrote in their own words, and support collapses to
+`r fmt(support_orig)` comments --- against `r fmt(oppose_orig)` original comments
+opposed. Opposition, in other words, is overwhelmingly people writing their own
+words; support is mostly one recycled letter.
 
 ## Which parts of the rule people are reacting to
 
@@ -112,7 +148,7 @@ that do point in a clear direction. Here's how often each section of the rule
 gets named:
 
 <center>
-<img src="sections_cited.png" width=100%>
+<img src="03_sections_cited.png" width=100%>
 </center>
 
 The top two are the ones you'd expect from the summaries above:
@@ -132,7 +168,7 @@ Zooming out from section numbers to themes (here I'm matching topic keywords, so
 a single comment can hit several), the same story shows up in plainer language:
 
 <center>
-<img src="topics.png" width=100%>
+<img src="04_topics.png" width=100%>
 </center>
 
 The dominant concern, by a wide margin, is **political interference in the
@@ -143,6 +179,43 @@ review** (`r round(top_pct("merit_peer_review"))`%). Termination authority
 (`r round(top_pct("termination"))`%) rounds out the top tier. The through-line
 across all of it is a fear that funding decisions currently made on scientific
 merit would become subject to political discretion.
+
+## Who wrote in
+
+The LLM pass also tagged how each commenter identifies themselves. The
+overwhelming majority are **private individuals** writing on their own behalf ---
+not institutions:
+
+<center>
+<img src="08_commenter_type.png" width=100%>
+</center>
+
+Behind that wall of individuals, the next-largest identifiable groups write from
+**healthcare** (`r fmt(ct_n("healthcare"))` comments), followed by **students**
+(`r fmt(ct_n("student"))`) and **academic researchers**
+(`r fmt(ct_n("researcher_academic"))`) --- the communities sitting most directly
+downstream of federal grant funding. Comparatively few comments come from
+organized industry, advocacy, or government voices.
+
+## What they're most worried about
+
+Beyond a yes/no stance, I asked the model to pick the *single* provision or theme
+each comment centers on. It mirrors the section and topic counts, but sharpens
+them to one concern per person:
+
+<center>
+<img src="09_primary_concern.png" width=100%>
+</center>
+
+Two concerns tower over the rest. The most common, in about
+`r pc_pct("political_review")`% of classified comments, is **political review of
+merit decisions** --- the §200.205 provision that lets a political appointee
+override peer review. Close behind, roughly `r pc_pct("unscientific_ideological")`%
+center on the broader fear of **injecting ideology and politics into science**.
+Everything else --- funding cuts, termination authority, DEI and gender
+provisions, foreign-collaboration limits, cost restrictions --- trails well
+behind. The chart is colored by stance, and the pattern is hard to miss: nearly
+every concern, whatever its subject, is voiced in opposition.
 
 ## What people are saying elsewhere
 
@@ -164,19 +237,21 @@ Let me restate the health warnings, because they're important:
 
 1. **This is a partial, moving snapshot.** Only a fraction of the comments
    received have been individually posted, and they're still coming in. These
-   numbers will shift.
-2. **Stance is a keyword heuristic, not a careful read.** It's good enough to
-   see the overwhelming shape of the response, but not for precise percentages.
-   Running an LLM over the full text of each comment is the obvious upgrade, and
-   it's next on my list.
-3. **Everything here is reproducible.** The scraping and analysis code, along
-   with the consolidated data, live in
+   numbers will shift as the rest are released --- though, given how stable the
+   split has stayed as the sample has grown, probably not by much.
+2. **The classification is an LLM's judgment, not a census.** GPT-4o-mini agrees
+   with my hand-labels 97.7% of the time, which is excellent, but it isn't
+   perfect --- expect a small error rate, concentrated in the terse and
+   genuinely ambiguous comments.
+3. **Everything here is reproducible.** The scraping, consolidation, and
+   classification code, along with the consolidated data, live in
    [this repo](https://github.com/jhelvy/omb-grant-rule-comments). If you want
    to check my work or slice it differently, please do.
 
 Even with all those caveats, the picture is clear enough to state plainly: the
-public comments on this rule are running heavily against it, they're focused on
-the provisions that would inject political review into the funding of science,
-and a meaningful share of them are coordinated. I'll update this once the full
-set of comments is available --- and once I've replaced my keyword guesses with
-something that actually reads.
+public comments on this rule are running overwhelmingly against it, the
+opposition is overwhelmingly people writing in their own words while the support
+is mostly a single recycled form letter, and the sharpest fear --- across
+sections, themes, and commenter types alike --- is that political appointees
+would start deciding which science gets funded. I'll update this once the full
+set of comments is available.
