@@ -265,9 +265,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </header>
 
 
-<center>
-<img src="squid-game.png" width="600">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="squid-game.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="squid-game.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></a></p>
+</figure>
+</div>
 <p>If you had a Netflix account in 2021, chances are you’ve at least heard of <a href="https://en.wikipedia.org/wiki/Squid_Game">Squid Game</a> – a South Korean survival drama in which players play a series of children’s games for the chance to win a large sum of money, with the penalty of death if they lose. The show is like a mixture of <a href="https://en.wikipedia.org/wiki/Richard_Connell">Richard Connell</a>’s <a href="https://en.wikipedia.org/wiki/The_Most_Dangerous_Game">The Most Dangerous Game</a>, the <a href="https://en.wikipedia.org/wiki/The_Hunger_Games">Hunger Games</a>, and the horror stories of <a href="https://en.wikipedia.org/wiki/Edgar_Allan_Poe">Edgar Allan Poe</a>. It quickly became the #1 most most-watched show after just one week of being released.</p>
 <blockquote class="blockquote">
 <p>SPOILER ALERT: I mention a few details in this post that might be spoilers if you haven’t yet watched the show.</p>
@@ -288,6 +290,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>players</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     player alive
+#&gt;      &lt;int&gt; &lt;num&gt;
 #&gt;  1:      1     1
 #&gt;  2:      2     1
 #&gt;  3:      3     1
@@ -362,6 +365,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sims[trial <span class="sc">==</span> <span class="dv">42</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;     player alive trial
+#&gt;      &lt;int&gt; &lt;num&gt; &lt;int&gt;
 #&gt;  1:      1     0    42
 #&gt;  2:      2     0    42
 #&gt;  3:      3     0    42
@@ -410,7 +414,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="figs/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
+<p><a href="figs/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
 </figure>
 </div>
 </div>
@@ -443,7 +447,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="figs/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
+<p><a href="figs/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figs/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
 </figure>
 </div>
 </div>
@@ -502,7 +506,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="figs/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></a></p>
+<p><a href="figs/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figs/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
@@ -512,6 +516,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>step_summary[steps <span class="sc">%in%</span> <span class="fu">seq</span>(<span class="dv">18</span>, <span class="dv">23</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>#&gt;    steps p_under2
+#&gt;    &lt;num&gt;    &lt;num&gt;
 #&gt; 1:    18    0.005
 #&gt; 2:    19    0.008
 #&gt; 3:    20    0.024
@@ -572,7 +577,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="figs/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
+<p><a href="figs/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figs/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
 </figure>
 </div>
 </div>
@@ -631,7 +636,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="figs/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
+<p><a href="figs/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figs/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
 </figure>
 </div>
 </div>
@@ -655,7 +660,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="figs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="figs/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
+<p><a href="figs/unnamed-chunk-19-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="figs/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></a></p>
 </figure>
 </div>
 </div>

@@ -47,6 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cee9a899e95a870827ab7a873c3f34d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -249,9 +252,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="an-historic-response" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="an-historic-response">An historic response</h2>
 <p>Despite Russ Vought’s efforts to minimize public comments on the ruling by allocating <em>only 45 days</em> for public comment on a ruling that affects over $1 trillion in federal assistance, the comment period drew a staggering response. The official count is 496,775 comments, though that number is likely inflated due to how comments are counted. As outlined in <a href="https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on">this post</a> by by Abigail Haddad and Christopher Marcum, you can inflate the official count by basically just saying that one comment represents a lot of people, so 1 comment can be made to count as 1 million comments by putting 1000000 in a box on the form…yes, it’s that dumb.</p>
-<center>
-<img src="comments.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="comments.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="comments.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>Image from <a href="https://www.linkedin.com/feed/update/urn:li:share:7482810379866271744/">post by Christopher Steven Marcum</a></p>
@@ -290,9 +295,11 @@ Note
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>We have 53,956 instead of the full 54,011 because 10 are withdrawn records the site counts but never displays, 10 are stuck behind a permanent server error on regulations.gov’s end, and 35 pointed to attachments that were restricted or unreadable.</p>
-</div></div><center>
-<img src="02_stance.png" width="100%">
-</center>
+</div></div><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="02_stance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="02_stance.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>If you’re wondering how I managed this classification, I ran each <em>unique</em> comment text through OpenAI’s GPT-4o-mini large language model (LLM), asking it to judge the stance, the kind of person writing, and the single provision the comment cares about most. To check it, I hand-labeled 300 random comments and compared notes with the model: it agreed with me on <strong>97.7%</strong> of them, and it never once missed a genuine support comment. I also ran a much, much simpler approach of checking for key words and phrases (e.g., “I support…”, “I oppose…”, etc.), and the results came out rather similar. The biggest difference where the LLM helped was in cases where the symantics matter, like statements that include mixed phrasing, e.g.&nbsp;“While I support efforts to reduce fraude, I oppose this measure…”. Finally, other similar analyses by <a href="https://www.techpolicy.press/the-public-rejects-ombs-federal-financial-assistance-rule/">techpolicy.press</a> and <a href="https://www.scientificamerican.com/article/scientists-overwhelmingly-against-rule-change-that-would-give-political-appointees-say-over-science-grants/">Scientific American</a> found similar results regarding the proportion of comments that support / oppose this rule.</p>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
@@ -315,42 +322,54 @@ Note
 <section id="most-support-is-from-one-form-letter" class="level2">
 <h2 class="anchored" data-anchor-id="most-support-is-from-one-form-letter">Most support is from one form letter</h2>
 <p>The already tiny support number (just 5.3% of comments) comes with a pretty big asterisk, which is that when you separate individually written comments from mass-mailed form letters, the support column nearly evaporates:</p>
-<center>
-<img src="07_stance_by_kind.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="07_stance_by_kind.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="07_stance_by_kind.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>Of the roughly 2,848 comments scored as <em>supporting</em> the rule, about <strong>84% are verbatim copies of a single form letter</strong> praising the reforms as fraud prevention. Strip out the templates and count only people who wrote in their own words, and support collapses to 467 comments — against 48,373 original comments opposed.</p>
 <p>The opposition has its templates too (2,293 opposing comments are form-letter copies), but they’re a rounding error next to the many thousands of people who opposed the rule in their own words. Support, by contrast, is mostly one recycled letter.</p>
 <p>You can see the templates directly in the length distribution: original comments trace a smooth curve, and the mass-mailed letters stick out of it as spikes — the biggest being that same 2,381-copy pro-rule letter:</p>
-<center>
-<img src="05_comment_length.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="05_comment_length.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="05_comment_length.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 </section>
 <section id="what-people-are-reacting-to" class="level2">
 <h2 class="anchored" data-anchor-id="what-people-are-reacting-to">What people are reacting to</h2>
 <p>About 1/5th of comments cite a specific section number of the proposed rule, a share that jumped up once the attachment letters (which tend to march through the rule provision by provision) were counted. The ones that do cite sections point in a clear direction:</p>
-<center>
-<img src="03_sections_cited.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="03_sections_cited.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="03_sections_cited.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>The top two are the ones you’d expect from the summaries above: <strong>§200.205</strong> (political review of merit review, cited in 15% of comments) and <strong>§200.340</strong> (termination authority, 13%). The next batch all have to with <em>cost</em> limitations: conference costs (§200.432, 8%), publication and open-access fees (§200.461, 8%), and professional memberships (§200.454, 5%). Finally, a good amount also opposed restrictions on foreign collaboration (§200.220, 5%) and the rule’s domestic-first rules (§200.202, 5%).</p>
 <p>Citing a section is also a strong tell about stance. The comments that engage with the rule’s actual text, including the detailed section-citing submissions, are almost uniformly opposed; what little support exists lives almost entirely in the short, no-citation comments:</p>
-<center>
-<img src="06_stance_by_citation.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="06_stance_by_citation.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="06_stance_by_citation.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 </section>
 <section id="concerns-by-theme" class="level2">
 <h2 class="anchored" data-anchor-id="concerns-by-theme">Concerns by theme</h2>
 <p>Since the majority of comments did <em>not</em> mention a specific section of the rule, I wanted to still get a general sense of what people are mostly concerned about, so I matched topic keywords to produce counts by theme (a single comment can hit several themes). Again, the same story shows up in plainer language:</p>
-<center>
-<img src="04_topics.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="04_topics.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="04_topics.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>The dominant concern is by far <strong>political interference in the review of grants</strong> (65% of comments), followed by the broader <strong>impact on research and science funding</strong> (40%) and the fate of <strong>merit and peer review</strong> (34%). Termination authority (27%) rounds out the top tier. The through-line across all of it is a fear that funding decisions currently made on scientific merit would become subject to political discretion.</p>
 </section>
 <section id="who-wrote-in" class="level2">
 <h2 class="anchored" data-anchor-id="who-wrote-in">Who wrote in</h2>
 <p>The LLM pass also tagged how each commenter identifies themselves. The overwhelming majority are <strong>private individuals</strong> writing on their own behalf, not institutions:</p>
-<center>
-<img src="08_commenter_type.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="08_commenter_type.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="08_commenter_type.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>Behind that wall of individuals, the next-largest identifiable groups write from <strong>healthcare</strong> (2,549 comments), followed by <strong>students</strong> (1,529) and <strong>academic researchers</strong> (1,284) — the communities sitting most directly downstream of federal grant funding. Organized institutional voices are fewer in number — 733 advocacy organizations and nonprofits, 225 businesses, 114 government commenters — but they punch above their weight: these are disproportionately the long, formal letters that arrived as attachments, the ones that dissect the rule section by section.</p>
 </section>
 <section id="what-theyre-most-worried-about" class="level2">
@@ -798,6 +817,38 @@ Note
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

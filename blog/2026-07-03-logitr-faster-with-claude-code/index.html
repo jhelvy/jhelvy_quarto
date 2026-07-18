@@ -268,9 +268,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </header>
 
 
-<center>
-<img src="benchmark_draws.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="benchmark_draws.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="benchmark_draws.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>I first started writing <a href="https://jhelvy.github.io/logitr/">{logitr}</a> back in 2014 as a PhD student at CMU. It started as some <i class="fa-brands fa-r-project" aria-label="r-project"></i> files for estimating multinomial and mixed logit models in the “Willingness to Pay” (WTP) space, mostly because there weren’t reliable open-source packages at the time for this, and because reviewers for my <a href="https://www.jhelvy.com/research/2015-transportation-research-part-a-policy-and-practice/">first paper</a> asked for WTP space models.</p>
 <p>When I first wrote the various <i class="fa-brands fa-r-project" aria-label="r-project"></i> files, speed wasn’t all that important - I was just writing it to get my paper done. But I quickly realized that speed was going to be pretty important because these models require a LOT of iteration. See, WTP space models have non-convex log-likelihood functions, and they tend to bounce around a lot during estimation, often resulting in many iterations that don’t converge on a solution. If you want to get a good run, you have to run a multi-start from lots of different random starting points, many of which will diverge. All that repetition translates to time, and the faster any one run goes, the more space you can search in a fixed amount of time.</p>
 <p>So as I started porting those files into a proper <i class="fa-brands fa-r-project" aria-label="r-project"></i> package, I also started thinking about ways I could make the code run faster. I quickly fell into a hole of performance engineering, and the single best thing I did to speed it up was hand-derive the gradients of each and every type of model that the package supported. I also did a few smaller things around re-factoring the gradients so that large portions could be pre-computed and passed through as essentially constants. This all resulted in a pretty fast package, so fast that I wrote about some of these design choices in the <a href="https://doi.org/10.18637/jss.v105.i10">JSS paper</a> I wrote about the package. By the time that paper was published (2023), {logitr} out-performed pretty much every other <i class="fa-brands fa-r-project" aria-label="r-project"></i> package that supported mixed logit models by a considerable amount.</p>
@@ -283,7 +285,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="index_files/figure-html/draws-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="index_files/figure-html/draws-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></a></p>
+<p><a href="index_files/figure-html/draws-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/draws-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></a></p>
 </figure>
 </div>
 </div>
@@ -296,10 +298,7 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p>One option to speed things up had been apparent to me for a few years: <strong>GPUs</strong>. I knew this could work because the incredible Python package <a href="https://xlogit.readthedocs.io/">xlogit</a> (by the brilliant <a href="https://arteagac.github.io/">Cristian Arteaga</a>) does just that. Like {logitr}, xlogit is already fast, but when you deploy it on a machine with GPUs, it can easily handle many 10s of thousands of draws.</p>
 <p>However, not everyone has access to GPUs, and getting something like this to work for free or low cost requires cloud platforms like Google Colab to get access to the truly fast hardware. So I didn’t want to necessarily go this route. I wanted something that could still be run on a laptop / desktop, and ideally one with a multi-core CPU (as most modern machines have).</p>
 <p>Furthermore, {logitr} still ran entirely in <i class="fa-brands fa-r-project" aria-label="r-project"></i>, which, like Python and other higher-level languages, is terribly slow compared to C++:</p>
-<center>
-<img src="c-plus-plus-talking-to-python.png" width="80%">
-</center>
-<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="margin-aside"><a href="https://www.reddit.com/r/ProgrammerHumor/comments/w1upl0/c_talking_to_python/">From Reddit</a></span></div></div>
+<div class="page-columns page-full"><p><img src="c-plus-plus-talking-to-python.png" class="img-fluid quarto-figure quarto-figure-center" style="width:80.0%"> </p><div class="no-row-height column-margin column-container"><span class="margin-aside"><a href="https://www.reddit.com/r/ProgrammerHumor/comments/w1upl0/c_talking_to_python/">From Reddit</a></span></div></div>
 <p>Changing things so that the main calculations were run in compiled C++ instead of <i class="fa-brands fa-r-project" aria-label="r-project"></i> is something that I have seen many other packages do to achieve much higher speeds. So this too felt like the right direction to move in, but I just never did it. Adding a compiled backend to a package like this is the kind of job that’s genuinely really, really challenging. I never really knew where to begin, and I never had the time to truly learn how it all works. Doing this would mean porting the log-likelihood and its analytic gradient to C++ and keep the math <em>exactly</em> right while also setting up infrastructure to confirm the results still match the <i class="fa-brands fa-r-project" aria-label="r-project"></i> version down to the last decimal and wiring up multithreading without breaking anything. That’s weeks and weeks of hard stuff, and it’s very easy to get something subtly / silently wrong.</p>
 <p>So it sat on my to-do list for years, with me secretly hoping someone else who has mastered C++ would come along and write it for me (open source ftw?).</p>
 </section>
@@ -318,9 +317,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="the-payoff" class="level2">
 <h2 class="anchored" data-anchor-id="the-payoff">The payoff</h2>
 <p>Here’s the head-to-head comparison against the other <i class="fa-brands fa-r-project" aria-label="r-project"></i> packages I benchmark against, estimating the same preference-space mixed logit model:</p>
-<center>
-<img src="benchmark.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="benchmark.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="benchmark.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>At 1,500 draws, single-threaded {logitr} finishes in about 15.5 seconds. The other 4 packages I compared against range from roughly 2.9× to 8× slower, and that’s giving the ones that can use multiple cores their best multi-core times while {logitr} runs on a single thread. Turn on {logitr}’s own multithreading and the gap gets wider still.</p>
 <p>But the comparison I find most fun is the one at the top of this post: how {logitr} scales as you crank up the number of draws, comparing the old <i class="fa-brands fa-r-project" aria-label="r-project"></i> path against the new compiled backend on one core and on all 10.</p>
 <p>At 10,000 draws:</p>
@@ -360,9 +361,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="so-what-does-all-this-speed-actually-buy-you" class="level2">
 <h2 class="anchored" data-anchor-id="so-what-does-all-this-speed-actually-buy-you">So what does all this speed actually buy you?</h2>
 <p><strong>More draws.</strong> Remember, the whole reason to want more draws is that the simulated log-likelihood is an approximation, and with too few draws it gets noisy. To see just how noisy, I ran a little experiment: I estimated the same model 10 times at each of several draw counts, each time with a different set of random draws (MLHS draws, which are randomized, with every run starting from the same converged starting point). Any spread in the converged log-likelihood across those 10 runs comes from the simulation noise – it shifts where each run lands, and with few enough draws it can even warp the likelihood surface so much that a run converges to a different local optimum entirely:</p>
-<center>
-<img src="benchmark_loglik.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="benchmark_loglik.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="benchmark_loglik.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>At 50 draws, the converged log-likelihood lands anywhere in a window about 89 log-likelihood units wide, depending purely on which random draws you happen to get. That’s easily enough to flip a likelihood ratio test or change which model looks “best.” At 500 draws the window is about 3.3× narrower, and it keeps shrinking as you add more (not perfectly monotonically – an occasional low-draw run wanders off to another local optimum, which is the simulation noise problem in its most dramatic form).</p>
 <p>And with the compiled backend, estimating this model with 500 draws takes just 0.7 seconds on my machine. So I changed the default: <strong>{logitr} now uses <code>numDraws = 500</code></strong> instead of 50. The field has stuck with tiny draw counts for decades ({mlogit} and {gmnl} default to 40, Stata’s <code>mixlogit</code> to 50) mostly because more draws used to be painfully slow. At these speeds, there’s no longer a good reason to accept that much simulation noise.</p>
 </section>

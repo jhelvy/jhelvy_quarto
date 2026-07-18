@@ -82,6 +82,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cee9a899e95a870827ab7a873c3f34d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -346,9 +349,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="sc">**</span>Freshness<span class="sc">**</span><span class="er">:</span> <span class="st">`</span><span class="at">r alt1$freshness</span><span class="st">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>I copy this code over to each alternative, adjusting the numbers for alternative 2 and 3. When rendered in formr, the three options looks like this:</p>
-<center>
-<img src="images/example.png" width="500">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/example.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></a></p>
+</figure>
+</div>
 <p>And that’s it! The nice thing about this approach is that the only thing I need to modify in these code chunks for the remaining choice questions is the question number used to define the <code>alts</code> data frame. Other than that, the code for the question label and the alternatives can be reused on the rest of the choice questions.</p>
 </section>
 <section id="buttons-versus-tables" class="level1">
@@ -379,9 +384,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="st">"center"</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<center>
-<img src="images/cbc_table.png" width="500">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/cbc_table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/cbc_table.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></a></p>
+</figure>
+</div>
 </section>
 <section id="implementing-the-surveys-in-formr" class="level1">
 <h1>Implementing the surveys in formr</h1>
@@ -410,9 +417,11 @@ Finish</code></pre>
 <li>At the end of part 2, I compute whether or not the respondent chose the same response for every choice question or not, which is a good indicator that they were probably just clicking through the survey. I don’t want these respondents in my sample, so I screen them out here.</li>
 </ol>
 <p>Here is a screenshot of the specific run settings:</p>
-<center>
-<img src="images/run.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/run.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/run.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 </section>
 <section id="time-stamps" class="level1">
 <h1>Time stamps <svg aria-hidden="true" role="img" viewbox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path></svg></h1>
@@ -861,6 +870,38 @@ Finish</code></pre>
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

@@ -47,6 +47,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cee9a899e95a870827ab7a873c3f34d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -311,9 +314,16 @@ Note
 <p>In my earlier years of dealing with back pain, I built all kinds of contraptions trying to stay productive while avoiding the pain, including a <a href="https://jhelvy.weebly.com/blog/how-i-built-my-diy-treadmill-standing-desk">treadmill desk</a> and <a href="https://jhelvy.weebly.com/blog/v3-reclining-desk">reclining desk</a>, but none worked too well — usually they made me over-work or under-work something else, putting me out of balance.</p>
 <p>The best thing I’ve found in the long run is to get a height-adjustable desk and regularly sit and stand throughout the day. Get a little kitchen timer or <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro timer</a> and make sure you don’t stay in one position for more than 20 minutes. Just alternate sitting and standing all day in 20-minute intervals.</p>
 <p>When you do sit, make sure you have good lumbar support. I use an inflatable lumbar pillow on my chair, and it makes a big difference in keeping my spine in a good position.</p>
-<center>
-<img src="lumbar-pillow.png" width="50%" alt="Inflatable lumbar pillow for lower-back support">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="lumbar-pillow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Inflatable lumbar pillow for lower-back support"><img src="lumbar-pillow.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%" alt="Inflatable lumbar pillow for lower-back support"></a></p>
+</figure>
+</div>
+<figcaption>Inflatable lumbar pillow for lower-back support</figcaption>
+</figure>
+</div>
 <p>And of course, make sure your monitor is at eye level, and that your keyboard and mouse are positioned so that your arms are at a comfortable angle. Ergonomics matter, and small adjustments can make a big difference in how much strain you put on your back throughout the day.</p>
 </section>
 <section id="equipment" class="level2">
@@ -834,6 +844,38 @@ Note
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

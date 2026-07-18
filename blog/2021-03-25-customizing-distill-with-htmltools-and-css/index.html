@@ -82,6 +82,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-cee9a899e95a870827ab7a873c3f34d4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -270,9 +273,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </header>
 
 
-<center>
-<img src="images/css_html.png" width="100%">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/css_html.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/css_html.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>One of the things I love about <a href="https://rstudio.github.io/distill/">{distill}</a> as a site builder is that it is super light weight. It comes out of the box with very few bells and whistles, enabling you to create a site from scratch in minutes. I tried using <a href="https://bookdown.org/yihui/blogdown/">{blogdown}</a> with the <a href="https://themes.gohugo.io/academic/">Hugo Academic theme</a>, but in the end I found the overall configuration a bit overwhelming, even with the guidance of Alison Hill’s incredible <a href="https://alison.rbind.io/post/new-year-new-blogdown/">post</a> on how to do it (btw, if you want to make a blogdown site, you totally should read her <a href="https://alison.rbind.io/categories/blogdown/">posts on blogdown</a>). Distill was just simpler, so I dove in.</p>
 <p>That said, once I did get my distill site running, I found myself longing for some of the really cool features I’ve seen on peoples’ blogdown sites, like <a href="https://alison.rbind.io/">Alison Hill’s site</a> (if you can’t tell, Alison’s work has been a major source of inspiration for me). But then I realized, “wait a minute…I’m working in R, and whenever I want some functionality that doesn’t yet exist, I can just write my own functions!”</p>
 <p>So that’s what I set out to do - write a bunch of functions and hack away at CSS to construct the features I wanted. This post walks through my general strategy and then shows how I implemented some of the features on my site.</p>
@@ -282,9 +287,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="finding-the-html" class="level1">
 <h1>Finding the html</h1>
 <p>For every feature I wanted to add, my starting point was trying to find an example somewhere of the raw html for that feature. My knowledge of html is very limited and hacky, but I do know that if I see something I want, I can use the “inspect” tool in Chrome to grab the html by right-clicking on it and selecting “Copy element”, like this:</p>
-<center>
-<img src="images/inspect.gif" width="100%" class="shadow">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/inspect.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/inspect.gif" class="shadow img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></a></p>
+</figure>
+</div>
 <p>With some html in hand, I had a template to work with. My starting point was always to just drop the html directly into a page and edit it until it looked the way I wanted. But most of the time I needed to replicate and reuse that html in multiple places, so I had to find a way to write R code to <em>generate</em> html.</p>
 </section>
 <section id="htmltools-to-the-rescue" class="level1">
@@ -485,9 +492,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <section id="float-an-image-left-right-with-wrapped-text" class="level1">
 <h1>Float an image left / right with wrapped text</h1>
 <p>A very common layout I see on lots of sites is an image floated to the left or right with text wrapping around it. Here’s an example from my <a href="https://jhelvy.github.io/lab.html">lab page</a>:</p>
-<center>
-<img src="images/text_wrap.png" width="600px" class="shadow">
-</center>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/text_wrap.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/text_wrap.png" class="shadow img-fluid quarto-figure quarto-figure-center figure-img" width="600"></a></p>
+</figure>
+</div>
 <p>There are probably lots of ways to do this, but a simple enough solution is to use the <code>:::</code> notation to create custom divs. This isn’t needed if your output is a <code>html_document</code>, but for distill articles you need to create a new div that includes the image <em>and</em> text wrapping around it (see <a href="https://community.rstudio.com/t/wrapping-text-around-a-right-floated-image-in-rmarkdown-document/94584/2">this issue</a> for details as to why you have to do this).</p>
 <section id="float-a-single-image" class="level2">
 <h2 class="anchored" data-anchor-id="float-a-single-image">Float a single image</h2>
@@ -1001,6 +1010,38 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
