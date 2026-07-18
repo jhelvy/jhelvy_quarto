@@ -1,10 +1,8 @@
 ---
-title: "What 40,000+ public comments say about OMB's proposed grant rule"
+title: "A public rejection of OMB's proposed grant rule"
 description: |
-  OMB has proposed a sweeping rewrite of the rules that govern every federal
-  grant. Hundreds of thousands of people filed comments. I downloaded the ones
-  that have been posted so far and took a first look at what they actually say.
-date: '2026-07-16'
+  OMB has proposed a sweeping rewrite of the rules that govern every federal grant. Thousands of people filed comments. I downloaded them to look at what they actually say.
+date: '2026-07-18'
 image: "stance.png"
 categories:
   - R
@@ -12,8 +10,8 @@ categories:
   - policy
   - science
 format: html
-echo: false
 draft: true
+echo: false
 ---
 
 ```{r}
@@ -21,75 +19,66 @@ draft: true
 #| include: false
 library(tidyverse)
 
-stance   <- read_csv("data/summary_stance.csv", show_col_types = FALSE)
-sections <- read_csv("data/summary_sections.csv", show_col_types = FALSE,
-                     col_types = cols(section = col_character()))
-topics   <- read_csv("data/summary_topics.csv", show_col_types = FALSE)
+stance <- read_csv("data/summary_stance.csv", show_col_types = FALSE)
+sections <- read_csv(
+  "data/summary_sections.csv",
+  show_col_types = FALSE,
+  col_types = cols(section = col_character())
+)
+topics <- read_csv("data/summary_topics.csv", show_col_types = FALSE)
 
-total_n  <- sum(stance$n)
-s_pct    <- function(k) stance$pct[stance$stance == k]
-sec_pct  <- function(s) sections$pct[sections$section == s]
-top_pct  <- function(t) topics$pct[topics$topic == t]
+total_n <- sum(stance$n)
+s_pct <- function(k) stance$pct[stance$stance == k]
+sec_pct <- function(s) sections$pct[sections$section == s]
+top_pct <- function(t) topics$pct[topics$topic == t]
 
 fmt <- function(x) format(x, big.mark = ",")
 ```
 
-Back in May, the White House Office of Management and Budget (OMB) quietly
-proposed one of the most consequential changes to federal research funding in a
-generation. It's a rule with a boring name --- the
-[*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance)
---- and if you don't work with federal grants you'd be forgiven for scrolling
-right past it. But it would touch essentially every grant the federal government
-makes, and the research community noticed. The public comment period drew a
-staggering response.
+In May 2026, the White House Office of Management and Budget (OMB) quietly proposed one of the most consequential changes to federal research funding in a generation. It's a rule with a boring name: the [*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance). The vast majority of people in their normal lives will never directly encounter this rule, but if passed as it's currently written, it will undoubtedly impact everyone one way or another. The rule fundamentally undermines science by putting political appointees--not experts--in charge of all federal grants, including the National Science Foundation (NSF), the National Institutes of Health (NIH), all federal departments (Dept. of Defense, Dept. of Energy, etc.) - every single grant by any federal agency. *Science* Editor-in-Chief Holden Thorp wrote in a June editorial titled ["Another red alert for American science,"](https://www.science.org/doi/10.1126/science.aej3572) that the proposed rule would bypass congressional intent and starve federal research. The [rule does far more](https://defendfederalresearch.org/) than that, but that at least gives you a sense of the scope. 
 
-I wanted to see what people were actually *saying* in those comments, so I
-downloaded them and ran some analysis. This post is a first look. Fair warning
-up front: the comments are still being posted (more on that below), and my
-read on them is deliberately rough-and-ready. But even the early picture is
-striking.
+This post is a summary of what people said in the public comment period from May 29 to July 13, 2026. The code for the complete anlaysis is available at [https://github.com/jhelvy/omb-grant-rule-comments](https://github.com/jhelvy/omb-grant-rule-comments).
+
+**TLDR**: The response by the public was a **resounding opposition to the rule change**. 
+
+## An historic response
+
+Despite OMB's effort to minimize public comments on the ruling (allocating just 45 days for public comment on a ruling that affects over $1 trillion in federal assistance), the comment period drew a staggering response. The total number of comments is unclear due to how comments are actually counted (see [this post](https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on) as an example of how you can inflate the official count, but you can basically just say that one comments represents a lot of people, so 1 comment can be counted as 1 million...yet it's that dumb), but the official count is 496,775 comments. 
+
+<center>
+<img src="comments.png" width=100%>
+</center>
+
+::: {.aside}
+
+Image from [post by Christopher Steven Marcum](https://www.linkedin.com/feed/update/urn:li:share:7482810379866271744/)
+
+:::
+
+Now, as I said above, that number is almost certainly highly inflated, but the response is still historic by any measure. As of writing this on 07/18/26, **~54,000 individual comments** have been released by OMB, which includes all comments through the end of June. Since the comment period went through July 13, **I expect the total comment number to grow to somewhere between 70k and 80k**, give or take 10k. As [noted by Christopher Steven Marcum](https://www.linkedin.com/feed/update/urn:li:share:7482810379866271744/), that number is completely unprecedented in the 13-year-history of 2 CFR 200 public comments, which previously drew just 300, 215, and 2,008 comments in 2013, 2019, and 2023, respectively.
+
+::: {.callout-note}
+
+OMB reviews and releases comments based on the date recieved, so once all the comments are released, I will update this post with a complete analysis. 
+
+:::
 
 ## What the rule actually does
 
-The proposed rule rewrites [2 CFR Part 200](https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200)
---- the "Uniform Guidance" that sets the ground rules for federal grants --- and
-the single biggest move is a change in *status*: it would convert what has long
-been non-binding **guidance** into binding **regulation**. On top of that
-reclassification, it layers in a set of substantive changes that lawyers have
-written up in detail ([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/06/omb-rule-proposes-significant-changes-to-federal-financial-assistance),
-[Faegre Drinker](https://www.faegredrinker.com/en/insights/publications/2026/6/omb-proposes-extensive-reformation-of-federal-grant-regulations)).
-A few of the ones that show up over and over in the comments:
+The proposed rule rewrites [2 CFR Part 200](https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200) --- the "Uniform Guidance" that sets the ground rules for federal grants --- and the single biggest move is a change in *status*: it would convert what has long been non-binding **guidance** into binding **regulation**. On top of thatreclassification, it layers in a set of substantive changes that lawyers have written up in detail ([Holland & Knight](https://www.hklaw.com/en/insights/publications/2026/06/omb-rule-proposes-significant-changes-to-federal-financial-assistance), [Faegre Drinker](https://www.faegredrinker.com/en/insights/publications/2026/6mb-proposes-extensive-reformation-of-federal-grant-regulations)). A few of the ones that show up over and over in the comments:
 
-- **Political review of grants before they're awarded.** Under the proposed
-  §200.205, a senior political appointee would review and could override the
-  merit / peer-review process that agencies like NIH and NSF use to decide which
-  science gets funded.
-- **Discretionary termination "in the national interest."** The proposed
-  §200.340 would let an agency terminate a grant, in whole or in part, whenever
-  it decides the award no longer serves "agency priorities" or "the national
-  interest."
-- **New limits on what grant money can pay for** --- publication and open-access
-  fees (§200.461), conference attendance (§200.432), professional memberships
-  (§200.454) --- plus restrictions on foreign collaborations (§200.220) and a
-  "domestic-first" framework for R&D.
+- **Political review of grants before they're awarded.** Under the proposed §200.205, a senior political appointee would review and could override the merit / peer-review process that agencies like NIH and NSF use to decide which science gets funded.
+- **Discretionary termination "in the national interest."** The proposed §200.340 would let an agency terminate a grant, in whole or in part, whenever it decides the award no longer serves "agency priorities" or "the national interest." Yes, the language is actually that vague (on purpose).
+- **New limits on what grant money can pay for** --- publication and open-access fees (§200.461), conference attendance (§200.432), professional memberships (§200.454) --- plus restrictions on foreign collaborations (§200.220) and a "domestic-first" framework for R&D.
 
-If any of that sounds like it would reshape how research actually gets done in
-this country, well, that's more or less what the commenters think too.
+If any of that sounds like it would reshape how research actually gets done in this country, well, that's more or less what the commenters think too.
 
 ## A quick note on the numbers
 
-Here's the thing you have to keep in mind for everything that follows. The
-docket page reports **hundreds of thousands** of comments *received*, but
-regulations.gov only posts a fraction of them individually, and it releases
-them in **batches** over time. So the comments you can actually download are a
-*moving, partial* slice of the whole. As I write this I've pulled
-**`r fmt(total_n)`** individually-posted comments, and that number is still
-climbing as more get released.[The full pipeline --- scraping, consolidating,
-and this analysis --- is on [GitHub](https://github.com/jhelvy/omb-grant-rule-comments)
-and is fully reproducible.]{.aside}
+Here's the thing you have to keep in mind for everything that follows. The docket page reports **hundreds of thousands** of comments *received*, but regulations.gov only posts a fraction of them individually, and it releases them in **batches** over time. So the comments you can actually download are a *moving, partial* slice of the whole. As I write this I've pulled **`r fmt(total_n)`** individually-posted comments, and that number is still climbing as more get released.[The full pipeline --- scraping, consolidating,
+and this analysis --- is on [GitHub](https://github.com/jhelvy/omb-grant-rule-comments) and is fully reproducible.]{.aside}
 
-So treat all of this as a **snapshot**, not a final tally. I'll re-run it once
-the dust settles.
+So treat all of this as a **snapshot**, not a final tally. I'll re-run it once the dust settles.
 
 ## Overwhelmingly opposed
 
