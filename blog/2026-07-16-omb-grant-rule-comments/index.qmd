@@ -48,12 +48,11 @@ pc_pct <- function(t) {
 }
 ```
 
-::: {.callout-note}
+::: {.callout-note title="Update"}
 
-**Update**: Check out [this app](https://omb-financial-assistance-comments.netlify.app/) by Abigail Haddad and Christopher Marcum, which also reaches the same conclusions as this post but allows you to explore the comments yourself:
+Check out [this app](https://omb-financial-assistance-comments.netlify.app/) by Abigail Haddad and Christopher Marcum, which also reaches the same conclusions as this post but allows you to explore the comments yourself:
 
 :::
-
 
 In May 2026, the White House Office of Management and Budget (OMB) quietly proposed one of the most consequential changes to federal grant funding in a generation. It's a rule with a boring name: the [*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance). The vast majority of people have no idea about this rule or what it encompasses, but if passed as it's currently written, it will have a resounding impact on the nation as a whole and the future of all science, healthcare, technological leadership, and more in the U.S. for generations.
 
