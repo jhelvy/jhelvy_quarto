@@ -48,6 +48,13 @@ pc_pct <- function(t) {
 }
 ```
 
+::: {.callout-note}
+
+**Update**: Check out [this app](https://omb-financial-assistance-comments.netlify.app/) by Abigail Haddad and Christopher Marcum, which also reaches the same conclusions as this post but allows you to explore the comments yourself:
+
+:::
+
+
 In May 2026, the White House Office of Management and Budget (OMB) quietly proposed one of the most consequential changes to federal grant funding in a generation. It's a rule with a boring name: the [*Regulation for Federal Financial Assistance*](https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance). The vast majority of people have no idea about this rule or what it encompasses, but if passed as it's currently written, it will have a resounding impact on the nation as a whole and the future of all science, healthcare, technological leadership, and more in the U.S. for generations.
 
 In addition to its impact on federal funding for state and local governments, tribes, universities, nonprofits, public authorities, school districts, healthcare organizations, small businesses, and research institutes (yes, it touches ALL of that), the rule fundamentally undermines science by putting political appointees--not experts--in charge of all federal grant making. That includes the National Science Foundation (NSF), the National Institutes of Health (NIH), all federal departments that issue research grants (Dept. of Defense, Dept. of Energy, etc.) - every single grant by *any* federal agency. Holden Thorp, Editor-in-Chief of *Science*, wrote in a June editorial titled ["Another red alert for American science"](https://www.science.org/doi/10.1126/science.aej3572) that the proposed rule would bypass congressional intent for agencies like NSF and NIH and starve federal research. The [rule does far more](https://defendfederalresearch.org/) than that, but that gives you a sense of the scope.
@@ -62,7 +69,7 @@ The response by the public is a **resounding opposition to the rule change**.
 
 ## An historic response
 
-Despite Russ Vought's efforts to minimize public comments on the ruling by allocating *only 45 days* for public comment on a ruling that affects over $1 trillion in federal assistance, the comment period drew a staggering response. The official count is 496,775 comments, though that number is likely inflated due to how comments are counted. As outlined in [this post](https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on) by by Abigail Haddad and Christopher Marcum, you can inflate the official count by basically just saying that one comment represents a lot of people, so 1 comment can be made to count as 1 million comments by putting 1000000 in a box on the form...yes, it's that dumb.
+Despite Russ Vought's efforts to minimize public comments on the ruling by allocating *only 45 days* for public comment on a ruling that affects over $1 trillion in federal assistance, the comment period drew a staggering response. The official count is 496,775 comments, though that number is likely inflated due to how comments are counted. As outlined in [this post](https://presentofcoding.substack.com/p/no-there-arent-500000-comments-on) by Abigail Haddad and Christopher Marcum, you can inflate the official count by basically just saying that one comment represents a lot of people, so 1 comment can be made to count as 1 million comments by putting 1000000 in a box on the form...yes, it's that dumb.
 
 ![](comments.png){fig-align="center" width="100%"}
 
