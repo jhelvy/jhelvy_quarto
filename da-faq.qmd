@@ -75,7 +75,11 @@ No. This is not required as long as you have a statistics/probability course at 
 
 ### Can I take an online course?
 
-No. SEAS policy is that on-campus MS students may not enroll in fully online courses.
+In general, no. SEAS policy is that on-campus MS students may not enroll in fully online courses.
+
+That said, on-campus students can enroll in online courses that are offered as part of an on-campus program. For example, in the past the CS department has offering CSCI 6532 Information Policy online for on-campus students. On-campus students just cannot enroll in online courses that are part of the online/off-campus programs.
+
+For international students, please be award that you need to be enrolled in a *majority* of in-person classes, so you could generally take one online course as long as you are enrolled in two in-person courses. It is recommended that international students consult with the ISO prior to enrolling in any online courses.
 
 ### Can you help me choose electives?
 
