@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -46,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fdea2de14e7cdeb8b66911cfe37de275.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c1a8f8108c2a95fe99ae5c1c02e09f5c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -96,13 +131,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <!-- fontawesome icons -->
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 
-
-<script src="../../site_libs/clipboard-2.0.6/clipboard.min.js"></script>
-<link href="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet">
-<script src="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
-<script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"><\/i>","success":"<i class=\"fa fa-check fa-3x\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle  fa-3x\" style=\"color: #F94144\"><\/i>"})</script>
-<link href="../../site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../../site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<!-- "Cite" buttons on the research page (absolute path: this header is shared by pages at every depth) -->
+<script src="../../js/cite.js" defer=""></script>
 
 
 <meta property="og:title" content="jhelvy.com">
@@ -166,6 +196,53 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="Profiles" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Profiles"><i class="bi bi-person-circle"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/jhelvy">
+              <i class="bi bi-github pe-1"></i>
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://bsky.app/profile/jhelvy.bsky.social">
+              <i class="bi bi-bluesky pe-1"></i>
+            Bluesky
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/in/jhelvy">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://scholar.google.com/citations?user=DY2D56IAAAAJ">
+              <i class="bi bi-mortarboard pe-1"></i>
+            Google Scholar
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.researchgate.net/profile/John_Helveston">
+              <i class="bi bi-journal-bookmark pe-1"></i>
+            ResearchGate
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://orcid.org/0000-0002-2657-9191">
+              <i class="bi bi-person-vcard pe-1"></i>
+            ORCID
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../../cv.html">
+              <i class="bi bi-file-earmark-person pe-1"></i>
+            CV
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -195,16 +272,12 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="cell-output-display page-columns page-full">
 <div class="pub">
 <div class="grid">
-<div class="g-col-11"> <p>Kaplan, Leah &amp; <strong>Helveston, John P.</strong> (2023) “Undercutting Transit? Exploring potential competition between autonomous vehicles and public transportation in the U.S.” <em>Transportation Research Record</em>.  DOI: <a href="https://doi.org/10.1177/03611981231208976">10.1177/03611981231208976</a></p>
-
+<div class="g-col-11"> <p>Kaplan, Leah R. &amp; <strong>Helveston, John P.</strong> (2023) “Undercutting Transit? Exploring potential competition between autonomous vehicles and public transportation in the U.S.” <em>Transportation Research Record</em>.  DOI: <a href="https://doi.org/10.1177/03611981231208976">10.1177/03611981231208976</a></p>
+ </div>
+<div class="g-col-1"> <div data-badge-type="donut" data-doi="10.1177/03611981231208976" data-hide-no-mentions="true" class="altmetric-embed"></div> </div>
 </div>
-<div class="g-col-1">
-<div data-badge-type="donut" data-doi="10.1177/03611981231208976" data-hide-no-mentions="true" class="altmetric-embed"></div>
-</div>
-</div>
-<a href="https://journals.sagepub.com/doi/10.1177/03611981231208976" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View</a><a href="https://filedn.com/lYURdAnVcCykBHec07i0c6j/papers/2023-Kaplan-Helveston-TRR.pdf" class="icon-link" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i> PDF</a><a href="https://github.com/lkaplan25/AV_conjoint_survey_2022" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code &amp; Data</a><a href="https://www.researchgate.net/publication/375988686_Undercutting_Transit_Exploring_Potential_Competition_Between_Automated_Vehicles_and_Public_Transportation_in_the_United_States" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i> RG</a><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=DY2D56IAAAAJ&amp;citation_for_view=DY2D56IAAAAJ:ZeXyd9-uunAC" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Scholar</a>
-</div>
-<aside>
+<a href="https://journals.sagepub.com/doi/10.1177/03611981231208976" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View</a><a href="https://filedn.com/lYURdAnVcCykBHec07i0c6j/papers/2023-Kaplan-Helveston-TRR.pdf" class="icon-link" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i> PDF</a><a href="https://github.com/lkaplan25/AV_conjoint_survey_2022" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code &amp; Data</a><a href="https://www.researchgate.net/publication/375988686_Undercutting_Transit_Exploring_Potential_Competition_Between_Automated_Vehicles_and_Public_Transportation_in_the_United_States" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i> RG</a><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=DY2D56IAAAAJ&amp;citation_for_view=DY2D56IAAAAJ:ZeXyd9-uunAC" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Scholar</a><button type="button" class="icon-link cite-button" title="Cite this" data-cite="{&quot;APA&quot;:&quot;Kaplan, L., &amp;amp; Helveston, J. P. (2023). Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States. <i>Transportation Research Record<\/i>, <i>0<\/i>(0). https://doi.org/10.1177/03611981231208976&quot;,&quot;MLA&quot;:&quot;Kaplan, Leah, and John Paul Helveston. &amp;quot;Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States.&amp;quot; <i>Transportation Research Record<\/i>, vol. 0, no. 0, 2023. https://doi.org/10.1177/03611981231208976&quot;,&quot;Chicago&quot;:&quot;Kaplan, Leah and John Paul Helveston. &amp;quot;Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States.&amp;quot; <i>Transportation Research Record<\/i> 0, no. 0 (2023). https://doi.org/10.1177/03611981231208976&quot;,&quot;BibTeX&quot;:&quot;@article{kaplan2023,\nauthor = {Leah Kaplan and John Paul Helveston},\ntitle ={Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States},\njournal = {Transportation Research Record},\nvolume = {0},\nnumber = {0},\nyear = {2023},\ndoi = {10.1177/03611981231208976},\nURL = {https://doi.org/10.1177/03611981231208976},\n}&quot;}"><i class="fas fa-quote-left"></i> Cite</button>
+</div><aside>
   <center>
     <em>
       Robo-taxis won't
@@ -230,18 +303,16 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p><strong>Abstract</strong>:</p>
 <p>Automated vehicles (AVs) have the potential to dramatically disrupt current transportation patterns and practices. One particular area of concern is AVs’ impacts on public transit systems. If vehicle automation enables significant price decreases or performance improvements for ride-hailing services, some fear that it could undercut public transit, which could have significant implications for the environment and transportation equity. The extent to which individuals adopt automated transportation modes will drive many system-level outcomes, and research on public preferences for AVs is immature and inconclusive. In this study, we used responses from an online choice-based conjoint survey fielded in the Washington, D.C. metropolitan region (N = 1,694) in October 2021 to estimate discrete choice models of public preferences for different automated (ride-hailing, shared ride-hailing, bus) and nonautomated (ride-hailing, shared ride-hailing, bus, rail) modes. We used the estimated models to simulate future marketplace competition across a range of trip scenarios. Respondents on average were only willing to pay a premium for automated modes when a vehicle attendant was also present, limiting the potential cost-savings that AV operators might achieve by removing the driver. Scenario analysis additionally revealed that for trips where good transit options were available, transit remained competitive with automated ride-hailing modes. These results suggest that fears of a mass transition away from transit to AVs may be limited by people’s willingness to use AVs, at least in the short term. Future AV operators should also recognize the presence of an AV attendant as a critical feature for early AV adoption.</p>
 <p><strong>Bibtex</strong>:</p>
-<div class="cell">
-<pre><code>@article{kaplan2023,
-author = {Leah Kaplan and John Paul Helveston},
-title ={Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States},
-journal = {Transportation Research Record},
-volume = {0},
-number = {0},
-year = {2023},
-doi = {10.1177/03611981231208976},
-URL = {https://doi.org/10.1177/03611981231208976},
-}</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">kaplan2023</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">author</span> = {Leah Kaplan and John Paul Helveston},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span> ={Undercutting Transit? Exploring Potential Competition Between Automated Vehicles and Public Transportation in the United States},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">journal</span> = {Transportation Research Record},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">volume</span> = {0},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">number</span> = {0},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">year</span> = {2023},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">doi</span> = {10.1177/03611981231208976},</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">URL</span> = {https://doi.org/10.1177/03611981231208976},</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

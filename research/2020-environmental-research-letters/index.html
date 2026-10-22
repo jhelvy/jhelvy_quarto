@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -46,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fdea2de14e7cdeb8b66911cfe37de275.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-c1a8f8108c2a95fe99ae5c1c02e09f5c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -96,13 +131,8 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <!-- fontawesome icons -->
 <script src="https://kit.fontawesome.com/1392a7030f.js" crossorigin="anonymous"></script>
 
-
-<script src="../../site_libs/clipboard-2.0.6/clipboard.min.js"></script>
-<link href="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet">
-<script src="../../site_libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
-<script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"><\/i>","success":"<i class=\"fa fa-check fa-3x\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle  fa-3x\" style=\"color: #F94144\"><\/i>"})</script>
-<link href="../../site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../../site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<!-- "Cite" buttons on the research page (absolute path: this header is shared by pages at every depth) -->
+<script src="../../js/cite.js" defer=""></script>
 
 
 <meta property="og:title" content="jhelvy.com">
@@ -166,6 +196,53 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="Profiles" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Profiles"><i class="bi bi-person-circle"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/jhelvy">
+              <i class="bi bi-github pe-1"></i>
+            GitHub
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://bsky.app/profile/jhelvy.bsky.social">
+              <i class="bi bi-bluesky pe-1"></i>
+            Bluesky
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.linkedin.com/in/jhelvy">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://scholar.google.com/citations?user=DY2D56IAAAAJ">
+              <i class="bi bi-mortarboard pe-1"></i>
+            Google Scholar
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://www.researchgate.net/profile/John_Helveston">
+              <i class="bi bi-journal-bookmark pe-1"></i>
+            ResearchGate
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://orcid.org/0000-0002-2657-9191">
+              <i class="bi bi-person-vcard pe-1"></i>
+            ORCID
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="../../cv.html">
+              <i class="bi bi-file-earmark-person pe-1"></i>
+            CV
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -196,15 +273,11 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <div class="pub">
 <div class="grid">
 <div class="g-col-11"> <p>Roberson, Laura A. &amp; <strong>Helveston, John P.</strong> (2020) “Electric vehicle adoption: can short experiences lead to big change?” <em>Environmental Research Letters</em>. 15(0940c3). DOI: <a href="https://doi.org/10.1088/1748-9326/aba715">10.1088/1748-9326/aba715</a></p>
-
+ </div>
+<div class="g-col-1"> <div data-badge-type="donut" data-doi="10.1088/1748-9326/aba715" data-hide-no-mentions="true" class="altmetric-embed"></div> </div>
 </div>
-<div class="g-col-1">
-<div data-badge-type="donut" data-doi="10.1088/1748-9326/aba715" data-hide-no-mentions="true" class="altmetric-embed"></div>
-</div>
-</div>
-<a href="https://iopscience.iop.org/article/10.1088/1748-9326/aba715/meta" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View</a><a href="https://iopscience.iop.org/article/10.1088/1748-9326/aba715/pdf" class="icon-link" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i> PDF</a><a href="https://zenodo.org/record/3962516" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code &amp; Data</a><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=DY2D56IAAAAJ&amp;citation_for_view=DY2D56IAAAAJ:8k81kl-MbHgC" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Scholar</a>
-</div>
-<aside>
+<a href="https://iopscience.iop.org/article/10.1088/1748-9326/aba715/meta" class="icon-link" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> View</a><a href="https://iopscience.iop.org/article/10.1088/1748-9326/aba715/pdf" class="icon-link" target="_blank" rel="noopener"><i class="fa fa-file-pdf"></i> PDF</a><a href="https://zenodo.org/record/3962516" class="icon-link" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code &amp; Data</a><a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;user=DY2D56IAAAAJ&amp;citation_for_view=DY2D56IAAAAJ:8k81kl-MbHgC" class="icon-link" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Scholar</a><button type="button" class="icon-link cite-button" title="Cite this" data-cite="{&quot;APA&quot;:&quot;Roberson, L. A., &amp;amp; Helveston, J. P. (2020). Electric vehicle adoption: can short experiences lead to big change? <i>Environmental Research Letters<\/i>, <i>15<\/i>(9), 0940c3. https://doi.org/10.1088/1748-9326/aba715&quot;,&quot;MLA&quot;:&quot;Roberson, Laura A, and John P Helveston. &amp;quot;Electric vehicle adoption: can short experiences lead to big change?&amp;quot; <i>Environmental Research Letters<\/i>, vol. 15, no. 9, 2020, pp. 0940c3. https://doi.org/10.1088/1748-9326/aba715&quot;,&quot;Chicago&quot;:&quot;Roberson, Laura A and John P Helveston. &amp;quot;Electric vehicle adoption: can short experiences lead to big change?&amp;quot; <i>Environmental Research Letters<\/i> 15, no. 9 (2020): 0940c3. https://doi.org/10.1088/1748-9326/aba715&quot;,&quot;BibTeX&quot;:&quot;@article{roberson2020electric,\n  title={Electric vehicle adoption: can short experiences lead to big change?},\n  author={Roberson, Laura A and Helveston, John P},\n  journal={Environmental Research Letters},\n  volume={15},\n  number={9},\n  pages={0940c3},\n  year={2020},\n  publisher={IOP Publishing}\n}&quot;}"><i class="fas fa-quote-left"></i> Cite</button>
+</div><aside>
   <center>
     <em>
       A five minute ride
@@ -230,18 +303,16 @@ gtag('config', 'G-HQNG5WQE3X', { 'anonymize_ip': true});
 <p><strong>Abstract</strong>:</p>
 <p>Plug-in electric vehicles (PEVs) offer a promising pathway to decarbonizing the personal transportation sector, but PEV sales remains low. Prior research has found that direct experience with PEVs increases consumers’ stated purchase consideration, but these studies have used relatively long exposure times (days to months) with a PEV. To assess the effect of shorter exposure times (e.g.&nbsp;minutes) on stated purchase consideration, we conducted an experiment at the 2019 Washington D.C. Auto Show. Participants (n = 6518) were asked to rate their level of consideration to adopt a PEV before and after riding in one of four different PEVs for just 3–5 min. We find that the experience of riding in a PEV on average had a significant, positive effect on participants’ consideration ratings. We also find that the vast majority of respondents were unable to correctly answer basic knowledge questions about refueling a PEV and federal subsidies available for purchasing a PEV. These results suggest that while consumer knowledge about PEVs remains low, short rides or drives in a PEV could be an effective, more scalable strategy for increasing PEV consideration across larger populations.</p>
 <p><strong>Bibtex</strong>:</p>
-<div class="cell">
-<pre><code>@article{roberson2020electric,
-  title={Electric vehicle adoption: can short experiences lead to big change?},
-  author={Roberson, Laura A and Helveston, John P},
-  journal={Environmental Research Letters},
-  volume={15},
-  number={9},
-  pages={0940c3},
-  year={2020},
-  publisher={IOP Publishing}
-}</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">roberson2020electric</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>={Electric vehicle adoption: can short experiences lead to big change?},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>={Roberson, Laura A and Helveston, John P},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span>={Environmental Research Letters},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span>={15},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">number</span>={9},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span>={0940c3},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>={2020},</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span>={IOP Publishing}</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

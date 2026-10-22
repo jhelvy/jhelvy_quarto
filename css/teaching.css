@@ -1,5 +1,5 @@
-/* Course cards for teaching.qmd.
-   Modeled on css/projects.css so the two pages read as one system.
+/* Course cards for teaching.qmd. The card itself (white panel, border,
+   hover) is the site-wide card style in theme.scss; this is the layout.
    Colors are hard-coded here (plain CSS can't see theme.scss variables).
 
    NOTE ON SOURCE ORDER: the ### heading must be the FIRST block inside
@@ -13,19 +13,8 @@
   display: grid;
   grid-template-columns: 120px 1fr;
   column-gap: 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.5rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.course-card:hover {
-  border-color: #5480a7;
-  box-shadow: 0 0 16px 1px rgba(84, 128, 167, 0.22),
-    0 6px 16px rgba(84, 128, 167, 0.16);
 }
 
 /* Everything except the logo lives in the right-hand column */

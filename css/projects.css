@@ -2,35 +2,12 @@
    NOTE: Quarto prefixes the listing id, so the container is
    #listing-projects (not #projects). */
 
-/* Squarer card silhouette with a subtle border/shadow.
-   Card itself is transparent so the image area shows the page
-   background; only the text area (.card-body) is painted white. */
+/* The border, shadow, hover, and press are the site-wide card style in
+   theme.scss. Here the card is transparent so the image area shows the
+   page background; only the text area (.card-body) is painted white. */
 #listing-projects .quarto-grid-item.card {
-  border-radius: 4px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   background-color: transparent;
-}
-
-/* Hover: highlight the card with a soft glow in the site accent blue
-   (#5480a7), plus a subtle press-shrink on click. */
-#listing-projects .quarto-grid-item.card {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease,
-    transform 0.12s ease;
-}
-
-#listing-projects .quarto-grid-item.card:hover {
-  border-color: #5480a7;
-  box-shadow: 0 0 16px 1px rgba(84, 128, 167, 0.22),
-    0 6px 16px rgba(84, 128, 167, 0.16);
-}
-
-#listing-projects .quarto-grid-item.card:active {
-  border-color: #2c3f51;
-  box-shadow: 0 0 9px 0 rgba(84, 128, 167, 0.18),
-    0 3px 8px rgba(84, 128, 167, 0.16);
-  transform: scale(0.992);
 }
 
 /* Transparent image area (hex logos sit on the page background) */
