@@ -17,6 +17,7 @@ Imports:
     here,
     htmltools,
     janitor,
+    jsonlite,
     kableExtra,
     knitr,
     markdown,

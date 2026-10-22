@@ -304,3 +304,133 @@ make_semesters <- function(stub, file = file.path('content', 'courses.csv')) {
     '</div></details>'
   ))
 }
+
+# Lab page: build the People section from content/lab.csv. Current members
+# are grouped by position; alumni follow in one group, in csv order. Returned
+# as markdown; wrap the call in knitr::asis_output().
+make_lab_people <- function(file = file.path('content', 'lab.csv')) {
+  people <- readr::read_csv(file, show_col_types = FALSE)
+  sections <- c(
+    faculty   = "Faculty",
+    postdoc   = "Post-Docs",
+    phd       = "Ph.D. Students",
+    masters   = "Masters Students",
+    undergrad = "Undergraduate Students"
+  )
+  out <- c()
+  for (pos in names(sections)) {
+    d <- filter(people, status == "current", position == pos)
+    if (nrow(d) > 0) {
+      out <- c(out, paste("##", sections[[pos]]), make_lab_group(d))
+    }
+  }
+  alumni <- filter(people, status == "alumni")
+  if (nrow(alumni) > 0) {
+    out <- c(out, "## Alumni", make_lab_group(alumni))
+  }
+  return(paste(out, collapse = "\n\n"))
+}
+
+make_lab_group <- function(d) {
+  return(vapply(split(d, seq_len(nrow(d))), make_lab_person, character(1)))
+}
+
+# One card per person, styled by css/lab.css. The ### heading must be the
+# first block in the card or pandoc drops the name from the TOC (see the
+# note in css/teaching.css); css places the photo back in the left column.
+make_lab_person <- function(p) {
+  name <- p$name
+  if (!is.na(p$name_native)) { name <- glue::glue("{name} ({p$name_native})") }
+  if (!is.na(p$credentials)) { name <- glue::glue("{name}, {p$credentials}") }
+  # Multiple degrees are separated by "; " in the csv
+  meta <- NULL
+  if (!is.na(p$degree)) {
+    meta <- c(
+      "::: {.person-meta}",
+      str_replace_all(p$degree, "; ", " &middot; "),
+      ":::"
+    )
+  }
+  return(paste(c(
+    ":::: {.person-card}",
+    glue::glue("### {name} {{#{lab_person_id(p$name)}}}"),
+    "::: {.person-photo}",
+    glue::glue('<img src="images/lab/{p$image}" alt="{p$name}">'),
+    ":::",
+    meta,
+    p$bio,
+    "::::"
+  ), collapse = "\n\n"))
+}
+
+# Anchor id for a person's card, shared by the cards and the map's click links
+lab_person_id <- function(name) {
+  slug <- str_replace_all(str_to_lower(name), "[^a-z0-9]+", "-")
+  return(paste0("person-", str_replace_all(slug, "^-|-$", "")))
+}
+
+# Lab page: interactive world map of where lab members are from. This packs
+# the lat / lng and home_* columns of content/lab.csv into the page as json;
+# js/lab-map.js draws the map (d3, Equal Earth projection) and css/lab.css
+# styles it. Hovering a dot shows the person; clicking jumps to their card.
+make_lab_map <- function(file = file.path('content', 'lab.csv')) {
+  role_labels <- c(
+    faculty   = "Faculty",
+    postdoc   = "Post-Doc",
+    phd       = "Ph.D. Student",
+    masters   = "Masters Student",
+    undergrad = "Undergraduate Student"
+  )
+  people <- readr::read_csv(file, show_col_types = FALSE) %>%
+    filter(!is.na(lat), !is.na(lng)) %>%
+    mutate(
+      id = lab_person_id(name),
+      # Alumni show their degrees (still "; "-separated, one line each)
+      role = ifelse(
+        status == "alumni" & !is.na(degree),
+        degree,
+        unname(role_labels[position])
+      ),
+      home = ifelse(
+        is.na(home_city), home_country, paste0(home_city, ", ", home_country)
+      ),
+      image = file.path("images", "lab", image)
+    ) %>%
+    select(name, id, status, role, home, image, lat, lng)
+
+  zoom_button <- function(action, label, text) {
+    tags$button(
+      type = "button", `data-zoom` = action, `aria-label` = label,
+      title = label, text
+    )
+  }
+
+  return(tagList(
+    div(
+      class = "lab-map",
+      div(
+        class = "lab-map-legend",
+        span(class = "lab-map-key current"), "Current members",
+        span(class = "lab-map-key alumni"), "Alumni"
+      ),
+      div(
+        class = "lab-map-canvas",
+        div(
+          class = "lab-map-controls",
+          zoom_button("in", "Zoom in", "+"),
+          zoom_button("out", "Zoom out", HTML("&minus;")),
+          zoom_button("reset", "Reset map", HTML("&#8634;"))
+        )
+      ),
+      tags$script(
+        type = "application/json", class = "lab-map-data",
+        HTML(jsonlite::toJSON(people))
+      )
+    ),
+    tags$script(src = "https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"),
+    tags$script(
+      src = "https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"
+    ),
+    tags$script(src = "js/lab-map.js")
+  ))
+}

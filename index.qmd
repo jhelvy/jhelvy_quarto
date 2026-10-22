@@ -1,7 +1,11 @@
 ---
 title: "John Paul Helveston"
 image: "images/lab/john_helveston_circle.png"
-execute: 
+open-graph:
+  image: images/social-card.jpg
+twitter-card:
+  image: images/social-card.jpg
+execute:
   echo: false
   warning: false
 about:
