@@ -1,0 +1,287 @@
+/* Person cards for lab.qmd, built by make_lab_person() in _common.R.
+   Modeled on css/teaching.css so the lab, teaching, and projects pages read
+   as one system. Colors are hard-coded here (plain CSS can't see
+   theme.scss variables).
+
+   As on the teaching page, the ### heading is the FIRST block inside
+   .person-card so pandoc keeps each name in the TOC; the photo comes after
+   it in the markup and is placed back into the left column here. */
+
+.person-card {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  column-gap: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.person-card:hover {
+  border-color: #5480a7;
+  box-shadow: 0 0 16px 1px rgba(84, 128, 167, 0.22),
+    0 6px 16px rgba(84, 128, 167, 0.16);
+}
+
+/* Everything except the photo lives in the right-hand column */
+.person-card > * {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.person-photo {
+  grid-column: 1;
+  grid-row: 1 / span 99;
+}
+
+/* Pandoc wraps the image in a <p>; zero both that and the global
+   img { margin-bottom: 1rem } from theme.scss */
+.person-photo p,
+.person-photo img {
+  margin-bottom: 0;
+}
+
+/* Source photos vary in shape and size, so crop them all to the same
+   circle, biased upward so portrait shots keep the face in frame */
+.person-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border-radius: 50%;
+  border: 3px solid #f2f6f9;
+  box-shadow: 0 0 0 1px rgba(84, 128, 167, 0.25);
+}
+
+/* Align the name with the top of the photo */
+.person-card > h3 {
+  margin-top: 0;
+  margin-bottom: 0.15rem;
+}
+
+.person-meta {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: #6b7c8c;
+  margin-bottom: 0.6rem;
+}
+
+.person-meta p {
+  margin-bottom: 0;
+}
+
+/* Space the name from the bio when there is no degree line between them */
+.person-card > h3 + .person-photo + p {
+  margin-top: 0.5rem;
+}
+
+.person-card > p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 575px) {
+  .person-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .person-card > *,
+  .person-photo {
+    grid-column: 1;
+  }
+
+  /* drop the row span and hoist the photo above the name */
+  .person-photo {
+    grid-row: auto;
+    order: -1;
+    width: 120px;
+    margin-bottom: 0.75rem;
+  }
+
+  .person-card > p {
+    text-align: left;
+  }
+}
+
+/* Jumping to a card from the map: clear the fixed navbar and briefly mark
+   the card that was clicked */
+.person-card {
+  scroll-margin-top: 80px;
+}
+
+.person-card:target {
+  border-color: #56a754;
+  box-shadow: 0 0 0 3px rgba(86, 167, 84, 0.2);
+}
+
+/* Quarto offsets a targeted section for the navbar with a ::before spacer;
+   inside the card's grid that spacer becomes a grid item and stretches the
+   card thousands of pixels tall. scroll-margin-top above does its job. */
+.person-card:target::before {
+  display: none;
+}
+
+/* Map of where lab members are from: markup from make_lab_map() in
+   _common.R, drawn by js/lab-map.js. Same white panel as the person cards. */
+.lab-map {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  padding: 0.75rem 1rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lab-map-legend {
+  font-size: 0.85rem;
+  color: #6b7c8c;
+  margin-bottom: 0.5rem;
+}
+
+.lab-map-key {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  margin: 0 0.3rem 0 0.9rem;
+  vertical-align: -0.05rem;
+}
+
+.lab-map-key:first-child {
+  margin-left: 0;
+}
+
+.lab-map-key.current,
+.lab-map-dot.current {
+  background-color: #5480a7;
+  fill: #5480a7;
+}
+
+.lab-map-key.alumni,
+.lab-map-dot.alumni {
+  background-color: #56a754;
+  fill: #56a754;
+}
+
+/* The svg and the tooltip are positioned against this box */
+.lab-map-canvas {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.lab-map-canvas svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: grab;
+  /* one finger scrolls the page; js/lab-map.js handles two-finger gestures */
+  touch-action: pan-x pan-y;
+}
+
+.lab-map-canvas svg:active {
+  cursor: grabbing;
+}
+
+.lab-map-ocean {
+  fill: #f2f6f9;
+}
+
+/* Borders stay hairlines however far the map is zoomed */
+.lab-map-country {
+  fill: #d5dde5;
+  stroke: #ffffff;
+  stroke-width: 0.6px;
+  vector-effect: non-scaling-stroke;
+}
+
+.lab-map-dot {
+  stroke: #ffffff;
+  stroke-width: 1.2px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.lab-map-dot:focus {
+  outline: none;
+}
+
+.lab-map-dot.is-active {
+  stroke: #2c3f51;
+  stroke-width: 2px;
+}
+
+.has-hover .lab-map-dot:not(.is-active) {
+  opacity: 0.35;
+}
+
+.lab-map-controls {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.lab-map-controls button {
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: #5480a7;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.lab-map-controls button:hover {
+  color: #56a754;
+  border-color: #5480a7;
+}
+
+.lab-map-tip {
+  position: absolute;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 300px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: #2c3f51;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.lab-map-tip.is-visible {
+  display: flex;
+}
+
+/* Reset the global img { margin-bottom: 1rem } from theme.scss */
+.lab-map-tip img {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  object-fit: cover;
+  object-position: 50% 25%;
+  border-radius: 50%;
+}
+
+.lab-map-tip-home {
+  color: #6b7c8c;
+}
