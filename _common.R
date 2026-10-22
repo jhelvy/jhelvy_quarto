@@ -185,6 +185,11 @@ end_with <- function(text, mark = ".") {
   return(paste0(text, mark))
 }
 
+# Base R only has %||% from 4.4.0 on; the GitHub Actions build runs older R
+if (!exists("%||%", mode = "function")) {
+  `%||%` <- function(x, y) if (is.null(x)) y else x
+}
+
 bib_doi <- function(bib) {
   if (!is.null(bib$doi)) { return(paste0("https://doi.org/", bib$doi)) }
   return(bib$url)
