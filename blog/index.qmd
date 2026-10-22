@@ -1,5 +1,11 @@
 ---
 title: Blog
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: ../images/cards/blog.jpg
+twitter-card:
+  image: ../images/cards/blog.jpg
+  card-style: summary_large_image
 author: ""
 listing:
   contents: "index.qmd"

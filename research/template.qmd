@@ -1,17 +1,6 @@
 ```{r, include=FALSE}
 pub$citation <- str_replace(pub$citation, "\\\\\\*", "")
 
-# For clipboard in bibtex
-
-htmltools::tagList(
-  xaringanExtra::use_clipboard(
-    button_text = "<i class=\"fa fa-clipboard fa-3x\" style=\"color: #FFF\"></i>",
-    success_text = "<i class=\"fa fa-check fa-3x\" style=\"color: #90BE6D\"></i>",
-    error_text = "<i class=\"fa fa-times-circle  fa-3x\" style=\"color: #F94144\"></i>"
-  ),
-  rmarkdown::html_dependency_font_awesome()
-)
-
 knitr::opts_chunk$set(comment = "")
 ```
 
@@ -37,6 +26,8 @@ knitr::include_graphics(paste0(pub$stub, ".png"))
 
 **Bibtex**:
 
-```{r, echo=FALSE}
-cat(pub$bibtex)
+```{r}
+#| output: asis
+# A bibtex code block, so Quarto adds its own copy button
+knitr::asis_output(paste0("```bibtex\n", pub$bibtex, "\n```"))
 ```

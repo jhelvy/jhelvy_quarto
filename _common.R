@@ -66,6 +66,209 @@ make_citation <- function(pub) {
   ))
 }
 
+# Plain-text version of make_citation() for the "Cite" button on each pub:
+# the same parts with the markdown stripped (bold self-name, the \\* advisee
+# markers, the italic journal) and the DOI as a full link
+make_plain_citation <- function(pub) {
+  parts <- c(
+    str_remove_all(pub$author, "\\\\|\\*"),
+    glue::glue("({pub$year})"),
+    glue::glue('"{pub$title}"'),
+    if (!is.na(pub$journal)) glue::glue("{pub$journal}."),
+    if (!is.na(pub$number)) glue::glue("{pub$number}."),
+    if (!is.na(pub$doi)) glue::glue("https://doi.org/{pub$doi}")
+  )
+  text <- str_replace_all(paste(parts, collapse = " "), "_([^_]+)_", "\\1")
+  return(str_remove_all(text, "`"))
+}
+
+# Citation styles for the "Cite" pop-up (js/cite.js), as json: APA, MLA,
+# and Chicago, plus the BibTeX itself. The styles are built from the pub's
+# BibTeX entry in the Google sheet, falling back to the sheet's doi. Pubs
+# with no BibTeX get only the plain citation from make_plain_citation().
+make_cite_styles <- function(pub) {
+  if (is.na(pub$bibtex)) {
+    styles <- list(Citation = htmlEscape(make_plain_citation(pub)))
+  } else {
+    bib <- parse_bibtex(pub$bibtex)
+    if (is.null(bib$doi) && !is.na(pub$doi)) { bib$doi <- pub$doi }
+    styles <- list(
+      APA = cite_apa(bib),
+      MLA = cite_mla(bib),
+      Chicago = cite_chicago(bib),
+      BibTeX = pub$bibtex
+    )
+  }
+  return(as.character(jsonlite::toJSON(styles, auto_unbox = TRUE)))
+}
+
+# Reads the fields of one BibTeX entry into a named list (lower-case names,
+# plus the entry type). Values may be {braced}, "quoted", or bare, and are
+# read in order so an "=" inside a value (e.g. in a url) isn't a new field.
+parse_bibtex <- function(bibtex) {
+  chars <- strsplit(bibtex, "")[[1]]
+  n <- length(chars)
+  bib <- list(type = str_to_lower(str_match(bibtex, "@(\\w+)")[, 2]))
+  pos <- 1
+  repeat {
+    rest <- substr(bibtex, pos, n)
+    m <- regexpr("(\\w+)\\s*=\\s*", rest, perl = TRUE)
+    if (m == -1) { break }
+    name <- str_to_lower(str_remove(regmatches(rest, m), "\\s*=\\s*$"))
+    i <- pos + m + attr(m, "match.length") - 1
+    if (chars[i] == "{") {
+      depth <- 0
+      j <- i
+      repeat {
+        if (chars[j] == "{") { depth <- depth + 1 }
+        if (chars[j] == "}") { depth <- depth - 1 }
+        if (depth == 0 || j == n) { break }
+        j <- j + 1
+      }
+      value <- substr(bibtex, i + 1, j - 1)
+    } else if (chars[i] == '"') {
+      j <- i + 1
+      while (j < n && chars[j] != '"') { j <- j + 1 }
+      value <- substr(bibtex, i + 1, j - 1)
+    } else {
+      j <- i
+      while (j < n && !chars[j + 1] %in% c(",", "}", " ", "\n")) { j <- j + 1 }
+      value <- substr(bibtex, i, j)
+    }
+    value <- str_remove_all(value, "[{}]")
+    value <- str_replace_all(value, c("\\\\&" = "&", "--" = "\u2013"))
+    bib[[name]] <- str_squish(value)
+    pos <- j + 1
+  }
+  bib$authors <- parse_bib_authors(bib$author)
+  return(bib)
+}
+
+# "Kaplan, Leah and Zoe Szajnfarber" -> list of c(last, given) pairs
+parse_bib_authors <- function(author) {
+  if (is.null(author)) { return(list()) }
+  lapply(str_split(author, "\\s+and\\s+")[[1]], function(a) {
+    if (str_detect(a, ",")) {
+      parts <- str_trim(str_split_fixed(a, ",", 2))
+      return(c(last = parts[1], given = parts[2]))
+    }
+    words <- str_split(a, "\\s+")[[1]]
+    return(c(
+      last = words[length(words)],
+      given = paste(words[-length(words)], collapse = " ")
+    ))
+  })
+}
+
+# "John Paul" -> "J. P."
+bib_initials <- function(given) {
+  words <- str_split(given, "\\s+")[[1]]
+  words <- words[words != ""]
+  return(paste0(str_sub(words, 1, 1), ".", collapse = " "))
+}
+
+# Joins names as "A, B, & C" (APA) or "A, B, and C" (MLA, Chicago)
+join_names <- function(names, and = "and") {
+  if (length(names) == 1) { return(names) }
+  if (length(names) == 2 && and == "and") {
+    return(paste(names[1], and, names[2]))
+  }
+  return(paste0(
+    paste(names[-length(names)], collapse = ", "), ", ", and, " ",
+    names[length(names)]
+  ))
+}
+
+# Adds closing punctuation unless the text already ends with some
+end_with <- function(text, mark = ".") {
+  if (str_detect(text, "[.?!]$")) { return(text) }
+  return(paste0(text, mark))
+}
+
+bib_doi <- function(bib) {
+  if (!is.null(bib$doi)) { return(paste0("https://doi.org/", bib$doi)) }
+  return(bib$url)
+}
+
+# Each style returns html (titles in <i>), escaped piece by piece
+cite_apa <- function(bib) {
+  b <- lapply(bib[names(bib) != "authors"], htmlEscape)
+  names <- vapply(bib$authors, function(a) {
+    paste0(htmlEscape(a[["last"]]), ", ", bib_initials(a[["given"]]))
+  }, character(1))
+  container <- b$journal %||% b$booktitle
+  out <- paste0(join_names(names, "&amp;"), " (", b$year, "). ")
+  if (is.null(container)) {
+    out <- paste0(out, "<i>", b$title, "</i>")
+    if (!is.null(b$note)) { out <- paste0(out, " (", b$note, ")") }
+    out <- paste0(out, ".")
+  } else {
+    out <- paste0(out, end_with(b$title), " <i>", container, "</i>")
+    if (!is.null(b$volume)) { out <- paste0(out, ", <i>", b$volume, "</i>") }
+    if (!is.null(b$number)) { out <- paste0(out, "(", b$number, ")") }
+    if (!is.null(b$pages)) { out <- paste0(out, ", ", b$pages) }
+    out <- paste0(out, ".")
+  }
+  return(paste(c(out, bib_doi(b)), collapse = " "))
+}
+
+cite_mla <- function(bib) {
+  b <- lapply(bib[names(bib) != "authors"], htmlEscape)
+  a <- lapply(bib$authors, function(x) vapply(x, htmlEscape, character(1)))
+  first <- paste0(a[[1]][["last"]], ", ", a[[1]][["given"]])
+  authors <- if (length(a) == 1) {
+    first
+  } else if (length(a) == 2) {
+    paste0(first, ", and ", a[[2]][["given"]], " ", a[[2]][["last"]])
+  } else {
+    paste0(first, ", et al")
+  }
+  container <- b$journal %||% b$booktitle
+  out <- paste0(end_with(authors), " ")
+  if (is.null(container)) {
+    out <- paste0(out, "<i>", end_with(b$title), "</i> ")
+    if (!is.null(b$note)) { out <- paste0(out, b$note, ", ") }
+    out <- paste0(out, b$year, ".")
+  } else {
+    parts <- c(
+      paste0("<i>", container, "</i>"),
+      if (!is.null(b$volume)) paste("vol.", b$volume),
+      if (!is.null(b$number)) paste("no.", b$number),
+      b$year,
+      if (!is.null(b$pages)) paste("pp.", b$pages)
+    )
+    out <- paste0(
+      out, "&quot;", end_with(b$title), "&quot; ",
+      paste(parts, collapse = ", "), "."
+    )
+  }
+  return(paste(c(out, bib_doi(b)), collapse = " "))
+}
+
+cite_chicago <- function(bib) {
+  b <- lapply(bib[names(bib) != "authors"], htmlEscape)
+  a <- lapply(bib$authors, function(x) vapply(x, htmlEscape, character(1)))
+  names <- c(
+    paste0(a[[1]][["last"]], ", ", a[[1]][["given"]]),
+    vapply(a[-1], function(x) paste(x[["given"]], x[["last"]]), character(1))
+  )
+  container <- b$journal %||% b$booktitle
+  out <- paste0(end_with(join_names(names, "and")), " ")
+  if (is.null(container)) {
+    out <- paste0(out, "<i>", end_with(b$title), "</i> ")
+    if (!is.null(b$note)) { out <- paste0(out, end_with(b$note), " ") }
+    out <- paste0(out, b$year, ".")
+  } else {
+    out <- paste0(out, "&quot;", end_with(b$title), "&quot; <i>", container, "</i>")
+    if (!is.null(b$volume)) { out <- paste0(out, " ", b$volume) }
+    if (!is.null(b$number)) { out <- paste0(out, ", no. ", b$number) }
+    out <- paste0(out, " (", b$year, ")")
+    if (!is.null(b$pages)) { out <- paste0(out, ": ", b$pages) }
+    out <- paste0(out, ".")
+  }
+  return(paste(c(out, bib_doi(b)), collapse = " "))
+}
+
 make_doi <- function(doi) {
   return(glue::glue('DOI: [{doi}](https://doi.org/{doi})'))
 }
@@ -232,6 +435,15 @@ make_icons <- function(pub) {
       url  = pub$url_scholar
     )))
   }
+  # Opens the pop-up of citation styles from make_cite_styles(); see
+  # js/cite.js
+  html <- c(html, as.character(tags$button(
+    type = "button",
+    class = "icon-link cite-button",
+    title = "Cite this",
+    `data-cite` = make_cite_styles(pub),
+    make_icon_text("fas fa-quote-left", "Cite")
+  )))
   return(paste(html, collapse = ""))
 }
 

@@ -1,5 +1,11 @@
 ---
 title: Miscellaneous Projects
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: images/cards/projects.jpg
+twitter-card:
+  image: images/cards/projects.jpg
+  card-style: summary_large_image
 description: A collection of miscellaneous projects that may or may not be related to my research.
 preview: images/lab/john_helveston_circle.png
 format:

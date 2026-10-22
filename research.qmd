@@ -1,5 +1,11 @@
 ---
 title: "Research"
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: images/cards/research.jpg
+twitter-card:
+  image: images/cards/research.jpg
+  card-style: summary_large_image
 description: I lead interdisciplinary research that explores relationships between technological change and factors that shape it, such as consumer behavior, market dynamics, and policy. I apply a systems engineering perspective to better understand these relationships and to inform policy, with an emphasis on accelerating transitions to cleaner technologies. I have expertise in choice modeling, survey design, data-driven analysis, reproducible research, programming, {{< fa brands r-project >}}, China, and the global electric vehicle industry.
 preview: images/lab/john_helveston.png
 execute: 

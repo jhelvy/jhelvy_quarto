@@ -1,5 +1,11 @@
 ---
 title: "Technology Change Lab"
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: images/cards/lab.jpg
+twitter-card:
+  image: images/cards/lab.jpg
+  card-style: summary_large_image
 preview: images/lab/logo/logo.png
 toc: true
 toc-location: left
@@ -76,9 +82,12 @@ knitr::asis_output(make_lab_people())
 
 ## Current Opportunities
 
-While I am not currently seeking new Ph.D. students, I am always happy to hear from motivated potential students who are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU. If you are interested in working with me as your advisor, please send me an email with the following attachments:
+Unfortunately, I am not accepting new Ph.D. students at this time primarily due to lack of funding. Federal research funding in the U.S. is under serious strain right now, with grant programs cut, paused, or delayed across the agencies that support work like ours. I am actively applying for new grants and working with partners to secure support for the lab, but it has been a difficult period, and until a funding source comes through I can't responsibly commit to supporting a new student for the several years a Ph.D. takes.
+
+The exception is students who have already secured their own external funding, such as a fellowship or a government or employer sponsorship that covers tuition and a stipend. If that describes you and you are considering a Ph.D. through the [Engineering Management & Systems Engineering Department](https://www.emse.seas.gwu.edu/) at GWU, please send me an email with the following attachments:
 
 - Your CV.
+- Details on your funding source.
 - A written statement describing specific research topics you are interested in and why (at least one page).
 - A summary of your prior research experience and skills.
 
@@ -90,7 +99,7 @@ Although currently I am not seeking a GRA for ongoing research projects, there i
 - A brief statement of your research interests.
 - A brief summary of your prior research experience and skills.
 
-Candidates with the following skills / experience are particularly encouraged: webscraping, data cleaning, exploratory data analysis, life cycle assessment, simulation.
+Candidates with the following skills / experience are particularly encouraged: programming, data cleaning and data analysis, life cycle assessment, simulation, agentic AI tools like Claude Code / Codex.
 
 ## Undergraduate Research Assistants
 

@@ -97,6 +97,116 @@ a {
     text-underline-offset: 4px;
 }
 
+/* "Profiles" menu in the navbar (tools in _quarto.yml): one icon button
+   that opens the profile links on hover on desktop, or on a click or tap
+   anywhere. Quarto only takes Bootstrap icon names, so Scholar,
+   ResearchGate, ORCID, and the CV get their academicons glyphs here,
+   matched by url. */
+
+.quarto-navbar-tools a[href*="scholar.google"] .bi::before,
+.quarto-navbar-tools a[href*="researchgate.net"] .bi::before,
+.quarto-navbar-tools a[href*="orcid.org"] .bi::before,
+.quarto-navbar-tools a[href$="cv.html"] .bi::before {
+    font-family: "Academicons" !important;
+}
+
+/* the Scholar and ResearchGate glyphs read small next to the others */
+.quarto-navbar-tools a[href*="scholar.google"] .bi,
+.quarto-navbar-tools a[href*="researchgate.net"] .bi {
+    font-size: 1.2em;
+}
+
+.quarto-navbar-tools a[href*="scholar.google"] .bi::before { content: "\e9d4"; }
+.quarto-navbar-tools a[href*="researchgate.net"] .bi::before { content: "\e95e"; }
+.quarto-navbar-tools a[href*="orcid.org"] .bi::before { content: "\e9d9"; }
+.quarto-navbar-tools a[href$="cv.html"] .bi::before { content: "\e9a5"; }
+
+.quarto-navbar-tools {
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.quarto-navbar-tools .quarto-navigation-tool.dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.45rem !important;
+    color: $primary-color;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.quarto-navbar-tools .dropdown:hover .dropdown-toggle,
+.quarto-navbar-tools .dropdown-toggle:focus,
+.quarto-navbar-tools .dropdown-toggle.show {
+    color: $secondary-color;
+    background-color: rgba($blue, 0.1);
+}
+
+.quarto-navbar-tools .dropdown-toggle:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* The menu: a small card, right-aligned under the button so it never runs
+   off the edge of the screen */
+.quarto-navbar-tools .dropdown-menu {
+    left: auto;
+    right: 0;
+    min-width: 0;
+    padding: 0.3rem;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 6px 20px rgba(44, 63, 81, 0.15);
+}
+
+.quarto-navbar-tools .dropdown-item {
+    border-radius: 4px;
+    padding: 0.35rem 0.75rem;
+    color: $primary-color-dark;
+    text-decoration: none;
+}
+
+.quarto-navbar-tools .dropdown-item:hover,
+.quarto-navbar-tools .dropdown-item:focus {
+    color: $primary-color-dark;
+    background-color: rgba($blue, 0.1);
+}
+
+/* fixed-width icon column (in rem, so the enlarged academicons glyphs
+   don't push their labels over) */
+.quarto-navbar-tools .dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.quarto-navbar-tools .dropdown-item .bi {
+    flex: none;
+    width: 1.6rem;
+    line-height: 1;
+    color: $primary-color;
+}
+
+/* Desktop with a mouse: open on hover. The menu sits flush under the
+   button (margin-top: 0) so the pointer can travel into it without the
+   menu closing. */
+@media (min-width: 992px) and (hover: hover) {
+    .quarto-navbar-tools .dropdown:hover > .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+}
+
+/* Collapsed navbar: sit beside the search button at the right, not
+   against the title */
+@media (max-width: 991.98px) {
+    .quarto-navbar-tools {
+        margin-left: auto;
+    }
+}
+
 hr {
   margin: 0rem 0;
 }
@@ -123,6 +233,135 @@ hr {
     color: white;
     box-shadow: 0px 10px 15px $secondary-color-trans;
     transform: translateY(-2px);
+}
+
+/* The "Cite" button (js/cite.js) is a <button>, so it needs the font reset */
+.cite-button {
+    font: inherit;
+    line-height: inherit;
+}
+
+/* The pop-up the "Cite" button opens: one row per citation style, each
+   with its own copy button, in the site's card style */
+.cite-dialog {
+    width: min(640px, calc(100vw - 32px));
+    max-height: calc(100vh - 64px);
+    padding: 0;
+    color: $primary-color-dark;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 12px 40px rgba(44, 63, 81, 0.25);
+}
+
+.cite-dialog:focus {
+    outline: none;
+}
+
+.cite-dialog::backdrop {
+    background-color: rgba(44, 63, 81, 0.35);
+}
+
+.cite-dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cite-dialog-head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.cite-dialog-close {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #6b7c8c;
+    background: none;
+    border: none;
+    padding: 0 0.25rem;
+    cursor: pointer;
+}
+
+.cite-dialog-close:hover {
+    color: $primary-color-dark;
+}
+
+.cite-dialog-body {
+    padding: 0.5rem 1.25rem 1rem;
+}
+
+.cite-row {
+    display: grid;
+    grid-template-columns: 4.5rem 1fr auto;
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.cite-row:last-child {
+    border-bottom: none;
+}
+
+.cite-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #6b7c8c;
+    padding-top: 0.15rem;
+}
+
+.cite-text {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+/* Undo the site-wide dark <pre> code style for the BibTeX */
+pre.cite-bibtex {
+    margin: 0;
+    max-height: 12rem;
+    overflow: auto;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    color: $primary-color-dark;
+    background-color: $body-bg;
+    border-radius: 4px;
+    white-space: pre;
+}
+
+.cite-copy {
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: $primary-color;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.cite-copy:hover,
+.cite-copy.is-copied {
+    background-color: $secondary-color;
+}
+
+@media (max-width: 575px) {
+    .cite-row {
+        grid-template-columns: 1fr auto;
+    }
+
+    .cite-text,
+    pre.cite-bibtex {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
 }
 
 .icon-link-summary {
@@ -241,6 +480,45 @@ div.callout-note.callout-style-default>.callout-header .callout-icon::before {
 		font-size: 0.85em;
 }
 
+/* TOC and listing categories as a thin rail: muted entries on a hairline,
+   with the section you're reading marked in the accent green. #TOC (the id
+   Quarto gives the TOC nav) outranks Quarto's own TOC rules, which load
+   after these. */
+
+#TOC > h2#toc-title,
+.quarto-listing-category-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #6b7c8c;
+    margin-bottom: 0.5rem;
+}
+
+#TOC > ul a,
+.quarto-listing-category .category {
+    color: #6b7c8c !important;
+    border-left: 2px solid #d5dde5;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.quarto-listing-category .category {
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    cursor: pointer;
+}
+
+#TOC > ul a:hover,
+.quarto-listing-category .category:hover {
+    color: $primary-color-dark !important;
+    border-left-color: $primary-color;
+}
+
+#TOC ul > li > a.active,
+.quarto-listing-category .category.active {
+    color: $primary-color-dark !important;
+    border-left-color: $secondary-color;
+}
+
 /* Margin text (aside) */
 
 aside, .column-margin {
@@ -324,3 +602,99 @@ img {
   height: 100%;
   border: 2px solid #5654A2;
 }
+
+/* Cards ------------------------------------------------------------------
+   One card style across the site: blog posts and paper summaries (Quarto's
+   default listing), project tiles, courses, and lab members. A white panel
+   on a hairline border that takes the accent blue under the pointer. Cards
+   that are a single link also press in slightly on click. Layout inside
+   each kind of card lives in css/projects.css, teaching.css, and lab.css. */
+
+div.quarto-post,
+#listing-projects .quarto-grid-item.card,
+.course-card,
+.person-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.12s ease;
+}
+
+div.quarto-post:hover,
+#listing-projects .quarto-grid-item.card:hover,
+.course-card:hover,
+.person-card:hover {
+  border-color: $primary-color;
+  box-shadow: 0 0 16px 1px rgba($blue, 0.22), 0 6px 16px rgba($blue, 0.16);
+}
+
+div.quarto-post:active,
+#listing-projects .quarto-grid-item.card:active {
+  border-color: $primary-color-dark;
+  box-shadow: 0 0 9px 0 rgba($blue, 0.18), 0 3px 8px rgba($blue, 0.16);
+  transform: scale(0.992);
+}
+
+/* Listing posts: the title link is stretched over the whole card, so a
+   click anywhere opens the post */
+div.quarto-post {
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+div.quarto-post .thumbnail {
+  align-self: center;
+}
+
+div.quarto-post .listing-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+div.quarto-post .body h3.listing-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+div.quarto-post .listing-title a {
+  font-weight: inherit;
+}
+
+div.quarto-post:hover .listing-title a {
+  color: $primary-color;
+}
+
+div.quarto-post .listing-description {
+  margin-bottom: 0;
+}
+
+div.quarto-post .listing-description p:last-child {
+  margin-bottom: 0;
+}
+
+div.quarto-post .metadata {
+  color: #6b7c8c;
+}
+
+div.quarto-post .thumbnail img {
+  margin: 0;
+  border-radius: 4px;
+}
+
+@media (max-width: 767.98px) {
+  div.quarto-post .metadata {
+    padding-bottom: 0;
+    margin-top: 0.75rem;
+  }
+
+  div.quarto-post .thumbnail img {
+    margin-top: 0.75rem;
+  }
+}
+

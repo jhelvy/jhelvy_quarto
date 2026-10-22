@@ -1,5 +1,11 @@
 ---
 title: "About"
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: images/cards/about.jpg
+twitter-card:
+  image: images/cards/about.jpg
+  card-style: summary_large_image
 toc: true
 toc-location: left
 preview: images/john_dancing.jpg

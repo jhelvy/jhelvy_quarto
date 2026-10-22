@@ -1,7 +1,7 @@
 /* Person cards for lab.qmd, built by make_lab_person() in _common.R.
-   Modeled on css/teaching.css so the lab, teaching, and projects pages read
-   as one system. Colors are hard-coded here (plain CSS can't see
-   theme.scss variables).
+   The card itself (white panel, border, hover) is the site-wide card style
+   in theme.scss; this is the layout, as in css/teaching.css. Colors are
+   hard-coded here (plain CSS can't see theme.scss variables).
 
    As on the teaching page, the ### heading is the FIRST block inside
    .person-card so pandoc keeps each name in the TOC; the photo comes after
@@ -11,19 +11,8 @@
   display: grid;
   grid-template-columns: 130px 1fr;
   column-gap: 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.person-card:hover {
-  border-color: #5480a7;
-  box-shadow: 0 0 16px 1px rgba(84, 128, 167, 0.22),
-    0 6px 16px rgba(84, 128, 167, 0.16);
 }
 
 /* Everything except the photo lives in the right-hand column */

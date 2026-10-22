@@ -1,5 +1,11 @@
 ---
 title: "Teaching"
+# Social-media preview card, made by images/cards/make_cards.R
+open-graph:
+  image: images/cards/teaching.jpg
+twitter-card:
+  image: images/cards/teaching.jpg
+  card-style: summary_large_image
 description: I teach undergraduate and graduate courses on data analysis in R in the [Department of Engineering Management and Systems Engineering](http://emse.seas.gwu.edu/) at The George Washington University.
 preview: images/lab/john_helveston.png
 execute:
