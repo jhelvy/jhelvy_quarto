@@ -157,22 +157,17 @@
   fill: #56a754;
 }
 
-/* The globe's canvas, the svg of dots laid over it, and the tooltip are
-   positioned against this box */
+/* The svg and the tooltip are positioned against this box */
 .lab-map-canvas {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
 }
 
-.lab-map-globe {
-  display: block;
-}
-
 .lab-map-canvas svg {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
   cursor: grab;
   /* one finger scrolls the page; js/lab-map.js handles two-finger gestures */
   touch-action: pan-x pan-y;
@@ -180,6 +175,18 @@
 
 .lab-map-canvas svg:active {
   cursor: grabbing;
+}
+
+.lab-map-ocean {
+  fill: #f2f6f9;
+}
+
+/* Borders stay hairlines however far the map is zoomed */
+.lab-map-country {
+  fill: #d5dde5;
+  stroke: #ffffff;
+  stroke-width: 0.6px;
+  vector-effect: non-scaling-stroke;
 }
 
 .lab-map-dot {
