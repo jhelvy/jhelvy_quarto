@@ -66,7 +66,7 @@ The Technology Change Lab conducts interdisciplinary research that explores rela
 
 # People
 
-Members of the lab come from all over the world. Hover over a dot on the map to see who is from where, and click it to jump to their profile. Drag to move around the map (two fingers on a phone), and zoom in with the buttons, by pinching, or with Ctrl / ⌘ + scroll.
+Members of the lab come from all over the world. Hover over a dot on the globe to see who is from where, and click it to jump to their profile. Drag to spin the globe (two fingers on a phone), and zoom in with the scroll wheel, the buttons, or by pinching.
 
 ```{r}
 make_lab_map()

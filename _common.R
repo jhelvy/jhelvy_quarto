@@ -586,9 +586,9 @@ lab_person_id <- function(name) {
   return(paste0("person-", str_replace_all(slug, "^-|-$", "")))
 }
 
-# Lab page: interactive world map of where lab members are from. This packs
+# Lab page: interactive globe of where lab members are from. This packs
 # the lat / lng and home_* columns of content/lab.csv into the page as json;
-# js/lab-map.js draws the map (d3, Equal Earth projection) and css/lab.css
+# js/lab-map.js draws the globe (d3, orthographic projection) and css/lab.css
 # styles it. Hovering a dot shows the person; clicking jumps to their card.
 make_lab_map <- function(file = file.path('content', 'lab.csv')) {
   role_labels <- c(
@@ -636,7 +636,7 @@ make_lab_map <- function(file = file.path('content', 'lab.csv')) {
           class = "lab-map-controls",
           zoom_button("in", "Zoom in", "+"),
           zoom_button("out", "Zoom out", HTML("&minus;")),
-          zoom_button("reset", "Reset map", HTML("&#8634;"))
+          zoom_button("reset", "Reset globe", HTML("&#8634;"))
         )
       ),
       tags$script(
