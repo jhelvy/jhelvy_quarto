@@ -37,6 +37,11 @@ listing:
       image: images/hex/earmark.png
       categories: [Python, Software]
       description: Tool that turns articles and documents into dictated audio that you can stream to your phone, narrated locally with Kokoro.
+    - title: Emaki
+      path: https://emaki.lol/
+      image: images/emaki.png
+      categories: [Rust, Software]
+      description: An agentic development environment for Claude Code and Codex. Put the agentic chat at the center, back up all your conversations, and get clean access to your files.
     - title: surveydown
       path: https://surveydown.org/
       image: images/hex/surveydown.png
@@ -95,7 +100,7 @@ listing:
     - title: magaScreener
       path: https://jhelvy.github.io/magaScreener/
       image: images/magaScreener.png
-      description: "Tool for analyzing documents for specific MAGA-targeted keywords, intended to be used to help identify words that might get screened by the federal government."
+      description: "Tool for analyzing documents to help identify specific MAGA-targeted keywords."
     - title: Programming for Analytics in R
       path: https://p4a.jhelvy.com
       image: images/hex/p4a.png
